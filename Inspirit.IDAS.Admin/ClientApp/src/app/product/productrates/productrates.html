@@ -1,0 +1,49 @@
+<div class="m-content">
+  <div class="m-portlet  m-portlet--unair">
+    <div class="m-portlet__body  m-portlet__body--no-padding">
+      <div class="m-portlet__body">
+        <form class="m-form m-form--fit m-form--label-align-right">
+          <div class="m-portlet__body col-8">
+            
+            <div class="form-group m-form__group row">
+              <label for="example-text-input" class="col-3 col-form-label">Product</label>
+              <div class="col-6">
+                <input class="form-control m-input" type="text" name="Product" [readonly]="readonly" [(ngModel)]="currentObj.product">
+              </div>
+            </div>
+            <div class="form-group m-form__group row">
+              <label for="example-text-input" class="col-3 col-form-label">ProductId</label>
+              <div class="col-6">
+                <input class="form-control m-input" type="text" name="ProductId" [readonly]="readonly" [(ngModel)]="currentObj.ProductId">
+              </div>
+            </div>
+            <div class="form-group m-form__group row">
+              <label for="example-text-input" class="col-3 col-form-label">MinLimit</label>
+              <div class="col-6">
+                <input class="form-control m-input" type="text" name="MinLimit" [readonly]="readonly" [(ngModel)]="currentObj.MinLimit">
+              </div>
+            </div>
+            <div class="form-group m-form__group row">
+              <label for="example-text-input" class="col-3 col-form-label">MaxLimit</label>
+              <div class="col-6">
+                <input class="form-control m-input" type="text" name="MaxLimit" [readonly]="readonly" [(ngModel)]="currentObj.MaxLimit">
+              </div>
+            </div>
+            <div class="form-group m-form__group row">
+              <label for="example-text-input" class="col-3 col-form-label">UnitPrice</label>
+              <div class="col-6">
+                <input class="form-control m-input" type="text" name="UnitPrice" [readonly]="readonly" [(ngModel)]="currentObj.unitPrice">
+              </div>
+            </div>
+            <div class="m-form__actions" style="text-align:center">
+              <button type="button" class="btn btn-success" (click)="save()">Submit</button>
+              <button type="button" class="btn btn-success" (click)="list()">Cancel</button>
+            </div>
+          </div>
+        </form>
+
+
+      </div>
+    </div>
+  </div>
+</div>

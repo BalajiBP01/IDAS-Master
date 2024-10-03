@@ -1,0 +1,172 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup Label="Globals">
+    <SccProjectName>SAK</SccProjectName>
+    <SccProvider>SAK</SccProvider>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccLocalPath>SAK</SccLocalPath>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+    <TypeScriptCompileBlocked>true</TypeScriptCompileBlocked>
+    <TypeScriptToolsVersion>Latest</TypeScriptToolsVersion>
+    <IsPackable>false</IsPackable>
+    <SpaRoot>ClientApp\</SpaRoot>
+    <DefaultItemExcludes>$(DefaultItemExcludes);$(SpaRoot)node_modules\**</DefaultItemExcludes>
+    <PublishWithAspNetCoreTargetManifest>false</PublishWithAspNetCoreTargetManifest>
+    <!-- Set this to true if you enable server-side prerendering -->
+    <BuildServerSideRenderer>false</BuildServerSideRenderer>
+    <DependsOnNETStandard>true</DependsOnNETStandard>
+    <UserSecretsId>8733b710-3d0a-4fb9-a715-3ba47ca23915</UserSecretsId>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="DocumentFormat.OpenXml" Version="2.8.1" />
+    <PackageReference Include="itext7.pdfhtml" Version="2.1.4" />
+    <PackageReference Include="Microsoft.AspNetCore.App" />
+    <PackageReference Include="Microsoft.Net.Compilers" Version="2.8.2" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.1.1" />
+    <PackageReference Include="NETCore.MailKit" Version="2.0.2" />
+    <PackageReference Include="NJsonSchema" Version="9.10.67" />
+    <PackageReference Include="NSwag.AspNetCore" Version="11.18.5" />
+    <PackageReference Include="NSwag.MSBuild" Version="11.18.5" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <!-- Don't publish the SPA source files, but do show them in the project files list -->
+    <Compile Remove="ClientApp\src\app\customeruserdetails\**" />
+    <Compile Remove="ClientApp\src\app\customeruser\**" />
+    <Compile Remove="ClientApp\src\app\productpackage\**" />
+    <Compile Remove="ClientApp\src\app\productrates\**" />
+    <Compile Remove="ClientApp\src\app\proformainvoice\proformainvoiceemail\**" />
+    <Compile Remove="ClientApp\src\app\subscriptiondetail\subscriptioncustomer\**" />
+    <Content Remove="$(SpaRoot)**" />
+    <Content Remove="ClientApp\src\app\customeruserdetails\**" />
+    <Content Remove="ClientApp\src\app\customeruser\**" />
+    <Content Remove="ClientApp\src\app\productpackage\**" />
+    <Content Remove="ClientApp\src\app\productrates\**" />
+    <Content Remove="ClientApp\src\app\proformainvoice\proformainvoiceemail\**" />
+    <Content Remove="ClientApp\src\app\subscriptiondetail\subscriptioncustomer\**" />
+    <None Include="$(SpaRoot)**" Exclude="$(SpaRoot)node_modules\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Remove="ClientApp\src\app\customeruserdetails\**" />
+    <EmbeddedResource Remove="ClientApp\src\app\customeruser\**" />
+    <EmbeddedResource Remove="ClientApp\src\app\productpackage\**" />
+    <EmbeddedResource Remove="ClientApp\src\app\productrates\**" />
+    <EmbeddedResource Remove="ClientApp\src\app\proformainvoice\proformainvoiceemail\**" />
+    <EmbeddedResource Remove="ClientApp\src\app\subscriptiondetail\subscriptioncustomer\**" />
+    <None Remove="ClientApp\src\app\customeruserdetails\**" />
+    <None Remove="ClientApp\src\app\customeruser\**" />
+    <None Remove="ClientApp\src\app\productpackage\**" />
+    <None Remove="ClientApp\src\app\productrates\**" />
+    <None Remove="ClientApp\src\app\proformainvoice\proformainvoiceemail\**" />
+    <None Remove="ClientApp\src\app\subscriptiondetail\subscriptioncustomer\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="Controllers\ProFormaController.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="Controllers\ProFormaController.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="ClientApp\src\app\appsetting\appsettingdetail\appsettingdetail.component.ts" />
+    <None Remove="ClientApp\src\app\appsetting\appsettinglist\appsettinglist.component.ts" />
+    <None Remove="ClientApp\src\app\batchtracing\batchtracinglist\batchtracinglist.component.ts" />
+    <None Remove="ClientApp\src\app\customer\customerdetails\customerdetails.component.ts" />
+    <None Remove="ClientApp\src\app\customer\customerlist\customerlist.component.ts" />
+    <None Remove="ClientApp\src\app\customer\customerproduct\customerproduct.component.ts" />
+    <None Remove="ClientApp\src\app\header-nav\file.ts" />
+    <None Remove="ClientApp\src\app\header-nav\file.ts" />
+    <None Remove="ClientApp\src\app\header-nav\headerService.ts" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="ClientApp\src\app\invoice\invoice.component.ts" />
+    <None Remove="ClientApp\src\app\invoice\invoicebulkemail\invoicebulkemail.component.ts" />
+    <None Remove="ClientApp\src\app\leads\leadslist\leadlist.component.ts" />
+    <None Remove="ClientApp\src\app\newslist\newslist.component.ts" />
+    <None Remove="ClientApp\src\app\news\news.component.ts" />
+    <None Remove="ClientApp\src\app\popup\popup.component.ts" />
+    <None Remove="ClientApp\src\app\popup\popupService.ts" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="ClientApp\src\app\customer\customerdetails\customerdetails.component.html" />
+    <Content Include="ClientApp\src\app\customer\customerlist\customerlist.component.html" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Inspirit.IDAS.Data\Inspirit.IDAS.Data.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="ClientApp\src\app\dsa\dsalist\" />
+    <Folder Include="wwwroot\ImagesforMail\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="Properties\itextsharp.dll">
+
+    </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <TypeScriptCompile Include="ClientApp\src\app\appsetting\appsettingdetail\appsettingdetail.component.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\appsetting\appsettinglist\appsettinglist.component.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\batchtracing\batchtracinglist\batchtracinglist.component.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\customer\customerdetails\customerdetails.component.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\customer\customerlist\customerlist.component.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\customer\customerproduct\customerproduct.component.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\header-nav\headerService.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\invoice\invoicebulkemail\invoicebulkemail.component.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\leads\leadslist\leadlist.component.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\newslist\newslist.component.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\news\news.component.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\popup\popup.component.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\popup\popupService.ts" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="ClientApp\package.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+  <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">
+    <!-- Ensure Node.js is installed -->
+    <Exec Command="node --version" ContinueOnError="true">
+      <Output TaskParameter="ExitCode" PropertyName="ErrorCode" />
+    </Exec>
+    <Error Condition="'$(ErrorCode)' != '0'" Text="Node.js is required to build and run this project. To continue, please install Node.js from https://nodejs.org/, and then restart your command prompt or IDE." />
+    <Message Importance="high" Text="Restoring dependencies using 'npm'. This may take several minutes..." />
+    <!-- Krishna <Exec WorkingDirectory="$(SpaRoot)" Command="npm install" />-->
+  </Target>
+
+  <Target Name="PublishRunWebpack" AfterTargets="ComputeFilesToPublish">
+    <!-- As part of publishing, ensure the JS resources are freshly built in production mode -->
+    <Exec WorkingDirectory="$(SpaRoot)" Command="npm install" />
+    <Exec WorkingDirectory="$(SpaRoot)" Command="npm run build -- --prod" />
+    <Exec WorkingDirectory="$(SpaRoot)" Command="npm run build:ssr -- --prod" Condition=" '$(BuildServerSideRenderer)' == 'true' " />
+
+    <!-- Include the newly-built files in the publish output -->
+    <ItemGroup>
+      <DistFiles Include="$(SpaRoot)dist\**; $(SpaRoot)dist-server\**" />
+      <DistFiles Include="$(SpaRoot)node_modules\**" Condition="'$(BuildServerSideRenderer)' == 'true'" />
+      <ResolvedFileToPublish Include="@(DistFiles->'%(FullPath)')" Exclude="@(ResolvedFileToPublish)">
+        <RelativePath>%(DistFiles.Identity)</RelativePath>
+        <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      </ResolvedFileToPublish>
+    </ItemGroup>
+  </Target>
+ <!--<Target Name="NSwag" AfterTargets="Build">
+    <Copy SourceFiles="@(Reference)" DestinationFolder="$(OutDir)References" />
+    <Exec Command="$(NSwagExe_Core21) run nswag.json /variables:Configuration=$(Configuration)" />
+    <RemoveDir Directories="$(OutDir)References" />
+  </Target>-->
+</Project>

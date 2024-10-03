@@ -1,0 +1,119 @@
+
+
+
+
+
+<div class="m-subheader" appunwraptag="">
+  <div class="m-portlet__head-caption">
+    <div class="m-portlet__head-title">
+      <span class="m-portlet__head-icon m--hide">
+        <i class="la la-gear"></i>
+      </span>
+      <h3 class="m-subheader__title ">
+        <button style="font-size: 14px;
+        font-weight: 600;
+        text-transform: uppercase;
+        color: #016fa2;
+        font-family: Avenir !important;
+        margin-top: -2px;" class="btn btn-link" (click)="list()">
+          Donot Call Registry
+        </button>
+        <i style="margin-left:-4px" class="fa fa-angle-right"></i>
+        Donot Call Registry Details
+      </h3>
+      <div class="btn-group pull-right m-form__actions">
+        <a *ngIf="currentObj.isApproved == false " style="margin: 10px 5px;" class="btn btn-accent" (click)="activate()">
+          Approve
+        </a>
+        <a style="margin: 10px 5px;" class="btn btn-accent" (click)="list()">
+          Back
+          &nbsp;
+          <i class="fa fa-angle-double-left"></i>
+        </a>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+<div class="m-content">
+  <div class="m-portlet  m-portlet--unair">
+    <div class="m-portlet__body  m-portlet__body--no-padding">
+      <div class="m-portlet__body">
+        <form class="m-form m-form--fit m-form--label-align-right">
+          <div class="m-portlet__body col-8">
+
+            <div class="form-group m-form__group row">
+              <label for="example-text-input" class="col-2 col-form-label">Name</label>
+              <div class="col-6">
+                <input class="form-control m-input" type="text" name="name" [readonly]="readonly" [(ngModel)]="currentObj.name">
+              </div>
+            </div>
+
+            <div class="form-group m-form__group row">
+              <label for="example-text-input" class="col-2 col-form-label">Surname</label>
+              <div class="col-6">
+                <input class="form-control m-input" type="text" name="surname" [readonly]="readonly" [(ngModel)]="currentObj.surname">
+              </div>
+            </div>
+
+            <div class="form-group m-form__group row">
+              <label for="example-text-input" class="col-2 col-form-label">Email ID</label>
+              <div class="col-6">
+                <input class="form-control m-input" type="text" name="emailid" [readonly]="readonly" [(ngModel)]="currentObj.emailid">
+              </div>
+            </div>
+
+            <div class="form-group m-form__group row">
+              <label for="example-text-input" class="col-2 col-form-label">ID Number</label>
+              <div class="col-6">
+                <input class="form-control m-input" type="text" name="idnumber" [readonly]="readonly" [(ngModel)]="currentObj.idnumber">
+              </div>
+            </div>
+
+            <div class="form-group m-form__group row">
+              <label for="example-text-input" class="col-2 col-form-label">Phone Number</label>
+              <div class="col-6">
+                <input class="form-control m-input" type="text" name="phoneNumber" [readonly]="readonly" [(ngModel)]="currentObj.phoneNumber">
+              </div>
+            </div>
+
+            <div class="form-group m-form__group row">
+              <label for="example-text-input" class="col-2 col-form-label">Current Date</label>
+              <div class="col-6">
+                <input class="form-control m-input" #currentDate type="date" value="{{datestring}}" name="currentDate" [readonly]="readonly">
+              </div>
+            </div>
+
+
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<button data-toggle="modal" id="nopermission" data-target="#per" [hidden]="true"></button>
+
+<div id="per" class="modal" tabindex="-1" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div style="background: linear-gradient(#103f56, #094868, #00527c, #066f9e)" class="modal-header">
+        <h4 style="color:#ffffff" class="modal-title">IDAS says:</h4>
+      </div>
+      <div class="modal-body">You don't have permission to access.</div>
+      <div class="modal-footer">
+        <button style="width:150px" (click)="dash()" type="button" class="btn btn-accent" data-dismiss="modal">Ok</button>
+      </div>
+    </div>
+  </div>
+</div>
+<style>
+  .modal-footer {
+    justify-content: center !important;
+  }
+
+</style>

@@ -1,0 +1,256 @@
+
+
+<div class="m-subheader" appunwraptag="">
+  <div class="m-portlet__head-caption">
+    <div class="m-portlet__head-title">
+      <span class="m-portlet__head-icon m--hide">
+        <i class="la la-gear"></i>
+      </span>
+      <h3 class="m-subheader__title ">
+        Customer Tabs
+      </h3>
+      <div class="btn-group pull-right m-form__actions">
+        <a style="margin: 10px 5px;" class="btn btn-accent" (click)="list()">
+          Back
+          &nbsp;
+          <i class="fa fa-angle-double-left"></i>
+        </a>
+        <a *ngIf="mode=='View'" style="margin: 10px 5px;" class="btn btn-accent" (click)="edit()">
+          Edit
+          &nbsp;
+          <i class="fa fa-pencil-alt"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="m-content">
+  <div class="m-portlet">
+    <div class="m-portlet__body">
+      <h5 style="text-align:left">
+        <span style="color:#000000">Tabs For:</span> &nbsp;
+        <span style="color:#000000">{{companyname}}</span>
+      </h5>
+      <div class="form-group m-form__group row">
+        <div class="col-12">
+          <div class="card">
+            <h4 class="card-header text-center">Consumer Search</h4>
+
+
+            <div class="card-body">
+              <div class="form-group m-form__group row">
+                <label class="m-checkbox m-checkbox--single m-checkbox--state m-checkbox--state-primary">
+                  <input type="checkbox" (change)="addtabs('ConsumerTimeline')" id="ConsumerTimeline" [disabled]="readonly">
+                  <span></span>
+                </label>
+                <label for="example-text-input" class="col-4 col-form-label" style="text-align-last:left;margin-top: 12px;">TimeLine</label>
+
+                <label class="m-checkbox m-checkbox--single m-checkbox--state m-checkbox--state-primary">
+                  <input type="checkbox" (change)="addtabs('ConsumerProfile')" id="ConsumerProfile" [disabled]="readonly">
+                  <span></span>
+                </label>
+                <label for="example-text-input" class="col-4 col-form-label" style="text-align-last:left;margin-top:12px">Profile</label>
+              </div>
+
+              <div class="form-group m-form__group row">
+                <label class="m-checkbox m-checkbox--single m-checkbox--state m-checkbox--state-primary">
+                  <input type="checkbox" (change)="addtabs('ConsumerTelephone')" id="ConsumerTelephone" [disabled]="readonly">
+                  <span></span>
+                </label>
+                <label for="example-text-input" class="col-4 col-form-label" style="text-align-last:left;margin-top: 12px;">Telephone</label>
+
+                <label class="m-checkbox m-checkbox--single m-checkbox--state m-checkbox--state-primary">
+                  <input type="checkbox" (change)="addtabs('ConsumerAddress')" id="ConsumerAddress" [disabled]="readonly">
+                  <span></span>
+                </label>
+                <label for="example-text-input" class="col-4 col-form-label" style="text-align-last:left;margin-top:12px">Address</label>
+              </div>
+
+              <div class="form-group m-form__group row">
+                <label class="m-checkbox m-checkbox--single m-checkbox--state m-checkbox--state-primary">
+                  <input type="checkbox" (change)="addtabs('ConsumerEmployment')" id="ConsumerEmployment" [disabled]="readonly">
+                  <span></span>
+                </label>
+                <label for="example-text-input" class="col-4 col-form-label" style="text-align-last:left;margin-top: 12px;">Employment</label>
+
+                <label class="m-checkbox m-checkbox--single m-checkbox--state m-checkbox--state-primary">
+                  <input type="checkbox" (change)="addtabs('ConsumerDirector')" id="ConsumerDirector" [disabled]="readonly">
+                  <span></span>
+                </label>
+                <label for="example-text-input" class="col-4 col-form-label" style="text-align-last:left;margin-top:12px">Director</label>
+              </div>
+
+              <div class="form-group m-form__group row">
+                <label class="m-checkbox m-checkbox--single m-checkbox--state m-checkbox--state-primary">
+                  <input type="checkbox" (change)="addtabs('ConsumerProperty')" id="ConsumerProperty" [disabled]="readonly">
+                  <span></span>
+                </label>
+                <label for="example-text-input" class="col-4 col-form-label" style="text-align-last:left;margin-top: 12px;">PropertyDeeds</label>
+
+                <label class="m-checkbox m-checkbox--single m-checkbox--state m-checkbox--state-primary">
+                  <input type="checkbox" (change)="addtabs('ConsumerJudgement')" id="ConsumerJudgement" [disabled]="readonly">
+                  <span></span>
+                </label>
+                <label for="example-text-input" class="col-4 col-form-label" style="text-align-last:left;margin-top:12px">Judgement</label>
+              </div>
+
+              <div class="form-group m-form__group row">
+                <label class="m-checkbox m-checkbox--single m-checkbox--state m-checkbox--state-primary">
+                  <input type="checkbox" (change)="addtabs('ConsumerDebtReview')" id="ConsumerDebtReview" [disabled]="readonly">
+                  <span></span>
+                </label>
+                <label for="example-text-input" class="col-4 col-form-label" style="text-align-last:left;margin-top: 12px;">DebtReview</label>
+
+                <label class="m-checkbox m-checkbox--single m-checkbox--state m-checkbox--state-primary">
+                  <input type="checkbox" (change)="addtabs('ConsumerRelationship')" id="ConsumerRelationship" [disabled]="readonly">
+                  <span></span>
+                </label>
+                <label for="example-text-input" class="col-4 col-form-label" style="text-align-last:left;margin-top:12px">Relationship</label>
+              </div>
+
+              <h4 class="card-header text-center">Commercial Search</h4>
+
+              <div class="form-group m-form__group row">
+                <label class="m-checkbox m-checkbox--single m-checkbox--state m-checkbox--state-primary">
+                  <input type="checkbox" (change)="addtabs('CommercialTimeline')" id="CommercialTimeline" [disabled]="readonly">
+                  <span></span>
+                </label>
+                <label for="example-text-input" class="col-4 col-form-label" style="text-align-last:left;margin-top: 12px;">TimeLine</label>
+
+                <label class="m-checkbox m-checkbox--single m-checkbox--state m-checkbox--state-primary">
+                  <input type="checkbox" (change)="addtabs('CommercialProfile')" id="CommercialProfile" [disabled]="readonly">
+                  <span></span>
+                </label>
+                <label for="example-text-input" class="col-4 col-form-label" style="text-align-last:left;margin-top:12px">Profile</label>
+              </div>
+
+              <div class="form-group m-form__group row">
+                <label class="m-checkbox m-checkbox--single m-checkbox--state m-checkbox--state-primary">
+                  <input type="checkbox" (change)="addtabs('CommercialTelephone')" id="CommercialTelephone" [disabled]="readonly">
+                  <span></span>
+                </label>
+                <label for="example-text-input" class="col-4 col-form-label" style="text-align-last:left;margin-top: 12px;">Telephone</label>
+
+                <label class="m-checkbox m-checkbox--single m-checkbox--state m-checkbox--state-primary">
+                  <input type="checkbox" (change)="addtabs('CommercialAddress')" id="CommercialAddress" [disabled]="readonly">
+                  <span></span>
+                </label>
+                <label for="example-text-input" class="col-4 col-form-label" style="text-align-last:left;margin-top:12px">Address</label>
+              </div>
+
+
+              <div class="form-group m-form__group row">
+                <label class="m-checkbox m-checkbox--single m-checkbox--state m-checkbox--state-primary">
+                  <input type="checkbox" (change)="addtabs('CommercialDirector')" id="CommercialDirector" [disabled]="readonly">
+                  <span></span>
+                </label>
+                <label for="example-text-input" class="col-4 col-form-label" style="text-align-last:left;margin-top: 12px;">Director</label>
+
+                <label class="m-checkbox m-checkbox--single m-checkbox--state m-checkbox--state-primary">
+                  <input type="checkbox" (change)="addtabs('CommercialJudgement')" id="CommercialJudgement" [disabled]="readonly">
+                  <span></span>
+                </label>
+                <label for="example-text-input" class="col-4 col-form-label" style="text-align-last:left;margin-top:12px">Judgement</label>
+              </div>
+
+              <div class="form-group m-form__group row">
+                <label class="m-checkbox m-checkbox--single m-checkbox--state m-checkbox--state-primary">
+                  <input type="checkbox" (change)="addtabs('CommercialProperty')" id="CommercialProperty" [disabled]="readonly">
+                  <span></span>
+                </label>
+                <label for="example-text-input" class="col-4 col-form-label" style="text-align-last:left;margin-top: 12px;">PropertyDeed</label>
+
+                <label class="m-checkbox m-checkbox--single m-checkbox--state m-checkbox--state-primary">
+                  <input type="checkbox" (change)="addtabs('CommercialAuditor')" id="CommercialAuditor" [disabled]="readonly">
+                  <span></span>
+                </label>
+                <label for="example-text-input" class="col-4 col-form-label" style="text-align-last:left;margin-top:12px">Auditor</label>
+              </div>
+
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="form-group m-form__group row">
+      <div class="col-6">
+      </div>
+      <div class="col-6">
+        <div *ngIf="mode=='Edit'" class="m-form__actions pull-right">
+          <button type="button"
+                  class="btn btn-success"
+                  (click)="Submit()">
+            Save
+          </button>
+          <button type="button"
+                  class="btn btn-success"
+                  (click)="list()">
+            Cancel
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<button data-toggle="modal" id="nopermission" data-target="#per" [hidden]="true"></button>
+
+<div id="per" class="modal" tabindex="-1" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div style="background: linear-gradient(#103f56, #094868, #00527c, #066f9e)" class="modal-header">
+        <h4 style="color:#ffffff" class="modal-title">IDAS says:</h4>
+      </div>
+      <div class="modal-body">You don't have permission to access.</div>
+      <div class="modal-footer">
+        <button style="width:150px" (click)="dash()" type="button" class="btn btn-accent" data-dismiss="modal">Ok</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<button data-toggle="modal" id="error" data-target="#errormsg" [hidden]="true"></button>
+
+<div id="errormsg" class="modal" tabindex="-1" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div style="background: linear-gradient(#103f56, #094868, #00527c, #066f9e)" class="modal-header">
+        <h4 style="color:#ffffff" class="modal-title">IDAS says:</h4>
+      </div>
+      <div class="modal-body">{{errorMessageValue}}</div>
+      <div class="modal-footer">
+        <button style="width:150px" type="button" class="btn btn-accent" (click)="list()" data-dismiss="modal">Ok</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<button data-toggle="modal" id="error1" data-target="#errormsg1" [hidden]="true"></button>
+
+<div id="errormsg1" class="modal" tabindex="-1" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div style="background: linear-gradient(#103f56, #094868, #00527c, #066f9e)" class="modal-header">
+        <h4 style="color:#ffffff" class="modal-title">IDAS says:</h4>
+      </div>
+      <div class="modal-body">At least one tab should select.</div>
+      <div class="modal-footer">
+        <button style="width:150px" type="button" class="btn btn-accent" data-dismiss="modal">Ok</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<style>
+  .modal-footer {
+    justify-content: center !important;
+  }
+
+  .m-checkbox.m-checkbox--single {
+    width: 18px;
+    height: 18px;
+    margin-top: 20px !important;
+    margin-left: 10px;
+  }
+</style>

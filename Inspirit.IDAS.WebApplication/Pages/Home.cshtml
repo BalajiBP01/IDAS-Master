@@ -1,0 +1,963 @@
+﻿@page
+@{
+    Layout = "_Layout2";
+}
+<head>
+    @*<title>Online Tracing Solution | Inspirit Data Analytics Services, South Africa</title>*@
+     <title>Online Tracing Solution</title>
+    <meta name="description" content="An online debtor tracing, online batch tracing, data cleansing and credit bureau services tool.">
+</head>
+
+<style>
+
+    .img-fluid1 {
+        width: 100%;
+        max-width: 65%;
+        height: auto;
+    }
+
+    .navbar-brand {
+        display: inline-block;
+        padding-top: .3125rem; 
+        padding-bottom: .3125rem;
+        margin-right: 0rem;
+        margin-left: 0rem;
+        font-size: 1.25rem;
+        line-height: inherit;
+        white-space: nowrap;
+    }
+
+    label {
+        display: block;
+        width: 300px;
+        height: 400px;
+        position: relative;
+        margin-top: 20px;
+        margin-left: 0px;
+        cursor: pointer;
+    }
+
+    .card {
+        width: 100%;
+        height: 100%;
+        border: 0;
+        position: relative;
+    }
+
+        .card div {
+            width: 100%;
+            height: 100%;
+        }
+
+    input {
+        display: none;
+    }
+
+    .mt-lg-5, .my-lg-5 {
+        margin-top: 2rem !important;
+        margin-bottom: 1rem !important;
+    }
+</style>
+
+
+<div align="center" class="header_block container-fluid">
+    <div align="center" class="header-w3layouts" data-role="header" data-position="fixed">
+        <div align="center" class="container">
+            <!--navigation section -->
+            <nav align="center" class="navbar navbar-expand-lg navbar-light">
+                <div class="hedder-up">
+
+                    @*<a class="navbar-brand" href=""><img src="~/web/images/Landing-Page-Logo.svg" class="img-fluid1" alt="" /></a>*@
+                    <a class="navbar-brand" href="">
+                        @*<img src="~/web/images/IDAS-Authorised-Agent-Website-Logo.png" />*@
+                        <img src="~/web/images/IDAS Authorised Logo 11-03.svg" width="320" height="140" />
+                    </a>
+
+                </div>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+                    <ul class="navbar-nav">
+                        <li class="nav-item active">
+                            <a class="nav-link" href="Home">Home <span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="Products" class="nav-link">Products</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="Solutions" class="nav-link">Solutions</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="AboutUs" class="nav-link">About Us</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="@Url.Action("NewsBlog", "News")" class="nav-link">News</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="Complaints" class="nav-link">Complaints</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="ContactUs" class="nav-link">Contact Us</a>
+                        </li>
+                        <li><a class="btn btn-block click-me2" style="background-color: #0F3E55;color: #ffffff;" href="login">SIGN IN</a></li>&nbsp;&nbsp;
+                        @*<li><a class="btn btn-block click-me2" style="background-color: #0F3E55;color: #ffffff;" href="usersignup">REGISTER</a></li>*@
+                    </ul>
+                </div>
+            </nav>
+            <div class="clearfix"> </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<div class="slider text-center container-fluid">
+    <div class="callbacks_container">
+        <ul class="rslides" id="slider4">
+            <li>
+                <div>
+                    <img src="~/web/images/Carousel-Image-3-new.png" />
+                    @*<img src="~/web/images/Carousel-Image-3.png" />*@
+
+                    @*<div class="slider-img three-img">
+                            <div class="container-fluid">
+                                <div align="center" class="slider-info">
+
+                                </div>
+                            </div>
+                        </div>*@
+
+                </div>
+            </li>
+            @*<li>
+                    <div class="slider-img one-img">
+                        <div class="container-fluid">
+                            <div align="center" class="slider-info">
+
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="slider-img two-img">
+                        <div class="container-fluid">
+                            <div class="slider-info">
+
+
+
+                            </div>
+                        </div>
+                    </div>
+                </li>*@
+
+            @*<li>
+                    <div class="slider-img three-img">
+                        <div class="container-fluid">
+                            <div class="slider-info">
+
+                                <a href="#" target="_blank" style="display:none;"><button type="button" class="btn btn-block click-me3">Watch Demo</button></a>
+
+                            </div>
+                        </div>
+                    </div>
+                </li>*@
+        </ul>
+    </div>
+
+    <div class="clearfix"></div>
+</div>
+<section id="testamonials">
+    <div class="col-md-12">
+        <img src="~/web/images/1.png" style="height:100%;width:100%" />
+    </div>
+    <div class="col-md-12">
+        <img src="~/web/images/2.png" style="height:100%;width:100%" />
+    </div>
+</section>
+<!-- //banner -->
+<!--about -->
+<section class="about" id="about">
+    @*<div class="about-color py-lg-4 py-md-3 py-sm-3 py-3" style="margin-top: 10px !important;">
+            <div class="container py-lg-5 py-md-5 py-sm-4 py-3">
+                <div class="row">
+                    <div class="line-w3ls-title col-lg-12 col-md-12 text-center">
+                        <p style="font-size: 14px !important;">
+                            IDAS is an all encompassing data tool <b>Powered by Xpert Decision Systems (Pty) Ltd (XDS)</b>, South Africa’s largest locally-owned Credit Information Bureau and one of the major suppliers of business and consumer credit data.<br><br>
+                            We are <b>Protection of Personal Information (POPI)</b> focused and guarantee data services that are accurate, updated and secure.<br><br>
+                            IDAS is an <b>Authorised Agent of XDS</b>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>*@
+
+    <br />
+    @*<div class="row" style="background-color: #0F3E55; color:#ffffff;">
+            <br />
+            <br />
+            <div class="col-md-12"><br /></div>
+            <div class="col-lg-6">
+                <h3 style="text-align:center;color:white">Our Why? </h3>
+                <br />
+                <p style="text-align:left;color:white">
+                    <ol style="list-style-type:circle;text-align:left" typeof="circle">
+                        <li>We Make Debtor tracing simple</li>
+
+                        <li>Agent of a Credit Bureau</li>
+
+                        <li> Our data solution is current with monthly updates.</li>
+
+                        <li>World Class technology used to assemble multiple data points to provide a single view of a person</li>
+
+                        <li> Search individual & company records</li>
+
+                        <li> And best of all - its affordable</li>
+                    </ol>
+
+                </p>
+            </div>
+            <div class="line-w3ls-title col-lg-6 col-md-12 text-center" style="border-left: solid">
+                <h3 style="text-align:center;color:white">Our What?</h3>
+                <br />
+                <p style="text-align:left;color:white">
+                    <ol style="list-style-type:circle;text-align:left" typeof="circle">
+                        <li>IDAS is a data tool, designed to Track & Trace individuals as well as verify Consumer and Company details, using multiple data points.</li>
+                        <li>IDAS is Powered by Xpert Decision Systems (Pty) Ltd (XDS), South Africa’s largest locally-owned Credit Information Bureau and one of the major suppliers of business and consumer credit data.</li>
+                        <li>We are Protection of Personal Information (POPI) focused and guarantee data services that are accurate, updated and secure.</li>
+                        <li>IDAS is an Authorised Agent of XDS</li>
+                    </ol>
+
+                </p>
+            </div>
+
+        </div>*@
+    <br />
+    <div class="about-color py-lg-4 py-md-3 py-sm-3 py-3" style="margin-top: 10px !important;">
+        <div class="container py-lg-5 py-md-5 py-sm-4 py-3">
+            <div class="row">
+                @*<div valign="middle" style="margin-top: -71px; margin-bottom: 20px;" class="line-w3ls-title col-lg-3 col-md-6 col-sm-12 text-center">
+                        <img src="~/web/images/img1.png" class="img-fluid" alt="">
+                    </div>
+                    <div valign="middle" style="margin-bottom: 20px;" class="line-w3ls-title col-lg-3 col-md-6 col-sm-12 text-center">
+                        <img src="~/web/images/img2.png" class="img-fluid" alt="">
+                    </div>
+                    <div valign="middle" style="margin-bottom: 57px; margin-top: -12px;" class="line-w3ls-title col-lg-3 col-md-6 col-sm-12 text-center">
+                        <img src="~/web/images/EOH-Logo.png" class="img-fluid" alt="">
+                    </div>
+                    <div valign="middle" style="margin-bottom: 20px; margin-top: -30px;" class="line-w3ls-title col-lg-3 col-md-6 col-sm-12 text-center">
+                        <img src="~/web/images/XDS-Logos-Testimonials.png" class="img-fluid" alt="">
+                    </div>*@
+                <div class="col-md-4">
+                </div>
+                <div valign="middle" style="margin-bottom: 20px; margin-top: -30px;" class="line-w3ls-title col-lg-3 col-md-6 col-sm-12 text-center">
+
+                    <img src="~/web/images/Powered By XDS hig res.png" width="260" height="100" />
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="about-color py-lg-4 py-md-3 py-sm-3 py-3" style="margin-top: 10px !important;">
+        <div class="container-fluid py-lg-5 py-md-5 py-sm-4 py-3" style="background-color: #F7F7F7;">
+            <div class="row">
+                <div class="title clr col-lg-6 col-md-12 text-center">
+
+                    <h4 style="font-weight: bold;color:#ffffff;background-color:#4D788C;padding: 15px;">Who should use our product?</h4>
+                    <div class="container py-lg-5 py-md-5 py-sm-4 py-3" style="background-color: #F7F7F7; padding-top:50px !important;">
+                        <div class="row">
+                            <div align="right" class="title clr col-lg-6 col-md-6">
+
+                                <h6 style="font-size: 18px !important; font-weight: bold; color:#4D788C;text-align:right">DEBT COLLECTION</h6>
+                                @*<p style="color:#000000;font-size: 14px !important;">​Is your book over 90 days?</p>*@
+                                <ol style="color:#000000;font-size: 14px !important;list-style-type: none;text-align:right">
+                                    <li>Debtor Tracing using multiple data points</li>
+                                </ol>
+                                <br><br><br>
+                                <h6 style="font-size: 18px !important; font-weight: bold; color:#4D788C;text-align:right">TRACING AGENTS</h6>
+                                @*<p style="color:#000000;font-size: 14px !important;">
+                                    ​Property Contact, Deeds
+                                     </p>*@
+                                <ol style="color:#000000;font-size: 14px !important;list-style-type: none;text-align:right">
+                                    <li style="text-align:right">Forensic investigation</li>
+                                    <li>Security</li>
+                                    <li>Consumer investigation</li>
+                                </ol>
+                                <br><br>
+                                <h6 style="font-size: 18px !important; font-weight: bold; color:#4D788C;text-align:right">LEGAL</h6>
+                                @*<p style="color:#000000;font-size: 14px !important;">
+                                        ​Adverse indicators, Debt Review, Judgement, Employment Details
+                                    </p>*@
+                                <ol style="color:#000000;font-size: 14px !important;list-style-type: none;text-align:right">
+                                    <li>Dispute resolution, Adverse indicators</li>
+                                    <li>Conveyancing</li>
+                                    <li>Employment, summons issue</li>
+                                    <li>Deceased and Marital indicators</li>
+                                </ol>
+                            </div>
+                            <div align="left" class="title clr col-lg-6 col-md-6">
+
+                                <h6 style="font-size: 18px !important; font-weight: bold; color:#4D788C;text-align:right">CONSUMER VERIFICATION</h6>
+                                @*<p style="color:#000000;font-size: 14px !important;">
+                                        ​Product Personalization
+                                    </p>*@
+                                <ol style="color:#000000;font-size: 14px !important;list-style-type: none;text-align:right">
+                                    <li>KYC - Know your customer</li>
+                                    <li>Identity verification - BIOMETRIC checks</li>
+                                    <li>FICA authentication - last known address</li>
+                                </ol>
+
+
+                                <br>
+                                <h6 style="font-size: 18px !important; font-weight: bold; color:#4D788C;text-align:right">FINANCIAL SERVICES</h6>
+                                @*<p style="color:#000000;font-size: 14px !important;">
+                                         ​Auditor details, CIPC, VAT Information, Share Capital
+                                    </p>*@
+                                <ol style="color:#000000;font-size: 14px !important;list-style-type: none;text-align:right">
+                                    <li>Data enrichment</li>
+                                    <li>Product personlization</li>
+                                    <li>Auditor details, VAT info, CIPC</li>
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="line-w3ls-title col-lg-6 col-md-12 text-center">
+                    <img src="~/web/images/Web-Mobile12 - 12.png" class="img-fluid" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <br /><br />
+    <div class="about-color py-lg-4 py-md-3 py-sm-3 py-3" style="margin-top: 10px !important;">
+        <div class="container-fluid py-lg-5 py-md-5 py-sm-4 py-3" style="background-color: #F7F7F7;">
+            <div class="row">
+                <div class="title clr col-lg-6 col-md-12 text-center">
+
+                    <h4 style="font-weight: bold;color:#ffffff;background-color:#C71212;padding: 15px;">Single search offers you:</h4>
+                    <div class="container py-lg-5 py-md-5 py-sm-4 py-3" style="background-color: #F7F7F7; padding-top:50px !important;">
+                        <div class="row" style="text-align:center">
+                            <div align="right" class="title clr col-lg-12 col-md-12">
+
+                                <h6 style="font-size: 18px !important; font-weight: bold; color:#000000;text-align:center">Person Identification</h6>
+
+                                <br />
+
+                                <h6 style="font-size: 18px !important; font-weight: bold; color:#000000;text-align:center">Contact and Address information</h6>
+
+                                <br />
+
+                                <h6 style="font-size: 18px !important; font-weight: bold; color:#000000;text-align:center">Deeds Information</h6>
+
+                                <br />
+
+                                <h6 style="font-size: 18px !important; font-weight: bold; color:#000000;text-align:center">Property Contact Detail</h6>
+
+                                <br />
+
+                                <h6 style="font-size: 18px !important; font-weight: bold; color:#000000;text-align:center">Company info plus contact details</h6>
+
+                                <br />
+
+                                <h6 style="font-size: 18px !important; font-weight: bold; color:#000000;text-align:center">Directorship</h6>
+
+                                <br />
+
+                                <h6 style="font-size: 18px !important; font-weight: bold; color:#000000;text-align:center">Adverse indicators</h6>
+
+                                <br />
+
+                                <h6 style="font-size: 18px !important; font-weight: bold; color:#000000;text-align:center">Employment information</h6>
+
+                                <br />
+
+                                <h6 style="font-size: 18px !important; font-weight: bold; color:#000000;text-align:center">Marital and deceased status</h6>
+
+                                <br />
+
+                                <h6 style="font-size: 18px !important; font-weight: bold; color:#000000;text-align:center">LSM and Contact Score</h6>
+
+                                <br />
+                                <h6 style="font-size: 18px !important; font-weight: bold; color:#000000;text-align:center">Relationship Links</h6>
+
+                                <br />
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+                <div class="line-w3ls-title col-lg-6 col-md-12 text-center">
+                    <img src="~/web/images/18M (1).png" class="img-fluid" alt="" width="600" height="600">
+                </div>
+            </div>
+        </div>
+        </
+        <div class="about-color py-lg-4 py-md-3 py-sm-3 py-3" style="margin-top: 10px !important;">
+            <div class="container-fluid py-lg-5 py-md-5 py-sm-4 py-3">
+                <div class="row">
+                    <div class="line-w3ls-title col-lg-12 col-md-12 text-center" style="margin-top: -10px;
+    margin-bottom: 0px;background-color: #444444; color:#ffffff; padding: 15px;">
+                        <h4 style="font-size: 16px;font-weight: bold;">DATA UPDATED MONTHLY - LIVE FEEDS</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="about-color py-lg-4 py-md-3 py-sm-3 py-3" style="margin-top: -8px !important;">
+@*            <div class="container-fluid py-lg-5 py-md-5 py-sm-4 py-3">
+                <div class="row">
+                    <div class="line-w3ls-title col-lg-3 col-md-12 hide-me" style="background-color: #0F3E55; color:#ffffff;"></div>
+                    <div class="line-w3ls-title col-lg-3 col-md-12 text-center" style="background-color: #0F3E55; color:#ffffff; padding: 20px;">
+                        <h3 style="padding-top: 21px; font-weight: bold;">FREE TRIAL</h3>
+                        <h5 style="padding-top: 10px;">5 FREE searches - 48hrs</h5>
+                        <p style="color:#ffffff; padding-top: 10px;">Ts & Cs Apply</p>
+                    </div>
+                    <div class="click-subscribe col-lg-3 col-md-12" valign="middle" style="background-color: #0F3E55; color:#ffffff; padding: 63px;">
+
+
+
+                        <button type="submit" class="btn btn-block click-me" data-toggle="modal"
+                                aria-pressed="false" data-target="#exampleModalFreeTrail" style="color: #0F3E55;padding-left: 46px;">
+                            GET STARTED
+
+                        </button>
+                        <div class="modal fade" id="exampleModalFreeTrail" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel1" aria-hidden="true">
+                            <div class="modal-dialog" role="document" style="margin-top: 224px;">
+                                <div class="modal-content">
+                                    <div class="modal-header" style="background:linear-gradient(#103f56, #094868, #00527c, #066f9e) !important;">
+                                        <h5 class="modal-title text-uppercase" id="exampleModalLabel1">Register Here</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+
+                                        @using (Html.BeginForm("TrailUser", "TrailUser", FormMethod.Post))
+                                        {
+
+                                            <div class="form-group">
+
+                                                <input type="text" class="form-control" placeholder="First Name" name="FirstName" required="required">
+                                            </div>
+                                            <div class="form-group">
+
+                                                <input type="text" class="form-control" placeholder="Surname" name="Surname" required="required">
+                                            </div>
+                                            <div class="form-group">
+
+                                                <input type="email" class="form-control" placeholder="Email id" name="EmailAddress" required="required">
+                                            </div>
+                                            <div class="form-group">
+
+                                                <input type="text" class="form-control" placeholder="Mobile Number" name="MobileNumber" required="required">
+                                            </div>
+                                            <div class="form-group">
+
+                                                <input type="text" class="form-control" placeholder="Business register number" name="BusinessRegisterNumber" required="required">
+                                            </div>
+                                            <div class="right-w3l mt-4 mb-3">
+                                                <input type="submit" id="freetrial" onclick="myFunction()" class="form-control" value="Start Free Trial">
+                                            </div>
+                                        }
+
+
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                    <div class="line-w3ls-title col-lg-3 col-md-12 hide-me" style="background-color: #0F3E55; color:#ffffff;"></div>
+                </div>
+            </div>*@
+        </div>
+        @*<div class="about-color py-lg-4 py-md-3 py-sm-3 py-3" style="margin-top: -20px !important;margin-bottom: 52px !important;">
+                <div class="container-fluid py-lg-5 py-md-5 py-sm-4 py-3">
+                    <div class="row">
+                        <div class="line-w3ls-title col-lg-12 col-md-12 text-center">
+                            <img src="~/web/images/Laning-Page-Questions12.png" class="img-fluid" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>*@
+        <div class="about-color py-lg-4 py-md-3 py-sm-3 py-3" style="margin-top: -61px !important;">
+            <div class="container-fluid py-lg-5 py-md-5 py-sm-4 py-3" style="background-color: #F7F7F7">
+                <div class="row">
+                    @*<div class="line-w3ls-title col-lg-6 col-md-6">
+                        <img src="~/web/images/yes12.png" class="img-fluid" alt="">
+                         </div>*@
+                    <div class="line-w3ls-title col-lg-3 col-md-3"></div>
+                    <div class="line-w3ls-title col-lg-6 col-md-6">
+                        <img src="~/web/images/Animate characters12.png" class="img-fluid" alt="">
+                    </div>
+                    <div class="line-w3ls-title col-lg-3 col-md-3"></div>
+                </div>
+
+            </div>
+        </div>
+        @*<div class="about-color py-lg-4 py-md-3 py-sm-3 py-3" style="margin-top: 10px !important;">
+                <div class="container-fluid py-lg-5 py-md-5 py-sm-4 py-3">
+                    <div class="row">
+                        <div class="line-w3ls-title col-lg-12 col-md-12 text-center" style="background-color: #444444; color:#ffffff; padding: 20px; ">
+                            <h2 style="font-weight: bold; padding-top: 20px;">
+                                Our Tracing Solution Offers
+                            </h2>
+                            <p style="color:#ffffff; padding: 20px;">
+                                Multiple search inputs using an ID number, Name, Phone number, Address, Company Name etc.<br>
+                                The ability to increase your existing clientele portfolio with cleansed data.<br>
+                                Debtor database enrichment.<br>
+                                Finding someone through relational database
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>*@
+
+        @*<div class="about-color py-lg-4 py-md-3 py-sm-3 py-3" style="margin-top: 10px !important;">
+                <div class="container-fluid py-lg-5 py-md-5 py-sm-4 py-3">
+                    <div class="row">
+                        <div align="center" class="col-lg-12 col-12 mt-lg-0 mt-5 team_grid1" style="margin-top: -1% !important;margin-bottom: 4% !important;">
+                            <h3 class="heading text-uppercase" align="center" style="color: #000000;
+            text-align: center;
+            font-weight: bold;
+            border-bottom: 2px solid #000000;
+            border-top: 2px solid #000000;
+            width: 293px;
+            margin-bottom: -37px;">
+                                DATA CATEGORIES
+                            </h3>
+                        </div>
+                        <div align="center" class="container-fluid line-w3ls-title col-lg-12 col-md-12">
+                            <img src="~/web/images/Data-Categories12.png" class="img-fluid" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>*@
+
+
+        <!-- services -->
+        <section class="services" id="section-3">
+            <div class="service-overlay py-5">
+                <div class="container py-lg-5 py-3">
+                    <div class="row service_grids">
+
+                        <div align="center" class="col-lg-12 col-12 mt-lg-0 mt-5 team_grid1" style="margin-top: -1% !important;margin-bottom: 4% !important;">
+                            <h3 class="heading text-uppercase" style="color: #ffffff;
+    text-align: center;
+    font-weight: bold;
+    border-bottom: 2px solid #ffffff;
+        border-top: 2px solid #ffffff;
+    width: 173px;">
+                                Products
+                            </h3>
+                        </div>
+
+                        <div align="center" class="col-lg-12 col-md-12 mb-lg-0 mb-5">
+                            <div class="row">
+
+                                <div class="col-lg-6 col-md-12 col-xs-12 container" id="float-down">
+                                    <label id="leftpad">
+                                        <input type="checkbox" />
+                                        <div class="card" id="cardId2">
+                                            <div class="front">
+                                                <div align="center">
+                                                    <div align="center" class="w3ls-bottom-new">
+                                                        <div align="center" class="table-txt-grid">
+                                                            <img src="~/web/images/Online-Trace-Icon.png" class="img-fluid" alt="" style="width: 75px;height: auto;">
+                                                            <h4>ONLINE TRACE</h4>
+                                                            <p style="color: #ffffff;font-size: 12px;">Enables you to have REAL TIME access on multiple search inputs offering detailed information on either an individual/company.</p>
+                                                            <h4 id="pad-top6" style="background-color: #79A5BA; margin: 28px -16px; text-decoration: none;"><span class="sup">Monthly from</span><br>R1500<br><span class="sup">or Pay per search for less that R1</span></h4>
+                                                            <div class="more mt-lg-5 mt-md-4 mt-sm-4 mt-3 p-2">
+                                                                <a href="Products">Learn More</a>
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </label>
+                                </div>
+
+                                <div class="col-lg-6 col-md-12 col-xs-12" id="float-down">
+                                    <label id="leftpad">
+                                        <input type="checkbox" />
+                                        <div class="card" id="cardId2">
+                                            <div class="front">
+                                                <div align="center">
+                                                    <div align="center" class="w3ls-bottom-new">
+                                                        <div align="center" class="table-txt-grid">
+                                                            <img src="~/web/images/Batch-Trace-Icon.png" class="img-fluid" alt="" style="width: 75px;height: auto;">
+                                                            <h4>BATCH TRACE</h4>
+                                                            <p style="color: #ffffff;font-size: 12px;">Enables you to perform REAL TIME, high volume processing to trace multiple individuals. Trace from 100 to 100,000 records.</p>
+                                                            <h4 id="pad-top5" style="background-color: #79A5BA; margin: 10px -16px; text-decoration: none;"><span class="sup">from</span><br>50c <span class="sup">to</span> R1.30<br><span class="sup">per trace based on a sliding scale</span></h4>
+                                                            <div class="more mt-lg-5 mt-md-4 mt-sm-4 mt-3 p-2">
+                                                                <a href="Products">Learn More</a>
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </label>
+                                </div>
+
+                                @*<div class="col-lg-4 col-md-12 col-xs-12" id="float-down">
+                                        <label id="leftpad">
+                                            <input type="checkbox" />
+                                            <div class="card" id="cardId2">
+                                                <div class="front">
+                                                    <div align="center">
+                                                        <div align="center" class="w3ls-bottom-new">
+                                                            <div align="center" class="table-txt-grid">
+                                                                <img src="~/web/images/Leads-Generation-Icon.png" class="img-fluid" alt="" style="width: 75px;height: auto;">
+                                                                <h4>LEADS GENERATION</h4>
+                                                                <p style="color: #ffffff;font-size: 12px;">Enables you to generate marketing leads, suitable for high volume users. Just select the leads segment Online, preview your selection, click and download.</p>
+                                                                <h4 id="pad-top4" style="background-color: #79A5BA; margin: 10px -16px; text-decoration: none;"><span class="sup">from</span><br>50c<br><span class="sup">pricing based on dynamic lead selection</span></h4>
+                                                                <div class="more mt-lg-5 mt-md-4 mt-sm-4 mt-3 p-2">
+                                                                    <a href="Products">Learn More</a>
+                                                                </div>
+                                                            </div>
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </label>
+                                    </div>*@
+
+                            </div>
+                        </div>
+
+                        <div align="center" class="col-lg-12 col-12 mt-lg-0 mt-5" style="margin-top: 5% !important;margin-bottom: 1% !important;">
+                            <p style="color:#ffffff;margin-top: -34px !important;">Ts & Cs Apply</p>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- //services -->
+</section>
+
+<div class="gap"></div>
+<!-- Solutions -->
+<section class="services-1" id="section-3">
+    <div class="service-overlay py-5">
+        <div class="container py-lg-5 py-3">
+            <div class="row service_grids">
+
+                <div align="center" class="col-lg-12 col-12 mt-lg-0 mt-5" style="margin-top: -1% !important;margin-bottom: 4% !important;">
+                    <h3 class="heading text-uppercase" style="color: #ffffff;
+    text-align: center;
+    font-weight: bold;
+    border-bottom: 2px solid #ffffff;
+        border-top: 2px solid #ffffff;
+    width: 173px;">
+                        SOLUTIONS
+                    </h3>
+                </div>
+
+                <div class="col-lg-12 col-md-12 mb-lg-0 mb-5">
+                    <div class="row">
+
+                        <div class="col-lg-4 col-md-12 col-xs-12 container" id="float-down">
+                            <label id="leftpad1">
+                                <input type="checkbox" />
+                                <div class="card" id="cardId2">
+                                    <div class="front">
+                                        <div align="center">
+                                            <div align="center" class="w3ls-bottom-new">
+                                                <div align="center" class="table-txt-grid">
+
+                                                    <h4 style="margin-top: -21px;">VALUE ADDED SERVICES</h4>
+                                                    <p style="color: #ffffff;font-size: 12px;height: 151px;">Educational & Qualification Checks<br>Criminal Checks<br>Identity Biometric Verification<br>Commercial & Consumer Triggers<br>XBRL<br>Income Predictor<br>Motor Vehicle Verification.</p>
+                                                    <h4 id="pad-top2" style="background-color: #79A5BA; margin: 28px -16px; text-decoration: none;"><span class="sup">contact us for</span><br>CUSTOM PRICING<br><span class="sup">or Pay per search for less that R1</span></h4>
+                                                    <div class="more mt-lg-5 mt-md-4 mt-sm-4 mt-3 p-2">
+                                                        <a href="Solutions">Learn More</a>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </label>
+                        </div>
+
+                        <div class="col-lg-4 col-md-12 col-xs-12" id="float-down">
+                            <label id="leftpad1">
+                                <input type="checkbox" />
+                                <div class="card" id="cardId2">
+                                    <div class="front">
+                                        <div align="center">
+                                            <div align="center" class="w3ls-bottom-new">
+                                                <div align="center" class="table-txt-grid">
+
+                                                    <h4 style="margin-top: -21px;">API INTEGRATION</h4>
+                                                    <p style="color: #ffffff;font-size: 12px; padding: 20px 15px 0px;">Allows you Real Time  access to information from your own CRM solution using an API with just an ID number input. Ideal for clients looking for a tracing solution within their own system.</p>
+                                                    <h4 id="pad-top1" style="background-color: #79A5BA; margin: 68px -16px 0px; text-decoration: none;"><span class="sup">from</span><br>50c <span class="sup">to</span> R1.30<br><span class="sup">per record received</span></h4>
+                                                    <div class="more mt-lg-5 mt-md-4 mt-sm-4 mt-3 p-2">
+                                                        <a href="Solutions">Learn More</a>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </label>
+                        </div>
+
+                        <div class="col-lg-4 col-md-12 col-xs-12" id="float-down">
+                            <label id="leftpad1">
+                                <input type="checkbox" />
+                                <div class="card" id="cardId2">
+                                    <div class="front">
+                                        <div align="center">
+                                            <div align="center" class="w3ls-bottom-new">
+                                                <div align="center" class="table-txt-grid">
+
+                                                    <h4 style="margin-top: -21px;">DATA CLEANING</h4>
+                                                    <p style="color: #ffffff;font-size: 12px; padding: 20px 15px 0px;">Correcting incomplete or inaccurate information from your database.</p>
+                                                    <h4 id="pad-top3" style="background-color: #79A5BA; margin: 122px -16px 0px; text-decoration: none;"><span class="sup">contact us for</span><br>CUSTOM PRICING<br><span class="sup">pricing based on dynamic lead selection</span></h4>
+                                                    <div class="more mt-lg-5 mt-md-4 mt-sm-4 mt-3 p-2">
+                                                        <a href="Solutions">Learn More</a>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </label>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div align="center" class="col-lg-12 col-md-12 mb-lg-0 mb-5">
+                    <div align="center" class="row">
+                        <div class="col-lg-2 col-md-12 col-xs-12" id="float-down">
+                        </div>
+                        <div class="col-lg-4 col-md-12 col-xs-12" id="float-down1">
+                            <label id="leftpad">
+                                <input type="checkbox" />
+                                <div class="card" id="cardId2">
+                                    <div class="front">
+                                        <div align="center">
+                                            <div align="center" class="w3ls-bottom-new">
+                                                <div align="center" class="table-txt-grid">
+
+                                                    <h4 style="margin-top: -21px;">CREDIT BUREAU COMPANY SOLUTIONS</h4>
+                                                    <p style="color: #ffffff;font-size: 12px; padding: 20px 15px 0px;">Bank Code<br>Commercial Debtor Scoring<br>Commercial Investigation<br>Debtor Age Analysis</p>
+                                                    <h4 style="background-color: #79A5BA; margin: 62px -16px 0px; text-decoration: none;"><span class="sup">contact us for</span><br>CUSTOM PRICING<br><span class="sup">or Pay per search for less that R1</span></h4>
+                                                    <div class="more mt-lg-5 mt-md-4 mt-sm-4 mt-3 p-2">
+                                                        <a href="Solutions">Learn More</a>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </label>
+                        </div>
+
+                        <div class="col-lg-4 col-md-12 col-xs-12" id="float-down">
+                            <label id="leftpad">
+                                <input type="checkbox" />
+                                <div class="card" id="cardId2">
+                                    <div class="front">
+                                        <div align="center">
+                                            <div align="center" class="w3ls-bottom-new">
+                                                <div align="center" class="table-txt-grid">
+
+                                                    <h4 style="margin-top: -21px;">CREDIT BUREAU CONSUMER SOLUTIONS</h4>
+                                                    <p style="color: #ffffff;font-size: 12px; padding: 20px 15px 0px;">Credit Application<br>Linkage Detector<br>Collections Snapshot<br>Bank Account Verification<br>Account Origination<br>Account Management</p>
+                                                    <h4 style="background-color: #79A5BA; margin: 26px -16px 0px; text-decoration: none;"><span class="sup">contact us for</span><br>CUSTOM PRICING <span class="sup">to</span> R1.30<br><span class="sup">per trace based on a sliding scale</span></h4>
+                                                    <div class="more mt-lg-5 mt-md-4 mt-sm-4 mt-3 p-2" id="btn1">
+                                                        <a href="Solutions">Learn More</a>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </label>
+                        </div>
+                        <div class="col-lg-2 col-md-12 col-xs-12" id="float-down">
+                        </div>
+                    </div>
+                </div>
+
+                <div align="center" class="col-lg-12 col-12 mt-lg-0 mt-5" style="margin-top: 5% !important;margin-bottom: 1% !important;">
+                    <p style="color:#ffffff; margin-top: -34px !important;">Ts & Cs Apply</p>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- //Solutions -->
+
+<div class="about-color py-lg-4 py-md-3 py-sm-3 py-3" style="margin-top: 10px !important;">
+@*    <div class="container-fluid py-lg-5 py-md-5 py-sm-4 py-3">
+        <div class="row">
+            <div align="center" class="container-fluid" style="background-color:#C71212; color:#ffffff;">
+
+                <div class="row">
+                    <div class="col-lg-12"><h5 style="padding-top: 46px;font-size: 15px !important;font-weight: bold;">IDAS offers a tracing tool, batch tracing & credit bureau services</h5></div>
+
+                    <div align="center" class="container-fluid" style="background-color:#C71212; color:#ffffff;">
+                        <div class="row">
+                            <div class="col-lg-3 hide-me"></div>
+                            <div class="col-lg-2">
+                                <a href="usersignup"><button id="clickBTN" class="btn btn-block click-me1" style="background-color: #ffffff;color: #C71212;margin-top: 22px; margin-bottom: 30px;">SIGN UP</button></a>
+                            </div>
+                            <div class="col-lg-2"><h5 style="margin-top:25px; margin-bottom: 30px;">OR</h5></div>
+                            <div class="col-lg-2">
+                                <button id="clickBTN1" type="submit" class="btn btn-block click-me1" style="background-color: #ffffff;color: #C71212;margin-top: 22px; margin-bottom: 30px;" data-toggle="modal"
+                                        aria-pressed="false" data-target="#exampleModalFreeTrail">
+                                    FREE TRIAL
+                                </button>
+
+                                <div class="modal fade" id="exampleModalFreeTrail" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel1" aria-hidden="true">
+                                    <div class="modal-dialog" role="document" style="margin-top: 224px;">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title text-uppercase" id="exampleModalLabel1">Register Here</h5>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+
+                                                @using (Html.BeginForm("TrailUser", "TrailUser", FormMethod.Post))
+                                                {
+
+                                                    <div class="form-group">
+
+                                                        <input type="text" class="form-control" placeholder="First Name" name="FirstName" required="required">
+                                                    </div>
+                                                    <div class="form-group">
+
+                                                        <input type="text" class="form-control" placeholder="Surname" name="Surname" required="required">
+                                                    </div>
+                                                    <div class="form-group">
+
+                                                        <input type="email" class="form-control" placeholder="Email id" name="EmailAddress" required="required">
+                                                    </div>
+                                                    <div class="form-group">
+
+                                                        <input type="text" class="form-control" placeholder="Mobile Number" name="MobileNumber" required="required">
+                                                    </div>
+                                                    <div class="form-group">
+
+                                                        <input type="text" class="form-control" placeholder="Business register number" name="BusinessRegisterNumber" required="required">
+                                                    </div>
+                                                    <div class="right-w3l mt-4 mb-3">
+                                                        <input type="submit" id="freetrial" onclick="myFunction()" class="form-control" value="Start Free Trial">
+                                                    </div>
+                                                }
+
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="col-lg-3 hide-me"></div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>*@
+</div>
+
+
+
+<button data-toggle="modal" id="freetrail" data-target="#freetrailpopup" style="display:none" [hidden]="true"></button>
+
+<div id="freetrailpopup" class="modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div style="background: linear-gradient(#103f56, #094868, #00527c, #066f9e) !important;" class="modal-header">
+                <h4 style="color:#ffffff" class="modal-title">IDAS says:</h4>
+            </div>@{
+                var @x = TempData["value"];
+            }
+            <div class="modal-body">@x</div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-accent" data-dismiss="modal">Ok</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="gap"></div>
+<script src="~/web/js/jquery-2.2.3.min.js"></script>
+<script type="text/javascript">
+    $(window).on("load", function () {
+        if ('@(TempData["value"])' != null && '@(TempData["value"])' != "") {
+            document.getElementById('freetrail').click();
+        }
+    })
+
+</script>
+<style>
+    .carousel-inner > .item > img,
+    .carousel-inner > .item > a > img {
+        width: 70%;
+        margin: auto;
+    }
+</style>
+
+<script>
+    // You can also use "$(window).load(function() {"
+    $(function () {
+        // Slideshow 4
+        $("#sliderG").responsiveSlides({
+            auto: true,
+            pager: true,
+            nav: false,
+            speed: 3900,
+            namespace: "callbacks",
+            before: function () {
+                $('.events').append("<li>before event fired.</li>");
+            },
+            after: function () {
+                $('.events').append("<li>after event fired.</li>");
+            }
+        });
+
+    });
+</script>
+
+<!--Start of Tawk.to Script-->
+@*<script type="text/javascript">
+    var Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();
+    (function () {
+        var s1 = document.createElement("script"), s0 = document.getElementsByTagName("script")[0];
+        s1.async = true;
+        s1.src = 'https://embed.tawk.to/5f5a1cb2f0e7167d000f1c23/default';
+        s1.charset = 'UTF-8';
+        s1.setAttribute('crossorigin', '*');
+        s0.parentNode.insertBefore(s1, s0);
+    })();
+</script>*@
+<!--End of Tawk.to Script-->

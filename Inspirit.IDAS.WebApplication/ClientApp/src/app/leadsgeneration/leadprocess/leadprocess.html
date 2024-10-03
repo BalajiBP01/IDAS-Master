@@ -1,0 +1,645 @@
+<div class="m-grid__item m-grid__item--fluid m-grid m-grid--ver-desktop m-grid--desktop m-body">
+  <div class="m-grid__item m-grid__item--fluid m-wrapper">
+    <div class="m-subheader ">
+      <div class="d-flex align-items-center">
+        <div class="mr-auto">
+          <h3 class="m-subheader__title ">
+            <button style="padding:0px;font-size:14px!important; text-transform:uppercase; width:48px !important; color: #016fa2 !important;font-weight: 600 !important;font-family: Avenir !important;" class="btn btn-link" (click)="list()">Lead Generation</button>
+            <i style="margin-left:90px" class="fa fa-angle-right"></i>
+            Search Leads
+          </h3>
+        </div>
+      </div>
+    </div>
+    <div id="cover" *ngIf="loading == true"></div>
+    <div class="m-content">
+      <div class="m-portlet">
+        <div class="m-portlet__body">
+          <form id="Personaldetail" class="m-form m-form--label-align-right" style="padding:12px;background-color:#ffffff">
+            <div class="form-group m-form__group row" style="padding-bottom:0px !important">
+              <div class="m-portlet__body col-12" style="background-color:#ffffff;padding:12px;border:1px solid #000000">
+                <div><h6 style="color:#2b2c3a">Criteria <span style="color:red;">*</span></h6></div>
+                <div class="row" style="height:6px; width:100%; margin:0 !important; background-color:#066f9e"></div>
+                <div class="form-group m-form__group row">
+                  <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 name">
+                    Leads Required:
+                    <span data-title="Requested Lead count should be with in 100 to 100000 range."><img style="width:18px;margin-bottom:2px" src="../../assets/demo/demo2/media/img/Icons/Information.png"></span>
+                  </div>
+                  <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12 value">
+                    <input style="width:100%" placeholder="No.of leads" type="number" id="leadcount" />
+                  </div>
+                </div>
+              </div>
+              <div class="row" style="height:12px; width:100%; margin:0 !important; background-color:#ffffff"></div>
+              <div class="m-portlet__body col-12" style="background-color:#ffffff;padding:12px;border:1px solid #000000">
+
+                <div><h6 style="color:#2b2c3a">Criteria</h6></div>
+                <div class="row" style="height:6px; width:100%; margin:0 !important; background-color:#066f9e"></div>
+
+                <div class="form-group m-form__group row">
+                  <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 name">
+                    DOB Range:
+                  </div>
+                  <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 value">
+                    <ng5-slider [(value)]="value" [(highValue)]="highValue" [options]="options"></ng5-slider>
+                  </div>
+                </div>
+              </div>
+              <div class="row" style="height:12px; width:100%; margin:0 !important; background-color:#ffffff"></div>
+              <div class="m-portlet__body col-12" style="background-color:#ffffff;padding:12px;border:1px solid #000000">
+
+                <div><h6 style="color:#2b2c3a">Gender<span style="color:red;">*</span></h6></div>
+                <div class="row" style="height:6px; width:100%; margin:0 !important; background-color:#066f9e"></div>
+                <div class="form-group m-form__group row">
+                  <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 name">
+                    <label class="m-checkbox m-checkbox--single m-checkbox--state m-checkbox--state-primary">
+                      <input type="checkbox" (change)="enablemale()" id="malebox"> Male
+                      <span></span>
+                    </label>
+                  </div>
+                  <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 value">
+                    <input type="number" (keypress)="isNumberKey($event)" class="noscroll" placeholder="Enter in percentage" (keyup)="validategen()" id="malevalue" />
+                  </div>
+                  <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 name">
+                    <label class="m-checkbox m-checkbox--single m-checkbox--state m-checkbox--state-primary">
+                      <input type="checkbox" (change)="enablefemale()" id="femalebox"> Female
+                      <span></span>
+                    </label>
+                  </div>
+                  <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 value">
+                    <input type="number" (keypress)="isNumberKey($event)" placeholder="Enter in percentage" (keyup)="validategen()" id="femalevalue" />
+                  </div>
+
+                </div>
+                <div class="form-group m-form__group row">
+                  <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 name">
+                    Gender Total : <span id="gendertotal">{{gentotal}}%</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row" style="height:12px; width:100%; margin:0 !important; background-color:#ffffff"></div>
+              <div class="m-portlet__body col-12" style="background-color:#ffffff;padding:12px;border:1px solid #000000">
+                <div><h6 style="color:#2b2c3a">Marital Status<span style="color:red;">*</span></h6></div>
+                <div class="row" style="height:6px; width:100%; margin:0 !important; background-color:#066f9e"></div>
+                <div class="form-group m-form__group row">
+                  <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 name">
+                    <label class="m-checkbox m-checkbox--single m-checkbox--state m-checkbox--state-primary">
+                      <input type="checkbox" (change)="enablesingle()" id="singlebox"> Single
+                      <span></span>
+                    </label>
+                  </div>
+                  <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 value">
+                    <input type="number" (keypress)="isNumberKey($event)" placeholder="Enter in percentage" (keyup)="validatemarital()" id="singlevalue" />
+                  </div>
+                  <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 name">
+                    <label class="m-checkbox m-checkbox--single m-checkbox--state m-checkbox--state-primary">
+                      <input type="checkbox" (change)="enablemarried()" id="marriedbox"> Married
+                      <span></span>
+                    </label>
+                  </div>
+                  <div class="col-lg-2 col-md-6 col-sm-12 col-xs-12 value">
+                    <input type="number" (keypress)="isNumberKey($event)" placeholder="Enter in percentage" (keyup)="validatemarital()" id="marriedvalue" />
+                  </div>
+                </div>
+                <div class="form-group m-form__group row">
+                  <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 name">
+                    Marital Status Total : <span id="maritaltotal">{{maritaltotal}}%</span>
+                  </div>
+                </div>
+              </div>
+              <div class="row" style="height:12px; width:100%; margin:0 !important; background-color:#ffffff"></div>
+              <div class="m-portlet__body col-12" style="background-color:#ffffff;padding:12px;border:1px solid #000000">
+                <div><h6 style="color:#2b2c3a">Province<span style="color:red;">*</span></h6></div>
+                <div class="row" style="height:6px; width:100%; margin:0 !important; background-color:#066f9e"></div>
+                <div class="form-group m-form__group row">
+                  <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 name">
+                    <label class="m-checkbox m-checkbox--single m-checkbox--state m-checkbox--state-primary">
+                      <input type="checkbox" (change)="provinceall()" id="selectallprovince"> Select All
+                      <span></span>
+                    </label>
+                  </div>
+                  <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 name">
+                    <label class="m-checkbox m-checkbox--single m-checkbox--state m-checkbox--state-primary">
+                      <input type="checkbox" (change)="enablenorthwest()" [disabled]="!desprovince" id="northwestbox"> North West
+                      <span></span>
+                    </label>
+                  </div>
+                  <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 value">
+                    <input type="number" (keypress)="isNumberKey($event)" placeholder="Enter in percentage" (keyup)="validateprovince()" [disabled]="!allowprovince1" id="northwestvalue" />
+                  </div>
+                </div>
+                <div class="form-group m-form__group row">
+                  <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 name">
+                    <label class="m-checkbox m-checkbox--single m-checkbox--state m-checkbox--state-primary">
+                      <input type="checkbox" (change)="enablenortherncape()" [disabled]="!desprovince" id="northernbox"> Northern Cape
+                      <span></span>
+                    </label>
+                  </div>
+                  <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 value">
+                    <input type="number" placeholder="Enter in percentage"  (keypress)="isNumberKey($event)" (keyup)="validateprovince()" [disabled]="!allowprovince2" id="northernvalue" />
+                  </div>
+                  <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 name">
+                    <label class="m-checkbox m-checkbox--single m-checkbox--state m-checkbox--state-primary">
+                      <input type="checkbox" (change)="enablewesterncape()"  [disabled]="!desprovince" id="westernbox"> Western Cape
+                      <span></span>
+                    </label>
+                  </div>
+                  <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 value">
+                    <input type="number" (keypress)="isNumberKey($event)" placeholder="Enter in percentage" (keyup)="validateprovince()" [disabled]="!allowprovince3" id="westernvalue" />
+                  </div>
+                </div>
+                <div class="form-group m-form__group row">
+                  <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 name">
+                    <label class="m-checkbox m-checkbox--single m-checkbox--state m-checkbox--state-primary">
+                      <input type="checkbox" (change)="enablelimpopo()" [disabled]="!desprovince" id="limpopobox">Limpopo
+                      <span></span>
+                    </label>
+                  </div>
+                  <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 value">
+                    <input type="number" (keypress)="isNumberKey($event)" placeholder="Enter in percentage" (keyup)="validateprovince()" [disabled]="!allowprovince4" id="limpopovalue" />
+                  </div>
+                  <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 name">
+                    <label class="m-checkbox m-checkbox--single m-checkbox--state m-checkbox--state-primary">
+                      <input type="checkbox" [disabled]="!desprovince" (change)="enableeasterncape()" id="easternbox">Eastern Cape
+                      <span></span>
+                    </label>
+                  </div>
+                  <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 value">
+                    <input type="number" (keypress)="isNumberKey($event)" placeholder="Enter in percentage" (keyup)="validateprovince()" [disabled]="!allowprovince5" id="easternvalue" />
+                  </div>
+                </div>
+                <div class="form-group m-form__group row">
+                  <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 name">
+                    <label class="m-checkbox m-checkbox--single m-checkbox--state m-checkbox--state-primary">
+                      <input type="checkbox" (change)="enablegauteng()" [disabled]="!desprovince" id="gautengbox"> Gauteng
+                      <span></span>
+                    </label>
+                  </div>
+                  <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 value">
+                    <input type="number" (keypress)="isNumberKey($event)" placeholder="Enter in percentage" (keyup)="validateprovince()" [disabled]="!allowprovince6" id="gautengvalue" />
+                  </div>
+                  <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 name">
+                    <label class="m-checkbox m-checkbox--single m-checkbox--state m-checkbox--state-primary">
+                      <input type="checkbox" (change)="enablempumalanga()" [disabled]="!desprovince" id="mpumalangabox"> Mpumalanga
+                      <span></span>
+                    </label>
+                  </div>
+                  <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 value">
+                    <input type="number" (keypress)="isNumberKey($event)" placeholder="Enter in percentage" (keyup)="validateprovince()" [disabled]="!allowprovince7" id="mpumalangavalue" />
+                  </div>
+                </div>
+                <div class="form-group m-form__group row">
+                  <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 name">
+                    <label class="m-checkbox m-checkbox--single m-checkbox--state m-checkbox--state-primary">
+                      <input type="checkbox" (change)="enablefreestate()" [disabled]="!desprovince" id="freestatebox"> Free State
+                      <span></span>
+                    </label>
+                  </div>
+                  <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 value">
+                    <input type="number" (keypress)="isNumberKey($event)" placeholder="Enter in percentage" (keyup)="validateprovince()" [disabled]="!allowprovince8" id="freestatevalue" />
+                  </div>
+                  <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 name">
+                    <label class="m-checkbox m-checkbox--single m-checkbox--state m-checkbox--state-primary">
+                      <input type="checkbox" (change)="enablenatal()" [disabled]="!desprovince" id="natalbox"> Kwazulu Natal
+                      <span></span>
+                    </label>
+                  </div>
+                  <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 value">
+                    <input type="number" (keypress)="isNumberKey($event)" placeholder="Enter in percentage" (keyup)="validateprovince()" [disabled]="!allowprovince9" id="natalvalue" />
+                  </div>
+
+                </div>
+                <div class="form-group m-form__group row">
+                  <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 name">
+                    Province Total : <span id="provincetotal"> {{provincetotal}}%</span>
+                  </div>
+                  <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 value">
+                  </div>
+                </div>
+              </div>
+              <div class="row" style="height:12px; width:100%; margin:0 !important; background-color:#ffffff"></div>
+              <div class="m-portlet__body col-12" style="background-color:#ffffff;padding:12px;border:1px solid #000000">
+                <div><h6 style="color:#2b2c3a">Contact Score
+                  <span data-title=" Predicts contactability of an individual"><img style="width:18px;margin-bottom:2px" src="../../assets/demo/demo2/media/img/Icons/Information.png"></span>
+                  </h6></div>
+                <div class="row" style="height:6px; width:100%; margin:0 !important; background-color:#066f9e"></div>
+                <div class="form-group m-form__group row">
+                  <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 name">
+                    <label class="m-checkbox m-checkbox--single m-checkbox--state m-checkbox--state-primary">
+                      <input type="checkbox"  (change)="contactall()" id="selectallcontact">Select All
+                      <span></span>
+                    </label>
+                  </div>
+                  <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 name">
+                    <label class="m-checkbox m-checkbox--single m-checkbox--state m-checkbox--state-primary">
+                      <input type="checkbox" [disabled]="!allowcontact" id="highlycontact"> Highly contactable
+                      <span></span>
+                    </label>
+                  </div>
+                  <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 value">
+                    <label class="m-checkbox m-checkbox--single m-checkbox--state m-checkbox--state-primary">
+                      <input type="checkbox" [disabled]="!allowcontact" id="verygoodcontact"> Very Good
+                      <span></span>
+                    </label>
+                  </div>
+                  <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 name">
+                    <label class="m-checkbox m-checkbox--single m-checkbox--state m-checkbox--state-primary">
+                      <input type="checkbox" [disabled]="!allowcontact" id="faircontact">Fair
+                      <span></span>
+                    </label>
+                  </div>
+
+                </div>
+                <div class="form-group m-form__group row">
+                  <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 value">
+                    <label class="m-checkbox m-checkbox--single m-checkbox--state m-checkbox--state-primary">
+                      <input type="checkbox" [disabled]="!allowcontact" id="averagecontact"> Average
+                      <span></span>
+                    </label>
+                  </div>
+                  <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 name">
+                    <label class="m-checkbox m-checkbox--single m-checkbox--state m-checkbox--state-primary">
+                      <input type="checkbox" [disabled]="!allowcontact" id="poorcontact"> Poor
+                      <span></span>
+                    </label>
+                  </div>
+                  <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 value">
+                    <label class="m-checkbox m-checkbox--single m-checkbox--state m-checkbox--state-primary">
+                      <input type="checkbox" [disabled]="!allowcontact" id="nocontact"> No Contact
+                      <span></span>
+                    </label>
+                  </div>
+                  <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 name">
+                    <label class="m-checkbox m-checkbox--single m-checkbox--state m-checkbox--state-primary">
+                      <input type="checkbox" [disabled]="!allowcontact" id="rightcontact">Right Party Contact
+                      <span></span>
+                    </label>
+                  </div>
+                </div>
+              </div>
+              <div class="row" style="height:12px; width:100%; margin:0 !important; background-color:#ffffff"></div>
+              <div class="m-portlet__body col-12" style="background-color:#ffffff;padding:12px;border:1px solid #000000">
+                <div><h6 style="color:#2b2c3a"> LSM
+  <span data-title="Indicates standard of living and disposable income with a range of 1 to 10">
+    <img style="width:18px;margin-bottom:2px" src="../../assets/demo/demo2/media/img/Icons/Information.png" />
+  </span>
+</h6></div>
+                <div class="row" style="height:6px; width:100%; margin:0 !important; background-color:#066f9e"></div>
+                <div class="form-group m-form__group row">
+                  <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 value">
+                    <label class="m-checkbox m-checkbox--single m-checkbox--state m-checkbox--state-primary">
+                      <input type="checkbox" (change)="lsmall()" id="selectallLsm"> Select All
+                      <span></span>
+                    </label>
+                  </div>
+                  <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 name">
+                    <label class="m-checkbox m-checkbox--single m-checkbox--state m-checkbox--state-primary">
+                      <input type="checkbox" [disabled]="!allowlsm" id="lsm0"> 0
+                      <span></span>
+                    </label>
+                  </div>
+                  <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 name">
+                    <label class="m-checkbox m-checkbox--single m-checkbox--state m-checkbox--state-primary">
+                      <input type="checkbox" [disabled]="!allowlsm" id="lsm1"> 1
+                      <span></span>
+                    </label>
+                  </div>
+                  <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 value">
+                    <label class="m-checkbox m-checkbox--single m-checkbox--state m-checkbox--state-primary">
+                      <input type="checkbox" [disabled]="!allowlsm" id="lsm2"> 2
+                      <span></span>
+                    </label>
+                  </div>
+                </div>
+                <div class="form-group m-form__group row">
+                  <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 name">
+                    <label class="m-checkbox m-checkbox--single m-checkbox--state m-checkbox--state-primary">
+                      <input type="checkbox" [disabled]="!allowlsm" id="lsm3">3
+                      <span></span>
+                    </label>
+                  </div>
+                  <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 value">
+                    <label class="m-checkbox m-checkbox--single m-checkbox--state m-checkbox--state-primary">
+                      <input type="checkbox" [disabled]="!allowlsm" id="lsm4"> 4
+                      <span></span>
+                    </label>
+                  </div>
+                  <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 name">
+                    <label class="m-checkbox m-checkbox--single m-checkbox--state m-checkbox--state-primary">
+                      <input type="checkbox" [disabled]="!allowlsm" id="lsm5"> 5
+                      <span></span>
+                    </label>
+                  </div>
+                  <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 value">
+                    <label class="m-checkbox m-checkbox--single m-checkbox--state m-checkbox--state-primary">
+                      <input type="checkbox" [disabled]="!allowlsm" id="lsm6"> 6
+                      <span></span>
+                    </label>
+                  </div>
+                </div>
+                <div class="form-group m-form__group row">
+                  <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 name">
+                    <label class="m-checkbox m-checkbox--single m-checkbox--state m-checkbox--state-primary">
+                      <input type="checkbox" [disabled]="!allowlsm" id="lsm7">7
+                      <span></span>
+                    </label>
+                  </div>
+                  <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 name">
+                    <label class="m-checkbox m-checkbox--single m-checkbox--state m-checkbox--state-primary">
+                      <input type="checkbox" [disabled]="!allowlsm" id="lsm8">8
+                      <span></span>
+                    </label>
+                  </div>
+                  <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 name">
+                    <label class="m-checkbox m-checkbox--single m-checkbox--state m-checkbox--state-primary">
+                      <input type="checkbox" [disabled]="!allowlsm" id="lsm9"> 9
+                      <span></span>
+                    </label>
+                  </div>
+                  <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 value">
+                    <label class="m-checkbox m-checkbox--single m-checkbox--state m-checkbox--state-primary">
+                      <input type="checkbox" [disabled]="!allowlsm" id="lsm10"> 10
+                      <span></span>
+                    </label>
+                  </div>
+
+                </div>
+              </div>
+              <div class="row" style="height:12px; width:100%; margin:0 !important; background-color:#ffffff"></div>
+              <div class="m-portlet__body col-12" style="background-color:#ffffff;padding:12px;border:1px solid #000000">
+                <div><h6 style="color:#2b2c3a">
+  Risk Score
+  <span data-title="Payment propensity score based on public domain information"><img style="width:18px;margin-bottom:2px" src="../../assets/demo/demo2/media/img/Icons/Information.png"></span>
+</h6></div>
+                <div class="row" style="height:6px; width:100%; margin:0 !important; background-color:#066f9e"></div>
+                <div class="form-group m-form__group row">
+                  <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 name">
+                    <label class="m-checkbox m-checkbox--single m-checkbox--state m-checkbox--state-primary">
+                      <input type="checkbox" (change)="riskall()" id="selectallrisk"> Select All
+                      <span></span>
+                    </label>
+                  </div>
+                  <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 name">
+                    <label class="m-checkbox m-checkbox--single m-checkbox--state m-checkbox--state-primary">
+                      <input type="checkbox" [disabled]="!allowrisk" id="lowrisk"> Low Risk
+                      <span></span>
+                    </label>
+                  </div>
+                  <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 value">
+                    <label class="m-checkbox m-checkbox--single m-checkbox--state m-checkbox--state-primary">
+                      <input type="checkbox" [disabled]="!allowrisk" id="extremelylowrisk"> Extremely Low Risk
+                      <span></span>
+                    </label>
+                  </div>
+                  <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 name">
+                    <label class="m-checkbox m-checkbox--single m-checkbox--state m-checkbox--state-primary">
+                      <input type="checkbox" [disabled]="!allowrisk" id="highrisk">High Risk
+                      <span></span>
+                    </label>
+                  </div>
+                </div>
+                <div class="form-group m-form__group row">
+                  <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 value">
+                    <label class="m-checkbox m-checkbox--single m-checkbox--state m-checkbox--state-primary">
+                      <input type="checkbox" [disabled]="!allowrisk" id="notcontactrisk"> Should Not be Contacted
+                      <span></span>
+                    </label>
+                  </div>
+                  <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 name">
+                    <label class="m-checkbox m-checkbox--single m-checkbox--state m-checkbox--state-primary">
+                      <input type="checkbox" [disabled]="!allowrisk" id="mediumrisk"> Medium Risk
+                      <span></span>
+                    </label>
+                  </div>
+                </div>
+
+              </div>
+              <div class="row" style="height:12px; width:100%; margin:0 !important; background-color:#ffffff"></div>
+              <div class="m-portlet__body col-12" style="background-color:#ffffff;padding:12px;border:1px solid #000000">
+                <div><h6 style="color:#2b2c3a">Income Category</h6></div>
+                <div class="row" style="height:6px; width:100%; margin:0 !important; background-color:#066f9e"></div>
+                <div class="form-group m-form__group row">
+                  <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 name">
+                    <label class="m-checkbox m-checkbox--single m-checkbox--state m-checkbox--state-primary">
+                      <input  (change)="incomeall()" type="checkbox" id="selectallincome"> Select All
+                      <span></span>
+                    </label>
+                  </div>
+                  <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 value">
+                    <label class="m-checkbox m-checkbox--single m-checkbox--state m-checkbox--state-primary">
+                      <input type="checkbox"  [disabled]="!allowincome" id="incB">1.00 to 2,500.00
+                      <span></span>
+                    </label>
+                  </div>
+                  <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 name">
+                    <label class="m-checkbox m-checkbox--single m-checkbox--state m-checkbox--state-primary">
+                      <input type="checkbox" [disabled]="!allowincome" id="incC">2,501.00 to 5,000.00
+                      <span></span>
+                    </label>
+                  </div>
+                  <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 value">
+                    <label class="m-checkbox m-checkbox--single m-checkbox--state m-checkbox--state-primary">
+                      <input [disabled]="!allowincome" type="checkbox" id="incD">5,001.00 to 10,000.00
+                      <span></span>
+                    </label>
+                  </div>
+                </div>
+                <div class="form-group m-form__group row">
+
+                  <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 name">
+                    <label class="m-checkbox m-checkbox--single m-checkbox--state m-checkbox--state-primary">
+                      <input  [disabled]="!allowincome" type="checkbox" id="incE">10,001.00 to 15,000.00
+                      <span></span>
+                    </label>
+                  </div>
+                  <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 name">
+                    <label class="m-checkbox m-checkbox--single m-checkbox--state m-checkbox--state-primary">
+                      <input [disabled]="!allowincome" type="checkbox" id="incF">15,001.00 to 20,000.00
+                      <span></span>
+                    </label>
+                  </div>
+                  <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 name">
+                    <label class="m-checkbox m-checkbox--single m-checkbox--state m-checkbox--state-primary">
+                      <input  [disabled]="!allowincome" type="checkbox" id="incG">20,001.00 to 25,000.00
+                      <span></span>
+                    </label>
+                  </div>
+                  <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 name">
+                    <label class="m-checkbox m-checkbox--single m-checkbox--state m-checkbox--state-primary">
+                      <input [disabled]="!allowincome" type="checkbox" id="incH">25,001.00 to 35,000.00
+                      <span></span>
+                    </label>
+                  </div>
+                </div>
+                <div class="form-group m-form__group row">
+                 
+                  <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 name">
+                    <label class="m-checkbox m-checkbox--single m-checkbox--state m-checkbox--state-primary">
+                      <input  [disabled]="!allowincome" type="checkbox" id="incI">35,001.00 to 45,000.00
+                      <span></span>
+                    </label>
+                  </div>
+                  <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 name">
+                    <label class="m-checkbox m-checkbox--single m-checkbox--state m-checkbox--state-primary">
+                      <input [disabled]="!allowincome" type="checkbox" id="incJ">45,001.00 to 55,000.00
+                      <span></span>
+                    </label>
+                  </div>
+                  <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 name">
+                    <label class="m-checkbox m-checkbox--single m-checkbox--state m-checkbox--state-primary">
+                      <input [disabled]="!allowincome" type="checkbox" id="incK"> > 55,000.00
+                      <span></span>
+                    </label>
+                  </div>
+
+                </div>
+              </div>
+              <div class="row" style="height:12px; width:100%; margin:0 !important; background-color:#ffffff"></div>
+              <div class="m-portlet__body col-12" style="background-color:#ffffff;padding:12px;border:1px solid #000000">
+                <div><h6 style="color:#2b2c3a">Other Criteria</h6></div>
+                <div class="row" style="height:6px; width:100%; margin:0 !important; background-color:#066f9e"></div>
+                <div class="form-group m-form__group row">
+                  <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 name">
+                    <label class="m-checkbox m-checkbox--single m-checkbox--state m-checkbox--state-primary">
+                      <input type="checkbox" id="isemployed"> Employed Only
+                      <span></span>
+                    </label>
+                  </div>
+                  <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 value">
+                    <label class="m-checkbox m-checkbox--single m-checkbox--state m-checkbox--state-primary">
+                      <input type="checkbox" id="isdirector">Directors Only
+                      <span></span>
+                    </label>
+                  </div>
+                  <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 name">
+                    <label class="m-checkbox m-checkbox--single m-checkbox--state m-checkbox--state-primary">
+                      <input type="checkbox" id="ishomeowner">Home Owners only
+                      <span></span>
+                    </label>
+                  </div>
+                  <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 value">
+                    <label class="m-checkbox m-checkbox--single m-checkbox--state m-checkbox--state-primary">
+                      <input type="checkbox" id="excludeadverse"> Exclude Adverse Indicator
+                      <span></span>
+                    </label>
+                  </div>
+                </div>
+                <div class="form-group m-form__group row">
+                  <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 name">
+                    <label class="m-checkbox m-checkbox--single m-checkbox--state m-checkbox--state-primary">
+                      <input type="checkbox" id="iscellnumber">Cell Number Only
+                      <span></span>
+                    </label>
+                  </div>
+                  <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 name">
+                    <label class="m-checkbox m-checkbox--single m-checkbox--state m-checkbox--state-primary">
+                      <input type="checkbox" id="isemailonly">Email Address Only
+                      <span></span>
+                    </label>
+                  </div>
+                  <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 name">
+                    <label class="m-checkbox m-checkbox--single m-checkbox--state m-checkbox--state-primary">
+                      <input type="checkbox" id="isDeceased">Exclude Deceased Indicator
+                      <span></span>
+                    </label>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-lg-3 col-md-3"></div>
+              <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 name">
+                <button class="btn btn-dark" (click)="submit()">Process Lead</button>
+              </div>
+              <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 name">
+                <button style="background-color:#343a40;color:#ffffff" class="btn btn-default" (click)="cancel()">Cancel Lead</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<button id="openPopUpvalid1" [hidden]="true" data-toggle="modal" data-target="#myModalErrorMessage1"></button>
+<div id="myModalErrorMessage1" class="modal" tabindex="-1" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div style="background: linear-gradient(#103f56, #094868, #00527c, #066f9e) !important;" class="modal-header">
+        <h4 style="color:#ffffff" class="modal-title">IDAS says:</h4>
+      </div>
+      <div class="modal-body">{{warningMesage}}</div>
+      <div class="modal-footer text-center">
+        <button type="button" class="btn btn-accent" data-dismiss="modal">Ok</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<style>
+
+
+  input[type=number]::-webkit-inner-spin-button,
+  input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none !important;
+    margin: 0 !important;
+  }
+  [data-title]:hover:after {
+    opacity: 1;
+    transition: all 0.1s ease 0.5s;
+    visibility: visible;
+  }
+
+  [data-title]:after {
+    width: 100px;
+    font-family: Avenir !important;
+    content: attr(data-title);
+    background-color: #ffffff !important;
+    color: #094868 !important;
+    font-size: 12px !important;
+    position: absolute;
+    padding: 2px 4px 2px 4px;
+    margin-left: 15px !important;
+    margin-top: 15px !important;
+    white-space: normal;
+    opacity: 0;
+    border: 1px solid #111111;
+    z-index: 99999;
+    visibility: hidden;
+    text-transform: initial;
+  }
+
+
+  [data-title] {
+    position: relative;
+  }
+
+
+
+  .modal-footer {
+    justify-content: center !important;
+  }
+
+  .m-checkbox.m-checkbox--single {
+    width: 100% !important;
+    height: 18px;
+  }
+
+  h6 {
+    font-size: 12px;
+    font-weight: bold;
+  }
+
+  .btn-dark {
+    color: #fff;
+    background-color: #A11E21;
+    border-color: #343a40;
+  }
+
+  .m-form .m-form__group {
+    padding-bottom: 0px !important;
+  }
+</style>

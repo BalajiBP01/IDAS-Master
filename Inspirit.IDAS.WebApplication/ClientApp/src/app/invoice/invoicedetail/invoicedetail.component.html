@@ -1,0 +1,176 @@
+<!--<!--<div class="m-grid__item m-grid__item--fluid m-grid m-grid--ver-desktop m-grid--desktop m-body">
+  <div class="m-grid__item m-grid__item--fluid m-wrapper">-->
+
+
+<div class="m-grid__item m-grid__item--fluid m-grid m-grid--ver-desktop m-grid--desktop m-body">
+  <div class="m-grid__item m-grid__item--fluid m-wrapper">
+    <div class="m-subheader ">
+      <div class="d-flex align-items-center">
+        <div class="mr-auto">
+          <h3 class="m-subheader__title ">
+            <button style="padding:0px;font-size:14px!important; text-transform:uppercase; width:68px !important; color: #016fa2 !important;font-weight: 600 !important;font-family: Avenir !important;" class="btn btn-link" (click)="list()"> Invoices</button>
+            <i class="fa fa-angle-right"></i>
+            Invoice
+          </h3>
+        </div>
+        <div class="btn-group pull-right m-form__actions">
+          <a  style="margin: 10px 12px;font-size: 12px;border-radius: 1px;padding: 8px 18px 8px 18px;"class="btn btn-accent" (click)="list()">
+            Back
+            &nbsp;
+            <i class="fa fa-angle-double-left"></i>
+          </a>
+        </div>
+      </div>
+
+      <div *ngIf="loading==true" id="cover"> </div>
+
+      <div class="m-content">
+        <div class="m-portlet">
+          <div class="m-portlet__body">
+            <div class="m-section">
+              <form class="m-form m-form--fit m-form--label-align-right" style="padding-top:20px">
+                <div class="m-portlet__body col-12">
+                  <div class="form-group m-form__group row">
+                    <label for="example-text-input" class="col-lg-2 col-md-6 col-sm-12 col-xs-12 col-form-label">Invoice Number</label>
+                    <div class="col-lg-2 col-md-6 col-sm-12 col-xs-12">
+                      <input class="form-control m-input" type="text" name="invoiceDisplayNumber" readonly="readonly" [(ngModel)]="currentObj.invoiceDisplayNumber">
+                    </div>
+                  </div>
+
+                  <div class="form-group m-form__group row">
+                    <label for="example-text-input" class="col-lg-2 col-md-6 col-sm-12 col-xs-12 col-form-label">Customer</label>
+                    <div class="col-lg-2 col-md-6 col-sm-12 col-xs-12">
+                      <input class="form-control m-input" type="text" name="companyname" [readonly]="readonly" [(ngModel)]="companyname">
+                    </div>
+                  </div>
+
+
+
+
+
+
+                  <!--<div class="form-group m-form__group row">
+                <label for="example-text-input" class="col-2 col-form-label">Handling Charges</label>
+                <div class="col-6">
+                  <input class="form-control m-input" type="text" name="handlingCharge" [readonly]="readonly" [(ngModel)]="currentObj.handlingCharge">
+                </div>
+              </div>-->
+
+                  <div class="table table-responsive">
+                    <table class="table table-striped">
+                      <thead style="background:linear-gradient(#103f56, #094868, #00527c, #066f9e) !important; font-size:10px; color:#ffffff">
+                        <tr>
+                          <th>Name</th>
+                          <th *ngIf="rateID">Package Rate</th>
+                          <th>Quantity</th>
+                          <th>Unit Price</th>
+                          <th>Amount</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr *ngFor="let item of currentObj.invoiceLineItems let i=index">
+                          <td>
+                            {{item.description}}
+                          </td>
+                          <td *ngIf="rateID">
+                            <select style="width: 180px;padding-top:8px" class="form-control" name="item.productPackageRateID_{{i}}"
+                                    [(ngModel)]="item.productPackageRateID" disabled>
+                              <option *ngFor="let r of rates" value="{{r.id}}"
+                                      [selected]="r.id == item.productPackageRateID">
+                                {{r.minLimit}} - {{r.maxLimit}} : {{r.unitPrice | number:'1.2-2'}}
+                              </option>
+                            </select>
+                          </td>
+                          <td>
+                            {{item.quantity}}
+                          </td>
+                          <td>
+                            {{item.unitPrice |  number:'.2'}}
+                          </td>
+                          <td>
+                            {{item.netAmount | number:'.2' }}
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+
+                  <div class="form-group m-form__group row">
+                    <label for="example-text-input" class="col-lg-2 col-md-6 col-sm-12 col-xs-12 col-form-label">Sub Total</label>
+                    <div class="col-lg-2 col-md-6 col-sm-12 col-xs-12">
+                      <!--<input class="form-control m-input" type="text" name="subTotal" [(ngModel)]="currentObj.subTotal" readonly="readonly">-->
+
+                      <input class="form-control" type="text" step="0.01" name="subTotal"
+                             (change)="setTwoNumberDecimal($event)"
+                             (ngModelChange)="currentObj.subTotal = $event"
+                             [ngModelOptions]="{updateOn: 'blur'}"
+                             [ngModel]="currentObj.subTotal| number:'1.2-2'" readonly>
+
+                    </div>
+                    <label for="example-text-input" class="col-lg-2 col-md-6 col-sm-12 col-xs-12 col-form-label">Discount</label>
+                    <div class="col-lg-2 col-md-6 col-sm-12 col-xs-12">
+                      <input class="form-control m-input" type="text" name="discount" [readonly]="readonly" [(ngModel)]="currentObj.discount">
+                    </div>
+                  </div>
+                  <div class="form-group m-form__group row">
+                    <label for="example-text-input" class="col-lg-2 col-md-6 col-sm-12 col-xs-12 col-form-label">Vat Total</label>
+                    <div class="col-lg-2 col-md-6 col-sm-12 col-xs-12">
+                      <!--<input class="form-control m-input" type="text" name="vatTotal" [(ngModel)]="currentObj.vatTotal" readonly="readonly">-->
+                      <input class="form-control" type="text" step="0.01" name="vatTotal"
+                             (change)="setTwoNumberDecimal($event)"
+                             (ngModelChange)="currentObj.vatTotal = $event"
+                             [ngModelOptions]="{updateOn: 'blur'}"
+                             [ngModel]="currentObj.vatTotal| number:'1.2-2'" readonly>
+                    </div>
+                    <label for="example-text-input" class="col-lg-2 col-md-6 col-sm-12 col-xs-12 col-form-label">Total Amount</label>
+                    <div class="col-lg-2 col-md-6 col-sm-12 col-xs-12">
+                      <!--<input class="form-control m-input" type="text" name="total" [(ngModel)]="currentObj.total" readonly="readonly">-->
+                      <input class="form-control" type="text" step="0.01" name="total"
+                             (change)="setTwoNumberDecimal($event)"
+                             (ngModelChange)="currentObj.total = $event"
+                             [ngModelOptions]="{updateOn: 'blur'}"
+                             [ngModel]="currentObj.total| number:'1.2-2'" readonly>
+                    </div>
+                  </div>
+
+                  <!--<div class="m-form__actions" style="text-align:center">
+
+                <button type="button" class="btn btn-success" (click)="save()">Submit</button>
+                <button type="button" class="btn btn-secondary" (click)="list()">Cancel</button>
+              </div>-->
+
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<style>
+  select.form-control:not([size]):not([multiple]) {
+    height: 38px !important;
+  }
+  #cover {
+    background: url("http://www.aveva.com/Images/ajax-loader.gif") no-repeat scroll center center;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    top: 0px;
+    left: 0px;
+  }
+  .form-control[disabled]{
+    border-color: #f4f5f8;
+    color: #6f727d;
+    background-color: #ffffff !important;
+  }
+  .table td, .table th {
+    padding: .75rem;
+    vertical-align: middle !important;
+    border-top: 1px solid #f4f5f8;
+    border-right: 1px solid #ffffff;
+  }
+</style>

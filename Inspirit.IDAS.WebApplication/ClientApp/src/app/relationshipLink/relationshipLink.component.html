@@ -1,0 +1,99 @@
+<div>
+  <div class="m-portlet">
+    <form class="m-form m-form--label-align-right" style="padding:12px;background-color:#f2f3f8">
+      <div class="m-portlet__body" style="background-color:#ffffff;padding:12px;border:1px solid #000000">
+        <div class="m-section">
+          <div class="m-section__content">
+            <div class="table-responsive">
+              <table datatable [dtOptions]="dtOptions" class="table table-striped">
+                <thead>
+                  <tr>
+                    <th style="color:white">Link</th>
+                    <th style="color:white">Type</th>
+                    <!--<th  class="fulladdress">Link Value</th>-->
+                    <th class="fulladdress" style="color:white">Date of Birth</th>
+                    <th  class="fulladdress" style="color:white">Full Name</th>
+                    <th style="display:none">id</th> <!--<td style="display:none">id</td>-->
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let relation of result">
+                    <td *ngIf="relation.type == 'Telephone'" data-title="Telephone Link"><img style="width:30px" src="../../assets/demo/demo2/media/img/Icons/Telephone.png" /></td>
+                    <td *ngIf="relation.type == 'Director'" data-title="Director Link"><img style="width:30px" src="../../assets/demo/demo2/media/img/Icons/Work-Address.png" /></td>
+                    <td *ngIf="relation.type == 'Property'" data-title="Property Link"><img style="width:30px" src="../../assets/demo/demo2/media/img/Icons/Property.png" /></td>
+                    <td class="fulladdress">{{relation.type}}</td>
+                    <!--<td  class="fulladdress">{{relation.keyMatch}}</td>-->
+                    <td class="fulladdress">
+                      <!--{{relation.idNumber}}-->
+                      <button type="button" id="relationlink" class="btn btn-link" style="padding:0px;word-break: break-all;white-space: normal;font-size:12px" (click)="showModal(relation.consumerId,relation.idNumber)">{{relation.idNumber |  slice : 0  : 2 }}-{{relation.idNumber |  slice : 2  : 4 }}-{{relation.idNumber |  slice : 4  : 6 }}</button>
+                    
+                    </td>
+                    <td class="fulladdress">{{relation.fullName}}</td>
+                    <td style="display:none">{{relation.displayno}}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <!--end::Section-->
+      </div>
+    </form>
+    <!--end::Form-->
+  </div>
+  <!--end::Portlet-->
+</div>
+
+
+<button data-toggle="modal" id="nopoints" data-target="#point" [hidden]="true"></button>
+
+
+<div id="data1" class="modal" tabindex="-1" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div style="background: linear-gradient(#103f56, #094868, #00527c, #066f9e) !important;" class="modal-header">
+        <h4 style="color:#ffffff" class="modal-title">IDAS says:</h4>
+      </div>
+      <div class="modal-body">No Credits available.</div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-accent" data-dismiss="modal">Ok</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<style>
+  .fa {
+    font-size: 1.2rem !important;
+  }
+
+  [data-title]:hover:after {
+    opacity: 1;
+    transition: all 0.1s ease 0.5s;
+    visibility: visible;
+  }
+
+  [data-title]:after {
+    width: 100px;
+    font-family: Avenir !important;
+    content: attr(data-title);
+    background-color: #ffffff !important;
+    color: #094868 !important;
+    font-size: 12px !important;
+    position: absolute;
+    padding: 2px 4px 2px 4px;
+    margin-left: 15px !important;
+    margin-top: 15px !important;
+    white-space: normal;
+    opacity: 0;
+    border: 1px solid #111111;
+    z-index: 99999;
+    visibility: hidden;
+    text-transform: initial;
+  }
+
+  [data-title] {
+    position: relative;
+  }
+</style>

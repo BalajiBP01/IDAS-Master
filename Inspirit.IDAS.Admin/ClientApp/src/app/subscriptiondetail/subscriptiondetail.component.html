@@ -1,0 +1,204 @@
+
+<div class="m-subheader" appunwraptag="">
+  <div class="m-portlet__head-caption">
+    <div class="m-portlet__head-title">
+      <span class="m-portlet__head-icon m--hide">
+        <i class="la la-gear"></i>
+      </span>
+      <h3 class="m-subheader__title ">
+        <button style="font-size: 14px;
+        font-weight: 600;
+        text-transform: uppercase;
+        color: #016fa2;
+        font-family: Avenir !important;
+        margin-top: -2px;" class="btn btn-link" (click)="list()">
+          Subscriptions
+        </button>
+        <i style="margin-left:-12px" class="fa fa-angle-right"></i>
+        Subscription
+      </h3>
+
+      <div class="btn-group pull-right m-form__actions">
+
+        <a style="margin: 10px 5px;" class="btn btn-accent" (click)="list()">
+          Back
+          &nbsp;
+          <i class="fa fa-angle-double-left"></i>
+        </a>
+      </div>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+<div *ngIf="loading==true" id="cover"></div>
+
+
+<div class="m-content">
+  <div class="m-portlet">
+    <div class="m-portlet__body">
+      <div class="m-section">
+        <form class="m-form m-form--fit m-form--label-align-right" style="padding-top:20px">
+          <div class="m-portlet__body col-12">
+            <div class="form-group m-form__group row">
+              <div class="col-8 col-md-8 col-sm-12">
+                <div class="form-group m-form__group row">
+                  <label for="example-text-input" class="col-4 col-md-4 col-sm-12 col-form-label"
+                         style="text-align:right">Customer</label>
+                  <span style="color:red">*</span>
+                  <div class="col-6 col-md-6 col-sm-12">
+                    <input type="text" readonly="readonly"
+                           class="form-control m-input border-dark"
+                           name="customer.tradingName"
+                           [(ngModel)]="customer.tradingName">
+                 
+                  </div>
+                  <i class="fa fa-search" *ngIf="mode != 'view'" style="padding-top:2%"
+                     (click)="searchcustomer()"></i>
+                </div>
+                <div class="form-group m-form__group row">
+                  <label for="example-text-input" class="col-4 col-md-4 col-sm-12 col-form-label"
+                         style="text-align:right">Products</label>
+                  <span style="color:red">*</span>
+                  <div *ngIf="mode == 'add'" class="col-6 col-md-6 col-sm-12">
+                    <select class="form-control" [disabled]="readonly" name="name" [(ngModel)]="prod.id"
+                            (change)="onChange($event.target.value)">
+                      <option *ngFor="let order of productList" value="{{order.id}}"
+                              [selected]="order.productId == prod.id">
+                        {{order.name}}
+                      </option>
+                    </select>
+                  </div>
+                  <div *ngIf="mode != 'add'" class="col-6 col-md-6 col-sm-12">
+                    <select class="form-control" [disabled]="readonly" name="name" [(ngModel)]="prod.id" (change)="onChange($event.target.value)">
+                      <option *ngFor="let order of products" value="{{order.id}}" [selected]="order.id == prod.id">{{order.name}}</option>
+                      <option selected="selected"></option>
+                    </select>
+                  </div>
+                </div>
+                <div class="form-group m-form__group row">
+                  <label for="example-text-input" class="col-4 col-md-4 col-sm-12 col-form-label" style="text-align:right">Start Date</label><span style="color:red">*</span>
+                  <div *ngIf="mode != 'view'" class="col-6 col-md-6 col-sm-12">
+                    <input class="form-control m-input" type="date" [(ngModel)]="prod.startDate" name="startDate">
+                  </div>
+                  <div *ngIf="mode == 'view'" class="col-6 col-md-6 col-sm-12">
+                    <input [readonly]="readonly" class="form-control m-input" type="text" [(ngModel)]="prod.startDate" name="startDate">
+                  </div>
+
+                </div>
+                <div class="form-group m-form__group row">
+                  <label for="example-text-input" class="col-4 col-md-4 col-sm-12 col-form-label" style="text-align:right">Payment Type</label><span style="color:red">*</span>
+                  <div class="col-6">
+                    <select [(ngModel)]="prod.billingType" name="billingType" class="form-control" [disabled]="readonly">
+                      <option value="One Time Payment">One Time Payment</option>
+                      <option *ngIf="prodname != 'Credits'" value="Monthly">Monthly</option>
+                    </select>
+                  </div>
+
+                </div>
+                <div class="form-group m-form__group row">
+                  <label for="example-text-input" class="col-4 col-md-4 col-sm-12 col-form-label" style="text-align:right">Quantity</label><span style="color:red">*</span>
+                  <div class="col-6 col-md-6 col-sm-12">
+                    <input [readonly]="readonly" class="form-control m-input" type="text" name="quantity" [(ngModel)]="prod.quantity">
+                  </div>
+                </div>
+                <div *ngIf="prodname != 'Credits'" class="form-group m-form__group row">
+                  <label for="example-text-input" class="col-4 col-md-4 col-sm-12 col-form-label" style="text-align:right">Duration</label><span style="color:red;font-size:1.0rem">*</span>
+                  <div class="col-6 col-md-6 col-sm-12">
+                    <input [readonly]="readonly" class="form-control m-input" type="text" name="duration" [(ngModel)]="prod.duration">
+                  </div>
+                </div>
+                <div style="text-align:center">
+                  <span style="color:red!important;font-size:12px!important">{{errormsg}}</span>
+                </div>
+              </div>
+              <div class="col-4 col-md-4 col-sm-12">
+                <div *ngIf="rates[0].id != undefined">
+                  <h6>Package Rates:</h6>
+                  <table class="table table-bordered">
+                    <thead>
+                      <tr>
+                        <th>From</th>
+                        <th>To</th>
+                        <th>Unit Price</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let result of rates">
+                        <td>{{result.minLimit}}</td>
+                        <td>{{result.maxLimit}}</td>
+                        <td>{{result.unitPrice}}</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+            <div class="form-group m-form__group row">
+              <div *ngIf="mode != 'view'" class="col-4">
+                <div class="input-group m-input-group">
+                  <button class="btn btn-accent" (click)="submit()">Submit</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<button data-toggle="modal" id="nopermission" data-target="#per" [hidden]="true"></button>
+
+<div id="per" class="modal" tabindex="-1" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div style="background: linear-gradient(#103f56, #094868, #00527c, #066f9e)" class="modal-header">
+        <h4 style="color:#ffffff" class="modal-title">IDAS says:</h4>
+      </div>
+      <div class="modal-body">You don't have permission to access.</div>
+      <div class="modal-footer">
+        <button style="width:150px" (click)="dash()" type="button" class="btn btn-accent" data-dismiss="modal">Ok</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<button data-toggle="modal" id="errormsg" data-target="#error" [hidden]="true"></button>
+
+<div id="error" class="modal" tabindex="-1" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div style="background: linear-gradient(#103f56, #094868, #00527c, #066f9e)" class="modal-header">
+        <h4 style="color:#ffffff" class="modal-title">IDAS says:</h4>
+      </div>
+      <div class="modal-body">{{errormsg}}</div>
+      <div class="modal-footer">
+        <button style="width:150px" type="button" class="btn btn-accent" data-dismiss="modal">Ok</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<style>
+  #cover {
+    background: url("http://www.aveva.com/Images/ajax-loader.gif") no-repeat scroll center center;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    top: 0px;
+    left: 0px;
+    z-index: 1;
+  }
+  .modal-footer {
+    justify-content: center !important;
+  }
+</style>

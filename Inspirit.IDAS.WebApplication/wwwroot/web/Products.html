@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="zxx">
+   <head>
+      <title>Inspirit</title>
+      <!--meta tags -->
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="keywords" content="web design" />
+      <script>
+         addEventListener("load", function () {
+         	setTimeout(hideURLbar, 0);
+         }, false);
+         
+         function hideURLbar() {
+         	window.scrollTo(0, 1);
+         }
+      </script>
+      <!--//meta tags ends here-->
+      <!--booststrap-->
+      <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" media="all">
+      <!--//booststrap end-->
+      <!-- font-awesome icons -->
+      <link href="css/font-awesome.css" rel="stylesheet">
+      <!-- //font-awesome icons -->
+      <!--gallery-->
+      <link rel="stylesheet" href="css/lightbox.css">
+      <!--//gallery-->
+      <!--stylesheets-->
+      <link href="css/style.css" rel='stylesheet' type='text/css' media="all">
+      <!--//stylesheets-->
+      <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700" rel="stylesheet">
+      <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet">
+
+<style>
+
+label {
+    -webkit-perspective: 1000px;
+    perspective: 1000px;
+    -webkit-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+    display: block;
+    width: 300px;
+    height: 400px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin-top: 156px;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    cursor: pointer;
+}
+
+.card {
+    position: relative;
+    height: 100%;
+    width: 100%;
+    -webkit-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+    -webkit-transition: all 600ms;
+    transition: all 600ms;
+    z-index: 20;
+   border: none !important;
+   border-radius: none !important;
+}
+
+    .card div {
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        text-align: center;
+        -webkit-backface-visibility: hidden;
+        backface-visibility: hidden;
+        border-radius: 2px;
+    }
+
+    .card .back {
+        -webkit-transform: rotateX(180deg);
+        transform: rotateX(180deg);
+    }
+
+label:hover .card {
+    -webkit-transform: rotateX(0deg);
+    transform: rotateX(0deg);
+
+}
+
+input {
+    display: none;
+}
+
+:checked + .card {
+    transform: rotateX(180deg);
+    -webkit-transform: rotateX(180deg);
+}
+
+label:hover :checked + .card {
+    transform: rotateX(180deg);
+    -webkit-transform: rotateX(180deg);
+
+}
+
+</style>
+
+
+
+   </head>
+   <body class="container" width="1366px">
+      <div class="header-outs" id="header">
+      	<div class="header_block">
+         <div class="header-w3layouts" data-role="header" data-position="fixed">
+            <div class="container">
+               <!--navigation section -->
+               <nav class="navbar navbar-expand-lg navbar-light">
+                  <div class="hedder-up " >
+                     <a class="navbar-brand" href="index.html"><img src="file:///D:/Ramya%20data/IDAS_Website_Development/New_LandingPage/Landing_Page/wind_power/web/images/IDAS-Website-Logo.png" class="img-fluid" alt=""></a>
+                  </div>
+                  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon"></span>
+                  </button>
+                  <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+                     <ul class="navbar-nav">
+                       <li class="nav-item">
+                           <a class="nav-link" href="Home.html">Home <span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item active">
+                           <a href="Products.html" class="nav-link">Products</a>
+                        </li>
+                        <li class="nav-item">
+                           <a href="Solutions.html" class="nav-link">Solutions</a>
+                        </li>
+                        <li class="nav-item">
+                           <a href="About.html" class="nav-link">About Us</a>
+                        </li>
+                        <li class="nav-item">
+                           <a href="News.html" class="nav-link">News</a>
+                        </li>
+                        <li class="nav-item">
+                           <a href="Contact.html" class="nav-link">Contact Us</a>
+                        </li>
+                        <li><button type="submit" class="btn btn-block click-me2" style="background-color: #0F3E55;color: #ffffff;">SIGN IN</button></li>&nbsp;&nbsp;
+                        <li><button type="submit" class="btn btn-block click-me2" style="background-color: #0F3E55;color: #ffffff;">REGISTER</button></li>
+                     </ul>
+                  </div>
+               </nav>
+               <div class="clearfix"> </div>
+            </div>
+         </div>
+		</div>
+
+      <!-- //banner -->
+
+ 
+      <div class="slider text-center">
+            <div class="callbacks_container">
+               <ul class="rslides" id="slider4">
+                  <li style="height:320px;">
+                     <div class="slider-img four-img" style="height: 381px;background-color: rgba(0,0,0,0.5);">
+                        <div class="container" id="layer">
+                           <div class="slider-info" align="center" style="padding-top: 176px;">
+                           <h3 class="heading text-uppercase" align="center" style="color: #ffffff;
+    text-align: center;
+    font-weight: bold;
+    border-bottom: 2px solid #ffffff;
+    border-top: 2px solid #ffffff;
+    width: 170px;
+    margin-bottom: -37px;
+    ">PRODUCTS</h3>
+                           </div>
+                        </div>
+                     </div>
+                  </li>
+               </ul>
+            </div>
+            <!-- This is here just to demonstrate the callbacks -->
+            <!-- <ul class="events">
+               <li>Example 4 callback events</li>
+               </ul>-->
+            <div class="clearfix"></div>
+         </div>
+
+
+
+
+<!-- //services -->  
+
+
+
+<!-- Solutions -->
+
+
+<div align="center" class="col-lg-12 col-12 mt-lg-0 mt-5 team_grid1" style="margin-top: 3% !important;margin-bottom: 3% !important;">
+				<h3 class="heading" style="color: #000000;text-align: center;font-weight: bold;font-size: 19px;">Online Trace, Batch Trace & Leads Generation</h3>
+			</div>
+
+      <div class="gap"></div>
+
+<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mb-lg-0 mb-5 team_grid1">
+	<div class="row">
+<div class="col-lg-4 col-md-12 col-xs-12">
+
+<label>
+    <input type="checkbox"/>
+    <div class="card">
+        <div class="front">
+<div align="center">
+                  <div align="center" class="w3ls-bottom">
+                     <div align="center" class="table-txt-grid">
+                      <img src="file:///D:/Ramya%20data/IDAS_Website_Development/New_LandingPage/Landing_Page/wind_power/web/images/Online-Trace-Icon.png" class="img-fluid" alt="" style="width: 75px;height: auto;">
+                         <h4>ONLINE TRACE</h4> 
+                           <p style="color: #ffffff;font-size: 12px;">Enables you to have REAL TIME access on multiple search inputs offering detailed information on either an <br>individual/company</p>
+                           <h4 style="background-color: #79A5BA; margin: 10px -20px; text-decoration: none;"> <span class="sup">from</span><br>50c <span class="sup">to</span> R1.30<br><span class="sup">per trace based on a sliding scale</span></h4>
+                            <a href="#" target="_blank"><img src="file:///D:/Ramya%20data/IDAS_Website_Development/New_LandingPage/Landing_Page/wind_power/web/images/arrow.png" class="img-fluid" alt="" style="width: 25px;height: auto;"></a> 
+                     </div>
+
+                  </div>
+               </div>
+        </div>
+        <div class="back">
+ <div align="center">
+                  <div align="center" class="w3ls-bottom">
+                     <div align="center" class="table-txt-grid">
+                      <img src="file:///D:/Ramya%20data/IDAS_Website_Development/New_LandingPage/Landing_Page/wind_power/web/images/Online-Trace-Icon.png" class="img-fluid" alt="" style="width: 75px;height: auto;">
+                         <h4>ONLINE TRACE</h4> 
+                        <p style="color: #ffffff;font-size: 12px;">Web based/ Mobile enabled application that provides REAL TIME access to a variety of data that aids with the locating of dormant accounts, tracking absconded debtors or confirming employment details. This is achieved with a ‘Omnibar’ that combines all search criteria as one input with results that loads instantly.</p>
+                        <div class="more mt-lg-5 mt-md-4 mt-sm-4 mt-3 p-2" style="margin-top: 30px !important; margin-bottom: 30px !important;margin-left: -20px;"><a href="#" target="_blank">SIGN UP</a>        
+                        </div>
+                     </div>
+                   
+                  </div>
+               </div>
+
+        </div>
+    </div>
+</label>
+
+</div>
+<div class="col-lg-4 col-md-12 col-xs-12" id="float-down">
+<label>
+    <input type="checkbox"/>
+    <div class="card">
+        <div class="front">
+<div align="center">
+                  <div align="center" class="w3ls-bottom">
+                     <div align="center" class="table-txt-grid">
+                      <img src="file:///D:/Ramya%20data/IDAS_Website_Development/New_LandingPage/Landing_Page/wind_power/web/images/Batch-Trace-Icon.png" class="img-fluid" alt="" style="width: 75px;height: auto;">
+                         <h4>BATCH TRACE</h4> 
+                           <p style="color: #ffffff;font-size: 12px;">Enables you to perform REAL TIME, high volume processing to trace multiple individuals. Trace from 100 to 100,000 records</p>
+                           <h4 style="background-color: #79A5BA; margin: 10px -20px; text-decoration: none;"><span class="sup">Monthly from</span><br>R1500<br><span class="sup">or Pay per search for less that R1</span></h4>
+
+                            <a href="#" target="_blank"><img src="file:///D:/Ramya%20data/IDAS_Website_Development/New_LandingPage/Landing_Page/wind_power/web/images/arrow.png" class="img-fluid" alt="" style="width: 25px;height: auto;"></a> 
+                     </div>
+
+                  </div>
+               </div>
+        </div>
+        <div class="back">
+ <div align="center">
+                  <div align="center" class="w3ls-bottom">
+                     <div align="center" class="table-txt-grid">
+                      <img src="file:///D:/Ramya%20data/IDAS_Website_Development/New_LandingPage/Landing_Page/wind_power/web/images/Batch-Trace-Icon.png" class="img-fluid" alt="" style="width: 75px;height: auto;">
+                         <h4>BATCH TRACE</h4> 
+                        <p style="color: #ffffff;font-size: 12px;padding: 0px 0px 33px 0px !important;">Service that provides processing of large volumes of data by uploading an Excel/ CSV file. The differentiator is out batch tracing tool is REAL TIME. No need to wait between 2 to 5 days for the results, you can access it online with ID number as an input.</p>
+                        <div class="more mt-lg-5 mt-md-4 mt-sm-4 mt-3 p-2" style="margin-top: 30px !important; margin-bottom: 30px !important;margin-left: -20px;"><a href="#" target="_blank">SIGN UP</a>        
+                        </div>
+                     </div>
+                   
+                  </div>
+               </div>
+
+        </div>
+    </div>
+</label>
+</div>
+<div class="col-lg-4 col-md-12 col-xs-12" id="float-down">
+<label>
+    <input type="checkbox"/>
+    <div class="card">
+        <div class="front">
+<div align="center">
+                  <div align="center" class="w3ls-bottom">
+                     <div align="center" class="table-txt-grid">
+                      <img src="file:///D:/Ramya%20data/IDAS_Website_Development/New_LandingPage/Landing_Page/wind_power/web/images/Leads-Generation-Icon.png" class="img-fluid" alt="" style="width: 75px;height: auto;">
+                         <h4>LEADS GENERATION</h4> 
+                           <p style="color: #ffffff;font-size: 12px;">Enables you to generate marketing leads, suitable for high volume users. Just select the leads segment Online, preview your selection, click and download</p>
+                           <h4 style="background-color: #79A5BA; margin: 10px -20px; text-decoration: none;"><span class="sup">from</span><br>50c<br><span class="sup">pricing based on dynamic  lead selection</span></h4>
+                            <a href="#" target="_blank"><img src="file:///D:/Ramya%20data/IDAS_Website_Development/New_LandingPage/Landing_Page/wind_power/web/images/arrow.png" class="img-fluid" alt="" style="width: 25px;height: auto;"></a> 
+                     </div>
+
+                  </div>
+               </div>
+        </div>
+        <div class="back">
+ <div align="center">
+                  <div align="center" class="w3ls-bottom">
+                     <div align="center" class="table-txt-grid">
+                      <img src="file:///D:/Ramya%20data/IDAS_Website_Development/New_LandingPage/Landing_Page/wind_power/web/images/Leads-Generation-Icon.png" class="img-fluid" alt="" style="width: 75px;height: auto;">
+                         <h4>LEADS GENERATION</h4> 
+                        <p style="color: #ffffff;font-size: 12px;padding: 0px 0px 33px 0px !important;">Data Analytics as a Service: Generate marketing leads using an online, Realtime segmentation tool. Extract specific target market categories online and dynamically adjust the selection criteria to the needs of marketing campaign.</p>
+                        <div class="more mt-lg-5 mt-md-4 mt-sm-4 mt-3 p-2" style="margin-top: 30px !important; margin-bottom: 30px !important;margin-left: -20px;"><a href="#" target="_blank">SIGN UP</a>        
+                        </div>
+                     </div>
+                   
+                  </div>
+               </div>
+
+        </div>
+    </div>
+</label>
+</div>
+<!-- flip effect end -->
+  </div>
+</div>
+
+
+<!-- //Solutions -->  
+
+<div class="gap"></div>
+
+         <div class="about-color py-lg-4 py-md-3 py-sm-3 py-3">
+            <div class="container py-lg-5 py-md-5 py-sm-4 py-3">
+               <div class="row">
+                  <div class="line-w3ls-title col-lg-12 col-md-12 text-center" style="background-color: #C71212; color:#ffffff;"><h5 style="    padding-top: 46px;font-size: 15px !important;font-weight: bold;">IDAS offers a tracing tool, batch tracing, leads generation & credit bureau services</h5>
+                  </div>
+                   <div align="center" class="text-left click-subscribe col-lg-12 col-md-12" valign="middle" style="background-color: #C71212; color:#ffffff;">
+                   	<div class="row" id="alignment">
+
+                   		<div class="line-w3ls-title col-lg-4 col-md-12 text-center">
+                           <button type="submit" class="btn btn-block click-me1 text-center" style="background-color: #ffffff;color: #C71212; margin-top: 28px; margin-bottom: 30px;">SIGN UP</button></div>
+                           <div class="line-w3ls-title col-lg-2 col-md-12 text-center1"><h5 style=" margin-top: 28px; margin-bottom: 30px;">OR</h5></div>
+                            <div class="line-w3ls-title col-lg-4 col-md-12 text-center"><button type="submit" class="btn btn-block click-me1 text-center" style="background-color: #ffffff;color: #C71212; margin-top: 28px; margin-bottom: 30px;">FREE TRIAL</button></div>
+
+                        </div>
+                        </div>
+               </div>
+            </div>
+         </div>
+
+<div class="gap"></div>
+
+      <!--//contact -->
+      <footer align="center" id="footer-block1" class="py-lg-5 py-md-4 py-4" style="background-color: #353535;">
+         <div class="container" id="footer-block">
+            <div class="row">
+
+               <div align="left" class="col-lg-9 col-md-12 col-sm-12 footer-bottom">
+                  <div class="footer-top mt-3">
+                  	<img src="file:///D:/Ramya%20data/IDAS_Website_Development/New_LandingPage/Landing_Page/wind_power/web/images/IDAS-Website-Logo--Footer.png" class="img-fluid" alt=""><br><br>
+                  	<p>Developing solutions to optimize your business processes to make them more effective and as a result make your business more profitable.</p><br><br>
+                     <p> <span class="fa fa-map-marker"></span>&nbsp;&nbsp;&nbsp;&nbsp;41 Richefond Circle, Suite 501 Strauss Daly Building, Umhlanga Ridge, 4319</p>
+                     <p class="pt-2"><span class="fa fa-phone"></span>&nbsp;&nbsp;&nbsp;&nbsp;+27 31 584 7379</p>
+                     <p class="pt-2"> <span class="fa fa-envelope"></span>&nbsp;&nbsp;&nbsp;&nbsp;<a href="mailto:info@inspirit.co.za">info@inspirit.co.za</a> 
+                     </p>
+                  </div> 
+               </div>
+
+               <div align="left" class="col-lg-3 col-md-12 col-sm-12 footer-bottom-new">
+                  <div class="footer-top mt-md-3 mt-3">
+                     <h6 class="pb-2"><a class="nav-link" href="Home.html">HOME</a></h6>
+                     <h6 class="pb-2"><a href="Products.html" class="nav-link">PRODUCTS</a></h6>
+                     <h6 class="pb-2"><a href="Solutions.html" class="nav-link">SOLUTIONS</a></h6>
+                     <h6><a href="About.html" class="nav-link">ABOUT US</a></h6>
+                     <h6><a href="News.html" class="nav-link">NEWS</a></h6>
+                     <h6><a href="Contact.html" class="nav-link">CONTACT US</a></h6>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </footer>
+      <div class="copy-bottom-txt text-center py-3">
+         <p style="color:#ffffff; font-size: 12px;"> 
+           2019 &copy; IDAS Product of Inspirit Data Analytics Services. All Rights Reserved.<br>
+           <a href="mailto:info@inspirit.co.za" target="_blank" style="color:#ffffff; font-size: 12px;">Terms & Conditions</a> | <a href="mailto:info@inspirit.co.za" target="_blank" style="color:#ffffff; font-size: 12px;">Privacy Policy</a> | <a href="mailto:info@inspirit.co.za" target="_blank" style="color:#ffffff; font-size: 12px;">Do Not Call</a>
+         </p>
+      </div>
+      <!--//footer -->
+      <!--model-->
+ 
+      <!--//model-->
+      <!--js working-->
+      <script src='js/jquery-2.2.3.min.js'></script>
+      <!--//js working-->
+      <!-- gallery -->
+      <script src="js/lightbox-plus-jquery.min.js"></script>
+      <!-- //gallery --> 
+      <!--responsiveslides banner-->
+      <script src="js/responsiveslides.min.js"></script>
+      <script>
+         // You can also use "$(window).load(function() {"
+         $(function () {
+         	// Slideshow 4
+         	$("#slider4").responsiveSlides({
+         		auto: true,
+         		pager:true ,
+         		nav:false,
+         		speed: 900,
+         		namespace: "callbacks",
+         		before: function () {
+         			$('.events').append("<li>before event fired.</li>");
+         		},
+         		after: function () {
+         			$('.events').append("<li>after event fired.</li>");
+         		}
+         	});
+         
+         });
+      </script>
+      <!--// responsiveslides banner-->	
+      <!-- service Tabs -->
+      <script>
+         $(function() {
+         var $tabButtonItem = $('#tab-button li'),
+            $tabSelect = $('#tab-select'),
+            $tabContents = $('.tab-contents'),
+            activeClass = 'is-active';
+         
+         $tabButtonItem.first().addClass(activeClass);
+         $tabContents.not(':first').hide();
+         
+         $tabButtonItem.find('a').on('click', function(e) {
+          var target = $(this).attr('href');
+         
+          $tabButtonItem.removeClass(activeClass);
+          $(this).parent().addClass(activeClass);
+          $tabSelect.val(target);
+          $tabContents.hide();
+          $(target).show();
+          e.preventDefault();
+         });
+         
+         $tabSelect.on('change', function() {
+          var target = $(this).val(),
+              targetSelectNum = $(this).prop('selectedIndex');
+         
+          $tabButtonItem.removeClass(activeClass);
+          $tabButtonItem.eq(targetSelectNum).addClass(activeClass);
+          $tabContents.hide();
+          $(target).show();
+         });
+         });
+      </script>
+      <!--//service Tabs -->
+      <!--gallery-->
+      <script>
+         $(document).ready(function(){
+         
+          $(".filter-button").click(function(){
+              var value = $(this).attr('data-filter');
+              
+              if(value == "all")
+              {
+                  //$('.filter').removeClass('hidden');
+                  $('.filter').show('1000');
+              }
+              else
+              {
+         //            $('.filter[filter-item="'+value+'"]').removeClass('hidden');
+         //            $(".filter").not('.filter[filter-item="'+value+'"]').addClass('hidden');
+                  $(".filter").not('.'+value).hide('3000');
+                  $('.filter').filter('.'+value).show('3000');
+                  
+              }
+          });
+          
+          if ($(".filter-button").removeClass("active")) {
+         $(this).removeClass("active");
+         }
+         $(this).addClass("active");
+         
+         });
+      </script>
+      <!--// gallery-->
+      <script src="js/move-top.js"></script>
+      <script src="js/easing.js"></script>
+      <script>
+         jQuery(document).ready(function ($) {
+         	$(".scroll").click(function (event) {
+         		event.preventDefault();
+         		$('html,body').animate({
+         			scrollTop: $(this.hash).offset().top
+         		}, 900);
+         	});
+         });
+      </script>
+      <!-- start-smoth-scrolling -->
+      <!-- here stars scrolling icon -->
+      <script>
+         $(document).ready(function () {
+         
+         	var defaults = {
+         		containerID: 'toTop', // fading element id
+         		containerHoverID: 'toTopHover', // fading element hover id
+         		scrollSpeed: 1200,
+         		easingType: 'linear'
+         	};
+         
+         
+         	$().UItoTop({
+         		easingType: 'easeOutQuart'
+         	});
+         
+         });
+      </script>
+      <!-- //here ends scrolling icon -->
+      <!--bootstrap working-->
+      <script src="js/bootstrap.min.js"></script>
+      <!-- //bootstrap working-->
+   </body>
+</html>

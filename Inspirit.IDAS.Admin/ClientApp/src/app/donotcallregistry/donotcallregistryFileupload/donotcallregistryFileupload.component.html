@@ -1,0 +1,225 @@
+<div class="m-subheader" appunwraptag="">
+  <div class="d-flex align-items-center">
+    <div class="mr-auto">
+      <h3 class="m-subheader__title ">
+        <button style="font-size: 14px;
+        font-weight: 600;
+        text-transform: uppercase;
+        color: #016fa2;
+        font-family: Avenir !important;
+        margin-top: -2px;" class="btn btn-link" (click)="list()">
+          Donot Call Registry
+        </button>
+        <i style="margin-left:-12px" class="fa fa-angle-right"></i>
+        Donot Call Registry File Upload
+      </h3>
+    </div>
+  </div>
+</div>
+
+
+<div class="m-content">
+  <div class="m-portlet  m-portlet--unair">
+    <div class="m-portlet__body  m-portlet__body--no-padding">
+      <div class="m-portlet__body">
+
+        <form class="m-form m-form--fit m-form--label-align-right">
+          <div class="m-portlet__body col-12">
+
+            <div class="form-group m-form__group row">
+              <div class="col-10">
+                <div class="input-group m-input-group pull-left">
+                  <div class="upload-btn-wrapper">
+                    <button style="margin-right: 35px;" class="btn btn-accent">Upload a file</button>
+                    <input type="file" #file accept=".xls,.xlsx,.csv" (change)="changefile(file.files)" />
+                  </div>
+                  <label *ngIf="fileexists" style="    padding: 17px;
+    border: 1px ridge #0a4867;
+    height: 35px;
+    margin-top: 1px;">
+                    <h6 style="font-size: 12px;
+    margin-top: -6px;
+    color: #000000;">
+                      {{filename}}
+                    </h6>
+                  </label>
+                </div>
+
+              </div>
+            </div>
+
+            <div class="form-group m-form__group row" *ngIf="isProcess">
+              <div class="col-12">
+                <div class="input-group m-input-group">
+                  <div class="table-responsive">
+                    <table [mfData]="array_values" #mf="mfDataTable"
+                           [mfRowsOnPage]="10" class="table table-striped">
+                      <thead style="background:linear-gradient(#103f56, #094868, #00527c, #066f9e) !important;color:white;font-size:12px;text-transform:uppercase">
+                        <tr>
+                          <th style="background:linear-gradient(#103f56, #094868, #00527c, #066f9e) !important;" class="tablevalue" *ngFor="let col of columnNames">
+                            {{col}}
+                          </th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr *ngFor="let row of mf.data">
+                          <td *ngFor="let col of columnNames">
+                            {{row[col]}}
+                          </td>
+                        </tr>
+                      </tbody>
+                      <tfoot>
+                        <tr style="text-align:right">
+                          <td [attr.colspan]="columnNames.length">
+                            <mfBootstrapPaginator></mfBootstrapPaginator>
+                          </td>
+                        </tr>
+                      </tfoot>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+            <div class="form-group m-form__group row" *ngIf="isfailed">
+              <div class="col-12">
+                <div class="input-group m-input-group">
+                  <div class="table-responsive">
+                    <table class="table table-striped"
+                           [mfData]="insertResponse" #mf="mfDataTable"
+                           [mfRowsOnPage]="8">
+                      <thead style="background:linear-gradient(#103f56, #094868, #00527c, #066f9e) !important;color:white;font-size:12px;text-transform:uppercase">
+                        <tr style="background: linear-gradient(#103f56, #094868, #00527c, #066f9e) !important;">
+                          <th class="tablevalue">
+                            Name
+                          </th>
+                          <th class="tablevalue">
+                            Surname
+                          </th>
+                          <th class="tablevalue">
+                            Id Number
+                          </th>
+                          <th class="tablevalue">
+                            Phone Number
+                          </th>
+                          <th class="tablevalue">
+                            Email Id
+                          </th>
+                          <th class="tablevalue">
+                            Is Approved
+                          </th>
+                          <th class="tablevalue">
+                            Remarks
+                          </th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr *ngFor="let row of mf.data">
+                          <td>
+                            {{row.name}}
+                          </td>
+                          <td>
+                            {{row.surname}}
+                          </td>
+                          <td>
+                            {{row.idNo}}
+                          </td>
+                          <td>
+                            {{row.phoneNumber}}
+                          </td>
+                          <td>
+                            {{row.emailId}}
+                          </td>
+                          <td>
+                            {{row.isApproved}}
+                          </td>
+
+                          <td>
+                            {{row.remarks}}
+                          </td>
+                        </tr>
+                      </tbody>
+                      <tfoot>
+                        <tr style="text-align:right">
+                          <td [attr.colspan]="columnNames.length">
+                            <mfBootstrapPaginator></mfBootstrapPaginator>
+                          </td>
+                        </tr>
+                      </tfoot>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="form-group m-form__group row" *ngIf="isProcess">
+              <div class="col-4">
+              </div>
+              <div class="col-4">
+              </div>
+              <div *ngIf="processbtn" class="col-4">
+                <button type="submit" class="btn btn-success pull-right"
+                        (click)="process(file.files)">
+                  Process
+                </button>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<button data-toggle="modal" id="nopermission" data-target="#per" [hidden]="true"></button>
+
+<div id="per" class="modal" tabindex="-1" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div style="background: linear-gradient(#103f56, #094868, #00527c, #066f9e)" class="modal-header">
+        <h4 style="color:#ffffff" class="modal-title">IDAS says:</h4>
+      </div>
+      <div class="modal-body">You don't have permission to access.</div>
+      <div class="modal-footer">
+        <button style="width:150px" (click)="dash()" type="button" class="btn btn-accent" data-dismiss="modal">Ok</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<button data-toggle="modal" id="errormsg" data-target="#error" [hidden]="true"></button>
+
+<div id="error" class="modal" tabindex="-1" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div style="background: linear-gradient(#103f56, #094868, #00527c, #066f9e)" class="modal-header">
+        <h4 style="color:#ffffff" class="modal-title">IDAS says:</h4>
+      </div>
+      <div class="modal-body">{{errormsg}}</div>
+      <div class="modal-footer">
+        <button style="width:150px" type="button" class="btn btn-accent" data-dismiss="modal">Ok</button>
+      </div>
+    </div>
+  </div>
+</div>
+<style>
+
+  .modal-footer {
+    justify-content: center !important;
+  }
+
+  .upload-btn-wrapper {
+    position: relative;
+    overflow: hidden;
+    display: inline-block;
+  }
+
+    .upload-btn-wrapper input[type=file] {
+      font-size: 100px;
+      position: absolute;
+      left: 0;
+      top: 0;
+      opacity: 0;
+    }
+</style>

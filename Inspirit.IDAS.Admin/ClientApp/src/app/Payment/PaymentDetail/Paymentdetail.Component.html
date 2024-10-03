@@ -1,0 +1,237 @@
+<div class="m-subheader" appunwraptag="">
+  <div class="m-portlet__head-caption">
+    <div class="m-portlet__head-title">
+      <span class="m-portlet__head-icon m--hide">
+        <i class="la la-gear"></i>
+      </span>
+      <h3 class="m-subheader__title ">
+        <button style="font-size: 14px;
+        font-weight: 600;
+        text-transform: uppercase;
+        color: #016fa2;
+        font-family: Avenir !important;
+        margin-top: -2px;" class="btn btn-link"
+                (click)="list()">
+          Payments
+        </button>
+        <i class="fa fa-angle-right"></i>
+        Payment
+      </h3>
+      <div class="btn-group pull-right m-form__actions">
+        <a style="margin: 10px 5px;" class="btn btn-accent" (click)="list()">
+          Back
+          &nbsp;
+          <i style="margin-left:-4px" class="fa fa-angle-double-left"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="loading==true" id="cover"></div>
+
+
+<div class="m-content">
+  <div class="m-portlet">
+    <div class="m-portlet__body">
+      <div *ngIf="mode == 'view'">
+        <div class="form-group m-form__group row">
+          <label for="example-text-input" class="col-2 col-form-label">Payment Number</label>
+          <div class="col-4">
+            <input class="form-control m-input border-dark" type="text" name="paymentnumber"
+                   [readonly]="readonly" [(ngModel)]="paymentnumber">
+          </div>
+          <label for="example-text-input" class="col-2 col-form-label">Date</label>
+          <div class="col-4">
+            <input class="form-control m-input border-dark" type="text" name="date"
+                   [(ngModel)]="date" [readonly]="readonly">
+          </div>
+        </div>
+        <div class="form-group m-form__group row">
+          <label for="example-text-input" class="col-2 col-form-label">Invoice Amount</label>
+          <div class="col-4">
+           
+            <input class="form-control m-input border-dark" type="text" step="0.01" name="amount"
+                   (change)="setTwoNumberDecimal($event)"
+                   (ngModelChange)="currentobject.amount = $event"
+                   [ngModelOptions]="{updateOn: 'blur'}"
+                   [ngModel]="currentobject.amount | number:'1.2-2'" [readonly]="readonly">
+
+          </div>
+          <label for="example-text-input" class="col-2 col-form-label">Payment Received Amount</label>
+          <div class="col-4">
+          
+            <input class="form-control m-input border-dark" type="text" step="0.01" name="paymentAmountReceive"
+                   (change)="setTwoNumberDecimal($event)"
+                   (ngModelChange)="paymentAmountReceive = $event"
+                   [ngModelOptions]="{updateOn: 'blur'}"
+                   [ngModel]="currentobject.paymentAmountReceive | number:'1.2-2'" [readonly]="readonly">
+
+          </div>
+        </div>
+        <div class="form-group m-form__group row">
+          <label for="example-text-input" class="col-2 col-form-label">Payment Type</label>
+          <div class="col-4">
+            <select class="form-control m-input border-dark" name="paymentType"
+                    [(ngModel)]="currentobject.paymentType">
+              <option *ngFor="let obj of lookupValues"
+                      value="{{ obj.value }}" [disabled]="readonly"
+                      [selected]="obj.value == currentobject.paymentType">
+                {{ obj.value }}
+              </option>
+            </select>
+          </div>
+          <label for="example-text-input" class="col-2 col-form-label">Reference</label>
+          <div class="col-4">
+            <input class="form-control m-input border-dark" type="text" name="reference"
+                   [readonly]="readonly" [(ngModel)]="currentobject.reference">
+          </div>
+        </div>
+        <div class="form-group m-form__group row">
+          <label for="example-text-input" class="col-2 col-form-label">Comments</label>
+          <div class="col-4">
+            <textarea style="height:150px;" class="form-control m-input border-dark"
+                      type="text" name="comments" [readonly]="readonly"
+                      [(ngModel)]="currentobject.comments"></textarea>
+          </div>
+        </div>
+      </div>
+
+      <div *ngIf="mode == 'add'">
+        <div class="form-group m-form__group row">
+          <label for="example-text-input" class="col-2 col-form-label">Invoice Amount</label>
+          <div class="col-4">
+           
+            <input class="form-control m-input border-dark" type="text" step="0.01" name="invoiceamount"
+                   (change)="setTwoNumberDecimal($event)"
+                   (ngModelChange)="amount = $event"
+                   [ngModelOptions]="{updateOn: 'blur'}"
+                   [ngModel]="amount | number:'1.2-2'" readonly="readonly">
+
+          </div>
+          <label for="example-text-input" class="col-2 col-form-label">
+            Payment Received Date
+            &nbsp;
+            <span style="color:red">*</span>
+          </label>
+          <div class="col-4">
+            <input class="form-control m-input border-dark" #paymentReceivedDate name="paymentReceivedDate"
+                   type="date" value="{{paymentReceivedDatestring}}">
+          </div>
+        </div>
+        <div class="form-group m-form__group row">
+          <label for="example-text-input" class="col-2 col-form-label">
+            Reference
+            &nbsp;
+            <span style="color:red">*</span>
+          </label>
+          <div class="col-4">
+            <input type="text" class="form-control m-input border-dark" name="reference"
+                   [(ngModel)]="currentobject.reference" />
+          </div>
+          <label for="example-text-input" class="col-2 col-form-label">
+            Amount Received
+            &nbsp;
+            <span style="color:red">*</span>
+          </label>
+          <div class="col-4">
+           
+            <input class="form-control m-input border-dark" type="text" step="0.01" name="paymentAmountReceive"
+                   (change)="setTwoNumberDecimal($event)"
+                   (ngModelChange)="currentobject.paymentAmountReceive = $event"
+                   [ngModelOptions]="{updateOn: 'blur'}"
+                   [ngModel]="currentobject.paymentAmountReceive | number:'1.2-2'" (keypress)="onKey($event)" [readonly]="readonly">
+
+          </div>
+        </div>
+        <div class="form-group m-form__group row">
+          <label for="example-text-input" class="col-2 col-form-label">
+            Payment Type
+            &nbsp;
+            <span style="color:red">*</span>
+          </label>
+          <div class="col-4">
+            <select class="form-control m-input border-dark" name="paymentType"
+                    [(ngModel)]="currentobject.paymentType">
+              <option *ngFor="let obj of lookupValues"
+                      value="{{ obj.value }}" [disabled]="readonly"
+                      [selected]="obj.value == currentobject.paymentType">
+                {{ obj.value }}
+              </option>
+            </select>
+          </div>
+          <label for="example-text-input" class="col-2 col-form-label">
+            Remarks&nbsp;
+            <span style="color:red">*</span>
+          </label>
+
+          <div class="col-4">
+            <input type="text" class="form-control m-input border-dark" name="comments"
+                   [(ngModel)]="currentobject.comments" />
+          </div>
+        </div>
+        <div class="form-group m-form__group row">
+          <div class="col-6">
+
+          </div>
+          <div class="col-6">
+            <div class="m-form__actions pull-right">
+              <button type="button" class="btn btn-success" (click)="save(paymentReceivedDate.value)">Submit</button>
+              <button type="button" class="btn btn-success" (click)="list()">Cancel</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<button data-toggle="modal" id="errormsg" data-target="#error" [hidden]="true"></button>
+
+<div id="error" class="modal" tabindex="-1" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div style="background: linear-gradient(#103f56, #094868, #00527c, #066f9e)" class="modal-header">
+        <h4 style="color:#ffffff" class="modal-title">IDAS says:</h4>
+      </div>
+      <div class="modal-body">{{errorMessage}}</div>
+      <div class="modal-footer">
+        <button style="width:150px" type="button" class="btn btn-accent" data-dismiss="modal">Ok</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<button data-toggle="modal" id="paymentdone" data-target="#payment" [hidden]="true"></button>
+
+<div id="payment" class="modal" tabindex="-1" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div style="background: linear-gradient(#103f56, #094868, #00527c, #066f9e)" class="modal-header">
+        <h4 style="color:#ffffff" class="modal-title">IDAS says:</h4>
+      </div>
+      <div class="modal-body">Payment Done</div>
+      <div class="modal-footer">
+        <button style="width:150px" type="button" class="btn btn-accent" (click)="list()" data-dismiss="modal">Ok</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .modal-footer {
+    justify-content: center !important;
+  }
+  #cover {
+    background: url("http://www.aveva.com/Images/ajax-loader.gif") no-repeat scroll center center;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    top: 0px;
+    left: 0px;
+    z-index: 1;
+  }
+</style>

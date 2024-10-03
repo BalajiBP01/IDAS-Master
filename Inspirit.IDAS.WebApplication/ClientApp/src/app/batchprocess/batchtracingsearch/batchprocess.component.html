@@ -1,0 +1,110 @@
+<style>
+  .upload-btn-wrapper {
+    position: relative;
+    overflow: hidden;
+    display: inline-block;
+  }
+
+    .upload-btn-wrapper input[type=file] {
+      font-size: 100px;
+      position: absolute;
+      left: 0;
+      top: 0;
+      opacity: 0;
+    }
+</style>
+
+<div id="pdf" class="m-grid__item m-grid__item--fluid m-grid m-grid--ver-desktop m-grid--desktop m-body">
+  <div class="m-grid__item m-grid__item--fluid m-wrapper">
+    <ngx-loading [show]="loading"></ngx-loading>
+    <div class="m-subheader ">
+      <div class="d-flex align-items-center">
+        <div class="mr-auto">
+          <h3 class="m-subheader__title ">
+            <button style="padding:0px;font-size:14px!important; text-transform:uppercase; width:48px !important; color: #016fa2 !important;font-weight: 600 !important;font-family: Avenir !important;" class="btn btn-link" (click)="list()">Batch Tracing</button>
+            <i style="margin-left:70px" class="fa fa-angle-right"></i>
+            Search Input
+          </h3>
+        </div>
+      </div>
+    </div>
+    <div class="m-content">
+      <div class="m-portlet">
+        <div class="m-portlet__body">
+          <div class="form-group m-form__group row">
+            <div class="col-10">
+              <div class="input-group m-input-group pull-left">
+                <div class="upload-btn-wrapper">
+                  <button style="margin-right: 35px;padding: 0px 20px 0px 20px;" class="btn btn-accent">Upload a file</button>
+                  <input type="file" #file accept=".txt" (change)="change(file.files)" />
+                </div>
+                <span style="padding:13px" title="Only Text files Accepted.">
+                  <img style="width:25px;margin-bottom:2px" src="../../assets/demo/demo2/media/img/Icons/Information.png" />
+                </span>
+                <label style="padding: 12px 13px 25px 8px;border:ridge;height:35px" *ngIf="fileName"><h6>{{fileName}}</h6> </label>
+              </div>
+            </div>
+          </div>
+          <div class="form-group m-form__group row" *ngIf="isProcess">
+            <div class="col-12">
+              <div class="input-group m-input-group">
+                <div class="table-responsive">
+                    <table datatable [dtOptions]="dtOptions" class="table table-striped">
+                      <thead>
+                        <tr>
+                          <th>ID Number</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr *ngFor="let address of responses let i =index">
+                          <td>{{responses[i]}}</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="form-group m-form__group row" *ngIf="isProcess">
+            <div class="col-4">
+            </div>
+            <div class="col-4 text-center">
+              <button type="submit" class="btn btn-dark"
+                      style="background-color:#a11e20 !important"
+                      (click)="process(file.files)">
+                Process Batch
+              </button>
+            </div>
+            <div class="col-4">
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<input id="openModalButton" type="hidden" data-toggle="modal" data-target="#myModal" />
+<div id="myModal" class="modal" tabindex="-1" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div style="background: linear-gradient(#103f56, #094868, #00527c, #066f9e) !important;" class="modal-header">
+        <h4 style="color:#ffffff" class="modal-title">IDAS says:</h4>
+      </div>
+      <div class="modal-body">{{warningMesage}}</div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-accent" data-dismiss="modal" (click)="list()">Ok</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<style>
+  .modal-footer {
+    justify-content: center !important;
+  }
+  .form-group {
+    margin-bottom: 0rem !important;
+  }
+</style>

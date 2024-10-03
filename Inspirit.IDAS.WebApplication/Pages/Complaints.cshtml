@@ -1,0 +1,242 @@
+﻿@page
+@{
+    Layout = "_Layout2";
+}
+<head>
+    @*<title>Inspirit Data Analytics Services | Tracing Solutions | Contact Us</title>*@
+    <title>Online Tracing Solutions | Complaints</title>
+    <meta name="description" content="Contact Inspirit Data Analytics Services for debtor tracing, batch tracing, online tracing, data cleansing and credit bureau services.">
+
+</head>
+<style>
+    .img-fluid1 {
+        width: 100%;
+        max-width: 65%;
+        height: auto;
+    }
+
+    .navbar-brand {
+        display: inline-block;
+        padding-top: .3125rem;
+        padding-bottom: .3125rem; 
+        margin-right: 0rem;
+        margin-left: 0rem;
+        font-size: 1.25rem;
+        line-height: inherit;
+        white-space: nowrap;
+    }
+
+    * {
+        box-sizing: border-box;
+    }
+
+    /* Style inputs */
+    input[type=text], input[type=email], select, textarea {
+        width: 100%;
+        padding: 12px;
+        border: 1px solid #ccc;
+        margin-top: 6px;
+        margin-bottom: 0px;
+        resize: vertical;
+        background-color: #2F2E2E;
+        color: #ffffff;
+        text-transform: uppercase;
+    }
+
+    input[type=submit] {
+        background-color: #0F3E55;
+        color: #ffffff;
+        padding: 12px 20px;
+        border: none;
+        cursor: pointer;
+    }
+
+        input[type=submit]:hover {
+            background-color: #0F3E55;
+            color: #ffffff;
+        }
+
+        #btn-submit{
+        background-color: #0F3E55;
+        color: #ffffff;
+        padding: 12px 20px;
+        border: none;
+        cursor: pointer;
+    }
+
+          #btn-submit{
+            background-color: #0F3E55;
+            color: #ffffff;
+        }
+
+
+        
+</style>
+
+
+<div align="center" class="header_block container-fluid">
+    <div align="center" class="header-w3layouts" data-role="header" data-position="fixed">
+        <div align="center" class="container">
+            <!--navigation section -->
+            <nav align="center" class="navbar navbar-expand-lg navbar-light">
+                <div class="hedder-up ">
+
+                    <a class="navbar-brand" href="">
+                        @*<img src="~/web/images/IDAS-Authorised-Agent-Website-Logo.png" />*@
+                        <img id="insplogo" src="~/web/images/IDAS Authorised Logo 11-03.svg" width="320" height="140" />
+                    </a>
+                </div>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link" href="Home">Home <span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="Products" class="nav-link">Products</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="Solutions" class="nav-link">Solutions</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="AboutUs" class="nav-link">About Us</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="@Url.Action("NewsBlog", "News")" class="nav-link">News</a>
+                        </li>
+                        <li class="nav-item active">
+                            <a href="Complaints" class="nav-link">Complaints</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="ContactUs" class="nav-link">Contact Us</a>
+                        </li>
+                        <li><a class="btn btn-block click-me2" style="background-color: #0F3E55;color: #ffffff;" href="login">SIGN IN</a></li>&nbsp;&nbsp;
+                        @*<li><a class="btn btn-block click-me2" style="background-color: #0F3E55;color: #ffffff;" href="usersignup">REGISTER</a></li>*@
+                    </ul>
+                </div>
+            </nav>
+            <div class="clearfix"> </div>
+        </div>
+    </div>
+</div>
+<!-- //banner -->
+
+
+
+<div class="slider text-center">
+    <div class="callbacks_container">
+        <ul class="rslides" id="slider4">
+            <li style="height:320px;">
+                <div class="slider-img five-img" style="height: 381px;display:none;" id="imgLoadAll">
+                    <div class="container-fluid" id="layer">
+                        <div class="slider-info" align="center" style="padding-top: 146px;">
+                            <h3 class="heading text-uppercase" align="center" style="color: #ffffff;
+    text-align: center;
+    font-weight: bold;
+    border-bottom: 2px solid #ffffff;
+    border-top: 2px solid #ffffff;
+    width: 200px;
+    margin-bottom: -37px;
+    ">
+                                Complaints
+                            </h3>
+                        </div>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+
+    <div class="clearfix"></div>
+</div>
+
+<!-- //services -->
+
+
+
+<div class="container py-lg-5 py-md-5 py-sm-4 py-3" style="display:none;" id="imgLoadAll1">
+
+        <div class="col-lg-8 col-md-12" style="padding-bottom:20px !important; margin: auto">
+
+            @using (Html.BeginForm("Complaints", "Contactus", FormMethod.Post, new { id = "complianform" }))
+            {
+                <input type="text" name="Name" placeholder="Your Name" required="required">
+                <input type="email" name="Email" placeholder="Your Email" required="required">
+                <input style="width: 100%;
+        padding: 12px;
+        border: 1px solid #ccc;
+        margin-top: 6px;
+        margin-bottom: 0px;
+        resize: vertical;
+        background-color: #2F2E2E;
+        text-transform:uppercase;
+        color: #ffffff;" type="number" name="PhoneNumber" placeholder="Your Phone Number" >
+                <input type="text" name="Business" placeholder="Complaint Subject" required="required">
+                <input type="text" name="Subject" placeholder="Details of Complaint" required="required">
+                <textarea id="subject" name="Message" placeholder="MESSAGE*" style="height:100px"></textarea>
+                  <input type="hidden" name="Token2" id="input_token" required="required"/>
+                <input type="button" value="Get in touch" id="btn-submit" class="col-lg-12 col-md-12"><br /><br />
+                <p style="color: red; text-align:center" name=ErrorMessage>@TempData["ErrorMessage"] </p>
+            }
+
+        
+</div>
+
+
+<button data-toggle="modal" id="contactok" data-target="#contactus" style="display:none" [hidden]="true"></button>
+
+<div id="contactus" class="modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div style="background: linear-gradient(#103f56, #094868, #00527c, #066f9e) !important;" class="modal-header">
+                <h4 style="color:#ffffff" class="modal-title">IDAS says:</h4>
+            </div>
+            <div class="modal-body">Thank you for Contacting Us.</div>
+            <div class="modal-footer">
+                <button type="button" href="home" class="btn btn-accent" data-dismiss="modal">Ok</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<!-- //Solutions -->
+
+
+
+<div class="gap"></div>
+
+<script src="~/web/js/jquery-2.2.3.min.js"></script>
+<script src="https://www.google.com/recaptcha/api.js?render=6LdXslgfAAAAANQXb1-P3qXQWUU7zmiXFFPpKynM"></script>
+<script type="text/javascript">
+    const form  = document.getElementById('complianform');
+
+    $(window).on("load", function () {
+        $('#imgLoadAll').show();
+        $('#imgLoadAll1').show();
+    })
+
+    $(window).on("load", function () {
+        if ('@(TempData["value"])' != null && '@(TempData["value"])' != "") {
+            if ('@(TempData["value"])'.toUpperCase() == "SAVED SUCCESSFULLY") {
+                document.getElementById('contactok').click();
+            }
+        }
+    })
+
+    document.getElementById("btn-submit").addEventListener("click", (e)=>{
+     e.preventDefault();
+     grecaptcha.ready(function() {
+      grecaptcha.execute('6LdXslgfAAAAANQXb1-P3qXQWUU7zmiXFFPpKynM', {action:'complaints'}).then(function(token) {
+        console.log(token)   
+        $('#input_token').val(token);
+            form.submit();
+      });
+    });
+  }).click();
+    
+ 
+</script>

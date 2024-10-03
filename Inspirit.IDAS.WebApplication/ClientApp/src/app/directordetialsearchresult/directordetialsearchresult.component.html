@@ -1,0 +1,271 @@
+<div class="modal-content">
+
+  <div class="modal-header" *ngIf="directors" style=" background:linear-gradient(#103f56, #094868, #00527c, #066f9e) !important;">
+    <h5 class="modal-title" style="color:#ffffff!important">DIRECTOR INFORMATION of: {{directors.fullName}} {{directors.surname}} [{{directors.idNumber}}]</h5>
+    <button type="button" class="close" data-dismiss="modal" style="color:#ffffff!important" (click)="close()" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+
+
+
+  <div class="modal-body" *ngIf="directors">
+    <div class="m-scrollable" data-scrollbar-shown="true" data-scrollable="true" data-height="200">
+      <form class="m-form m-form--label-align-right" style="background-color:#f2f3f8!important;padding:12px;">
+        <div class="m-portlet__body" style="background-color:#ffffff;padding:12px;border:1px solid #b7b5b5">
+          <div><h6>PERSONAL INFORMATION</h6></div>
+          <div class="row" style="height:8px;background-color:#A11E21;margin:0px !important;width:100%;"></div>
+          <div class="m-form__section m-form__section--first">
+            <div class="form-group m-form__group row">
+              <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 name">
+                Appointment Date:
+              </div>
+              <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 value">
+                {{directors.appointmentDate| date:'dd-MM-yyyy'}}
+              </div>
+              <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 name">
+                Director Status Date:
+              </div>
+              <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 value">
+                {{directors.directorStatusDate | date:'dd-MM-yyyy'}}
+              </div>
+            </div>
+            <div class="form-group m-form__group row">
+              <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 name">
+                Initials:
+              </div>
+              <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 value">
+                {{directors.firstInitial}}{{directors.secondInitial}}
+              </div>
+              <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 name">
+                Birth Date:
+              </div>
+              <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 value">
+                {{directors.birthDate| date:'dd-MM-yyyy'}}
+              </div>
+            </div>
+            <div *ngIf="directors.surnamePrevious != null" class="form-group m-form__group row">
+              <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 name">
+                Surname Previous:
+              </div>
+              <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 value">
+                {{directors.surnamePrevious}}
+              </div>
+              </div>
+              <div class="form-group m-form__group row">
+                <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 name">
+                  Is RSA Resident Y/N:
+                </div>
+                <div *ngIf="directors.isRSAResidentYN == 0 || directors.isRSAResidentYN == 'NO'" class="col-lg-3 col-md-6 col-sm-12 col-xs-12 value">
+                  NO
+                </div>
+                <div *ngIf="directors.isRSAResidentYN == 1  || directors.isRSAResidentYN == 'YES'" class="col-lg-3 col-md-6 col-sm-12 col-xs-12 value">
+                  YES
+                </div>
+                <div *ngIf="directors.isRSAResidentYN == null " class="col-lg-3 col-md-6 col-sm-12 col-xs-12 value">
+                  UnKnown
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 name">
+                  Register Number:
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 value">
+                  {{directors.registerNo}}
+                </div>
+              </div>
+              <div class="form-group m-form__group row">
+                <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 name">
+                  Trustee OF:
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 value">
+                  {{directors.trusteeOf}}
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 name">
+                  Member Size:
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 value">
+                  {{directors.memberSize}}
+                </div>
+              </div>
+              <div class="form-group m-form__group row">
+                <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 name">
+                  Member Control Perc:
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 value">
+                  {{directors.memberControlPerc}}
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 name">
+                  Director Set Date:
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 value">
+                  {{directors.directorSetDate| date:'dd-MM-yyyy'}}
+                </div>
+              </div>
+              <div class="form-group m-form__group row">
+                <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 name">
+                  Profession:
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 value">
+                  {{directors.profession}}
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 name">
+                  Estate Trust NO:
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 value">
+                  {{directors.estate}}
+                </div>
+              </div>
+
+              <div class="form-group m-form__group row">
+                <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 name">
+                  Director Status Code:
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 value">
+                  {{directors.directorStatusCode}}
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 name">
+                  Director Type Code:
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 value">
+                  {{directors.directorTypeCode}}
+                </div>
+              </div>
+              <div class="form-group m-form__group row">
+                <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 name">
+                  Director Designation Code:
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 value">
+                  {{directors.directorDesignationCode}}
+                </div>
+              </div>
+            </div>
+          </div>
+
+        <div class="row" style="height:20px;background-color:#f2f3f8!important;margin:0px !important;width:100%;"></div>
+        <div class="m-portlet__body" style="background-color:#ffffff;padding:12px;border:1px solid #b7b5b5">
+          <div><h6 style="color:#2b2c3a">LAST UPDATED</h6></div>
+          <div class="row" style="height:6px;background-color:#A11E21;margin:0px !important;width:100%;"></div>
+          <div class="form-group m-form__group row">
+            <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 name">
+              Created On Date:
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 value">
+              {{directors.createdOnDate| date:'dd-MM-yyyy'}}
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 name">
+              Last Updated Date:
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 value">
+              {{directors.lastUpdatedDate| date:'dd-MM-yyyy'}}
+            </div>
+          </div>
+        </div>
+
+        <div class="row" style="height:20px;background-color:#f2f3f8!important;margin:0px !important;width:100%;"></div>
+        <div *ngIf="addressinfo" class="m-portlet__body" style="background-color:#ffffff;padding:12px;border:1px solid #b7b5b5">
+          <div><h6>DIRECTOR ADDRESS</h6></div>
+          <div class="row" style="height:6px;margin:0px !important;width:100%;background-color:#A11E21"></div>
+          <div style="padding-top:10px" class="table-responsive">
+            <table datatable [dtOptions]="dtOptions" class="table table-striped">
+              <thead style="background-color:#bfbaba">
+                <tr>
+                  <th>Type</th>
+                  <th class="fulladdress">Full Address</th>
+                  <th> Last Updated Date</th>
+                  <th>Created On Date</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let address of directors.directoraddresses">
+                  <td *ngIf="address.addressTypeInd == 'Residential'" data-title="Residential Address"><div style="display:none">{{address.addressTypeInd}}</div><img style="width:30px" src="../../assets/demo/demo2/media/img/Icons/Home-Address.png" /></td>
+                  <td *ngIf="address.addressTypeInd == 'Postal'" data-title="Postal Address"><div style="display:none">{{address.addressTypeInd}}</div><img style="width:30px" src="../../assets/demo/demo2/media/img/Icons/Postal-Address.png" /></td>
+                  <td *ngIf="address.addressTypeInd == 'Business'"  data-title="Business Address"><div style="display:none">{{address.addressTypeInd}}</div><img style="width:30px" src="../../assets/demo/demo2/media/img/Icons/Work-Address.png" /></td>
+                  <td *ngIf="address.addressTypeInd == null" data-title="UnKnown Address">{{null}}</td>
+                  <td class="fulladdress">{{address.directorFullAddress}}</td>
+                  <td>{{address.createdOnDate |date:'yyyy-MM-dd'}}</td>
+                  <td>{{address.lastUpdatedDate |date:'yyyy-MM-dd'}}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="row" style="height:20px;background-color:#f2f3f8!important;margin:0px !important;width:100%;"></div>
+        <div *ngIf="contactinfo" class="m-portlet__body" style="background-color:#ffffff;padding:12px;border:1px solid #b7b5b5">
+
+          <div class="table-responsive">
+            <h5>DIRECTOR TELEPHONE</h5>
+            <div class="row" style="height:6px;background-color:#A11E21;margin:0px !important;width:100%;"></div>
+            <div style="padding-top:10px" class="table-responsive">
+              <table datatable [dtOptions]="dtOptions" class="table table-striped">
+                <thead style="background-color:#bfbaba">
+                  <tr>
+                    <th class="tablevalue">Type</th>
+                    <th class="tablevalue">Contact Number</th>
+                    <th class="tablevalue">Created on Date</th>
+                    <th class="tablevalue">Last updated Date</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let telephone of directors.directortelephones">
+                    <td *ngIf="telephone.telephoneTypeInd == 'Business Telephone Number'" data-title="Business Number"><div style="display:none">{{telephone.addressTypeInd}}</div><img style="width:30px" src="../../assets/demo/demo2/media/img/Icons/Work-Address.png" /></td>
+                    <td *ngIf="telephone.telephoneTypeInd == null" data-title="UnKnown Number">{{null}}</td>
+                    <td>{{telephone.directorTelephone}}</td>
+                    <td>{{telephone.createdOnDate |date:'yyyy-MM-dd'}}</td>
+                    <td>{{telephone.lastUpdatedDate |date:'yyyy-MM-dd'}}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<style>
+  .col-md-3 {
+    -webkit-box-flex: 0;
+    -ms-flex: 0 0 25%;
+    flex: 0 0 25%;
+    max-width: 25%;
+    font-size: 0.9rem;
+    font-weight: normal;
+    padding-top: 12px;
+    vertical-align: middle;
+  }
+
+  .m-form .m-form__group {
+    padding-top: 0px;
+    border-bottom: #b7b5b5 1px solid;
+  }
+
+  h6 {
+    font-size: 12px;
+    font-weight: bold;
+  }
+  [data-title]:hover:after {
+    opacity: 1;
+    transition: all 0.1s ease 0.5s;
+    visibility: visible;
+  }
+
+  [data-title]:after {
+    content: attr(data-title);
+    background-color: #ffffff !important;
+    color: #094868 !important;
+    font-size: 12px !important;
+    position: absolute;
+    padding: 2px 4px 2px 4px;
+    margin-left: 15px !important;
+    margin-top: 15px !important;
+    white-space: nowrap;
+    opacity: 0;
+    border: 1px solid #111111;
+    z-index: 99999;
+    visibility: hidden;
+  }
+
+  [data-title] {
+    position: relative;
+  }
+</style>

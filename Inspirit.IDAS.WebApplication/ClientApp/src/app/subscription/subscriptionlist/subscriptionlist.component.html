@@ -1,0 +1,111 @@
+<div class="m-grid__item m-grid__item--fluid m-grid m-grid--ver-desktop m-grid--desktop m-body">
+  <div class="m-grid__item m-grid__item--fluid m-wrapper">
+    <div class="m-subheader ">
+      <div class="d-flex align-items-center">
+        <div class="mr-auto">
+          <h3 class="m-subheader__title " style="font-size:14px !important">
+            Subscriptions
+          </h3>
+        </div>
+      </div>
+    </div>
+
+    <div *ngIf="loading==true" id="cover"> </div>
+
+    <div class="m-content">
+      <div class="row">
+        <div class="col-xl-12">
+          <div class="m-portlet">
+            <div class="m-portlet__body">
+              <div class="m-section">
+                <div class="m-section__content">
+                  <div class="table-responsive">
+                    <table datatable [dtOptions]="dtOptions" class="table table-striped"></table>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <button id="load" (click)="load()" style="display:none"></button>
+
+</div>
+
+<div id="myModel" class="modal fade">
+  <div class="modal-dialog" style="width:300px">
+    <div class="modal-content">
+      <div  style="background: linear-gradient(#103f56, #094868, #00527c, #066f9e) !important;" class="modal-header">
+        <h5 style="color:#ffffff" class="modal-title">Users</h5>
+        <button type="button" class="close" data-dismiss="modal"
+                aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="m-portlet__body">
+          <div class="table-responsive">
+            <table class="table table-hover table-bordered"
+                   [mfData]="users" #mfusers="mfDataTable"
+                   [mfRowsOnPage]="10">
+              <thead>
+                <tr>
+                  <th>User Name</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let user of mfusers.data">
+                  <td>
+                    <div class="input-group m-input-group">
+                      <label class="m-checkbox m-checkbox--single m-checkbox--state m-checkbox--state-primary">
+                        <input type="checkbox" name="{{user.customerUserId}}"
+                               [(ngModel)]="user.isActive" />
+                        <span></span>
+                      </label>
+                      <div class="input-group-prepend">
+                        <span> {{user.customerName}}</span>
+                      </div>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr style="text-align:right">
+                  <td colspan="1">
+                    <mfBootstrapPaginator></mfBootstrapPaginator>
+                  </td>
+                </tr>
+              </tfoot>
+            </table>
+          </div>
+        </div>
+      </div>
+      <div class="modal-header" style="justify-content:center">
+        <button style="background-color:#094868 !important;color:#ffffff" type="submit" data-dismiss="modal" (click)="save()"
+                class="btn btn-dark">
+          Save
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+<style>
+  #cover {
+    background: url("http://www.aveva.com/Images/ajax-loader.gif") no-repeat scroll center center;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    top: 0px;
+    left: 0px;
+    z-index:1;
+  }
+</style>

@@ -1,0 +1,129 @@
+17-07-2019 16:10:24
+Method Name:   Proforma Invoice
+The SMTP server requires a secure connection or the client was not authenticated. The server response was: 5.7.0 Must issue a STARTTLS command first. c23sm14984370pgj.62 - gsmtp
+17-07-2019 17:35:48
+Method Name:   Proforma Invoice
+The SMTP server requires a secure connection or the client was not authenticated. The server response was: 5.7.0 Must issue a STARTTLS command first. m9sm43943843pgr.24 - gsmtp
+17-07-2019 17:37:00
+Method Name:   Proforma Invoice
+The SMTP server requires a secure connection or the client was not authenticated. The server response was: 5.7.0 Must issue a STARTTLS command first. v18sm6195993pgl.87 - gsmtp
+17-07-2019 17:48:15
+Method Name:   Proforma Invoice
+The SMTP server requires a secure connection or the client was not authenticated. The server response was: 5.7.0 Must issue a STARTTLS command first. v185sm27664195pfb.14 - gsmtp
+17-07-2019 18:00:32
+Method Name:   Proforma Invoice
+The SMTP server requires a secure connection or the client was not authenticated. The server response was: 5.7.0 Must issue a STARTTLS command first. 22sm28640486pfu.179 - gsmtp
+17-07-2019 18:08:01
+Method Name:   Proforma Invoice
+The SMTP server requires a secure connection or the client was not authenticated. The server response was: 5.7.0 Must issue a STARTTLS command first. m9sm44330783pgr.24 - gsmtp
+17-07-2019 18:13:20
+Method Name:   Proforma Invoice
+The SMTP server requires a secure connection or the client was not authenticated. The server response was: 5.7.0 Must issue a STARTTLS command first. 143sm37456141pgc.6 - gsmtp
+17-07-2019 18:21:07
+Method Name:   Proforma Invoice
+The SMTP server requires a secure connection or the client was not authenticated. The server response was: 5.7.0 Must issue a STARTTLS command first. v3sm22627274pfm.188 - gsmtp
+17-07-2019 18:25:01
+Method Name:   Proforma Invoice
+The SMTP server requires a secure connection or the client was not authenticated. The server response was: 5.7.0 Must issue a STARTTLS command first. k186sm4852947pga.68 - gsmtp
+17-07-2019 18:46:42
+Method Name:   Proforma Invoice
+The SMTP server requires a secure connection or the client was not authenticated. The server response was: 5.7.0 Must issue a STARTTLS command first. 143sm37739574pgc.6 - gsmtp
+18-07-2019 16:51:14
+Method Name:   Tax Invoice
+The SMTP server requires a secure connection or the client was not authenticated. The server response was: 5.7.0 Must issue a STARTTLS command first. s11sm26455368pgv.13 - gsmtp
+25-07-2019 12:17:13
+Method Name:   Tax Invoice
+The SMTP server requires a secure connection or the client was not authenticated. The server response was: 5.7.0 Must issue a STARTTLS command first. 195sm83553823pfu.75 - gsmtp
+25-07-2019 13:46:39
+Method Name:   Tax Invoice
+The SMTP server requires a secure connection or the client was not authenticated. The server response was: 5.7.0 Must issue a STARTTLS command first. g6sm43056781pgh.64 - gsmtp
+21-08-2019 16:39:45
+Method Name:   Proforma Invoice
+The SMTP server requires a secure connection or the client was not authenticated. The server response was: 5.7.0 Must issue a STARTTLS command first. h195sm34822556pfe.20 - gsmtp
+21-08-2019 16:39:45
+Method Name:   Proforma Invoice
+The SMTP server requires a secure connection or the client was not authenticated. The server response was: 5.7.0 Must issue a STARTTLS command first. s125sm29771606pfc.133 - gsmtp
+21-08-2019 16:42:10
+Method Name:   Tax Invoice
+The SMTP server requires a secure connection or the client was not authenticated. The server response was: 5.7.0 Must issue a STARTTLS command first. b126sm10478793pfb.110 - gsmtp
+21-08-2019 16:42:12
+Method Name:   Tax Invoice
+The SMTP server requires a secure connection or the client was not authenticated. The server response was: 5.7.0 Must issue a STARTTLS command first. t9sm2799210pji.18 - gsmtp
+21-08-2019 16:42:12
+Method Name:   Tax Invoice
+The SMTP server requires a secure connection or the client was not authenticated. The server response was: 5.7.0 Must issue a STARTTLS command first. w6sm17794502pgg.2 - gsmtp
+21-08-2019 16:42:13
+Method Name:   Tax Invoice
+The SMTP server requires a secure connection or the client was not authenticated. The server response was: 5.7.0 Must issue a STARTTLS command first. n28sm25271895pgd.64 - gsmtp
+26-08-2019 14:56:49
+Method Name:   Proforma Invoice
+The SMTP server requires a secure connection or the client was not authenticated. The server response was: 5.7.0 Must issue a STARTTLS command first. w10sm9479821pjv.23 - gsmtp
+26-08-2019 14:59:22
+Method Name:   Proforma Invoice
+The SMTP server requires a secure connection or the client was not authenticated. The server response was: 5.7.0 Must issue a STARTTLS command first. l11sm11510437pgq.58 - gsmtp
+03-09-2019 17:28:40
+Method Name:   Proforma Invoice
+The SMTP server requires a secure connection or the client was not authenticated. The server response was: 5.7.0 Must issue a STARTTLS command first. s24sm20799040pgm.3 - gsmtp
+04-09-2019 17:36:01
+Method Name:   Proforma Invoice
+Could not find file 'D:\Projects\IDAS_TFS\Inspirit.IDAS\Inspirit.IDAS.Admin\wwwroot\ImagesforMail\ProformaInvoicePRO0000172.pdf'.
+05-09-2019 11:40:56
+Method Name:   Proforma Invoice
+The SMTP server requires a secure connection or the client was not authenticated. The server response was: 5.7.0 Must issue a STARTTLS command first. x20sm1346279pfp.120 - gsmtp
+09-09-2019 20:50:15
+Method Name:   Proforma Invoice
+The SMTP server requires a secure connection or the client was not authenticated. The server response was: 5.7.0 Must issue a STARTTLS command first. x20sm28995102pfp.120 - gsmtp
+09-09-2019 20:50:45
+Method Name:   Proforma Invoice
+The SMTP server requires a secure connection or the client was not authenticated. The server response was: 5.7.0 Must issue a STARTTLS command first. w134sm17487049pfd.4 - gsmtp
+09-09-2019 20:58:38
+Method Name:   Proforma Invoice
+The SMTP server requires a secure connection or the client was not authenticated. The server response was: 5.7.0 Must issue a STARTTLS command first. e189sm15705495pgc.15 - gsmtp
+09-09-2019 20:59:52
+Method Name:   Proforma Invoice
+The SMTP server requires a secure connection or the client was not authenticated. The server response was: 5.7.0 Must issue a STARTTLS command first. d6sm4135776pjs.20 - gsmtp
+10-09-2019 12:22:09
+Method Name:   Proforma Invoice
+The SMTP server requires a secure connection or the client was not authenticated. The server response was: 5.7.0 Must issue a STARTTLS command first. i74sm24937037pfe.28 - gsmtp
+2020/08/26 12:39:12 PM
+Method Name: Image log
+http://192.168.8.55:8085/AdminImageForMail/invoice1.png<p>Thank you for your business. It has been great working with you.&nbsp;</p><p>We have attached your Tax invoice for reference.&nbsp;</p><p>If you need our banking details, it is included in the attachment.&nbsp;</p><p>You can email or contact us for any clarifications.&nbsp;</p><p>Sincerely, IDAS</p><p><img   src="http://192.168.8.55:8085/AdminImageForMail/invoice1.png" style="width:100%;height:auto"  /></p>
+2020/08/26 12:39:12 PM
+Method Name:   Tax Invoice
+Mail Sent
+2020/08/26 12:45:10 PM
+Method Name: Image log
+http://192.168.8.55:8085/AdminImageForMail/invoice1.png<p>Thank you for your business. It has been great working with you.&nbsp;</p><p>We have attached your Tax invoice for reference.&nbsp;</p><p>If you need our banking details, it is included in the attachment.&nbsp;</p><p>You can email or contact us for any clarifications.&nbsp;</p><p>Sincerely, IDAS</p><p><img   src="http://192.168.8.55:8085/AdminImageForMail/invoice1.png" style="width:100%;height:auto"  /></p>
+2020/08/26 12:45:11 PM
+Method Name:   Tax Invoice
+Mail Sent
+2020/09/10 10:06:03 AM
+Method Name: Image log
+http://192.168.8.55:8085/AdminImageForMail/invoice1.png<p>Thank you for your business. It has been great working with you.&nbsp;</p><p>We have attached your Tax invoice for reference.&nbsp;</p><p>If you need our banking details, it is included in the attachment.&nbsp;</p><p>You can email or contact us for any clarifications.&nbsp;</p><p>Sincerely, IDAS</p><p><img   src="http://192.168.8.55:8085/AdminImageForMail/invoice1.png" style="width:100%;height:auto"  /></p>
+2020/09/10 10:06:04 AM
+Method Name:   Tax Invoice
+Mail Sent
+2020/09/10 1:59:20 PM
+Method Name: Image log
+http://192.168.8.55:8085/AdminImageForMail/invoice1.png<p>Thank you for your business. It has been great working with you.&nbsp;</p><p>We have attached your Tax invoice for reference.&nbsp;</p><p>If you need our banking details, it is included in the attachment.&nbsp;</p><p>You can email or contact us for any clarifications.&nbsp;</p><p>Sincerely, IDAS</p><p><img   src="http://192.168.8.55:8085/AdminImageForMail/invoice1.png" style="width:100%;height:auto"  /></p>
+2020/09/10 1:59:21 PM
+Method Name:   Proforma Invoice
+Mail Sent
+2020/09/10 2:07:44 PM
+Method Name: Image log
+http://192.168.8.55:8085/AdminImageForMail/invoice1.png<p>Thank you for your business. It has been great working with you.&nbsp;</p><p>We have attached your Tax invoice for reference.&nbsp;</p><p>If you need our banking details, it is included in the attachment.&nbsp;</p><p>You can email or contact us for any clarifications.&nbsp;</p><p>Sincerely, IDAS</p><p><img   src="http://192.168.8.55:8085/AdminImageForMail/invoice1.png" style="width:100%;height:auto"  /></p>
+2020/09/10 2:07:45 PM
+Method Name:   Tax Invoice
+Mail Sent
+2020/10/09 12:07:12 PM
+Method Name: Image log
+http://192.168.8.55:8085/AdminImageForMail/invoice1.png<p>Thank you for your business. It has been great working with you.&nbsp;</p><p>We have attached your Tax invoice for reference.&nbsp;</p><p>If you need our banking details, it is included in the attachment.&nbsp;</p><p>You can email or contact us for any clarifications.&nbsp;</p><p>Sincerely, IDAS</p><p><img   src="http://192.168.8.55:8085/AdminImageForMail/invoice1.png" style="width:100%;height:auto"  /></p>
+2020/10/09 12:07:13 PM
+Method Name:   Tax Invoice
+Mail Sent
+2022/04/06 1:41:26 PM
+Method Name: Image log
+http://192.168.8.55:8085/AdminImageForMail/Customer1.png<br />Greetings, <br /><p>Your application has been approved and we are so excited to have you join us!&nbsp;</p><p>Now you’re on board, you are about to discover more of what IDAS has to offer.</p><p>Now that you have signed-up, below is your sign-in detail.</p><p>Username: mbnzim@gmail.com</p><p>Password: W5HRNEJS12&nbsp;</p><p>Website: https://www.inspiritdata.co.za</p><p>Customer service is our middle name, so get in touch if you need anything relating to our product. Our contact details are below.</p><p>Welcome again…</p><p><img   src="http://192.168.8.55:8085/AdminImageForMail/Customer1.png" style="width:100%;height:auto"  /></p><br />Regards<br /><br />IDAS Team <br />
+2022/04/06 1:41:26 PM
+Method Name:   Oh hello there – Welcome to IDAS 
+Mail Sent

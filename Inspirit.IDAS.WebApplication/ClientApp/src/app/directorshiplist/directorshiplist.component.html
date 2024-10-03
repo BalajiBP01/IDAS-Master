@@ -1,0 +1,129 @@
+
+<div *ngIf="load==true" id="cover"></div>
+  <div *ngIf="loading==true" id="cover"></div>
+<div *ngIf="loading == false" class="m-portlet">
+  
+  <form  class="m-form m-form--label-align-right" style="padding:12px;background-color:#f2f3f8">
+
+
+    <div class="m-portlet__body" style="background-color:#ffffff;padding:12px;border:1px solid #000000">
+      <div class="m-section">
+
+        <div class="m-section__content">
+          <div class="table-responsive">
+            <table datatable [dtOptions]="dtOptions" class="table table-striped" *ngIf="pagename == 'profile' ">
+              <thead>
+                <tr>
+                  <th>Commercial Number</th>
+                  <th class="fulladdress">Commercial Name</th>
+                  <th class="fulladdress">Commercial Telephone</th>
+                  <th>Status</th>
+                  <th>Appointment Date</th>
+                  <th>Createdon Date</th>
+                  <th>Info</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let directorship of result ">
+                  <td>{{directorship.companyno}}</td>
+                  <td class="fulladdress"
+                      *ngIf="IsRestrictedCustomer == 0 && IsRestrictedCustomerUser == 0">
+                    <button class="btn btn-link" style="padding:0px;word-break: break-all;white-space: normal" (click)="searchcompany(directorship.companyid, directorship.companyname)">{{directorship.companyname}}</button>
+                  </td>
+                  <td class="fulladdress"
+                      *ngIf="IsRestrictedCustomer == 1 || IsRestrictedCustomerUser == 1">
+                    {{directorship.companyname}}
+                  </td>
+                  <td>{{directorship.commercialTelephoneNo}}</td>
+                  <td>{{directorship.directorStatusCode}}</td>
+                  <td>{{ directorship.appointmentDate | date:'yyyy-MM-dd'}}</td>
+                  <td>{{directorship.createdOnDate | date:'yyyy-MM-dd'}}</td>
+                  <td style="text-align:center"><img style="width:30px" (click)="showdetail(directorship.commDirId)" src="../../assets/demo/demo2/media/img/Icons/Information.png" /></td>
+                </tr>
+              </tbody>
+            </table>
+
+            <table datatable [dtOptions]="dtOptions" class="table table-striped" *ngIf="pagename == 'company'">
+              <thead>
+                <tr>
+                  <th class="fulladdress">ID Number</th>
+                  <th class="fulladdress">Full Name</th>
+                  <th class="tablevalue">Status</th>
+                  <th class="tablevalue">Appointment Date</th>
+                  <th class="tablevalue">Createdon Date</th>
+                  <th class="tablevalue">Info</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let directorship of result">
+                  <td class="fulladdress"><button class="btn btn-link" style="padding:0px;word-break: break-all;white-space: normal" (click)="searchprofile(directorship.idNumber)">{{directorship.idNumber.substring(0, 6) + 'XXXX' + directorship.idNumber.substring(10, directorship.idNumber.length)}}</button></td>
+                  <td class="fulladdress">{{directorship.fullName}}</td>
+                  <td class="tablename">{{directorship.directorStatusCode}}</td>
+                  <td class="tablename">{{ directorship.appointmentDate | date:'yyyy-MM-dd'}}</td>
+                  <td class="tablename">{{directorship.createdOnDate | date:'yyyy-MM-dd'}}</td>
+                  <td style="text-align:center"><img style="width:30px" (click)="showdetail(directorship.commDirId)" src="../../assets/demo/demo2/media/img/Icons/Information.png" /></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      <!--end::Section-->
+    </div>
+  </form>
+  <!--end::Form-->
+</div>
+<!--end::Portlet-->
+<div id="data" class="modal" tabindex="-1" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div style="background: linear-gradient(#103f56, #094868, #00527c, #066f9e) !important;" class="modal-header">
+        <h4 style="color:#ffffff" class="modal-title">IDAS says:</h4>
+      </div>
+      <div class="modal-body">No Data available.</div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-accent" data-dismiss="modal">Ok</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<button data-toggle="modal" id="nopoints" data-target="#point" [hidden]="true"></button>
+
+
+<div id="data1" class="modal" tabindex="-1" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div style="background: linear-gradient(#103f56, #094868, #00527c, #066f9e) !important;" class="modal-header">
+        <h4 style="color:#ffffff" class="modal-title">IDAS says:</h4>
+      </div>
+      <div class="modal-body">No Credits available.</div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-accent" data-dismiss="modal">Ok</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+<style>
+  .modal-footer {
+    justify-content: center !important;
+  }
+
+  #cover {
+    background: url("http://www.aveva.com/Images/ajax-loader.gif") no-repeat scroll center center;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    top: 0px;
+    left: 0px;
+    z-index:1;
+  }
+</style>

@@ -1,0 +1,23 @@
+<div class="m-grid__item m-grid__item--fluid m-grid m-grid--ver-desktop m-grid--desktop m-grid--tablet-and-mobile m-grid--hor-tablet-and-mobile m-login m-login--1 m-login--signin justify-content-center">
+  <div class="m-portlet">
+    <div class="m-portlet__head">
+      <div class="m-portlet__head-caption">
+        <div class="m-portlet__head-title">
+          <button (click)="back()" type="submit" class="btn m-btn--md btn-dark">Back</button>
+        </div>
+      </div>
+    </div>
+    <form class="m-form m-form--fit m-form--label-align-right">
+      <div class="m-portlet__body">
+        <div class="form-group m-form__group row">
+          <div style="height: 50%;overflow:scroll">
+            <pdf-viewer [src]="src"
+                        [show-all]="false"
+                        [page]="page"
+                        (after-load-complete)="afterLoadComplete($event)"></pdf-viewer>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

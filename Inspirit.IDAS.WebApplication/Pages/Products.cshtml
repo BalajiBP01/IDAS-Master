@@ -1,0 +1,448 @@
+﻿@page
+@{
+    Layout = "_Layout2";
+}
+<head>
+    <title>Online Debtor Tracing | IDAS, South Africa</title>
+    <meta name="description" content="We offer an online debtor tracing tool specializing in debtor tracing and batch tracing enabling you to have real time access on multiple search inputs.">
+</head>
+<style>
+
+    .img-fluid1 {
+        width: 100%;
+        max-width: 65%;
+        height: auto;
+    }
+
+    .navbar-brand {
+        display: inline-block;
+        padding-top: .3125rem;
+        padding-bottom: .3125rem;
+        margin-right: 0rem;
+        margin-left: 0rem;
+        font-size: 1.25rem;
+        line-height: inherit;
+        white-space: nowrap;
+    }
+
+    .table-txt-grid h4 {
+        padding-top: 5px !important;
+        padding-bottom: 5px !important;
+        font-size: 17px;
+    }
+
+    label {
+        position: relative;
+        /*left: 50%;
+        top: 50%;*/
+        width: 300px;
+        height: 375px;
+        z-index: 2;
+        perspective: 1000px;
+        -webkit-perspective: 1000px;
+        cursor: pointer;
+    }
+
+    .card {
+        width: 100%;
+        height: 100%;
+        transform: rotateX(0deg);
+        -webkit-transform: rotateX(0deg);
+        transform-style: preserve-3d;
+        -webkit-transform-style: preserve-3d;
+        transition: all 1.0s linear;
+        border: none !important;
+        border-radius: 0rem !important;
+        position: absolute;
+        background-color: transparent !important;
+    }
+
+        .card div {
+            width: 100%;
+            height: 100%;
+            transform-style: preserve-3d;
+            -webkit-transform-style: preserve-3d;
+            -webkit-backface-visibility: hidden !important;
+            backface-visibility: hidden !important;
+            -moz-backface-visibility: hidden !important;
+        }
+
+        .card .back {
+            transform: rotateX(180deg);
+            -webkit-transition: all 1.0s linear;
+            transition: all 1.0s linear;
+            transform-style: preserve-3d;
+            display: block;
+            box-sizing: border-box;
+            text-align: center;
+            position: absolute;
+            -webkit-transform: rotateX(180deg);
+            -webkit-transform-style: preserve-3d;
+            -webkit-backface-visibility: visible !important;
+            backface-visibility: visible !important;
+            -moz-backface-visibility: visible !important;
+        }
+
+
+
+    label:checked .cardClick {
+        -webkit-transform: rotateX(180deg);
+        transform: rotateX(180deg);
+    }
+
+    label:hover .card {
+        -webkit-transform: rotateX(180deg);
+        transform: rotateX(180deg);
+    }
+
+    input {
+        display: none;
+    }
+</style>
+
+
+<div align="center" class="header_block container-fluid">
+    <div align="center" class="header-w3layouts" data-role="header" data-position="fixed">
+        <div align="center" class="container">
+            <!--navigation section -->
+            <nav align="center" class="navbar navbar-expand-lg navbar-light">
+                <div class="hedder-up ">
+
+                    <a class="navbar-brand" href="">
+                        @*<img src="~/web/images/IDAS-Authorised-Agent-Website-Logo.png" />*@
+                        <img src="~/web/images/IDAS Authorised Logo 11-03.svg" width="320" height="140" />
+                    </a>
+                </div>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link" href="Home">Home <span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item active">
+                            <a href="Products" class="nav-link">Products</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="Solutions" class="nav-link">Solutions</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="AboutUs" class="nav-link">About Us</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="@Url.Action(" NewsBlog", "News" )" class="nav-link">News</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="Complaints" class="nav-link">Complaints</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="ContactUs" class="nav-link">Contact Us</a>
+                        </li>
+                        <li><a class="btn btn-block click-me2" style="background-color: #0F3E55;color: #ffffff;" href="login">SIGN IN</a></li>&nbsp;&nbsp;
+                        @*<li><a class="btn btn-block click-me2" style="background-color: #0F3E55;color: #ffffff;" href="usersignup">REGISTER</a></li>*@
+                    </ul>
+                </div>
+            </nav>
+            <div class="clearfix"> </div>
+        </div>
+    </div>
+</div>
+<!-- //banner -->
+
+
+<div class="slider text-center">
+    <div class="callbacks_container">
+        <ul class="rslides" id="slider4">
+            <li style="height:320px;">
+                <div class="slider-img four-img" style="height: 381px;background-color: rgba(0,0,0,0.5); display:none;" id="imgLoadAll">
+                    <div class="container-fluid" id="layer">
+                        <div class="slider-info" align="center" style="padding-top: 146px;">
+                            <h3 class="heading text-uppercase" align="center" style="color: #ffffff;
+    text-align: center;
+    font-weight: bold;
+    border-bottom: 2px solid #ffffff;
+    border-top: 2px solid #ffffff;
+    width: 170px;
+    margin-bottom: -37px;
+    ">
+                                PRODUCTS
+                            </h3>
+                        </div>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <div class="clearfix"></div>
+</div>
+
+
+
+
+<!-- //services -->
+<!-- Solutions -->
+
+
+<div align="center" width="1366px" class="container col-lg-12 col-12 mt-lg-0 mt-5 team_grid1" style="margin-top: 3% !important;margin-bottom: 3% !important;">
+    <h3 class="heading" style="color: #000000;text-align: center;font-weight: bold;font-size: 19px;">Online Trace & Batch Trace</h3>
+</div>
+
+<div class="gap"></div>
+
+<div width="1366px" class="container" id="imgLoadAll">
+    <div class="row">
+        <div class="col-lg-2 col-md-12 col-xs-12" id="float-down">
+
+        </div>
+        <div class="col-lg-4 col-md-12 col-xs-12 container" id="imgLoadAll">
+
+            <label>
+                <input type="checkbox" />
+
+                <div class="card" id="cardId">
+
+                    <div class="front">
+                        <div align="center">
+                            <div align="center" class="w3ls-bottom-new">
+                                <div align="center" class="table-txt-grid">
+                                    <img src="~/web/images/Online-Trace-Icon.png" class="img-fluid" alt="" style="width: 75px;height: auto;">
+                                    <h4>ONLINE TRACE</h4>
+                                    <p style="color: #ffffff;margin-top:10px; font-size: 12px;">Enables you to have REAL TIME access on multiple search inputs offering detailed information on either an <br>individual/company</p>
+                                    <h4 style="background-color: #79A5BA; margin-bottom:10px;margin: 10px -16px; text-decoration: none;"> <span class="sup">from</span><br>50c <span class="sup">to</span> R1.30<br><span class="sup">per trace based on a sliding scale</span></h4>
+                                    <a id="cardIdLink"><img src="~/web/images/arrow.png" class="img-fluid" alt="" style="width: 25px;height: auto;margin-top:8px;"></a>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="back">
+                        <div align="center">
+                            <div align="center" class="w3ls-bottom-new">
+                                <div align="center" class="table-txt-grid">
+                                    <img src="~/web/images/Online-Trace-Icon.png" class="img-fluid" alt="" style="width: 75px;height: auto;">
+                                    <h4>ONLINE TRACE</h4>
+
+                                    <p style="color: #ffffff;margin-top:10px;font-size: 12px;">Web based/ Mobile enabled application that provides REAL TIME access to a variety of data that aids with the locating of dormant accounts, tracking absconded debtors or confirming employment details. This is achieved with a ‘Omnibar’ that combines all search criteria as one input with results that loads instantly.</p>
+                                @*    <div class="more mt-lg-5 mt-md-4 mt-sm-4 mt-3 p-2" style="margin-top: 20px !important; margin-bottom: 30px !important;margin-left: 0px; display:-webkit-box; width:110px; height:30px;">
+                                        <a href="usersignup">SIGN UP</a>
+                                    </div>*@
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </label>
+
+        </div>
+        <div class="col-lg-4 col-md-12 col-xs-12" id="float-down">
+            <label>
+                <input type="checkbox" />
+                <div class="card" id="cardId1">
+                    <div class="front">
+                        <div align="center">
+                            <div align="center" class="w3ls-bottom-new">
+                                <div align="center" class="table-txt-grid">
+                                    <img src="~/web/images/Batch-Trace-Icon.png" class="img-fluid" alt="" style="width: 75px;height: auto;">
+                                    <h4>BATCH TRACE</h4>
+                                    <p style="color: #ffffff;margin-top:10px;font-size: 12px;">Enables you to perform REAL TIME, high volume processing to trace multiple individuals. Trace from 100 to 100,000 records</p>
+                                    <h4 style="background-color: #79A5BA; margin-bottom:10px; margin: 10px -16px; text-decoration: none;"><span class="sup">Monthly from</span><br>R1500<br><span class="sup">or Pay per search for less that R1</span></h4>
+
+                                    <a id="cardIdLink1"><img src="~/web/images/arrow.png" class="img-fluid" alt="" style="width: 25px;height: auto; margin-top:8px;"></a>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="back">
+                        <div align="center">
+                            <div align="center" class="w3ls-bottom-new">
+                                <div align="center" class="table-txt-grid">
+                                    <img src="~/web/images/Batch-Trace-Icon.png" class="img-fluid" alt="" style="width: 75px;height: auto;">
+                                    <h4>BATCH TRACE</h4>
+                                    <p style="color: #ffffff;margin-top:10px;font-size: 12px;padding: 0px 0px 33px 0px !important;">Service that provides processing of large volumes of data by uploading an Excel/ CSV file. The differentiator is out batch tracing tool is REAL TIME. No need to wait between 2 to 5 days for the results, you can access it online with ID number as an input.</p>
+                                 @*   <div class="more mt-lg-5 mt-md-4 mt-sm-4 mt-3 p-2" style="margin-top: 20px !important; margin-bottom: 30px !important;margin-left: 0px; display:-webkit-box; width:110px; height:30px;">
+                                        <a href="usersignup">SIGN UP</a>
+                                    </div>*@
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </label>
+        </div>
+
+        <div class="col-lg-2 col-md-12 col-xs-12" id="float-down">
+
+        </div>
+        @*<div class="col-lg-4 col-md-12 col-xs-12" id="float-down">
+            <label>
+                <input type="checkbox" />
+                <div class="card" id="cardId2">
+                    <div class="front">
+                        <div align="center">
+                            <div align="center" class="w3ls-bottom-new">
+                                <div align="center" class="table-txt-grid">
+                                    <img src="~/web/images/Leads-Generation-Icon.png" class="img-fluid" alt="" style="width: 75px;height: auto;">
+                                    <h4>LEADS GENERATION</h4>
+                                    <p style="color: #ffffff;margin-top:10px;font-size: 12px;">Enables you to generate marketing leads, suitable for high volume users. Just select the leads segment Online, preview your selection, click and download</p>
+                                    <h4 style="background-color: #79A5BA;  margin-bottom:10px;margin: 10px -16px; text-decoration: none;"><span class="sup">from</span><br>50c<br><span class="sup">pricing based on dynamic  lead selection</span></h4>
+                                    <a id="cardIdLink2"><img src="~/web/images/arrow.png" class="img-fluid" alt="" style="width: 25px;height: auto;margin-top:8px;"></a>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="back">
+                        <div align="center">
+                            <div align="center" class="w3ls-bottom-new">
+                                <div align="center" class="table-txt-grid">
+                                    <img src="~/web/images/Leads-Generation-Icon.png" class="img-fluid" alt="" style="width: 75px;height: auto;">
+                                    <h4>LEADS GENERATION</h4>
+                                    <p style="color: #ffffff;margin-top:10px;font-size: 12px;padding: 0px 0px 33px 0px !important;">Data Analytics as a Service: Generate marketing leads using an online, Realtime segmentation tool. Extract specific target market categories online and dynamically adjust the selection criteria to the needs of marketing campaign.</p>
+                                    <div class="more mt-lg-5 mt-md-4 mt-sm-4 mt-3 p-2" style="margin-top: 20px !important; margin-bottom: 30px !important;margin-left: 0px; display:-webkit-box; width:110px; height:30px;">
+                                        <a href="usersignup">SIGN UP</a>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </label>
+        </div>*@
+        <!-- flip effect end -->
+    </div>
+</div>
+
+
+<!-- //Solutions -->
+
+<div class="gap"></div>
+@*<div class="about-color py-lg-4 py-md-3 py-sm-3 py-3" style="margin-top: 35px !important;">
+    <div class="container-fluid py-lg-5 py-md-5 py-sm-4 py-3">
+        <div class="row">
+            <div align="center" class="container-fluid" style="background-color:#C71212; color:#ffffff;">
+                <div class="row">
+                    <div class="col-lg-12"><h5 style="padding-top: 46px;font-size: 15px !important;font-weight: bold;">IDAS offers a tracing tool, batch tracing & credit bureau services</h5></div>
+
+                    <div align="center" class="container-fluid" style="background-color:#C71212; color:#ffffff;">
+                        <div class="row">
+                            <div class="col-lg-3 hide-me"></div>
+                            <div class="col-lg-12">
+                                <a href="usersignup"><button id="clickBTN" class="btn btn-block click-me1" style="background-color: #ffffff;color: #C71212;margin-top: 22px; margin-bottom: 30px;">SIGN UP</button></a>
+                            </div>*@
+                            @*<div class="col-lg-2"><h5 style="margin-top:28px; margin-bottom: 30px;">OR</h5></div>*@
+                            @*<div class="col-lg-2">
+                                <button type="submit" id="clickBTN1" class="btn btn-block click-me1" style="background-color: #ffffff;color: #C71212;margin-top: 22px; margin-bottom: 30px;" data-toggle="modal"
+                                        aria-pressed="false" data-target="#exampleModalFreeTrail">
+                                    FREE TRIAL
+                                </button>
+
+                                <div class="modal fade" id="exampleModalFreeTrail" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel1" aria-hidden="true">
+                                    <div class="modal-dialog" role="document" style="margin-top: 224px;">
+                                        <div class="modal-content">
+                                            <div class="modal-header" style="background:linear-gradient(#103f56, #094868, #00527c, #066f9e) !important;">
+                                                <h5 class="modal-title text-uppercase" id="exampleModalLabel1">Register Here</h5>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+
+                                                @using (Html.BeginForm("TrailUser", "TrailUser", FormMethod.Post))
+                                                {
+
+                                                <div class="form-group">
+
+                                                    <input type="text" class="form-control" placeholder="First Name" name="FirstName" required="required">
+                                                </div>
+                                                <div class="form-group">
+
+                                                    <input type="text" class="form-control" placeholder="Surname" name="Surname" required="required">
+                                                </div>
+                                                <div class="form-group">
+
+                                                    <input type="email" class="form-control" placeholder="Email id" name="EmailAddress" required="required">
+                                                </div>
+                                                <div class="form-group">
+
+                                                    <input type="text" class="form-control" placeholder="Mobile Number" name="MobileNumber" required="required">
+                                                </div>
+                                                <div class="form-group">
+
+                                                    <input type="text" class="form-control" placeholder="Business register number" name="BusinessRegisterNumber" required="required">
+                                                </div>
+                                                <div class="right-w3l mt-4 mb-3">
+                                                    <input type="submit" class="form-control" value="Start Free Trial">
+                                                </div>
+                                                }
+
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>*@
+    @*                        <div class="col-lg-3 hide-me"></div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>*@
+
+<div class="gap"></div>
+
+<script src="~/web/js/jquery-2.2.3.min.js"></script>
+<script type="text/javascript">
+    $(window).on("load", function () {
+        $('#imgLoadAll').show();
+
+    })
+
+    $(document).ready(function () {
+
+        var isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+        if (!isMobile) {
+
+            $('#cardIdLink').click(function () {
+                $("#cardIdLink").attr('card', 'cardClick');
+            })
+
+            $('#cardId').click(function () {
+                $("#cardId").attr('card', 'cardClick');
+            })
+
+            $('#cardIdLink1').click(function () {
+                $("#cardIdLink1").attr('card', 'cardClick');
+            })
+
+            $('#cardId1').click(function () {
+                $("#cardId1").attr('card', 'cardClick');
+            })
+
+            $('#cardIdLink2').click(function () {
+                $("#cardIdLink2").attr('card', 'cardClick');
+            })
+
+            $('#cardId2').click(function () {
+                $("#cardId2").attr('card', 'cardClick');
+            })
+        }
+    })
+</script>
+
+
+
+

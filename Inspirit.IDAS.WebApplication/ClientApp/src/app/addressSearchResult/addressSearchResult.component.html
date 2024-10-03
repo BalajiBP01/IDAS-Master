@@ -1,0 +1,158 @@
+<div class="m-grid__item m-grid__item--fluid m-grid m-grid--ver-desktop m-grid--desktop m-body">
+  <div class="m-grid__item m-grid__item--fluid m-wrapper">
+
+    <div *ngIf="loading==true" id="cover"></div>
+
+    <div class="m-subheader " style="padding-top:12px !important">
+      <div class="d-flex align-items-center">
+        <div class="mr-auto">
+          <h3 class="m-subheader__title">
+            <button style="padding:0px;font-size:14px!important; width:78px !important; color: #016fa2 !important;text-transform:uppercase; font-weight: 600 !important;font-family: Avenir !important;" class="btn btn-link" (click)="list()">Tracing</button>
+            <i style=" padding: 6px 5px 0px 5px !important;" class="fa fa-angle-right"></i>
+            Address Search Results
+            <!--<button style="font-size:14px!important; width:78px !important; color: #016fa2 !important; text-transform:uppercase; font-weight : 600 !important;font-family: Avenir !important;" class="btn btn-link" (click)="tracing()">Tracing</button>-->
+          </h3>
+        </div>
+        <!--<div class="d-flex align-items-center">
+          <div class="mr-auto">
+            <h3 class="m-subheader__title">
+              <button style="padding:0px;font-size:14px!important; width:78px !important; color: #016fa2 !important;text-transform:uppercase; font-weight: 600 !important;font-family: Avenir !important;" class="btn btn-link" (click)="list()">Tracing</button>
+              <i style=" padding: 6px 5px 0px 5px !important;" class="fa fa-angle-right"></i>
+              Consumer Search Results Test G
+            </h3>
+          </div>
+          <div class="m-portlet__head-tools">
+            <ul class="nav nav-pills nav-pills--brand m-nav-pills--align-right m-nav-pills--btn-pill m-nav-pills--btn-sm" role="tablist">
+              <li class="nav-item m-tabs__item">
+                <p style="color:#000000!important;margin:0px!important">Time Taken: {{timetaken}} seconds</p>
+              </li>
+            </ul>
+          </div>
+        </div>-->
+        <div class="m-portlet__head-tools">
+          <ul class="nav nav-pills nav-pills--brand m-nav-pills--align-right m-nav-pills--btn-pill m-nav-pills--btn-sm" role="tablist">
+            <li class="nav-item m-tabs__item">
+              <p style="color:#000000!important;margin:0px!important">Time Taken: {{timeTaken}} seconds</p>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="m-content">
+      <div class="row">
+        <div class="col-xl-12">
+          <div class="m-portlet">
+            <div class="m-portlet__body">
+              <div class="m-section">
+                <div class="m-section__content">
+                  <div class="table-responsive">
+                    <table datatable [dtOptions]="dtOptions" class="table table-striped"></table>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<button id="load" (click)="load()" style="display:none"></button>
+
+<button data-toggle="modal" id="addressdet" data-target="#add" [hidden]="true"></button>
+
+<div id="add" class="modal" tabindex="-1" role="dialog">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header" style=" background: linear-gradient(#103f56, #094868, #00527c, #066f9e) !important;">
+        <h5 class="modal-title" style="color:#ffffff!important">ADDRESS INFORMATION</h5>
+        <button type="button" class="close" data-dismiss="modal" style="color:#ffffff!important" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
+      <div class="modal-body">
+        <div class="m-scrollable" data-scrollbar-shown="true" data-scrollable="true" data-height="200">
+          <form class="m-form m-form--label-align-right" style="background-color:#f2f3f8!important;padding:12px;">
+            <div class="m-portlet__body" style="background-color:#ffffff;padding:12px;border:1px solid #b7b5b5">
+              <div class="row">
+                <div class="col-lg-12 col-md-12">
+                  <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3464.505264825544!2d31.067571715107846!3d-29.734086981996278!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1ef705fa9376950f%3A0x680cc41d167701ed!2sInspirit+Consulting+Group!5e0!3m2!1sen!2sin!4v1547624025092" width="100%" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+
+  #cover {
+    background: url("http://www.aveva.com/Images/ajax-loader.gif") no-repeat scroll center center;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    top: 0px;
+    left: 0px;
+    z-index: 1;
+  }
+  .place-card place-card-large {
+    display: none !important;
+  }
+  .gm-style .place-card-large{
+    display:none  !important;
+  }
+  input {
+    padding: 10px;
+    font-size: 12px !important;
+    border-color: #bbbbbb !important;
+    width: 80%;
+  }
+
+    input::placeholder {
+      color: #A11E21;
+      font-size: 12px !important;
+    }
+
+  [data-title]:hover:after {
+    opacity: 1;
+    transition: all 0.1s ease 0.5s;
+    visibility: visible;
+  }
+
+  [data-title]:after {
+    content: attr(data-title);
+    background-color: #ffffff !important;
+    color: #094868 !important;
+    font-size: 12px !important;
+    position: absolute;
+    padding: 2px 4px 2px 4px;
+    margin-left: 15px !important;
+    margin-top: 15px !important;
+    white-space: nowrap;
+    opacity: 0;
+    border: 1px solid #111111;
+    z-index: 99999;
+    visibility: hidden;
+  }
+
+  [data-title] {
+    position: relative;
+  }
+</style>
+
+
+<script src="~/web/js/jquery-2.2.3.min.js"></script>
+<script type="text/javascript">
+  $(window).on("load", function () {
+    $('#imgLoadAll').show();
+
+  })
+</script>

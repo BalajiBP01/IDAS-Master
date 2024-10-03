@@ -1,0 +1,163 @@
+<div class="m-grid__item m-grid__item--fluid m-grid m-grid--ver-desktop m-grid--desktop m-body" style="margin-top: -90px !important;">
+  <div class="m-grid__item m-grid__item--fluid m-wrapper">
+
+    <div class="m-subheader">
+      <div class="d-flex align-items-center">
+        <div class="mr-auto">
+          <h3 class="m-subheader__title" style="
+                                                 color: #ffffff;
+                                                 font-size: 14px;
+                                                 padding: 5px 14px 3px 14px;
+                 background: linear-gradient(#103f56, #094868, #00527c, #066f9e) !important;">
+            Do Not Call Registry
+          </h3>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="m-content">
+      <div class="m-portlet">
+        <div class="m-portlet__body">
+          <div class="m-portlet__head">
+            <div class="m-portlet__head-caption">
+              <div class="m-portlet__head-title">
+                <h6 class="m-portlet__head-desc">
+                  Complete the below form if you would like to add yourself to the do not call register.<br />
+                  You will be notified by email confirming that you have been added to our do not call register
+                </h6>
+              </div>
+            </div>
+          </div>
+          <div class="m-portlet__body">
+            <div class="m-form__section m-form__section--first">
+              <div *ngIf="!isTrue">
+                <div class="form-group m-form__group row" *ngIf="errorMessage">
+                  <div class="col-md-6">
+                    <span class="errorMessageValue">{{errorMessageValue}}</span>
+                  </div>
+                </div>
+                <div class="form-group m-form__group row">
+                  <label class="col-lg-2 col-md-2 col-form-label">Name:</label>
+                  <div class="col-lg-4 col-md-10">
+                    <input type="text" style="border-color: #bbbbbb !important;text-transform:uppercase" class="form-control m-input" [(ngModel)]="_donotcallregistryrequest.name" name="name">
+                  </div>
+                  <label class="col-lg-2 col-md-2 col-form-label">Surname:</label>
+                  <div class="col-lg-4 col-md-10">
+                    <input type="text" style="border-color: #bbbbbb !important;text-transform:uppercase" class="form-control m-input" [(ngModel)]="_donotcallregistryrequest.surname" name="surname">
+                  </div>
+                </div>
+                <div class="form-group m-form__group row">
+                  <label class="col-lg-2 col-md-2 col-form-label">ID Number:</label>
+                  <div class="col-lg-4 col-md-10">
+                    <input type="text" style="border-color: #bbbbbb !important;text-transform:uppercase" class="form-control m-input" [(ngModel)]="_donotcallregistryrequest.iDNumber" name="iDNumber" maxlength="13">
+                  </div>
+                  <label class="col-lg-2 col-md-2 col-form-label">Phone Number:</label>
+                  <div class="col-lg-4 col-md-10">
+                    <input type="text" style="border-color: #bbbbbb !important;text-transform:uppercase" class="form-control m-input" [(ngModel)]="_donotcallregistryrequest.phonenumber" name="phonenumber" maxlength="10" minlength="10" (keypress)="onKey($event)">
+                  </div>
+                </div>
+                <div class="form-group m-form__group row">
+                  <label class="ccol-lg-2 col-md-2 col-form-label">Email Address:</label>
+                  <div class="col-lg-4 col-md-10">
+                    <input type="text" style="border-color: #bbbbbb !important;text-transform:uppercase" class="form-control m-input" [(ngModel)]="_donotcallregistryrequest.emailaddress" name="emailaddress">
+                  </div>
+                </div>
+              </div>
+              <label class="col-lg-2 col-md-2 col-form-label"></label>
+              <div class="form-group m-form__group row">
+                <div class="col-md-5"></div>
+                <div class="col-md-2" align="left" style="text-align:center">
+                  <button type="submit" align="left" class="btn btn-dark" style="width:100%" (click)="send()">Send</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<button data-toggle="modal" id="home" data-target="#home" [hidden]="true"></button>
+
+<div id="home" class="modal" tabindex="-1" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">IDAS says:</h4>
+      </div>
+      <div class="modal-body">{{message}}</div>
+      <div class="modal-footer">
+        <button (click)="home()" type="button" class="btn btn-accent" data-dismiss="modal">Ok</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<style>
+  .btn-dark {
+    color: #fff;
+    background-color: #A11E21;
+    border-color: #343a40;
+    margin-left: -37px;
+    width: 174px !important;
+  }
+  .modal-footer {
+    justify-content: center !important;
+  }
+  input {
+    padding: 10px;
+    font-size: 1.0em;
+    border-color: #bbbbbb !important;
+    width: 80%;
+  }
+
+    input::placeholder {
+      color: #A11E21;
+    }
+
+  @media (max-width: 1024px) {
+    .m-header--fixed-mobile .m-body {
+      padding-top: 10px !important;
+    }
+  }
+
+  @media (max-width: 375px) {
+    .m-header--fixed-mobile .m-body {
+      padding-top: 10px !important;
+    }
+
+    .btn-dark {
+      color: #fff;
+      background-color: #A11E21;
+      border-color: #343a40;
+      margin-left: -109px;
+      width: 174px !important;
+    }
+
+    .m-portlet .m-portlet__head {
+      border-bottom: 1px solid #ebedf2;
+      padding: 40px 12px;
+    }
+  }
+
+  @media (max-width: 320px) {
+    .m-header--fixed-mobile .m-body {
+      padding-top: 10px !important;
+    }
+
+    .btn-dark {
+      color: #fff;
+      background-color: #A11E21;
+      border-color: #343a40;
+      margin-left: -60px;
+      width: 174px !important;
+    }
+
+    .m-portlet .m-portlet__head {
+      border-bottom: 1px solid #ebedf2;
+      padding: 55px 12px;
+    }
+  }
+</style>

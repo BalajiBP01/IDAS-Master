@@ -1,0 +1,137 @@
+<!--<div class="m-grid__item m-grid__item--fluid m-grid m-grid--ver-desktop m-grid--desktop m-body">
+  <div class="m-grid__item m-grid__item--fluid m-wrapper">-->
+
+
+
+<div class="m-subheader" appunwraptag="">
+  <div class="m-portlet__head-caption">
+    <div class="m-portlet__head-title">
+      <span class="m-portlet__head-icon m--hide">
+        <i class="la la-gear"></i>
+      </span>
+      <h3 class="m-subheader__title ">
+        <button style="  font-size: 14px;
+        font-weight: 600;
+        text-transform: uppercase;
+        color: #016fa2;
+        font-family: Avenir !important;
+        margin-top: -2px;" class="btn btn-link" (click)="list()">
+          Application Messages
+        </button>
+        <i style="margin-left:-12px" class="fa fa-angle-right"></i>
+        Application Message
+      </h3>
+
+      <div class="btn-group pull-right m-form__actions">
+
+        <a style="margin: 10px 5px;" class="btn btn-accent" (click)="list()">
+          Back
+          &nbsp;
+          <i class="fa fa-angle-double-left"></i>
+        </a>
+        <a *ngIf="mode == 'view'" style="margin: 10px 5px;" class="btn btn-accent" (click)="edit()">
+          Edit
+          &nbsp;
+          <i class="fa fa-pencil-alt"></i>
+        </a>
+        <a *ngIf="mode == 'view' && userper.privileged" style="margin: 10px 5px;" class="btn btn-accent" (click)="delete()">
+          &nbsp;
+          Delete
+          <i class="fa fa-trash"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+<div *ngIf="loading==true" id="cover"></div>
+
+<div class="m-content">
+  <div class="m-portlet  m-portlet--unair">
+    <div class="m-portlet__body  m-portlet__body--no-padding">
+      <div class="m-portlet__body">
+        <form class="m-form m-form--fit m-form--label-align-right">
+          <div class="m-portlet__body col-8">
+
+            <div class="form-group m-form__group row">
+              <label for="example-text-input" class="col-2 col-form-label">Name</label><span style="color:red">*</span>
+              <div class="col-6">
+                <input class="form-control m-input" type="text" name="name" [readonly]="readonly" [(ngModel)]="currentObj.name" (keypress)="onKey($event)">
+              </div>
+            </div>
+
+            <div class="form-group m-form__group row">
+              <label for="example-text-input" class="col-2 col-form-label">Message</label><span style="color:red">*</span>
+              <div class="col-6">
+                <textarea style="width:250px;height:150px;" class="form-control m-input" type="text" name="message" [readonly]="readonly" [(ngModel)]="currentObj.message"></textarea>
+              </div>
+            </div>
+
+            <div class="form-group m-form__group row">
+              <label for="example-text-input" class="col-2 col-form-label">Show Message</label>
+              <div class="col-3">
+                <label style="margin-left: 8px;" class="m-checkbox m-checkbox--single m-checkbox--state m-checkbox--state-primary">
+                  <input type="checkbox" name="showmessage" [disabled]="readonly" [(ngModel)]="currentObj.showmessage">
+                  <span></span>
+                </label>
+              </div>
+            </div>
+
+            <div *ngIf="mode != 'view'" class="m-form__actions" style="text-align:center">
+              <button type="button" class="btn btn-success" (click)="save()">Submit</button>
+              <button type="button" class="btn btn-success" (click)="list()">Cancel</button>
+            </div>
+
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<button data-toggle="modal" id="nopermission" data-target="#per" [hidden]="true"></button>
+
+<div id="per" class="modal" tabindex="-1" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div style="background: linear-gradient(#103f56, #094868, #00527c, #066f9e)" class="modal-header">
+        <h4 style="color:#ffffff" class="modal-title">IDAS says:</h4>
+      </div>
+      <div class="modal-body">You don't have permission to access.</div>
+      <div class="modal-footer">
+        <button style="width:150px" (click)="dash()" type="button" class="btn btn-accent" data-dismiss="modal">Ok</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<button data-toggle="modal" id="error" data-target="#errormsg" [hidden]="true"></button>
+
+<div id="errormsg" class="modal" tabindex="-1" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div style="background: linear-gradient(#103f56, #094868, #00527c, #066f9e)" class="modal-header">
+        <h4 style="color:#ffffff" class="modal-title">IDAS says:</h4>
+      </div>
+      <div class="modal-body">{{errorMessageValue}}</div>
+      <div class="modal-footer">
+        <button style="width:150px" type="button" class="btn btn-accent" data-dismiss="modal">Ok</button>
+      </div>
+    </div>
+  </div>
+</div>
+<style>
+
+  .modal-footer {
+    justify-content: center !important;
+  }
+  #cover {
+    background: url("http://www.aveva.com/Images/ajax-loader.gif") no-repeat scroll center center;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    top: 0px;
+    left: 0px;
+    z-index: 1;
+  }
+</style>

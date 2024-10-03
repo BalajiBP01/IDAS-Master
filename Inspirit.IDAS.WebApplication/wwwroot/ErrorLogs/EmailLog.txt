@@ -1,0 +1,120 @@
+2019/10/23 9:51:29 AM
+Method Name: Image log
+http://192.168.8.55:8084/ImageForMail/Img1.png<p>Thank you for completing the IDAS application.&nbsp;</p><p>Your application is being validated. Please allow 24 hours for us to provide feedback.&nbsp;</p><p>Customer service is our middle name, so get in touch if you need anything relating to our product. Our contact details are below.</p><p>Thank you, IDAS</p><p><img  style="width:100%;height:auto" src="http://192.168.8.55:8084/ImageForMail/Img1.png"/></p>
+2019/10/23 9:51:31 AM
+Method Name:   New Customer
+Mail Sent
+2019/10/23 9:51:31 AM
+Method Name: Image log
+http://192.168.8.55:8084/ImageForMail/Img1.png<p>Thank you for completing the IDAS application.&nbsp;</p><p>Your application is being validated. Please allow 24 hours for us to provide feedback.&nbsp;</p><p>Customer service is our middle name, so get in touch if you need anything relating to our product. Our contact details are below.</p><p>Thank you, IDAS</p><p><img  style="width:100%;height:auto" src="http://192.168.8.55:8084/ImageForMail/Img1.png"/></p>
+2019/10/23 9:51:31 AM
+Method Name:   New Customer
+Mail Sent
+2021/08/04 8:36:30 PM
+Method Name: Image log
+http://192.168.8.55:8084/ImageForMail/Img1.png<p class="ql-align-justify">Hi There</p><p class="ql-align-justify">We have received your information and would like to thank you for writing to us.</p><p class="ql-align-justify">If your inquiry is urgent, please use the number listed below to speak to one of our staff members.</p><p class="ql-align-justify">Otherwise, we will reply by email as soon as possible</p><p class="ql-align-justify">Have a great day</p><p class="ql-align-justify">Regards IDAS</p><p class="ql-align-justify"><img  style="width:100%;height:auto" src="http://192.168.8.55:8084/ImageForMail/Img1.png"/></p><p class="ql-align-justify"><br></p><p class="ql-align-justify"><br></p><p class="ql-align-justify"><strong>﻿</strong></p>
+2021/08/04 8:36:31 PM
+Method Name:   Thank you for getting in touch with IDAS!
+Mail Sent
+2021/08/04 9:47:08 PM
+Method Name: Image log
+http://192.168.8.55:8084/ImageForMail/Img1.png<p class="ql-align-justify">Hi There</p><p class="ql-align-justify">We have received your information and would like to thank you for writing to us.</p><p class="ql-align-justify">If your inquiry is urgent, please use the number listed below to speak to one of our staff members.</p><p class="ql-align-justify">Otherwise, we will reply by email as soon as possible</p><p class="ql-align-justify">Have a great day</p><p class="ql-align-justify">Regards IDAS</p><p class="ql-align-justify"><img  style="width:100%;height:auto" src="http://192.168.8.55:8084/ImageForMail/Img1.png"/></p><p class="ql-align-justify"><br></p><p class="ql-align-justify"><br></p><p class="ql-align-justify"><strong>﻿</strong></p>
+2021/08/04 9:47:09 PM
+Method Name:   Thank you for getting in touch with IDAS!
+Mail Sent
+2021/08/05 7:58:53 PM
+Method Name: Image log
+http://192.168.8.55:8084/ImageForMail/Img1.png<p class="ql-align-justify">Hi There</p><p class="ql-align-justify">We have received your information and would like to thank you for writing to us.</p><p class="ql-align-justify">If your inquiry is urgent, please use the number listed below to speak to one of our staff members.</p><p class="ql-align-justify">Otherwise, we will reply by email as soon as possible</p><p class="ql-align-justify">Have a great day</p><p class="ql-align-justify">Regards IDAS</p><p class="ql-align-justify"><img  style="width:100%;height:auto" src="http://192.168.8.55:8084/ImageForMail/Img1.png"/></p><p class="ql-align-justify"><br></p><p class="ql-align-justify"><br></p><p class="ql-align-justify"><strong>﻿</strong></p>
+2021/08/05 7:58:53 PM
+Method Name:   Thank you for getting in touch with IDAS!
+Mail Sent
+2021/08/05 8:06:55 PM
+Method Name: Image log
+http://192.168.8.55:8084/ImageForMail/Img1.png<p class="ql-align-justify">Hi There</p><p class="ql-align-justify">We have received your information and would like to thank you for writing to us.</p><p class="ql-align-justify">If your inquiry is urgent, please use the number listed below to speak to one of our staff members.</p><p class="ql-align-justify">Otherwise, we will reply by email as soon as possible</p><p class="ql-align-justify">Have a great day</p><p class="ql-align-justify">Regards IDAS</p><p class="ql-align-justify"><img  style="width:100%;height:auto" src="http://192.168.8.55:8084/ImageForMail/Img1.png"/></p><p class="ql-align-justify"><br></p><p class="ql-align-justify"><br></p><p class="ql-align-justify"><strong>﻿</strong></p>
+2021/08/05 8:06:56 PM
+Method Name:   Thank you for getting in touch with IDAS!
+Mail Sent
+2021/08/05 8:19:40 PM
+Method Name: Image log
+http://192.168.8.55:8084/ImageForMail/Img1.png<p class="ql-align-justify">Hi There</p><p class="ql-align-justify">We have received your information and would like to thank you for writing to us.</p><p class="ql-align-justify">If your inquiry is urgent, please use the number listed below to speak to one of our staff members.</p><p class="ql-align-justify">Otherwise, we will reply by email as soon as possible</p><p class="ql-align-justify">Have a great day</p><p class="ql-align-justify">Regards IDAS</p><p class="ql-align-justify"><img  style="width:100%;height:auto" src="http://192.168.8.55:8084/ImageForMail/Img1.png"/></p><p class="ql-align-justify"><br></p><p class="ql-align-justify"><br></p><p class="ql-align-justify"><strong>﻿</strong></p>
+2021/08/05 8:19:41 PM
+Method Name:   Thank you for getting in touch with IDAS!
+Mailbox unavailable. The server response was: Unroutable address
+2021/08/19 7:05:29 PM
+Method Name: Image log
+http://192.168.8.55:8084/ImageForMail/Img1.png<p class="ql-align-justify">Hi There</p><p class="ql-align-justify">We have received your information and would like to thank you for writing to us.</p><p class="ql-align-justify">If your inquiry is urgent, please use the number listed below to speak to one of our staff members.</p><p class="ql-align-justify">Otherwise, we will reply by email as soon as possible</p><p class="ql-align-justify">Have a great day</p><p class="ql-align-justify">Regards IDAS</p><p class="ql-align-justify"><img  style="width:100%;height:auto" src="http://192.168.8.55:8084/ImageForMail/Img1.png"/></p><p class="ql-align-justify"><br></p><p class="ql-align-justify"><br></p><p class="ql-align-justify"><strong>﻿</strong></p>
+2021/08/19 7:05:30 PM
+Method Name:   Thank you for getting in touch with IDAS!
+Mailbox unavailable. The server response was: Unroutable address
+2022/01/05 5:57:19 PM
+Method Name: Image log
+http://192.168.8.55:8084/ImageForMail/Img1.png<p class="ql-align-justify">Hi There</p><p class="ql-align-justify">We have received your information and would like to thank you for writing to us.</p><p class="ql-align-justify">If your inquiry is urgent, please use the number listed below to speak to one of our staff members.</p><p class="ql-align-justify">Otherwise, we will reply by email as soon as possible</p><p class="ql-align-justify">Have a great day</p><p class="ql-align-justify">Regards IDAS</p><p class="ql-align-justify"><img  style="width:100%;height:auto" src="http://192.168.8.55:8084/ImageForMail/Img1.png"/></p><p class="ql-align-justify"><br></p><p class="ql-align-justify"><br></p><p class="ql-align-justify"><strong>﻿</strong></p>
+2022/01/05 5:57:19 PM
+Method Name:   Thank you for getting in touch with IDAS!
+Mailbox unavailable. The server response was: Unroutable address
+2022/01/10 10:44:00 AM
+Method Name: Image log
+http://192.168.8.55:8084/ImageForMail/Img1.png<p class="ql-align-justify">Hi There</p><p class="ql-align-justify">We have received your information and would like to thank you for writing to us.</p><p class="ql-align-justify">If your inquiry is urgent, please use the number listed below to speak to one of our staff members.</p><p class="ql-align-justify">Otherwise, we will reply by email as soon as possible</p><p class="ql-align-justify">Have a great day</p><p class="ql-align-justify">Regards IDAS</p><p class="ql-align-justify"><img  style="width:100%;height:auto" src="http://192.168.8.55:8084/ImageForMail/Img1.png"/></p><p class="ql-align-justify"><br></p><p class="ql-align-justify"><br></p><p class="ql-align-justify"><strong>﻿</strong></p>
+2022/01/10 10:44:01 AM
+Method Name:   Thank you for getting in touch with IDAS!
+Mail Sent
+2022/01/13 9:43:25 AM
+Method Name: Image log
+http://192.168.8.55:8084/ImageForMail/Img1.png<p class="ql-align-justify">Hi There</p><p class="ql-align-justify">We have received your information and would like to thank you for writing to us.</p><p class="ql-align-justify">If your inquiry is urgent, please use the number listed below to speak to one of our staff members.</p><p class="ql-align-justify">Otherwise, we will reply by email as soon as possible</p><p class="ql-align-justify">Have a great day</p><p class="ql-align-justify">Regards IDAS</p><p class="ql-align-justify"><img  style="width:100%;height:auto" src="http://192.168.8.55:8084/ImageForMail/Img1.png"/></p><p class="ql-align-justify"><br></p><p class="ql-align-justify"><br></p><p class="ql-align-justify"><strong>﻿</strong></p>
+2022/01/13 9:43:25 AM
+Method Name:   Thank you for getting in touch with IDAS!
+Mail Sent
+2022/04/06 12:23:29 PM
+Method Name: Image log
+http://192.168.8.55:8084/ImageForMail/Img1.png<p>Dear Client, here’s the information to reset your password...</p><p>UserName: Mlungisi Nzimande</p><p>Email Id: mlungisi.nzimande@inspirit.co.za</p><p>Password: WPOXV210KC</p><p>Website: https://www.inspiritdata.co.za</p><p>If you did not make this request, please ignore this email</p><p>Thanks and Regards,</p><p>IDAS</p><p><img  style="width:100%;height:auto" src="http://192.168.8.55:8084/ImageForMail/Img1.png"/></p>
+2022/04/06 12:23:30 PM
+Method Name:   IDAS Password reset
+Mail Sent
+2022/04/18 2:34:00 AM
+Method Name: Image log
+ImageForMail/Img1.png<p class="ql-align-justify">Hi There</p><p class="ql-align-justify">We have received your information and would like to thank you for writing to us.</p><p class="ql-align-justify">If your inquiry is urgent, please use the number listed below to speak to one of our staff members.</p><p class="ql-align-justify">Otherwise, we will reply by email as soon as possible</p><p class="ql-align-justify">Have a great day</p><p class="ql-align-justify">Regards IDAS</p><p class="ql-align-justify"><img  style="width:100%;height:auto" src="ImageForMail/Img1.png"/></p><p class="ql-align-justify"><br></p><p class="ql-align-justify"><br></p><p class="ql-align-justify"><strong>﻿</strong></p>
+2022/04/18 2:34:00 AM
+Method Name:   Thank you for getting in touch with IDAS!
+Mail Sent
+2022/04/18 11:08:31 AM
+Method Name: Image log
+ImageForMail/Img1.png<p class="ql-align-justify">Hi There</p><p class="ql-align-justify">We have received your information and would like to thank you for writing to us.</p><p class="ql-align-justify">If your inquiry is urgent, please use the number listed below to speak to one of our staff members.</p><p class="ql-align-justify">Otherwise, we will reply by email as soon as possible</p><p class="ql-align-justify">Have a great day</p><p class="ql-align-justify">Regards IDAS</p><p class="ql-align-justify"><img  style="width:100%;height:auto" src="ImageForMail/Img1.png"/></p><p class="ql-align-justify"><br></p><p class="ql-align-justify"><br></p><p class="ql-align-justify"><strong>﻿</strong></p>
+2022/04/18 11:08:31 AM
+Method Name:   Thank you for getting in touch with IDAS!
+Mail Sent
+2022/07/26 10:38:57 AM
+Method Name: Image log
+ImageForMail/Img1.png<p class="ql-align-justify">Hi There</p><p class="ql-align-justify">We have received your information and would like to thank you for writing to us.</p><p class="ql-align-justify">If your inquiry is urgent, please use the number listed below to speak to one of our staff members.</p><p class="ql-align-justify">Otherwise, we will reply by email as soon as possible</p><p class="ql-align-justify">Have a great day</p><p class="ql-align-justify">Regards IDAS</p><p class="ql-align-justify"><img  style="width:100%;height:auto" src="ImageForMail/Img1.png"/></p><p class="ql-align-justify"><br></p><p class="ql-align-justify"><br></p><p class="ql-align-justify"><strong>﻿</strong></p>
+2022/07/26 10:38:58 AM
+Method Name:   Thank you for getting in touch with IDAS!
+Mail Sent
+2022/07/26 10:40:59 AM
+Method Name: Image log
+ImageForMail/Img1.png<p class="ql-align-justify">Hi There</p><p class="ql-align-justify">We have received your information and would like to thank you for writing to us.</p><p class="ql-align-justify">If your inquiry is urgent, please use the number listed below to speak to one of our staff members.</p><p class="ql-align-justify">Otherwise, we will reply by email as soon as possible</p><p class="ql-align-justify">Have a great day</p><p class="ql-align-justify">Regards IDAS</p><p class="ql-align-justify"><img  style="width:100%;height:auto" src="ImageForMail/Img1.png"/></p><p class="ql-align-justify"><br></p><p class="ql-align-justify"><br></p><p class="ql-align-justify"><strong>﻿</strong></p>
+2022/07/26 10:41:00 AM
+Method Name:   Thank you for getting in touch with IDAS!
+Mail Sent
+2022/10/14 9:14:02 AM
+Method Name: Image log
+ImageForMail/Img1.png<p>Dear Client, here’s the information to reset your password...</p><p>UserName: Mlungisi Nzimande</p><p>Email Id: mlungisi.nzimande@inspirit.co.za</p><p>Password: N1MFWFH2M8</p><p>Website: https://www.inspiritdata.co.za</p><p>If you did not make this request, please ignore this email</p><p>Thanks and Regards,</p><p>IDAS</p><p><img  style="width:100%;height:auto" src="ImageForMail/Img1.png"/></p>
+2022/10/14 9:14:05 AM
+Method Name:   IDAS Password reset
+Mail Sent
+2022/10/14 9:14:05 AM
+Method Name: Image log
+ImageForMail/Img1.png<p>Dear Client, here’s the information to reset your password...</p><p>UserName: Mlungisi Nzimande</p><p>Email Id: mlungisi.nzimande@inspirit.co.za</p><p>Password: N1MFWFH2M8</p><p>Website: https://www.inspiritdata.co.za</p><p>If you did not make this request, please ignore this email</p><p>Thanks and Regards,</p><p>IDAS</p><p><img  style="width:100%;height:auto" src="ImageForMail/Img1.png"/></p>
+2022/10/14 9:14:05 AM
+Method Name:   IDAS Password reset
+Mail Sent
+2022/10/14 1:48:53 PM
+Method Name: Image log
+ImageForMail/Img1.png<p>Dear Client, here’s the information to reset your password...</p><p>UserName: Mlungisi Nzimande</p><p>Email Id: mlungisi.nzimande@inspirit.co.za</p><p>Password: 6IT62MLSFN</p><p>Website: https://www.inspiritdata.co.za</p><p>If you did not make this request, please ignore this email</p><p>Thanks and Regards,</p><p>IDAS</p><p><img  style="width:100%;height:auto" src="ImageForMail/Img1.png"/></p>
+2022/10/14 1:49:09 PM
+Method Name:   IDAS Password reset
+Mail Sent
+2022/10/14 1:50:43 PM
+Method Name: Image log
+ImageForMail/Img1.png<p>Dear Client, here’s the information to reset your password...</p><p>UserName: Mlungisi Nzimande</p><p>Email Id: mlungisi.nzimande@inspirit.co.za</p><p>Password: 6IT62MLSFN</p><p>Website: https://www.inspiritdata.co.za</p><p>If you did not make this request, please ignore this email</p><p>Thanks and Regards,</p><p>IDAS</p><p><img  style="width:100%;height:auto" src="ImageForMail/Img1.png"/></p>
+2022/10/14 1:51:19 PM
+Method Name:   IDAS Password reset
+Mail Sent

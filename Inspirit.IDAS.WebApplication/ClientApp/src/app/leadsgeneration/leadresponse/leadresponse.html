@@ -1,0 +1,382 @@
+<div class="m-grid__item m-grid__item--fluid m-grid m-grid--ver-desktop m-grid--desktop m-body">
+  <div class="m-grid__item m-grid__item--fluid m-wrapper">
+    <div class="m-subheader ">
+      <div class="d-flex align-items-center">
+        <div class="mr-auto">
+          <h3 class="m-subheader__title ">
+            <button style="padding:0px;font-size:14px!important; text-transform:uppercase; width:48px !important; color: #016fa2 !important;font-weight: 600 !important;font-family: Avenir !important;" class="btn btn-link" (click)="list()">Lead Generation</button>
+            <i style="margin-left:90px" class="fa fa-angle-right"></i>
+            Search Results
+          </h3>
+        </div>
+        <div class="btn-group pull-right m-form__actions">
+          <button *ngIf="mode == 'View'" style="margin: 10px 12px;font-size: 12px;border-radius: 1px;padding: 8px 18px 8px 18px;" [disabled]="isVisible" class="btn btn-accent" (click)="Edit()">
+            Edit
+            &nbsp;
+            <i class="fa fa-pencil-alt"></i>
+          </button>
+          <button style="margin: 10px 12px;font-size: 12px;border-radius: 1px;padding: 8px 18px 8px 18px;" [disabled]="isVisible" class="btn btn-accent" (click)="backToForm()">
+            Edit input
+            &nbsp;
+            <i class="fa fa-angle-double-left"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+    <div *ngIf="loading == true" id="cover"></div>
+
+
+    <div class="m-content">
+      <div class="row">
+        <div class="col-xl-12">
+          <div class="m-content">
+            <div class="row">
+              <div class="col-xl-12">
+                <div class="m-portlet">
+                  <form>
+                    <div class="m-form m-form--label-align-right" style="padding:12px;background-color:#f2f3f8">
+
+                      <div class="m-portlet__body" style="background-color:#ffffff;padding:12px;border:1px solid #000000">
+                        <div class="form-group m-form__group row">
+                          <div class="col-6">
+                            <h1 style="text-transform:uppercase;font-weight:bold;font-size:16px">Input Credentials:</h1>
+                          </div>
+                          <div class="col-3">
+                            <button type="submit" [disabled]="isVisible" data-toggle="modal" data-target="#myModal1" class="btn btn-dark pull-right" style="background-color:#a11e20 !important;padding: 0px 5px;">
+                              Raise Invoice
+                            </button>
+                          </div>
+                          <div class="col-3">
+                            <button type="submit" [disabled]="isVisible" data-toggle="modal" data-target="#myModal2" class="btn btn-dark pull-right" style="background-color:#a11e20 !important;padding: 0px 5px;">
+                              Cancel Lead
+                            </button>
+                          </div>
+                        </div>
+
+
+                        <div class="row" style="height:6px; width:100%; margin:0 !important; background-color:#066f9e"></div>
+                        <div>
+                          <p><span style="font-weight:bold;font-size:14px;color:#a11e20">Leads Requested:</span> {{leadsreqdisplay.requiredLeads}}</p>
+                        </div>
+                        <div style="font-weight:bold;font-size:14px;color:#a11e20">Province:</div>
+                        <div *ngFor="let item of leadsreqdisplay.provincelst">
+                          <p>{{item.provinceName}} : {{item.percentage}}%</p>
+                        </div>
+                        <div style="font-weight:bold;font-size:14px;color:#a11e20">Gender:</div>
+                        <div *ngFor="let item of leadsreqdisplay.genderlst">
+                          <p>{{item.genderName}} : {{item.percentage}}%</p>
+                        </div>
+                        <div style="font-weight:bold;font-size:14px;color:#a11e20">Marital Status:</div>
+                        <div *ngFor="let item of leadsreqdisplay.statuslst">
+                          <p>{{item.statusName}} : {{item.percentage}}%</p>
+                        </div>
+                        <div *ngIf="lsmExists" style="margin-bottom:1rem">
+                          <ul style="font-weight:normal">
+                            <li style="font-weight:bold;font-size:14px;color:#a11e20">LSM:</li>
+                            <li *ngFor="let item of leadsreqdisplay.lsmlst; let lastItem = last">{{item.lsmName}}<span *ngIf="!lastItem">{{','}}</span></li>
+                          </ul>
+                        </div>
+                        <div *ngIf="incomeExists" style="margin-bottom:1rem">
+                          <ul style="font-weight:normal">
+                            <li style="font-weight:bold;font-size:14px;color:#a11e20">Income Category:</li>
+                            <li *ngFor="let item of leadsreqdisplay.inclst; let lastItem = last">
+                              <span *ngIf="item.incomeCategoryName == 'A'">0.00</span>
+                              <span *ngIf="item.incomeCategoryName == 'B'">1.00 to 2,500.00</span>
+                              <span *ngIf="item.incomeCategoryName == 'C'">2,501.00 to 5,000.00</span>
+                              <span *ngIf="item.incomeCategoryName == 'D'">5,001.00 to 10,000.00</span>
+                              <span *ngIf="item.incomeCategoryName == 'E'">10,001.00 to 15,000.00</span>
+                              <span *ngIf="item.incomeCategoryName == 'F'">15,001.00 to 20,000.00</span>
+                              <span *ngIf="item.incomeCategoryName == 'G'">20,001.00 to 25,000.00</span>
+                              <span *ngIf="item.incomeCategoryName == 'H'">25,001.00 to 35,000.00</span>
+                              <span *ngIf="item.incomeCategoryName == 'I'">35,001.00 to 45,000.00</span>
+                              <span *ngIf="item.incomeCategoryName == 'J'">45,001.00 to 55,000.00</span>
+                              <span *ngIf="item.incomeCategoryName == 'K'"> 55,000.00</span>
+                              <span *ngIf="!lastItem">{{','}}</span>
+                            </li>
+                          </ul>
+                        </div>
+                        <div *ngIf="riskExists" style="margin-bottom:1rem">
+                          <ul>
+                            <li style="font-weight:bold;font-size:14px;color:#a11e20">Risk Category:</li>
+                            <li *ngFor="let item of leadsreqdisplay.risklst; let lastItem = last">{{item.riskName}}<span *ngIf="!lastItem">{{','}}</span></li>
+                          </ul>
+                        </div>
+                        <div *ngIf="contactExists" style="margin-bottom:1rem">
+                          <ul>
+                            <li style="font-weight:bold;font-size:14px;color:#a11e20">Contact Score:</li>
+                            <li *ngFor="let item of leadsreqdisplay.alloylst; let lastItem = last">{{item.alloyName}}<span *ngIf="!lastItem">{{','}}</span></li>
+                          </ul>
+                        </div>
+                        <div style="margin-bottom:1rem">
+                          <p><span style="font-weight:bold;font-size:14px;color:#a11e20">DoB Range: </span>{{leadsreqdisplay.dateRange1}} to {{leadsreqdisplay.dateRange2}} years.</p>
+                        </div>
+                        <div style="margin-bottom:1rem">
+                          <p style="font-weight:bold;font-size:14px;color:#a11e20">Other Categories:</p>
+                        </div>
+                        <div *ngIf="leadsreqdisplay.isEmployed">
+                          <p>Employees Only</p>
+                        </div>
+                        <div *ngIf="leadsreqdisplay.isDirector">
+                          <p>Directors Only</p>
+                        </div>
+                        <div *ngIf="leadsreqdisplay.isHomeOwner">
+                          <p>Home Owners Only</p>
+                        </div>
+                        <div *ngIf="leadsreqdisplay.isAdversed">
+                          <p>Exclude Adverse Indicators</p>
+                        </div>
+                        <div *ngIf="leadsreqdisplay.isCellNumber">
+                          <p>Employees Only</p>
+                        </div>
+                        <div *ngIf="leadsreqdisplay.isEmail">
+                          <p>Email Address Only</p>
+                        </div>
+                        <div *ngIf="leadsreqdisplay.isDeceased">
+                          <p>Exclude Deceased Indicators</p>
+                        </div>
+                      </div>
+                      <div class="row" style="height:12px; width:100%; margin:0 !important; background-color:#ffffff"></div>
+                      <div class="m-portlet__body" style="background-color:#ffffff;padding:12px;border:1px solid #000000">
+                        <div><h4 style="text-transform:uppercase;font-weight:bold;font-size:16px">Leads Calculated <span style="color:red;">*</span></h4></div>
+                        <div class="m-section">
+                          <div class="m-section__content">
+                            <div class="table-responsive">
+                              <table class="table table-striped">
+                                <thead>
+                                  <tr style="color:#ffffff !important">
+                                    <th>Province</th>
+                                    <th>Gender</th>
+                                    <th>Marital Status</th>
+                                    <th>Leads Calculated Count</th>
+                                    <th>Leads Available Count</th>
+                                    <th>Leads Required Count</th>
+                                  </tr>
+                                </thead>
+                                <tbody style="overflow-y: hidden;" *ngIf="responsetype == 'Add'">
+                                  <tr *ngFor="let item of tableresponse, let i= index">
+                                    <td>{{item.provinceName}}</td>
+                                    <td>{{item.gender}}</td>
+                                    <td>{{item.marital}}</td>
+                                    <td>{{item.requiredCount}}</td>
+                                    <td>{{item.availableCount}}</td>
+                                    <td>
+                                      <input style="color:#132be4" type="number" [(ngModel)]="item.totalSum" (keyup)="validatecount(item.availableCount, item.totalSum)" (keypress)="isNumberKey($event)" name="item.totalSum_{{i}}"
+                                             class="form-control" [readonly]="readony" />
+                                    </td>
+                                  </tr>
+                                </tbody>
+                                <tbody style="overflow-y: hidden;" *ngIf="responsetype == 'Table'">
+                                  <tr *ngFor="let item of tableresponse, let i= index">
+                                    <td>{{item.provinceName}}</td>
+                                    <td>{{item.gender}}</td>
+                                    <td>{{item.marital}}</td>
+                                    <td>{{item.requiredCount}}</td>
+                                    <td>{{item.availableCount}}</td>
+                                    <td>
+                                      <input style="color:#132be4" type="number" [(ngModel)]="item.totalSum" (keyup)="validatecount(item.availableCount, item.totalSum)" (keypress)="isNumberKey($event)" name="item.totalSum_{{i}}"
+                                             class="form-control" [readonly]="readony" />
+                                    </td>
+                                  </tr>
+                                </tbody>
+                              </table>
+
+                              <div class="form-group m-form__group row">
+                                <div class="col-3">
+                                </div>
+                                <div class="col-3 pull-right" style="font-weight:bold;font-size:14px">
+                                  Total Requested : {{reqtotal}}
+                                </div>
+                                <div class="col-3">
+                                </div>
+                                <div class="col-3 pull-right" style="font-weight:bold;font-size:14px">
+                                  Total : {{totalsum}}
+                                </div>
+                              </div>
+                            </div>
+                            <div *ngIf="mode == 'Edit'" class="row">
+                              <div class="col-lg-3 col-md-3"></div>
+                              <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 name">
+                                <button [disabled]="!isvalid" class="btn btn-dark" (click)="save()">Save</button>
+                              </div>
+                              <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 name">
+                                <button [disabled]="!isvalid" style="background-color:#343a40;color:#ffffff" class="btn btn-default" (click)="list()">Cancel</button>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<button id="openPopUpLead" [hidden]="true" data-toggle="modal" data-target="#myModalErrorMessageLead"></button>
+<div id="myModalErrorMessageLead" class="modal" tabindex="-1" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div style="background: linear-gradient(#103f56, #094868, #00527c, #066f9e) !important;" class="modal-header">
+        <h4 style="color:#ffffff" class="modal-title">IDAS says:</h4>
+      </div>
+      <div class="modal-body">{{warningMesage}}</div>
+      <div class="modal-footer text-center">
+        <button type="button" class="btn btn-accent" data-dismiss="modal">Ok</button>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<button id="opennolead" [hidden]="true" data-toggle="modal" data-target="#nolead"></button>
+<div id="nolead" class="modal" tabindex="-1" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div style="background: linear-gradient(#103f56, #094868, #00527c, #066f9e) !important;" class="modal-header">
+        <h4 style="color:#ffffff" class="modal-title">IDAS says:</h4>
+      </div>
+      <div class="modal-body">{{warningMesage}}</div>
+      <div class="modal-footer text-center">
+        <button type="button" class="btn btn-accent" (click)="list()" data-dismiss="modal">Ok</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="myModal1" class="modal" tabindex="-1" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div style="background: linear-gradient(#103f56, #094868, #00527c, #066f9e) !important;" class="modal-header">
+        <h4 style="color:#ffffff" class="modal-title">IDAS says:</h4>
+      </div>
+      <div class="modal-body">Do you want to generate Invoice.</div>
+      <div class="modal-footer text-center">
+        <button type="button" class="btn btn-accent" (click)="generateinvoice()" data-dismiss="modal">Ok</button>
+        <button type="button" class="btn btn-accent"  data-dismiss="modal">Cancel</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="myModal2" class="modal" tabindex="-1" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div style="background: linear-gradient(#103f56, #094868, #00527c, #066f9e) !important;" class="modal-header">
+        <h4 style="color:#ffffff" class="modal-title">IDAS says:</h4>
+      </div>
+      <div class="modal-body">Do you want to cancel Lead.</div>
+      <div class="modal-footer text-center">
+        <button type="button" class="btn btn-accent" (click)="cancelLead()" data-dismiss="modal">Ok</button>
+        <button type="button" class="btn btn-accent" data-dismiss="modal">Cancel</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<style>
+
+  input[type=number]::-webkit-inner-spin-button,
+  input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+  }
+
+  li {
+    float: left;
+    margin-right: 20px;
+  }
+
+  #cover {
+    background: url("http://www.aveva.com/Images/ajax-loader.gif") no-repeat scroll center center;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    top: 0px;
+    left: 0px;
+    z-index: 1;
+  }
+
+  .fa {
+    font-size: 1.2rem !important;
+  }
+
+  .h5, h5 {
+    font-size: 1.2rem !important;
+    margin-top: 10px !important;
+  }
+
+  .m-widget16 .m-widget16__stats .m-widget16__visual {
+    margin-left: -115px;
+    display: flex !important;
+    width: 44% !important;
+  }
+
+  .m-widget16 .m-widget16__stats .m-widget16__legends {
+    display: block;
+    width: 73%;
+    margin-top: -160px;
+    margin-left: 120px;
+  }
+
+  .modal-footer {
+    justify-content: center !important;
+  }
+
+  .signal {
+    margin-left: 85px;
+    border: 4px solid #f3f3f3;
+    border-radius: 50%;
+    border-top: 4px solid #3498db;
+    width: 25px;
+    height: 25px;
+    -webkit-animation: spin 2s linear infinite;
+    animation: spin 2s linear infinite;
+  }
+
+  .m-widget16 .m-widget16__stats .m-widget16__legends .m-widget16__legend {
+    margin-bottom: 0rem;
+    margin-left: 12rem;
+    text-align: center;
+  }
+
+    .m-widget16 .m-widget16__stats .m-widget16__legends .m-widget16__legend .m-widget16__legend-bullet {
+      width: 0.95rem;
+      height: 0.95rem;
+      display: inline-block;
+      border-radius: 0rem;
+      margin-bottom: 0rem;
+      margin-right: 0rem;
+    }
+
+  .m-widget16 .m-widget16__stats {
+    display: block;
+    vertical-align: top;
+    margin-top: 2rem;
+    width: 100%;
+  }
+
+  .backdrop {
+    background-color: rgba(0,0,0,0.6);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+  }
+</style>

@@ -1,0 +1,44 @@
+<!-- BEGIN: Left Aside -->
+
+<button *ngIf="_visible | async" class="m-aside-left-close  m-aside-left-close--skin-dark" id="m_aside_left_close_btn" appunwraptag=""><i class="la la-close"></i></button>
+<div *ngIf="_visible | async" id="m_aside_left" class="m-grid__item	m-aside-left  m-aside-left--skin-dark " style="height:100%;background-color: #282733 !important;">
+  <!-- BEGIN: Aside Menu -->
+  <div id="m_ver_menu" class="m-aside-menu  m-aside-menu--skin-dark m-aside-menu--submenu-skin-dark " m-menu-vertical="1" m-menu-scrollable="0" m-menu-dropdown-timeout="500">
+
+    <ul class="m-menu__nav ">
+
+      <li *ngFor="let item of menus; let i = index" class="m-menu__item" routerLinkActive="m-menu__item--active" routerLinkActiveOptions="{ exact: true }" aria-haspopup="true">
+
+        <a style="font-family: Avenir !important;" routerLink="{{item.url}}" class="m-menu__link">
+          <span class="m-menu__item-here"></span>
+          <i *ngIf="item.caption == 'Dashboard'" class="m-menu__link-icon flaticon-line-graph"></i>
+          <i *ngIf="item.caption == 'Customers'" class="m-menu__link-icon flaticon-user"></i>
+          <i *ngIf="item.caption == 'Products'" class="m-menu__link-icon flaticon-line-graph"></i>
+          <i *ngIf="item.caption == 'Data Service Agreement'" class="m-menu__link-icon flaticon-line-graph"></i>
+          <i *ngIf="item.caption == 'Lookup Data'" class="m-menu__link-icon flaticon-line-graph"></i>
+          <i *ngIf="item.caption == 'Email Templates'" class="m-menu__link-icon flaticon-line-graph"></i>
+          <i *ngIf="item.caption == 'Donot Call Registry'" class="m-menu__link-icon flaticon-line-graph"></i>
+          <i *ngIf="item.caption == 'Invoice'" class="m-menu__link-icon flaticon-line-graph"></i>
+          <i *ngIf="item.caption == 'Proforma Invoice'" class="m-menu__link-icon flaticon-line-graph"></i>
+          <i *ngIf="item.caption == 'Payment'" class="m-menu__link-icon flaticon-line-graph"></i>
+          <i *ngIf="item.caption == 'Application Message'" class="m-menu__link-icon flaticon-line-graph"></i>
+          <i *ngIf="item.caption == 'Application Settings'" class="m-menu__link-icon flaticon-line-graph"></i>
+          <i *ngIf="item.caption == 'Manage Users'" class="m-menu__link-icon flaticon-line-graph"></i>
+          <i *ngIf="item.caption == 'Contact Us'" class="m-menu__link-icon flaticon-line-graph"></i>
+          <i *ngIf="item.caption == 'Subscriptions'" class="m-menu__link-icon flaticon-line-graph"></i>
+          <i *ngIf="item.caption == 'Product Services'" class="m-menu__link-icon flaticon-line-graph"></i>
+          <i *ngIf="item.caption == 'BatchTracing'" class="m-menu__link-icon flaticon-line-graph"></i>
+          <i *ngIf="item.caption == 'News Blog'" class="m-menu__link-icon flaticon-line-graph"></i>
+          <i *ngIf="item.caption == 'LeadGeneration'" class="m-menu__link-icon flaticon-line-graph"></i>
+          <span class="m-menu__link-text"> {{item.caption}}</span>
+        </a>
+
+      </li>
+      <li class="m-menu__item" routerLinkActive="m-menu__item--active" routerLinkActiveOptions="{ exact: true }" aria-haspopup="true">
+        <a (click)="logout()" class="m-menu__link"><i class="fa fa-power-off"></i><span class="m-menu__link-text" style="color:#ffffff">Logout</span></a>
+      </li>
+    </ul>
+  </div>
+  <!-- END: Aside Menu -->
+</div>
+<!-- END: Left Aside -->

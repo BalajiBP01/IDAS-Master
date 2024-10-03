@@ -1,0 +1,127 @@
+<div class="m-subheader" appunwraptag="">
+
+
+  <div class="m-portlet__head-caption">
+    <div class="m-portlet__head-title">
+      <span class="m-portlet__head-icon m--hide">
+        <i class="la la-gear"></i>
+      </span>
+
+      <h3 class="m-subheader__title ">
+        <button style="font-size: 14px;
+        font-weight: 600;
+        text-transform: uppercase;
+        color: #016fa2;
+        font-family: Avenir !important;
+        margin-top: -2px;" class="btn btn-link" (click)="list()">
+          Application Settings
+        </button>
+        <i style="margin-left:-12px" class="fa fa-angle-right"></i>
+        Application Setting
+      </h3>
+
+      <div class="btn-group pull-right m-form__actions">
+
+        <a style="margin: 10px 5px;" class="btn btn-accent" (click)="list()">
+          Back
+          &nbsp;
+          <i class="fa fa-angle-double-left"></i>
+        </a>
+        <a *ngIf="mode == 'view' && userper.editAction" style="margin: 10px 5px;" class="btn btn-accent" (click)="edit()">
+          Edit
+          &nbsp;
+          <i class="fa fa-pencil-alt"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+<div *ngIf="loading==true" id="cover"></div>
+<div class="m-content">
+  <div class="m-portlet  m-portlet--unair">
+    <div class="m-portlet__body  m-portlet__body--no-padding">
+      <div class="m-portlet__body">
+        <form class="m-form m-form--fit m-form--label-align-right">
+          <div class="m-portlet__body col-8">
+
+            <div class="form-group m-form__group row">
+              <label for="example-text-input" class="col-2 col-form-label">Setting Name<span style="color:red">*</span></label>
+              <div class="col-6">
+                <input class="form-control m-input" type="text" name="settingName" readonly [(ngModel)]="currentObj.settingName">
+              </div>
+            </div>
+
+            <div class="form-group m-form__group row">
+              <label for="example-text-input" class="col-2 col-form-label">Setting Value<span style="color:red">*</span></label>
+              <div class="col-6">
+                <input class="form-control m-input" type="text" name="settingValue" [readonly]="readonly" [(ngModel)]="currentObj.settingValue">
+              </div>
+            </div>
+
+            <div class="form-group m-form__group row">
+              <label for="example-text-input" class="col-2 col-form-label">Remarks</label>
+              <div class="col-6">
+                <input class="form-control m-input" type="text" name="remarks" [readonly]="readonly" [(ngModel)]="currentObj.remarks">
+              </div>
+            </div>
+
+            <div *ngIf="mode != 'view'" class="m-form__actions" style="text-align:center">
+              <button type="button" class="btn btn-success" (click)="save()">Submit</button>
+              <button type="button" class="btn btn-success" (click)="list()">Cancel</button>
+            </div>
+
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<button data-toggle="modal" id="nopermission" data-target="#per" [hidden]="true"></button>
+
+<div id="per" class="modal" tabindex="-1" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div style="background: linear-gradient(#103f56, #094868, #00527c, #066f9e)" class="modal-header">
+        <h4 style="color:#ffffff" class="modal-title">IDAS says:</h4>
+      </div>
+      <div class="modal-body">You don't have permission to access.</div>
+      <div class="modal-footer">
+        <button style="width:150px" (click)="dash()" type="button" class="btn btn-accent" data-dismiss="modal">Ok</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<button data-toggle="modal" id="error" data-target="#errormsg" [hidden]="true"></button>
+
+<div id="errormsg" class="modal" tabindex="-1" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div style="background: linear-gradient(#103f56, #094868, #00527c, #066f9e)" class="modal-header">
+        <h4 style="color:#ffffff" class="modal-title">IDAS says:</h4>
+      </div>
+      <div class="modal-body">{{message}}</div>
+      <div class="modal-footer">
+        <button style="width:150px"  type="button" class="btn btn-accent" data-dismiss="modal">Ok</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .modal-footer {
+    justify-content: center !important;
+  }
+  #cover {
+    background: url("http://www.aveva.com/Images/ajax-loader.gif") no-repeat scroll center center;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    top: 0px;
+    left: 0px;
+    z-index: 1;
+  }
+</style>

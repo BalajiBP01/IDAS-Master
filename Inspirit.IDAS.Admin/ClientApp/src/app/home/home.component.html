@@ -1,0 +1,571 @@
+<!-- BEGIN: Subheader -->
+<div class="m-subheader" appunwraptag="">
+  <div class="d-flex align-items-center">
+    <div class="mr-auto">
+      <h3 class="m-subheader__title">Dashboard</h3>
+    </div>
+  </div>
+</div>
+<!-- END: Subheader -->
+<div class="m-content">
+  <!--begin:: Widgets/Stats-->
+  <div class="m-portlet  m-portlet--unair">
+    <div class="m-portlet__body  m-portlet__body--no-padding">
+      <div class="row m-row--no-padding m-row--col-separator-xl">
+        <div class="col-md-12 col-lg-12 col-xl-4" style="border-right:10px solid #f2f3f8">
+          <!--begin::Total Profit-->
+          <div class="m-widget24">
+            <div class="m-widget24__item">
+              <h4 class="m-widget24__title">Customers</h4>
+              <br><span class="m-widget24__desc">Customers Total</span>
+              <span class="m-widget24__stats m--font-brand">{{customerCount.total}}</span>
+              <div class="m--space-10"></div>
+              <div class="progress m-progress--sm">
+                <div id="customertotalProgressbar" class="progress-bar m--bg-brand" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+              </div>
+              <span class="m-widget24__change">Customers added in this month:{{" "}}{{customerCount.monthTotal}}</span><span class="m-widget24__number">{{customeraddredper}}%</span>
+            </div>
+          </div>
+          <!--end::Total Profit-->
+        </div>
+        <div class="col-md-12 col-lg-12 col-xl-4" style="border-right:10px solid #f2f3f8">
+          <!--begin::New Feedbacks-->
+          <div class="m-widget24">
+            <div class="m-widget24__item">
+              <h4 class="m-widget24__title">Customers Activated</h4>
+              <br><span class="m-widget24__desc">Customers Activated Total</span>
+              <span class="m-widget24__stats m--font-info">{{customerCount.activeTotalCount}}</span>
+              <div class="m--space-10"></div>
+              <div class="progress m-progress--sm">
+                <div id="customeractiveper" class="progress-bar m--bg-info" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+              </div>
+              <span class="m-widget24__change">Activated Customers in this month:{{" "}}{{customerCount.activeMonthtTotal}}</span>
+              <span class="m-widget24__number">{{customeractiveper}}%</span>
+            </div>
+          </div>
+          <!--end::New Feedbacks-->
+        </div>
+        <div class="col-md-12 col-lg-12 col-xl-4" style="border-right:10px solid #f2f3f8">
+          <!--begin::New Orders-->
+          <div class="m-widget24">
+            <div class="m-widget24__item">
+              <h4 class="m-widget24__title">Customers  DeActivated</h4>
+              <br><span class="m-widget24__desc">Customers DeActivated Total</span>
+              <span class="m-widget24__stats m--font-danger">{{customerCount.inActiveTotalCount}}</span>
+              <div class="m--space-10"></div>
+              <div class="progress m-progress--sm">
+                <div id="customerdeactiveper" class="progress-bar m--bg-danger" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+              </div>
+              <span class="m-widget24__change">DeActivated Customers in this month:{{" "}}{{customerCount.inactiveMonthTotal}}</span>
+              <span class="m-widget24__number">{{customerdeactiveper}}%</span>
+            </div>
+          </div>
+          <!--end::New Orders-->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="m-portlet  m-portlet--unair">
+    <div class="m-portlet__body  m-portlet__body--no-padding">
+      <div class="row m-row--no-padding m-row--col-separator-xl">
+        <div class="col-md-12 col-lg-12 col-xl-4" style="border-right:10px solid #f2f3f8">
+          <!--begin::Total Profit-->
+          <div class="m-widget24">
+            <div class="m-widget24__item">
+              <h4 class="m-widget24__title">Users</h4>
+              <br><span class="m-widget24__desc">Users Total</span>
+              <span class="m-widget24__stats m--font-brand">{{customerUserCount.total}}</span>
+              <div class="m--space-10"></div>
+              <div class="progress m-progress--sm">
+                <div id="customerusertotalProgressbar" class="progress-bar m--bg-brand" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+              </div>
+              <span class="m-widget24__change">Users added in this month:{{" "}}{{customerUserCount.monthTotal}}</span><span class="m-widget24__number">{{customeruseraddredper}}%</span>
+            </div>
+          </div>
+          <!--end::Total Profit-->
+        </div>
+        <div class="col-md-12 col-lg-12 col-xl-4" style="border-right:10px solid #f2f3f8">
+          <!--begin::New Feedbacks-->
+          <div class="m-widget24">
+            <div class="m-widget24__item">
+              <h4 class="m-widget24__title">Users Active</h4>
+              <br><span class="m-widget24__desc">Users Active Total</span>
+              <span class="m-widget24__stats m--font-info">{{customerUserCount.activeTotalCount}}</span>
+              <div class="m--space-10"></div>
+              <div class="progress m-progress--sm">
+                <div id="customeruseractiveper" class="progress-bar m--bg-info" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+              </div>
+              <span class="m-widget24__change">Active Users in this month:{{" "}}{{customerUserCount.activeMonthtTotal}}</span>
+              <span class="m-widget24__number">{{customeruseractiveper}}%</span>
+            </div>
+          </div>
+          <!--end::New Feedbacks-->
+        </div>
+        <div class="col-md-12 col-lg-12 col-xl-4" style="border-right:10px solid #f2f3f8">
+          <!--begin::New Orders-->
+          <div class="m-widget24">
+            <div class="m-widget24__item">
+              <h4 class="m-widget24__title">Users DeActivated</h4>
+              <br><span class="m-widget24__desc">Users DeActivated Total</span>
+              <span class="m-widget24__stats m--font-danger">{{customerUserCount.inActiveTotalCount}}</span>
+              <div class="m--space-10"></div>
+              <div class="progress m-progress--sm">
+                <div id="customeruserdeactiveper" class="progress-bar m--bg-danger" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+              </div>
+              <span class="m-widget24__change">DeActivated Users in this month:{{" "}}{{customerUserCount.inactiveMonthTotal}}</span>
+              <span class="m-widget24__number">{{customeruserdeactiveper}}%</span>
+            </div>
+          </div>
+          <!--end::New Orders-->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="m-portlet  m-portlet--unair">
+    <div class="m-portlet__body  m-portlet__body--no-padding">
+      <div class="row m-row--no-padding m-row--col-separator-xl">
+        <div class="col-md-12 col-lg-12 col-xl-6" style="border-right:10px solid #f2f3f8">
+          <!--begin::Total Profit-->
+          <div class="m-widget24">
+            <div class="m-widget24__item">
+              <h4 class="m-widget24__title">Donot Call Registry</h4>
+              <br><span class="m-widget24__desc">Donot Call Registry total</span>
+              <span class="m-widget24__stats m--font-brand">{{donotcallregCount.total}}</span>
+              <div class="m--space-10"></div>
+              <div class="progress m-progress--sm">
+                <div id="donotcallregbar" class="progress-bar m--bg-brand" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+              </div>
+              <span class="m-widget24__change">Donot Call Registry request in this month:{{" "}}{{donotcallregCount.monthTotal}}</span><span class="m-widget24__number">{{donotcallper}}%</span>
+            </div>
+          </div>
+          <!--end::Total Profit-->
+        </div>
+        <div class="col-md-12 col-lg-12 col-xl-6" style="border-right:10px solid #f2f3f8">
+          <!--begin::New Feedbacks-->
+          <div class="m-widget24">
+            <div class="m-widget24__item">
+              <h4 class="m-widget24__title">New Sign up Customers</h4>
+              <br><span class="m-widget24__desc">Active Customers in this month</span>
+                  <span class="m-widget24__stats m--font-info">{{this.customerCount.activeMonthtTotal + this.customerCount.pendingMonthTotal}}</span>
+              <div class="m--space-10"></div>
+              <div class="progress m-progress--sm">
+                <div id="customerpendingper" class="progress-bar m--bg-info" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+              </div>
+              <span class="m-widget24__change">New Sign up Customers in this month:</span>{{" "}}{{customerCount.pendingMonthTotal}}
+              <span class="m-widget24__number">{{customerpendingper}}%</span>
+            </div>
+          </div>
+          <!--end::New Feedbacks-->
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+  <!--end:: Widgets/Stats-->   <!--Begin::Section-->
+  <div class="row">
+    <div class="col-xl-8">
+      <div class="m-portlet  m-portlet--unair">
+        <div class="m-portlet__body  m-portlet__body--no-padding">
+          <div class="row m-row--no-padding m-row--col-separator-xl">
+            <div class="col-md-12 col-lg-6 col-xl-6" style="border-right:10px solid #f2f3f8">
+              <!--begin::Total Profit-->
+              <div class="m-widget24">
+                <div class="m-widget24__item">
+                  <h4 class="m-widget24__title">Invoice</h4>
+                  <br><span class="m-widget24__desc">Invoice Total</span>
+                  <span class="m-widget24__stats m--font-brand">{{invoicedetail.total}}</span>
+                  <div class="m--space-10"></div>
+                  <div class="progress m-progress--sm">
+                    <div id="invoicetotal" class="progress-bar m--bg-brand" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                  </div>
+                  <span class="m-widget24__change">Invoice raised in this month:{{" "}}{{invoicedetail.monthTotal}}</span><span class="m-widget24__number">{{invoiceTotal}}%</span>
+                </div>
+              </div>
+              <!--end::Total Profit-->
+            </div>
+            <div class="col-md-12 col-lg-6 col-xl-6" style="border-right:10px solid #f2f3f8">
+              <!--begin::New Feedbacks-->
+              <div class="m-widget24">
+                <ul style="margin-left: 9px;" class="nav nav-pills nav-pills--brand m-nav-pills--align-right m-nav-pills--btn-pill m-nav-pills--btn-sm" role="tablist">
+                  <li class="nav-item m-tabs__item"><a id="canprev" class="nav-link m-tabs__link" role="tab" (click)="canprev()" aria-selected="false">Last Month</a></li>
+                  <li class="nav-item m-tabs__item"><a id="cancurre" class="nav-link m-tabs__link" (click)="cancurre()" role="tab" aria-selected="true">current Month</a></li>
+                </ul>
+                <div *ngIf="cancelinv == 'currentmonth'" class="m-widget24__item">
+                  <h4 class="m-widget24__title">Invoice Cancel</h4>
+                  <br><span class="m-widget24__desc">Invoice cancelled Total</span>
+                  <span class="m-widget24__stats m--font-brand">{{invoicedetail.cancelTotal}}</span>
+                  <div class="m--space-10"></div>
+                  <div class="progress m-progress--sm">
+                    <div id="invoicecancel" class="progress-bar m--bg-brand" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                  </div>
+                  <span class="m-widget24__change">Invoice cancelled in this month:{{" "}}{{invoicedetail.cancelMonth}}</span><span class="m-widget24__number">{{invoiceCancelled}}%</span>
+                </div>
+                <div *ngIf="cancelinv == 'lastmonth'" class="m-widget24__item">
+                  <h4 class="m-widget24__title">Invoice Cancel</h4>
+                  <br><span class="m-widget24__desc">Invoice cancelled Total</span>
+                  <span class="m-widget24__stats m--font-brand">{{invoicedetail.cancelTotal}}</span>
+                  <div class="m--space-10"></div>
+                  <div class="progress m-progress--sm">
+                    <div id="invoicecancelprev" class="progress-bar m--bg-brand" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                  </div>
+                  <span class="m-widget24__change">Invoice cancelledin last month:{{" "}}{{invoicedetail.cancelPrevMonth}}</span><span class="m-widget24__number">{{invoicecancelprev}}%</span>
+                </div>
+              </div>
+              <!--end::New Feedbacks-->
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="m-portlet  m-portlet--unair">
+        <div class="m-portlet__body  m-portlet__body--no-padding">
+          <div class="row m-row--no-padding m-row--col-separator-xl">
+            <div class="col-md-12 col-lg-6 col-xl-6" style="border-right:10px solid #f2f3f8">
+              <!--begin::Total Profit-->
+              <div class="m-widget24">
+                <div class="m-widget24__item">
+                  <h4 class="m-widget24__title">Invoice Sent</h4>
+                  <br><span class="m-widget24__desc">Invoice Sent to Customer</span>
+                  <span class="m-widget24__stats m--font-brand">{{invoicedetail.sentCustTotal}}</span>
+                  <div class="m--space-10"></div>
+                  <div class="progress m-progress--sm">
+                    <div id="invoicesentid" class="progress-bar m--bg-brand" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                  </div>
+                  <span class="m-widget24__change">Invoice sent in this month:{{" "}}{{invoicedetail.sentCustMonth}}</span><span class="m-widget24__number">{{invoiceSent}}%</span>
+                </div>
+              </div>
+              <!--end::Total Profit-->
+            </div>
+            <div class="col-md-12 col-lg-6 col-xl-6" style="border-right:10px solid #f2f3f8">
+              <!--begin::New Feedbacks-->
+              <div class="m-widget24">
+                <div class="m-widget24__item">
+                  <h4 class="m-widget24__title">Invoice not sent</h4>
+                  <br><span class="m-widget24__desc">Invoice not sent to customer total</span>
+                  <span class="m-widget24__stats m--font-brand">{{invoicedetail.notSentTotal}}</span>
+                  <div class="m--space-10"></div>
+                  <div class="progress m-progress--sm">
+                    <div id="invoicenotsentid" class="progress-bar m--bg-brand" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                  </div>
+                  <span class="m-widget24__change">Invoice not sent in this month:{{" "}}{{invoicedetail.notSentMonth}}</span><span class="m-widget24__number">{{invoiceNotSent}}%</span>
+                </div>
+              </div>
+              <!--end::New Feedbacks-->
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="m-portlet  m-portlet--unair">
+        <div class="m-portlet__body  m-portlet__body--no-padding">
+          <div class="row m-row--no-padding m-row--col-separator-xl">
+            <div class="col-md-12 col-lg-6 col-xl-6" style="border-right:10px solid #f2f3f8">
+              <!--begin::Total Profit-->
+              <div class="m-widget24">
+
+                <ul style="margin-left: 9px;" class="nav nav-pills nav-pills--brand m-nav-pills--align-right m-nav-pills--btn-pill m-nav-pills--btn-sm" role="tablist">
+                  <li class="nav-item m-tabs__item"><a id="paylast" class="nav-link m-tabs__link" role="tab" (click)="paylast()" aria-selected="false">Last Month</a></li>
+                  <li class="nav-item m-tabs__item"><a id="paycurr" class="nav-link m-tabs__link" (click)="paycurr()" role="tab" aria-selected="true">current Month</a></li>
+                </ul>
+
+                <div *ngIf="paymenydone == 'currentmonth'" class="m-widget24__item">
+                  <h4 class="m-widget24__title">Paid</h4>
+                  <br><span class="m-widget24__desc">Paid Total</span>
+                  <span class="m-widget24__stats m--font-brand">{{paymentdetail.paidTotal}}</span>
+                  <div class="m--space-10"></div>
+                  <div class="progress m-progress--sm">
+                    <div id="paid" class="progress-bar m--bg-brand" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                  </div>
+                  <span class="m-widget24__change">paid in this month:{{" "}}{{paymentdetail.paidMonth}}</span><span class="m-widget24__number">{{paid}}%</span>
+                </div>
+
+                <div *ngIf="paymenydone == 'lastmonth'" class="m-widget24__item">
+                  <h4 class="m-widget24__title">Paid</h4>
+                  <br><span class="m-widget24__desc">Paid Total</span>
+                  <span class="m-widget24__stats m--font-brand">{{paymentdetail.paidTotal}}</span>
+                  <div class="m--space-10"></div>
+                  <div class="progress m-progress--sm">
+                    <div id="prevpaid" class="progress-bar m--bg-brand" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                  </div>
+                  <span class="m-widget24__change">Paid in Last month:{{" "}}{{paymentdetail.paidprevmonth}}</span><span class="m-widget24__number">{{prevpaid}}%</span>
+                </div>
+              </div>
+              <!--end::Total Profit-->
+            </div>
+
+
+            <div class="col-md-12 col-lg-6 col-xl-6" style="border-right:10px solid #f2f3f8">
+              <!--begin::New Feedbacks-->
+              <div class="m-widget24">
+                <ul style="margin-left: 9px;" class="nav nav-pills nav-pills--brand m-nav-pills--align-right m-nav-pills--btn-pill m-nav-pills--btn-sm" role="tablist">
+                  <li class="nav-item m-tabs__item"><a id="notpaylast" class="nav-link m-tabs__link" role="tab" (click)="notpaylast()" aria-selected="false">Last Month</a></li>
+                  <li class="nav-item m-tabs__item"><a id="notpaycurr" class="nav-link m-tabs__link" (click)="notpaycurr()" role="tab" aria-selected="true">current Month</a></li>
+                </ul>
+
+                <div *ngIf="paymentnotdone == 'currentmonth'" class="m-widget24__item">
+                  <h4 class="m-widget24__title">Not Paid</h4>
+                  <br><span class="m-widget24__desc">Not Paid Total</span>
+                  <span class="m-widget24__stats m--font-brand">{{paymentdetail.notPaidTotal}}</span>
+                  <div class="m--space-10"></div>
+                  <div class="progress m-progress--sm">
+                    <div id="notpaid" class="progress-bar m--bg-brand" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                  </div>
+                  <span class="m-widget24__change">Not Paid in this month:{{" "}}{{paymentdetail.notPaidMonth}}</span><span class="m-widget24__number">{{notpaid}}%</span>
+                </div>
+
+
+                <div *ngIf="paymentnotdone == 'lastmonth'" class="m-widget24__item">
+                  <h4 class="m-widget24__title">Not Paid</h4>
+                  <br><span class="m-widget24__desc">Not paid Total</span>
+                  <span class="m-widget24__stats m--font-brand">{{paymentdetail.notPaidTotal}}</span>
+                  <div class="m--space-10"></div>
+                  <div class="progress m-progress--sm">
+                    <div id="prevnotpaid" class="progress-bar m--bg-brand" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                  </div>
+                  <span class="m-widget24__change">Not paid in Last month:{{" "}}{{paymentdetail.notPaidPrevmonth}}</span><span class="m-widget24__number">{{prevnotpaid}}%</span>
+                </div>
+              </div>
+
+              <!--end::New Feedbacks-->
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+
+    <div class="col-xl-4" style="padding:0px">
+      <!--begin:: Widgets/Top Products-->
+      <div class="m-portlet m-portlet--full-height m-portlet--fit  m-portlet--unair" id="topusers" style="margin-right: 23px;
+    margin-left: -14px;
+    box-shadow: 0 1px 15px 1px rgba(81,77,92,.08) !important;">
+        <div class="m-portlet__head">
+          <div class="m-portlet__head-caption">
+            <div class="m-portlet__head-title">
+              <h3 class="m-portlet__head-text" style="    font-size: 14px;
+    text-transform: uppercase;
+    font-family: Avenir !important;
+    font-weight: 600;">
+                Expensive Users
+              </h3>
+            </div>
+          </div>
+        </div>
+        <div class="m-portlet__body" style="padding: 10px 10px 10px 0px !important;">
+          <!--begin::Widget5-->
+          <div class="m-widget4 m-widget4--chart-bottom" style="min-height: 480px">
+            <div *ngFor="let log of customerlogs" class="m-widget4__item">
+              <div class="m-widget4__info">
+                <span class="m-widget4__title">{{log.firstName}}{{" "}}{{log.lastName}}</span><br>
+                <span class="m-widget4__sub">{{log.customerName}}</span>
+              </div>
+              <span class="m-widget4__ext"><span class="m-widget4__number m--font-brand">{{log.creditsUsage}}</span></span>
+            </div>
+          </div>
+          <!--end::Widget 5-->
+        </div>
+      </div>
+      <!--end:: Widgets/Top Products-->
+    </div>
+
+
+  </div>
+
+
+  <div class="m-portlet  m-portlet--unair">
+    <div class="m-portlet__body  m-portlet__body--no-padding">
+      <div class="row m-row--no-padding m-row--col-separator-xl">
+        <div class="col-md-12 col-lg-6 col-xl-6" style="border-right:10px solid #f2f3f8">
+          <!--begin::Total Profit-->
+          <div class="m-widget24">
+            <div class="m-widget24__item">
+              <h4 class="m-widget24__title">Contact Us</h4>
+              <br><span class="m-widget24__desc">Contact Us Total</span>
+              <span class="m-widget24__stats m--font-brand">{{contactuscount.total}}</span>
+              <div class="m--space-10"></div>
+              <div class="progress m-progress--sm">
+                <div id="contactustotal" class="progress-bar m--bg-brand" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+              </div>
+              <span class="m-widget24__change">Contact Us request in this month:{{" "}}{{contactuscount.monthTotal}}</span><span class="m-widget24__number">{{contactusreceived}}%</span>
+            </div>
+          </div>
+          <!--end::Total Profit-->
+        </div>
+        <div class="col-md-12 col-lg-6 col-xl-6" style="border-right:10px solid #f2f3f8">
+          <!--begin::New Feedbacks-->
+          <div class="m-widget24">
+            <div class="m-widget24__item">
+              <h4 class="m-widget24__title">Contact us Not Actioned</h4>
+              <br><span class="m-widget24__desc">New Contact us request Total</span>
+              <span class="m-widget24__stats m--font-info">{{contactuscount.notActionedTotal}}</span>
+              <div class="m--space-10"></div>
+              <div class="progress m-progress--sm">
+                <div id="contactuspending" class="progress-bar m--bg-info" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+              </div>
+              <span class="m-widget24__change">New Contactus request:{{" "}}{{contactuscount.notActionedMonth}}</span>
+              <span class="m-widget24__number">{{contactusnotres}}%</span>
+            </div>
+          </div>
+          <!--end::New Feedbacks-->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="m-portlet  m-portlet--unair">
+    <div class="m-portlet__body  m-portlet__body--no-padding">
+      <div class="row m-row--no-padding m-row--col-separator-xl">
+        <div class="col-md-12 col-lg-12 col-xl-4" style="border-right:10px solid #f2f3f8">
+          <!--begin::Total Profit-->
+
+          <div class="m-widget24">
+
+            <ul style="margin-left: 9px;" class="nav nav-pills nav-pills--brand m-nav-pills--align-right m-nav-pills--btn-pill m-nav-pills--btn-sm" role="tablist">
+              <li class="nav-item m-tabs__item"><a id="prev" class="nav-link m-tabs__link" role="tab" (click)="prev()" aria-selected="false">Last Month</a></li>
+              <li class="nav-item m-tabs__item"><a id="curr" class="nav-link m-tabs__link" (click)="curr()" role="tab" aria-selected="true">current Month</a></li>
+            </ul>
+
+            <div *ngIf="shortpayment=='currentmonth'" class="m-widget24__item">
+              <h4 class="m-widget24__title">Short Paid</h4>
+              <br><span class="m-widget24__desc">Short Paid Total</span>
+              <span class="m-widget24__stats m--font-brand">{{paymentdetail.shortPaidTotal}}</span>
+              <div class="m--space-10"></div>
+              <div class="progress m-progress--sm">
+                <div id="shortpaid" class="progress-bar m--bg-brand" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+              </div>
+              <span class="m-widget24__change">Short Paid in this month:{{" "}}{{paymentdetail.shortPaidMonth}}</span><span class="m-widget24__number">{{shortpaid}}%</span>
+            </div>
+            <div *ngIf="shortpayment=='lastmonth'" class="m-widget24__item">
+              <h4 class="m-widget24__title">Short paid</h4>
+              <br><span class="m-widget24__desc">Short Paid Total</span>
+              <span class="m-widget24__stats m--font-brand">{{paymentdetail.shortPaidTotal}}</span>
+              <div class="m--space-10"></div>
+              <div class="progress m-progress--sm">
+                <div id="prevshortpaid" class="progress-bar m--bg-brand" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+              </div>
+              <span class="m-widget24__change">Short paid in Last month:{{" "}}{{paymentdetail.shortPaidprevmonth}}</span><span class="m-widget24__number">{{prevshortpaid}}%</span>
+            </div>
+
+            <!--end::Total Profit-->
+          </div>
+        </div>
+        <div class="col-md-12 col-lg-12 col-xl-4" style="border-right:10px solid #f2f3f8">
+          <div class="m-widget24">
+            <div class="m-widget24__item">
+              <h4 class="m-widget24__title">Tax Invoice</h4>
+              <br><span class="m-widget24__desc">Tax Invoice Sent Total</span>
+              <span class="m-widget24__stats m--font-info">{{invoicedetail.taxinvTotal}}</span>
+              <div class="m--space-10"></div>
+              <div class="progress m-progress--sm">
+                <div id="tsxinv" class="progress-bar m--bg-info" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+              </div>
+              <span class="m-widget24__change">Tax Invoice Sent in this month:{{" "}}{{invoicedetail.taxinvMonth}}</span>
+              <span class="m-widget24__number">{{taxinvoice}}%</span>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-12 col-lg-12 col-xl-4" style="border-right:10px solid #f2f3f8">
+          <div class="m-widget24">
+            <div class="m-widget24__item">
+              <h4 class="m-widget24__title">Subscription Active</h4>
+              <br><span class="m-widget24__desc">Subscription Total</span>
+              <span class="m-widget24__stats m--font-danger">{{subdetail.total}}</span>
+              <div class="m--space-10"></div>
+              <div class="progress m-progress--sm">
+                <div id="subactive" class="progress-bar m--bg-danger" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+              </div>
+              <span class="m-widget24__change">Active Subscription invoice not raised:{{" "}}{{subdetail.monthTotal}}</span>
+              <span class="m-widget24__number">{{subactive}}%</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+</div>
+
+  <style>
+    .m-widget24 .m-widget24__item .m-widget24__title {
+      color: #3e4047 !important;
+      font-size: 12px !important;
+      text-transform: uppercase !important;
+      font-family: Avenir !important;
+    }
+
+    .m-widget24 .m-widget24__item .m-widget24__desc {
+      color: #9699a2 !important;
+      font-size: 10px !important;
+      text-transform: uppercase !important;
+      font-family: Avenir !important !important;
+    }
+
+    .m-widget24 .m-widget24__item .m-widget24__change {
+      color: #9699a2 !important;
+      font-size: 10px !important;
+      text-transform: uppercase !important;
+      font-family: Avenir !important;
+    }
+
+    .m-widget24 .m-widget24__item .m-widget24__stats {
+      float: right !important;
+      margin-right: 1.8rem !important;
+      margin-top: -1.43rem !important;
+      font-size: 16px !important;
+      font-weight: 600 !important;
+      font-family: Avenir !important;
+    }
+
+    .m-widget4 .m-widget4__item .m-widget4__info .m-widget4__title {
+      font-size: 12px !important;
+      font-weight: 600 !important;
+      text-transform: uppercase !important;
+    }
+
+    .m-widget4 .m-widget4__item .m-widget4__info .m-widget4__sub {
+      font-size: 10px !important;
+      text-transform: uppercase !important;
+      font-family: Avenir !important;
+    }
+
+    .m-widget4 .m-widget4__item {
+      display: table;
+      padding-top: 5px !important;
+    }
+
+    .m-widget4 .m-widget4__item {
+      display: table;
+      padding-top: 0px !important;
+      padding-bottom: 0px !important;
+    }
+
+    .m-widget24 {
+      box-shadow: 0 1px 15px 1px rgba(81,77,92,.08) !important;
+      padding-top: 5px !important;
+    }
+    .nav.nav-pills, .nav.nav-tabs {
+      margin-bottom: -30px !important;
+    }
+      .nav.nav-pills.m-nav-pills--btn-sm .m-tabs__link {
+        padding: .6em 1.4em;
+        font-size: .85rem;
+        font-weight: 600 !important;
+        text-transform: uppercase !important;
+      }
+    @media (max-width: 1200px) {
+      #topusers {
+        margin-left: 14px !important;
+      }
+    }
+    @media (max-width: 840px) {
+      #topusers {
+        margin-left: 14px !important;
+      }
+    }
+  </style>

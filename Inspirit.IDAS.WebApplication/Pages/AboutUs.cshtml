@@ -1,0 +1,382 @@
+﻿@page
+@{
+    Layout = "_Layout2";
+}
+<head>
+   @* <title>Inspirit Data Analytics Services | Tracing Solutions, South Africa</title>*@
+    <title>Online Tracing Solutions, South Africa</title>
+    <meta name="description" content="Inspirit Data Analytics Services provides online data products and solutions to a variety of entities including doctors, estate agents, investigators, call centers, law firms.">
+
+</head>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+
+    .img-fluid1 {
+        width: 100%;
+        max-width: 65%;
+        height: auto;
+    }
+
+    .navbar-brand {
+        display: inline-block;
+        padding-top: .3125rem;
+        padding-bottom: .3125rem;
+        margin-right: 0rem;
+        margin-left: 0rem;
+        font-size: 1.25rem;
+        line-height: inherit;
+        white-space: nowrap;
+    }
+
+    label {
+        position: relative;
+        width: 300px;
+        height: 400px;
+        z-index: 2;
+        perspective: 1000px;
+        -webkit-perspective: 1000px;
+        cursor: pointer;
+    }
+
+    .card {
+        width: 100%;
+        height: 100%;
+        transform-style: preserve-3d;
+        -webkit-transform-style: preserve-3d;
+        transition: all 1.0s linear;
+    }
+
+        .card div {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+        }
+
+        .card .back {
+            transform: rotateX(180deg);
+            -webkit-transform: rotateX(180deg);
+            -webkit-transition: all 1.0s linear;
+            transition: all 1.0s linear;
+            transform-style: preserve-3d;
+            -webkit-transform-style: preserve-3d;
+            display: block;
+            box-sizing: border-box;
+            text-align: center;
+        }
+
+
+
+    label:checked .cardClick {
+        -webkit-transform: rotateX(180deg);
+        transform: rotateX(180deg);
+    }
+
+    label:hover .card {
+        -webkit-transform: rotateX(180deg);
+        transform: rotateX(180deg);
+        -webkit-transition: all 1.0s linear;
+        transition: all 1.0s linear;
+    }
+
+    input {
+        display: none;
+    }
+
+    :checked + .card {
+        transform: rotateX(180deg);
+        -webkit-transform: rotateX(180deg);
+    }
+
+    label:hover :checked + .card {
+        transform: rotateX(180deg);
+        -webkit-transform: rotateX(180deg);
+    }
+
+    :checked + .cardClick {
+        transform: rotateX(180deg);
+        -webkit-transform: rotateX(180deg);
+    }
+
+    label:checked :checked + .cardClick {
+        transform: rotateX(180deg);
+        -webkit-transform: rotateX(180deg);
+    }
+</style>
+
+
+<div align="center" class="header_block container-fluid">
+    <div align="center" class="header-w3layouts" data-role="header" data-position="fixed">
+        <div align="center" class="container">
+            <!--navigation section -->
+            <nav align="center" class="navbar navbar-expand-lg navbar-light">
+                <div class="hedder-up ">
+                    @*<a class="navbar-brand" href=""><img src="~/web/images/Landing-Page-Logo.svg" class="img-fluid1" alt="" /></a>*@
+                    <a class="navbar-brand" href="">
+                        @*<img src="~/web/images/IDAS-Authorised-Agent-Website-Logo.png" />*@
+                        <img src="~/web/images/IDAS Authorised Logo 11-03.svg" width="320" height="140" />
+                    </a>
+                </div>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link" href="Home">Home <span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="Products" class="nav-link">Products</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="Solutions" class="nav-link">Solutions</a>
+                        </li>
+                        <li class="nav-item active">
+                            <a href="AboutUs" class="nav-link">About Us</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="@Url.Action("NewsBlog", "News")" class="nav-link">News</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="Complaints" class="nav-link">Complaints</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="ContactUs" class="nav-link">Contact Us</a>
+                        </li>
+                        <li><a class="btn btn-block click-me2" style="background-color: #0F3E55;color: #ffffff;" href="login">SIGN IN</a></li>&nbsp;&nbsp;
+                       @* <li><a class="btn btn-block click-me2" style="background-color: #0F3E55;color: #ffffff;" href="usersignup">REGISTER</a></li>*@
+
+                    </ul>
+                </div>
+            </nav>
+            <div class="clearfix"> </div>
+        </div>
+    </div>
+</div>
+
+<!-- //banner -->
+
+
+<div class="slider text-center">
+    <div class="callbacks_container">
+        <ul class="rslides" id="slider4">
+            <li style="height:320px;">
+                <div class="slider-img seven-img" style="height: 381px;display:none;" id="imgLoadAll">
+                    <div class="container-fluid" id="layer">
+                        <div class="slider-info" align="center" style="padding-top: 146px;">
+                            <h3 class="heading text-uppercase" align="center" style="color: #ffffff;
+    text-align: center;
+    font-weight: bold;
+    border-bottom: 2px solid #ffffff;
+    border-top: 2px solid #ffffff;
+    width: 162px;
+    margin-bottom: -37px;
+    ">
+                                ABOUT US
+                            </h3>
+                        </div>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+
+    <div class="clearfix"></div>
+</div>
+
+<!-- //services -->
+
+<div class="about-color py-lg-4 py-md-3 py-sm-3 py-3" style="margin-top: -5px;">
+    <div class="container-fluid py-lg-5 py-md-5 py-sm-4 py-3">
+        <div class="row">
+            <div class="line-w3ls-title col-lg-12 col-md-12 text-center" style="background-color: #40667C; color:#ffffff; padding: 10px; font-style: italic;">
+                <h4 style="font-size: 30px;font-weight: bold;font-style: normal;padding: 20px 0px 0px 0px;">
+                    WHAT'S IN A NAME?
+                </h4>
+                <p style="color:#ffffff; padding: 10px; font-style: normal;">
+                    The word <span style="font-weight:500;"><i>INSPIRIT</i></span> means rebirth. To infuse life or spirit, encourage, invigorate or strengthen.<br />
+                    This forms part of our core beliefs and passion when engaging with our clients.
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="about-color py-lg-4 py-md-3 py-sm-3 py-3" style="margin-top: -40px;">
+    <div class="container py-lg-5 py-md-5 py-sm-4 py-3">
+        <div class="row">
+            <div align="right" class="line-w3ls-title col-lg-9 col-md-12 text-center" style="color:#000000; padding: 30px 30px 10px; text-align: left !important;">
+                <p align="right" style="color:#000000; padding: 10px; font-style: normal;text-align: center;">
+                    We are a South African based organisation with a global footprint. At Inspirit we have experience that spans over decades within business process solutions driving automation and optimization. We have developed solutions to enhance your business processes to make them more effective and as a result make your business more profitable.
+                </p>
+                <p align="right" style="color:#000000; padding: 10px; font-style: normal;text-align: center;">
+                    We have partnered with Africa’s largest ICT Company EOH giving us access to a broad range of tools and resources to empower your business. At Inspirit, we’ll help create a product/solution that is easily accessible for small to medium organizations, not just blue chip companies.
+                </p>
+                <p align="right" style="color:#000000; padding: 10px; font-style: normal;text-align: center;">
+                    We allow you to leverage the power of data without fearing the exorbitant costs that might be linked with these products and services.
+                </p>
+            </div>
+            <div class="line-w3ls-title col-lg-3 col-md-12 text-center" style="background-color: #40667C; color:#000000; margin-top: 20px; padding: 10px;">
+                <div class="line-w3ls-title text-center" style="color:#ffffff; margin:auto; ">
+                    <h4 align="center" style="font-size: 30px;font-weight: bold; font-style: normal; margin:50px">"DATA IS THE NEW OIL"</h4>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="about-color py-lg-4 py-md-3 py-sm-3 py-3" style="margin-top: -10px;">
+    <div class="line-w3ls-title col-lg-12 col-md-12 text-center" style="color:#000000; padding: 10px;">
+        <h4 align="center" style="font-size: 30px;
+    font-weight: bold;
+    font-style: normal;
+    padding: 10px">
+            OUR WHY FACTOR
+        </h4>
+        <p style="color:#000000; padding: 10px; font-style: normal;">
+            We Make Debtor tracing simple
+            </br>
+
+            Agent of a Credit Bureau<
+            </br>
+            Our data solution is current with monthly updates.
+            </br>
+            World Class technology used to assemble multiple data points to provide a single view of a person
+            </br>
+            Search individual & company records
+            </br>
+            And best of all - its affordable
+</div>
+    </div>
+    <div class="about-color py-lg-4 py-md-3 py-sm-3 py-3" style="margin-top: -10px;">
+        <div class="container py-lg-5 py-md-5 py-sm-4 py-3">
+            <div class="row">
+                <div class="line-w3ls-title col-lg-12 col-md-12 text-center" style="color:#000000; padding: 10px;">
+                    <h4 align="center" style="font-size: 30px;
+    font-weight: bold;
+    font-style: normal;
+    padding: 10px">
+                        WHO WE ARE
+                    </h4>
+                    <p style="color:#000000; padding: 10px; font-style: normal;">
+                        Inspirit’s data solutions division – Inspirit Data Analytics Services (IDAS) will enhance your existing organizational operations by delivering business intelligence and analytical solutions. Powered by XDS a Credit Information Bureau and one of the major suppliers of business and consumer credit data in the SA market.
+                        <br />
+                        We are Protection of Personal Information (POPI) focused and guarantee data services that are accurate, updated and secure.
+                    </p>
+                    <p style="color:#000000; padding: 10px; font-style: normal;">
+                        Inspirit Data Analytics Services provides insights to companies and assists in unlocking their unknown potential or hidden opportunities. by delivering top quality, business intelligence and analytic solutions under one umbrella. We believe in no more guesswork and only actionable insights’ because effective analytics starts with trusted data. Our core solutions in data analytics help our clients turn data-driven. This in turn aids the organization to use data to make better decisions by giving them access to the data when they require it.
+                    </p>
+                    <p style="color:#000000; padding: 10px; font-style: normal;">
+                        We also understand that the word ‘Data’ scares companies because of the complexity associated with it, the cost per record and the data compliance (POPI). If you’re using your data to drive your business innovation, then there’s no room for error. Data quality starts with compact data governance. It must be well organized, accurate, relevant and understandable. With IDAS- we believe that Data can empower everyone by creating a Data as a Service model i.e. pay for what you need.
+                    </p>
+                    <p style="color:#000000; padding: 10px; font-style: normal;">There is no other brand in the South African market that leverages the power of EOH, is partnered with a reputable Credit Bureau, & has a holistic range of products and services. In addition, we have a dedicated software development and business intelligence team that support to the products and services we offer.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="about-color py-lg-4 py-md-3 py-sm-3 py-3" style="margin-top: -5px;">
+        <div class="container-fluid py-lg-5 py-md-5 py-sm-4 py-3">
+            <div class="row">
+                <div class="line-w3ls-title col-lg-12 col-md-12 text-center" style="background-color: #40667C; color:#ffffff; padding: 10px; font-style: italic;">
+                    <h4 style="font-size: 20px;font-weight: bold;font-style: normal;padding: 20px 0px 20px 0px;">
+                        We connect people with data effectively to empower their business.
+                    </h4>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    @*<div class="about-color py-lg-4 py-md-3 py-sm-3 py-3" style="margin-top: 10px;background-color: #E1E8EC; color:#000000; padding: 40px 20px; margin-bottom: 38px;">
+        <h4 align="center" style="font-size: 30px;
+    font-weight: bold;
+    font-style: normal;
+    padding: 20px 0px 0px 0px;">
+            MEET THE TEAM
+        </h4>
+        <div class="container py-lg-5 py-md-5 py-sm-4 py-3" style="background-color: #E1E8EC; color:#000000; padding: 40px 20px; margin-top: 20px;">
+            <div class="row">
+                <div class="line-w3ls-title col-lg-4 col-md-12 text-center">
+                    <img src="~/web/images/Bradley.jpg" class="img-fluid" alt="" />
+                </div>
+                <div class="line-w3ls-title col-lg-8 col-md-12 text-center">
+                    <p style="text-align:justify;">
+                        Hi! My name is Bradley Poliah and I am the co-founder of Inspirit Data Analytics Services. My background in mechanical engineering makes me no stranger to effective and logical systems design. I believe in continuous growth and improvement and this is not limited to just my clients. With the completion of my MBA I also have over two decades of hands-on international experience with a variety of ERP, CRM, APS, Warehouse Management and E-Commerce tools in a cross-section of industries.
+                    </p>
+                </div>
+
+
+            </div>
+        </div>
+        <div class="container py-lg-5 py-md-5 py-sm-4 py-3" style="background-color: #E1E8EC; color:#000000; padding: 40px 20px; margin-top: -10px;
+    margin-bottom: 64px;">
+            <div class="row">
+                <div class="line-w3ls-title col-lg-8 col-md-12 text-center">
+                    <p style="text-align:justify;">
+                        My Name is Mischa Naidoo and I am the co-founder of Inspirit Data Analytics Services. From Passion to Profession: In 2001, after completing my BCOM degree and starting off as a software developer, unknowingly, I stumbled upon the importance of understanding how data analytics is a source for business innovation. 17 years later, prior to running a software development company with one focus area being predictive analytics, and while obtaining my MBA, it made sense, in 2018, that I turned my passion into a profession.
+                    </p>
+                </div>
+                <div class="line-w3ls-title col-lg-4 col-md-12 text-center" style="margin-top: 8px;">
+                    <img src="~/web/images/Mischa.jpg" class="img-fluid" alt="" />
+                </div>
+
+            </div>
+        </div>
+    </div>*@
+    <!-- //Solutions -->
+<br/>
+    <div class="about-color py-lg-4 py-md-3 py-sm-3 py-3" style="margin-top: -70px;">
+        <div class="container py-lg-5 py-md-5 py-sm-4 py-3">
+            <div class="row">
+                <div class="line-w3ls-title col-lg-12 col-md-12 text-center" style="color:#000000; padding: 10px;">
+                    <h4 style="font-size: 20px;
+    font-weight: bold;
+    font-style: normal;
+    padding: 10px">
+                        OUR MISSION
+                    </h4>
+                    <p style="color:#000000; padding: 10px; font-style: normal;">
+                        To be the most accessible centralised data warehouse, that empowers people, companies & enterprises.
+                    </p>
+                    <h4 style="font-size: 20px;
+    font-weight: bold;
+    font-style: normal;
+    padding: 10px">
+                        OUR VISION
+                    </h4>
+                    <p style="color:#000000; padding: 10px; font-style: normal;">
+                        Data solutions for the masses by providing knowledge that EMPOWERS you
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="about-color py-lg-4 py-md-3 py-sm-3 py-3" style="margin-top: -6px !important;" id="imgLoadAll">
+        <div class="container-fluid py-lg-5 py-md-5 py-sm-4 py-3">
+
+            <div align="center" class="container-fluid" style="background-color: #C71212; color:#ffffff;padding-bottom: 20px;">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h5 style="padding-top: 25px;font-size: 15px !important;font-weight: bold;">Contact us for more information & pricing on our solutions</h5>
+                        <br />
+                        <a href="ContactUs"><button type="submit" class="btn btn-block click-me1" style="background-color: #ffffff;color: #C71212;margin-top: 8px; margin-bottom: 30px;">CONTACT US</button></a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="gap"></div>
+
+    <script src="~/web/js/jquery-2.2.3.min.js"></script>
+    <script type="text/javascript">
+        $(window).on("load", function () {
+            $('#imgLoadAll').show();
+
+        })
+    </script>
+

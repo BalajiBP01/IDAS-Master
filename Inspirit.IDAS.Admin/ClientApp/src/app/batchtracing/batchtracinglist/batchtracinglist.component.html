@@ -1,0 +1,114 @@
+<div class="m-subheader" appunwraptag="">
+  <div class="d-flex align-items-center">
+    <div class="mr-auto">
+      <h3 class="m-subheader__title ">
+        BatchTracing
+      </h3>
+    </div>
+  </div>
+</div>
+<div class="m-content">
+  <div class="m-portlet  m-portlet--unair">
+    <div class="m-portlet__body  m-portlet__body--no-padding">
+      <div class="m-portlet__body">
+        <div class="m-form__section m-form__section--first col-12">
+          <div class="form-group m-form__group row">
+            <label for="example-text-input" class="col-1 col-form-label"
+                   style="font-weight:bold">Company</label>
+            <div class="col-7">
+              <input type="text" readonly="readonly"
+                     class="form-control m-input border-dark"
+                     name="customer.tradingName"
+                     [(ngModel)]="customer.tradingName">
+              <input type="hidden" id="customer" value="{{customer.id}}" />
+            </div>
+            <i class="fa fa-search" style="padding-top:1%"
+               (click)="searchcustomer()"></i>
+          </div>
+          <div class="form-group m-form__group row">
+            <label for="example-text-input" class="col-1 col-form-label"
+                   style="font-weight:bold">From Date</label>
+            <div class="col-3">
+              <input class="form-control m-input border-dark"
+                     name="fromDatestring" id="fromdate" type="date"
+                     value="{{fromDatestring}}">
+            </div>
+            <label for="example-text-input" class="col-1 col-form-label"
+                   style="font-weight:bold">To Date</label>
+            <div class="col-3">
+              <input class="form-control m-input border-dark"
+                     name="toDatestring" id="todate"
+                     type="date" value="{{toDatestring}}">
+            </div>
+            <div class="col-4">
+              <button type="button" class="btn btn-success pull-left"
+                      (click)="rerender()">
+                Submit
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="m-form__section m-form__section--first">
+          <table #tableid datatable [dtOptions]="dtOptions"
+                 [dtTrigger]="dtTrigger" class="table table-striped"></table>
+          <div class="form-group m-form__group row">
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="myModal" class="modal" tabindex="-1" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div style="background: linear-gradient(#103f56, #094868, #00527c, #066f9e)" class="modal-header">
+        <h4 style="color:#ffffff" class="modal-title">IDAS says:</h4>
+      </div>
+      <div class="modal-body">{{warningMesage}}</div>
+      <div class="modal-footer">
+        <button style="width:150px" type="button" class="btn btn-accent" data-dismiss="modal" (click)="Submit(this.batchID)">Ok</button>
+        <button style="width:150px" type="button" class="btn btn-accent" data-dismiss="modal">Cancel</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<button data-toggle="modal" id="nopermission" data-target="#per" [hidden]="true"></button>
+<button data-toggle="modal" id="errormsg" data-target="#error" [hidden]="true"></button>
+
+<div id="per" class="modal" tabindex="-1" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div  style="background: linear-gradient(#103f56, #094868, #00527c, #066f9e)" class="modal-header">
+        <h4 style="color:#ffffff" class="modal-title">IDAS says:</h4>
+      </div>
+      <div class="modal-body">You don't have permission to access.</div>
+      <div class="modal-footer">
+        <button style="width:150px" (click)="dash()" type="button" class="btn btn-accent" data-dismiss="modal">Ok</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="error" class="modal" tabindex="-1" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div style="background: linear-gradient(#103f56, #094868, #00527c, #066f9e)" class="modal-header">
+        <h4 style="color:#ffffff" class="modal-title">IDAS says:</h4>
+      </div>
+      <div class="modal-body">{{errormsg}}</div>
+      <div class="modal-footer">
+        <button style="width:150px" type="button" class="btn btn-accent" data-dismiss="modal">Ok</button>
+      </div>
+    </div>
+  </div>
+</div>
+<style>
+  .modal-footer {
+    justify-content: center !important;
+  }
+</style>

@@ -1,0 +1,262 @@
+<div class="m-subheader" appunwraptag="">
+  <div class="m-portlet__head-caption">
+    <div class="m-portlet__head-title">
+      <span class="m-portlet__head-icon m--hide">
+        <i class="la la-gear"></i>
+      </span>
+      <h3 class="m-subheader__title ">
+        <button style="font-size: 14px;
+        font-weight: 600;
+        text-transform: uppercase;
+        color: #016fa2;
+        font-family: Avenir !important;
+        margin-top: -2px;" class="btn btn-link" (click)="list()">
+          Customer Users
+        </button>
+        <i style="margin-left:-12px" class="fa fa-angle-right"></i>
+        Customer User
+      </h3>
+      <div class="btn-group pull-right m-form__actions">
+        <a style="margin: 10px 5px;" class="btn btn-accent" (click)="list()">
+          Back
+          &nbsp;
+          <i class="fa fa-angle-double-left"></i>
+        </a>
+        <a *ngIf="mode == 'view' && userper.editAction" style="margin: 10px 5px;" class="btn btn-accent" (click)="edit()">
+          Edit
+          &nbsp;
+          <i class="fa fa-pencil-alt"></i>
+        </a>
+        <button *ngIf="mode == 'view' && (currentObj.status == 'Pending' || currentObj.status == 'Inactive')" [disabled]="!userper.editAction" style="margin: 10px 5px;" class="btn btn-accent" (click)="changeStatus()">
+          Activate
+          &nbsp;
+          <i class="fa fa-check"></i>
+
+        </button>
+        <button *ngIf="mode == 'view' && currentObj.status == 'Active' " [disabled]="!userper.editAction" style="margin: 10px 5px;" class="btn btn-accent" (click)="changeStatus()">
+          Deactivate
+          &nbsp;
+          <i class="fa fa-times"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="loading==true" id="cover"></div>
+
+<div class="m-content">
+  <div class="m-portlet">
+    <div class="m-portlet__body">
+      <div class="m-portlet__body">
+        <h5 style="text-align:left">
+          <span style="color:#000000">User for:</span> &nbsp;
+          <span style="color:#000000">{{companyname}}</span>
+        </h5>
+        <div class="form-group m-form__group row">
+          <label for="example-text-input" class="col-2 col-form-label"
+                 style=" text-align-last:left;">FirstName<span style="color:red">*</span></label>
+
+          <div class="col-6">
+            <input class="form-control m-input" style=" border: 2px solid #ccc;"
+                   type="text" name="firstName" [readonly]="readonly"
+                   [(ngModel)]="currentObj.firstName" (keypress)="onKey($event)">
+          </div>
+        </div>
+        <div class="form-group m-form__group row">
+          <label for="example-text-input" class="col-2 col-form-label"
+                 style="text-align-last:left;">LastName<span style="color:red">*</span></label>
+
+          <div class="col-6">
+            <input class="form-control m-input"
+                   style="border: 2px solid #ccc;" type="text" name="lastName"
+                   [readonly]="readonly" [(ngModel)]="currentObj.lastName"
+                   (keypress)="onKey($event)">
+          </div>
+        </div>
+        <div class="form-group m-form__group row">
+          <label for="example-text-input" class="col-2 col-form-label"
+                 style="text-align-last:left;">Title<span style="color:red">*</span></label>
+
+          <div class="col-6">
+            <select placeholder="Please select" style=" border: 2px solid #ccc;"
+                    class="form-control m-input" name="title" [disabled]="readonly"
+                    [(ngModel)]="currentObj.title">
+              <option value="Mr.">Mr.</option>
+              <option value="Ms.">Ms.</option>
+              <option value="Mrs.">Mrs.</option>
+            </select>
+
+          </div>
+        </div>
+        <div class="form-group m-form__group row">
+          <label for="example-text-input" class="col-2 col-form-label"
+                 style=" text-align-last:left;">IDNumber<span style="color:red">*</span></label>
+
+          <div class="col-6">
+            <input class="form-control m-input" style=" border: 2px solid #ccc;"
+                   type="text" name="idNumber" [readonly]="readonly"
+                   [(ngModel)]="currentObj.idNumber" (keypress)="onKey($event)">
+          </div>
+        </div>
+        <div class="form-group m-form__group row">
+          <label for="example-text-input" class="col-2 col-form-label"
+                 style="text-align-last:left;">Email<span style="color:red">*</span></label>
+
+          <div class="col-6">
+            <input class="form-control m-input" style=" border: 2px solid #ccc;"
+                   type="text" name="email" [readonly]="readonly"
+                   [(ngModel)]="currentObj.email">
+          </div>
+        </div>
+        <div class="form-group m-form__group row">
+          <label for="example-text-input" class="col-2 col-form-label"
+                 style="text-align-last:left;">Password<span style="color:red">*</span></label>
+
+          <div class="col-6">
+            <input class="form-control m-input" style=" border: 2px solid #ccc;"
+                   type="text" name="email" [readonly]="readonly"
+                   [(ngModel)]="currentObj.password">
+          </div>
+        </div> 
+        <div class="form-group m-form__group row">
+          <label for="example-text-input" class="col-2 col-form-label">Phone Number<span *ngIf="currentObj.isAdmin" style="color:red">*</span></label>
+
+          <div class="col-6">
+            <input class="form-control m-input" style=" border: 2px solid #ccc;"
+                   type="text" name="phoneNumber" [disabled]="readonly"
+                   [(ngModel)]="currentObj.phoneNumber" (keypress)="onKeynumber($event)">
+          </div>
+        </div>
+
+        <div class="form-group m-form__group row">
+          <label for="example-text-input" class="col-2 col-form-label"
+                 style="text-align-last:left;">IsAdmin</label>
+          <div style="margin-top: 12px;">
+
+            <label style="margin-left: 14px;" class="m-checkbox m-checkbox--single m-checkbox--state m-checkbox--state-primary">
+              <input type="checkbox" name="isAdmin" [disabled]="readonly"
+                     [(ngModel)]="currentObj.isAdmin">
+              <span></span>
+            </label>
+
+
+          </div>
+        </div>
+
+        <div class="form-group m-form__group row">
+          <label for="example-text-input" class="col-2 col-form-label"
+                 style="text-align-last:left;">IP Address Check</label>
+          <div style="margin-top: 12px;">
+
+            <label style="margin-left: 14px;" class="m-checkbox m-checkbox--single m-checkbox--state m-checkbox--state-primary">
+              <input type="checkbox" name="MacAddressCheck" [disabled]="readonly"
+                     [(ngModel)]="currentObj.MAchAddressCHK">
+              <span></span>
+            </label>
+
+          </div>
+        </div>
+        <div class="form-group m-form__group row">
+          <label for="example-text-input" class="col-2 col-form-label">IP Addresses<!--<span *ngIf="currentObj.isAdmin" style="color:red">*</span>--></label>
+
+          <div class="col-6">
+            <input class="form-control m-input" style=" border: 2px solid #ccc;"
+                   type="text" name="MacAddresses" [disabled]="readonly"
+                   [(ngModel)]="currentObj.MacAddresses">
+          </div>
+        </div>
+
+        <div class="form-group m-form__group row">
+          <label for="example-text-input" class="col-2 col-form-label"
+                 style="text-align-last:left;">Allow Batch without Subscription</label>
+          <div style="margin-top: 12px;">
+            <label style="margin-left: 14px;" class="m-checkbox m-checkbox--single m-checkbox--state m-checkbox--state-primary">
+              <input type="checkbox" name="batchwithoutSub" [disabled]="readonly"
+                     [(ngModel)]="currentObj.batchwithoutSub">
+              <span></span>
+            </label>
+          </div>
+        </div>
+
+        <div class="form-group m-form__group row">
+          <label for="example-text-input" class="col-2 col-form-label"
+                 style="text-align-last:left;">Allow Lead without Subscription</label>
+          <div style="margin-top: 12px;">
+            <label style="margin-left: 14px;" class="m-checkbox m-checkbox--single m-checkbox--state m-checkbox--state-primary">
+              <input type="checkbox" name="leadswithoutSub" [disabled]="readonly"
+                     [(ngModel)]="currentObj.leadswithoutSub">
+              <span></span>
+            </label>
+          </div>
+        </div>
+
+        <!-- IsRestricted -->
+        <div class="form-group m-form__group row">
+          <label for="example-text-input" class="col-2 col-form-label"
+                 style="text-align-last:left;">IsRestricted</label>
+          <div style="margin-top: 12px;">
+            <label style="margin-left: 14px;" class="m-checkbox m-checkbox--single m-checkbox--state m-checkbox--state-primary">
+              <input type="checkbox" name="isRestricted" [disabled]="readonly"
+                     [(ngModel)]="currentObj.isRestricted">
+              <span></span>
+            </label>
+          </div>
+        </div>
+
+        <div class="form-group m-form__group row">
+          <div *ngIf="mode != 'view'" class="m-form__actions" style="text-align:center">
+            <button type="button" class="btn btn-success" (click)="save()">Submit</button>
+            <button data-toggle="modal" id="nopermission" data-target="#per" [hidden]="true"></button>
+            <button data-toggle="modal" id="openModalButton" data-target="#myModal" [hidden]="true"></button>
+            <button type="button" class="btn btn-success" (click)="list()">Cancel</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="per" class="modal" tabindex="-1" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div style="background: linear-gradient(#103f56, #094868, #00527c, #066f9e)" class="modal-header">
+        <h4 style="color:#ffffff" class="modal-title">IDAS says:</h4>
+      </div>
+      <div class="modal-body">You don't have permission to access.</div>
+      <div class="modal-footer">
+        <button style="width:150px" (click)="dash()" type="button" class="btn btn-accent" data-dismiss="modal">Ok</button>
+      </div>
+    </div>
+  </div>
+</div>
+<div id="myModal" class="modal" tabindex="-1" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div style="background: linear-gradient(#103f56, #094868, #00527c, #066f9e)" class="modal-header">
+        <h4 style="color:#ffffff" class="modal-title">IDAS says:</h4>
+      </div>
+      <div class="modal-body">{{errorMessageValue}}</div>
+      <div class="modal-footer">
+        <button style="width:150px" type="button" class="btn btn-accent" data-dismiss="modal">Ok</button>
+      </div>
+    </div>
+  </div>
+</div>
+<style>
+  .modal-footer {
+    justify-content: center !important;
+  }
+
+  #cover {
+    background: url("http://www.aveva.com/Images/ajax-loader.gif") no-repeat scroll center center;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    top: 0px;
+    left: 0px;
+    z-index: 1;
+  }
+</style>

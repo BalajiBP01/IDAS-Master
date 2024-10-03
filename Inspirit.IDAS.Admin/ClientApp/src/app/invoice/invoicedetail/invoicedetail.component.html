@@ -1,0 +1,684 @@
+<div class="m-subheader" appunwraptag="">
+  <div class="m-portlet__head-caption">
+    <div class="m-portlet__head-title">
+      <span class="m-portlet__head-icon m--hide">
+        <i class="la la-gear"></i>
+      </span>
+      <h3 class="m-subheader__title ">
+        <button style="font-size: 14px;
+        font-weight: 600;
+        text-transform: uppercase;
+        color: #016fa2;
+        font-family: Avenir !important;
+        margin-top: -2px;" class="btn btn-link"
+                (click)="list()">
+          Invoices
+        </button>
+        <i class="fa fa-angle-right"></i>
+        Invoice
+      </h3>
+      <div class="btn-group pull-right m-form__actions">
+        <a style="margin: 10px 5px;" class="btn btn-accent" (click)="list()">
+          Back
+          &nbsp;
+          <i style="margin-left:-4px" class="fa fa-angle-double-left"></i>
+        </a>
+        <button *ngIf="mode == 'view' && userper.editAction && !currentObj.isCancelled"
+                [disabled]="currentObj.isSubmited || currentObj.ispaid || currentObj.isCreditNoteRaised"
+                style="margin: 10px 5px;" class="btn btn-accent" (click)="edit()">
+          Edit
+          &nbsp;
+          <i class="fa fa-pencil-alt"></i>
+        </button>
+        <button *ngIf="mode == 'view' && userper.editAction && !currentObj.isCancelled"
+                [disabled]="!currentObj.ispaid"
+                style="margin: 10px 5px;" class="btn btn-accent" data-toggle="modal"
+                data-target="#SendEmail">
+          Sent Tax Invoice
+          &nbsp;
+          <i class="fa fa-envelope"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<div class="m-content">
+  <div class="m-portlet">
+    <div class="m-portlet__body" *ngIf="mode== 'add'">
+      <div *ngIf="loading==true" id="cover"></div>
+      <div class="form-group m-form__group row">
+        <label for="example-text-input" class="col-2 col-form-label" style="font-weight:bold">Period For</label>
+        <div class="col-4">
+          <select name="request.startMonth" [(ngModel)]="request.startMonth"
+                  class="form-control m-input" (change)="periodchange()">
+            <option value="1">January</option>
+            <option value="2">February</option>
+            <option value="3">March</option>
+            <option value="4">April</option>
+            <option value="5">May</option>
+            <option value="6">June</option>
+            <option value="7">July</option>
+            <option value="8">August</option>
+            <option value="9">September</option>
+            <option value="10">October</option>
+            <option value="11">November</option>
+            <option value="12">December</option>
+          </select>
+        </div>
+        <div class="col-4">
+          <select name="request.startYear" [(ngModel)]="request.startYear"
+                  class="form-control m-input" (change)="periodchange()">
+            <option value="{{preyear}}">{{preyear}}</option>
+            <option value={{year}}>{{year}}</option>
+            <option value={{nxtyear}}>{{nxtyear}}</option>
+          </select>
+        </div>
+        <div>
+          <button class="btn btn-accent" (click)="submityear(request.startYear,request.startMonth)">Submit</button>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-6">
+          <div style="color:red;font-weight:100"
+               [innerHTML]="usermsg"></div>
+        </div>
+      </div>
+      <div *ngIf="custdisplay == true">
+        <table class="table table-hover table-bordered" [mfData]="customerlist"
+               #mfusers="mfDataTable" [mfRowsOnPage]="10">
+          <thead>
+            <tr>
+              <th>
+                <div class="row">
+                  <div class="input-group m-input-group col-6">
+                    <label class="m-checkbox m-checkbox--single m-checkbox--state m-checkbox--state-primary">
+                      <input type="checkbox" name="selectcompany"
+                             [(ngModel)]="selectcompany" (change)="selectall(selectcompany)" />
+                      <span></span>
+                    </label>
+                    <div class="input-group-prepend">
+                      Company
+                    </div>
+                  </div>
+                  <div class="col-2"></div>
+                  <div class="col-1">
+                    <label for="example-text-input" class="col-2 col-form-label" style="font-weight:bold">search</label>&nbsp;&nbsp;
+                  </div>
+                  <div class="col-3">
+                    <input type="text" [(ngModel)]="name" name="name" (keyup)="updateFilter(name)" />
+                  </div>
+                </div>
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let user of mfusers.data, let i= index">
+              <td>
+                <div class="input-group m-input-group">
+                  <label class="m-checkbox m-checkbox--single m-checkbox--state m-checkbox--state-primary">
+                    <input type="checkbox" name="{{user.customerId}}{{i}}" (change)="comselect(user.isSelected)"
+                           [(ngModel)]="user.isSelected" />
+                    <span></span>
+                  </label>
+                  <div class="input-group-prepend">
+                    <span> {{user.customerName}}</span>
+                  </div>
+                  <span>&nbsp;&nbsp;</span>
+                  <div class="input-group-prepend">
+                    <span>( {{user.registrationNumber}} )</span>
+                  </div>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+          <tfoot>
+            <tr style="text-align:right">
+              <td colspan="1">
+                <mfBootstrapPaginator></mfBootstrapPaginator>
+              </td>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
+
+      <div *ngIf="custdisplay == true" class="m-form__actions" style="text-align:center">
+        <button type="button" class="btn btn-success" (click)="peocessSelected()">Process Selected</button>
+        <button type="button" class="btn btn-success" (click)="processAll()">Process All</button>
+        <button type="button" class="btn btn-success" (click)="processUnselected()">Process Unselected</button>
+      </div>
+    </div>
+
+
+    <div class="m-portlet__body" *ngIf="mode != 'add'">
+      <div *ngIf="loading==true" id="cover"></div>
+      <div class="form-group m-form__group row">
+        <label for="example-text-input" class="col-2 col-form-label">Invoice Number</label>
+        <div class="col-4">
+          <input class="form-control m-input border-dark" type="text"
+                 name="invoiceNumber" readonly="readonly"
+                 [(ngModel)]="currentObj.invoiceDisplayNumber">
+        </div>
+        <label for="example-text-input" class="col-2 col-form-label">Invoice Date</label>
+        <div class="col-4">
+          <input class="form-control m-input border-dark" type="text"
+                 name="invoiceDate" readonly="readonly" [(ngModel)]="invDate">
+        </div>
+      </div>
+      <div class="form-group m-form__group row">
+        <label for="example-text-input" class="col-2 col-form-label">Customer</label>
+        <div class="col-4">
+          <input class="form-control m-input border-dark" type="text" name="tradingName"
+                 readonly="readonly" [(ngModel)]="tradingname">
+        </div>
+        <label for="example-text-input" class="col-2 col-form-label">Comments</label>
+        <div class="col-4">
+          <textarea class="form-control m-input border-dark"
+                    name="comments" [readonly]="readonly"
+                    [(ngModel)]="currentObj.remarks">
+                </textarea>
+        </div>
+      </div>
+      <div class="table table-responsive">
+        <table class="table table-hover table-bordered">
+          <thead style="background-color:#000000; color:#ffffff;text-transform:uppercase">
+            <tr>
+              <th>Name</th>
+              <th *ngIf="rateID">Package Rate</th>
+              <th>Quantity</th>
+              <th>Unit Price</th>
+              <th>Amount</th>
+
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of currentObj.invoiceLineItems  let i=index">
+              <td>
+                <input type="text" [(ngModel)]="item.description" name="item.description_{{i}}"
+                       class="form-control" readonly="readonly" />
+              </td>
+              <td *ngIf="rateID">
+                <select class="form-control" name="item.productPackageRateID_{{i}}"
+                        [(ngModel)]="item.productPackageRateID" disabled>
+                  <option *ngFor="let r of rates" value="{{r.id}}"
+                          [selected]="r.id == item.productPackageRateID">
+                    {{r.minLimit}} - {{r.maxLimit}} : {{r.unitPrice | number:'1.2-2'}}
+                  </option>
+                </select>
+              </td>
+              <td>
+                <input class="form-control" type="text" step="0.01" name="item.quantity_{{i}}"
+                       (change)="setTwoNumberDecimal($event)"
+                       (ngModelChange)="item.quantity = $event"
+                       [ngModelOptions]="{updateOn: 'blur'}"
+                       [ngModel]="item.quantity | number:'1.2-2'" readonly>
+              </td>
+              <td>
+                <input *ngIf="mode=='view'" class="form-control m-input border-dark" type="text" step="0.01" name="item.unitPrice_{{i}}"
+                       (change)="setTwoNumberDecimal($event)"
+                       (keyup)="quantityChange(item.unitPrice,i)"
+                       (ngModelChange)="item.unitPrice = $event"
+                       [ngModelOptions]="{updateOn: 'blur'}"
+                       [ngModel]="item.unitPrice | number:'1.2-2'" [readonly]="readonly || !userper.editAction">
+
+
+                <input *ngIf="mode!='view'" class="form-control" type="number" name="item.unitPrice_{{i}}"
+                       (keyup)="quantityChange(item.unitPrice,i)"
+                       [readonly]="readonly || !userper.editAction"
+                       [(ngModel)]="item.unitPrice" />
+
+              </td>
+              <td>
+                <input class="form-control m-input border-dark" type="text" step="0.01" name="item.netAmount_{{i}}"
+                       (change)="setTwoNumberDecimal($event)"
+                       (ngModelChange)="item.netAmount = $event"
+                       [ngModelOptions]="{updateOn: 'blur'}"
+                       [ngModel]="item.netAmount | number:'1.2-2'" readonly>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="form-group m-form__group row">
+        <label for="example-text-input" class="col-2 col-form-label">Sub Total</label>
+        <div class="col-4">
+          <input class="form-control m-input border-dark" type="text" step="0.01" name="subTotal"
+                 (change)="setTwoNumberDecimal($event)"
+                 (ngModelChange)="currentObj.subTotal = $event"
+                 [ngModelOptions]="{updateOn: 'blur'}"
+                 [ngModel]="currentObj.subTotal | number:'1.2-2'" readonly="readonly">
+
+        </div>
+        <label for="example-text-input" class="col-2 col-form-label">Discount in %</label>
+        <div class="col-4">
+          <input class="form-control m-input border-dark" type="text"
+                 (keyup)="countChange(currentObj.discount)"
+                 [readonly]="readonly || !userper.privileged"
+                 name="discount" [(ngModel)]="currentObj.discount">
+        </div>
+      </div>
+      <div class="form-group m-form__group row">
+        <label for="example-text-input" class="col-2 col-form-label">Vat Total</label>
+        <div class="col-4">
+          <input class="form-control m-input border-dark" type="text" step="0.01" name="vatTotal"
+                 (change)="setTwoNumberDecimal($event)"
+                 (ngModelChange)="currentObj.vatTotal=$event"
+                 [ngModelOptions]="{updateOn: 'blur'}"
+                 [ngModel]="currentObj.vatTotal | number:'1.2-2'" readonly="readonly">
+
+        </div>
+        <label for="example-text-input" class="col-2 col-form-label">Total Amount</label>
+        <div class="col-4">
+          <input class="form-control m-input border-dark" type="text" step="0.01" name="total"
+                 (change)="setTwoNumberDecimal($event)"
+                 (ngModelChange)="currentObj.total=$event"
+                 [ngModelOptions]="{updateOn: 'blur'}"
+                 [ngModel]="currentObj.total | number:'1.2-2'" readonly="readonly">
+        </div>
+      </div>
+
+      <div *ngIf="mode != 'view'" class="m-form__actions" style="text-align:center">
+        <button [disabled]="currentObj.isSubmited || currentObj.ispaid
+                                 || currentObj.isCancelled
+                                 || currentObj.isCreditNoteRaised"
+                type="button" class="btn btn-success"
+                (click)="save()">
+          Save
+        </button>
+        <button type="button" data-toggle="modal" data-target="#invsubmit" [disabled]="currentObj.isSubmited || currentObj.ispaid
+                                                || currentObj.isCancelled
+                                                || currentObj.isCreditNoteRaised"
+                class="btn btn-success">
+          Send to Customer
+        </button>
+        <button type="button"
+                class="btn btn-success"
+                (click)="cancel()">
+          Cancel
+        </button>
+        <button type="button" class="btn btn-success"
+                (click)="downloadPdf()">
+          Download as Pdf
+        </button>
+        <button type="button" class="btn btn-success"
+                data-toggle="modal"
+                data-target="#SendEmail">
+          Send Mail
+        </button>
+      </div>
+    </div>
+    <div class="m-portlet__body" id="TaxInvoice" style="display:none">
+      <div class="row">
+        <div class="col-3" style="text-align:left">
+          <a href="#">
+            <img src="../../../assets/demo/demo12/media/img/logo/Inspirit-Logo-Small.png" style="height:240px;width:570px" />
+          </a>
+        </div>
+        <div class="col-3" onedrive>
+
+        </div>
+        <div class="col-6" style="background:#00334d;color:#ffffff;text-align:center;vertical-align: text-bottom;height:100px">
+          <br />
+          
+          <br />
+          <h1 *ngIf="currentObj.ispaid" style="padding-top:140%">
+            TAX INVOICE
+          </h1>
+          <h1 *ngIf="!currentObj.ispaid" style="padding-top:55px;">
+            PROFORMA INVOICE
+          </h1>
+        </div>
+      </div>
+      <br />
+      <div class="row">
+        <div class="col-7">
+          <label class="col-4 pull-left"><h3>INVOICE TO:</h3></label>
+        </div>
+        <div class="col-5">
+
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-6">
+          <label class="col-4 font-weight-bold" style="text-align:left">CLIENT NAME:</label>
+          <label class="col-7 col-form-label" style="text-align:left">
+            {{taxInvoiceReport.clientName}}
+          </label>
+        </div>
+        <div class="col-6">
+          <label class="col-6 right font-weight-bold" style="text-align:right">REFERENCE NUMBER:</label>
+          <label class="col-4 col-form-label" style="text-align:left">{{taxInvoiceReport.refrenceNumber}}</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-6">
+          <label class="col-4 font-weight-bold" style="text-align:left">ADDRESS :</label>
+          <label class="col-7 col-form-label" style="text-align:left">{{taxInvoiceReport.address}}</label>
+        </div>
+        <div class="col-6">
+          <label class="col-6 font-weight-bold" style="text-align:right">DATE:</label>
+          <label class="col-4 col-form-label" style="text-align:left">{{taxInvoiceReport.date}}</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-6">
+          <label class="col-4 font-weight-bold" style="text-align:left">CODE :</label>
+          <label class="col-7 col-form-label" style="text-align:left">{{taxInvoiceReport.code}}</label>
+        </div>
+        <div class="col-6">
+          <label class="col-6 font-weight-bold" style="text-align:right">TEL:</label>
+          <label class="col-4 col-form-label" style="text-align:left">{{taxInvoiceReport.telePhoneNumber}}</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-6">
+          <label class="col-4 font-weight-bold" style="text-align:left">EMAIL :</label>
+          <label class="col-7 col-form-label" style="text-align:left">{{taxInvoiceReport.email}}</label>
+        </div>
+        <div class="col-6">
+          <label class="col-6 font-weight-bold" style="text-align:right">VAT NUMBER:</label>
+          <label class="col-4 col-form-label" style="text-align:left">{{taxInvoiceReport.vatNumber}}</label>
+        </div>
+      </div>
+      <br />
+      <div class="row">
+        <div class="col-12">
+          <div class="card">
+            <div class="card-body">
+              <table class="table table-bordered table-responsive-md table-striped text-center">
+                <tr style="background-color:#990000; color:#ffffff">
+                  <th class="text-center">Description</th>
+                  <th class="text-center">Quantity</th>
+                  <th class="text-center">Unit Price</th>
+                  <th class="text-center">Amount</th>
+                </tr>
+                <tr *ngFor="let item of currentObj.invoiceLineItems let i=index">
+                  <td>
+                    <label class="col-form-label">{{item.description}}</label>
+                  </td>
+                  <td>
+                    <label class="col-form-label">{{item.quantity}}</label>
+                  </td>
+                  <td>
+                    <label class="col-form-label">{{item.unitPrice | number:'.2'}}</label>
+                  </td>
+                  <td>
+                    <label class="col-form-label">{{item.netAmount | number:'.2'}}</label>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="border:none"></td>
+                  <td style="border:none"></td>
+                  <td style="border:none">
+                    <div style="border:none;background:#00334d;color:#ffffff;height:35px">
+                      <h5 style="padding-top:7px">
+                        SUB TOTAL :
+                      </h5>
+                    </div>
+                  </td>
+                  <td style="border:none">
+                    <label style="padding-top:7px;font-size:18px;"
+                           class="font-weight-bold">
+                      R {{currentObj.subTotal |number:'.2' }}
+                    </label>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="border:none"></td>
+                  <td style="border:none"></td>
+                  <td style="border:none">
+                    <div style="border:none;background:#00334d;color:#ffffff;height:35px">
+                      <h5 style="padding-top:7px">
+                        VAT TOTAL :
+                      </h5>
+                    </div>
+                  </td>
+                  <td style="border:none">
+                    <label style="padding-top:7px;font-size:18px;"
+                           class="font-weight-bold">
+                      R {{currentObj.vatTotal | number:'.2'}}
+                    </label>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="border:none"></td>
+                  <td style="border:none"></td>
+                  <td style="border:none">
+                    <div style="border:none;background:#00334d;color:#ffffff;height:35px">
+                      <h5 style="padding-top:7px">
+                       DISCOUNT :
+                      </h5>
+                    </div>
+                  </td>
+                  <td style="border:none">
+                    <label style="padding-top:7px;font-size:18px;"
+                           class="font-weight-bold">
+                       {{currentObj.discount | number:'.2'}}%
+                    </label>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="border:none"></td>
+                  <td style="border:none"></td>
+                  <td style="border:none">
+                    <div style="border:none;background:#00334d;color:#ffffff;height:35px">
+                      <h5 style="padding-top:7px">
+                        TOTAL(INCL VAT) :
+                      </h5>
+                    </div>
+                  </td>
+                  <td style="border:none">
+                    <label style="padding-top:7px;font-size:18px;"
+                           class="font-weight-bold">
+                      R {{currentObj.total | number:'.2'}}
+                    </label>
+                  </td>
+                </tr>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+     
+      <br />
+      <div class="row">
+        <div class="col-10">
+          <label class="col-form-label col-4 pull-left"><h3>PAYMENT DETAILS:</h3></label>
+        </div>
+        <div class="col-2">
+
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-6">
+          <label class="col-form-label col-4 font-weight-bold" style="text-align:left">BANK:</label>
+          <label class="col-form-label col-7" style="text-align:left">
+            {{taxInvoiceReport.bankName}}
+          </label>
+        </div>
+        <div class="col-6">
+
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-6">
+          <label class="col-form-label col-4 font-weight-bold" style="text-align:left">ACCOUNT NUMBER:</label>
+          <label class="col-form-label col-7" style="text-align:left">
+            {{taxInvoiceReport.accountNumber}}
+          </label>
+        </div>
+        <div class="col-6">
+
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-6">
+          <label class="col-form-label col-4 font-weight-bold" style="text-align:left">BRANCH CODE:</label>
+          <label class="col-form-label col-7" style="text-align:left">
+            {{taxInvoiceReport.branchCode}}
+          </label>
+        </div>
+        <div class="col-6">
+
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-6">
+          <label class="col-form-label col-4 font-weight-bold" style="text-align:left">Comments:</label>
+          <label class="col-form-label col-7" style="text-align:left">
+            {{taxInvoiceReport.comments}}
+          </label>
+        </div>
+        <div class="col-6">
+
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12">
+          <label class="col-form-label col-12 font-weight-bold" style="text-align:left;color:#990000">
+            YOUR REFERENCE: QUOTE THE REFERENCE NUMBER ABOVE
+          </label>
+        </div>
+      </div>
+      <br />
+      <div class="row">
+        <div class="col-6">
+          <label class="col-form-label col-6 font-weight-bold" style="text-align:left">IDAS Company Address:</label>
+          <label class="col-form-label col-6" style="text-align:left">
+            {{taxInvoiceReport.idasCompanyAddress}}
+          </label>
+        </div>
+        <div class="col-6">
+        </div>
+      </div>
+      <br />
+      <div class="form-group m-form__group row">
+        <div class="col-12" style="background:#00334d;color:#ffffff;text-align:center;height:30px">
+          <h5 style="padding-top: 6px;" *ngIf="!currentObj.ispaid">
+            PLEASE NOTE: THIS IS NOT A VAT INVOICE. A VAT INVOICE WILL BE ISSUED ON RECEIPT OF PAYMENT
+          </h5>
+          <h5 style="padding-top: 6px;" *ngIf="currentObj.ispaid">
+          </h5>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div id="SendEmail" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"
+                aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="m-portlet__body">
+          <div class="form-group m-form__group row">
+            <label class="col-form-label col-lg-1 col-sm-12">Email</label>
+            <div class="col-md-7">
+              <input class="form-control m-input border-dark" type="text"
+                     name="email" placeholder="Enter your billing email...."
+                     [(ngModel)]="emailProperty.toMail">
+            </div>
+          </div>
+          <div class="form-group m-form__group row">
+            <div class="col-6">
+              <div class="m-form__actions pull-right">
+                <button type="button" data-dismiss="modal"
+                        class="btn btn-success"
+                        (click)="sendEmail(this.currentObj.ispaid)">
+                  Send Email
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<button data-toggle="modal" id="nopermission" data-target="#per" [hidden]="true"></button>
+
+<div id="per" class="modal" tabindex="-1" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div style="background: linear-gradient(#103f56, #094868, #00527c, #066f9e)" class="modal-header">
+        <h4 style="color:#ffffff" class="modal-title">IDAS says:</h4>
+      </div>
+      <div class="modal-body">You don't have permission to access.</div>
+      <div class="modal-footer">
+        <button style="width:150px" (click)="dash()" type="button" class="btn btn-accent" data-dismiss="modal">Ok</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<button data-toggle="modal" id="errormsg" data-target="#error" [hidden]="true"></button>
+
+<div id="error" class="modal" tabindex="-1" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div style="background: linear-gradient(#103f56, #094868, #00527c, #066f9e)" class="modal-header">
+        <h4 style="color:#ffffff" class="modal-title">IDAS says:</h4>
+      </div>
+      <div class="modal-body">{{message}}</div>
+      <div class="modal-footer">
+        <button style="width:150px" type="button" class="btn btn-accent" data-dismiss="modal">Ok</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="invsubmit" class="modal" tabindex="-1" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div style="background: linear-gradient(#103f56, #094868, #00527c, #066f9e)" class="modal-header">
+        <h4 style="color:#ffffff" class="modal-title">IDAS says:</h4>
+      </div>
+      <div class="modal-body">Do you want to submit</div>
+      <div class="modal-footer">
+        <button style="width:150px" type="button" class="btn btn-accent" (click)="submit()" data-dismiss="modal">Ok</button>
+        <button style="width:150px" type="button" class="btn btn-accent" data-dismiss="modal">Cancel</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<button data-toggle="modal" id="list" data-target="#gotolist" [hidden]="true"></button>
+
+<div id="gotolist" class="modal" tabindex="-1" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div style="background: linear-gradient(#103f56, #094868, #00527c, #066f9e)" class="modal-header">
+        <h4 style="color:#ffffff" class="modal-title">IDAS says:</h4>
+      </div>
+      <div class="modal-body">{{message}}</div>
+      <div class="modal-footer">
+        <button style="width:150px" type="button" (click)="list()" class="btn btn-accent" data-dismiss="modal">Ok</button>
+      </div>
+    </div>
+  </div>
+</div>
+<style>
+  .modal-footer {
+    justify-content: center !important;
+  }
+
+  #cover {
+    background: url("http://www.aveva.com/Images/ajax-loader.gif") no-repeat scroll center center;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    top: 0px;
+    left: 0px;
+    z-index: 1;
+  }
+</style>

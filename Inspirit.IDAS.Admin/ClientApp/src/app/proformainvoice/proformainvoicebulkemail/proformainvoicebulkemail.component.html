@@ -1,0 +1,469 @@
+<div class="m-subheader" appunwraptag="">
+  <div class="m-portlet__head-caption">
+    <div class="m-portlet__head-title">
+      <span class="m-portlet__head-icon m--hide">
+        <i class="la la-gear"></i>
+      </span>
+      <h3 class="m-subheader__title ">
+        <button style="padding: 0px;
+    font-size: 14px;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: #016fa2;" class="btn btn-link"
+                (click)="list()">
+          Proforma Invoices
+        </button>
+        <i class="fa fa-angle-right"></i>
+        Proforma Invoice
+      </h3>
+      <div class="btn-group pull-right m-form__actions">
+        <a style="margin: 10px 5px;" class="btn btn-accent" (click)="list()">
+          Back
+          &nbsp;
+          <i class="fa fa-angle-double-left"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="loading==true" id="cover"></div>
+
+
+<div class="m-content">
+  <div class="m-portlet">
+    <div class="m-portlet__body">
+      <div class="form-group m-form__group row">
+        <label for="example-text-input" class="col-2 col-form-label" style="font-weight:bold">Period For</label>
+        <div class="col-4">
+          <select name="startMonth" [(ngModel)]="startMonth"
+                  class="form-control m-input" (change)="periodchange()">
+            <option value="1">January</option>
+            <option value="2">February</option>
+            <option value="3">March</option>
+            <option value="4">April</option>
+            <option value="5">May</option>
+            <option value="6">June</option>
+            <option value="7">July</option>
+            <option value="8">August</option>
+            <option value="9">September</option>
+            <option value="10">October</option>
+            <option value="11">November</option>
+            <option value="12">December</option>
+          </select>
+        </div>
+        <div class="col-4">
+          <select name="startYear" [(ngModel)]="startYear"
+                  class="form-control m-input" (change)="periodchange()">
+            <option value="{{preyear}}">{{preyear}}</option>
+            <option value={{year}}>{{year}}</option>
+            <option value={{nxtyear}}>{{nxtyear}}</option>
+          </select>
+        </div>
+        <div>
+          <button class="btn btn-accent" (click)="submityear(startYear,startMonth)">Submit</button>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-6">
+          <div style="color:red;font-weight:100"
+               [innerHTML]="usermsg"></div>
+        </div>
+      </div>
+      <div *ngIf="custdisplay == true">
+        <div class="row">
+          <div class="col-4">
+
+          </div>
+          <div class="col-4">
+
+          </div>
+          <div class="col-4">
+            <div class="input-group m-input-group">
+              <div class="input-group-prepend">
+                <label for="example-text-input" class="col-2 col-form-label"
+                       style="font-weight:bold">Search</label>
+              </div>
+              <input type="text" [(ngModel)]="name" class="form-control m-input border-dark"
+                     name="name"
+                     (keyup)="updateFilter(name)" />
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <table class="table table-hover table-bordered" [mfData]="proformacustomerlist"
+                 #mfcustomers="mfDataTable" [mfRowsOnPage]="10">
+            <thead>
+              <tr>
+                <th>
+                  <div class="input-group m-input-group">
+                    <label class="m-checkbox m-checkbox--single m-checkbox--state m-checkbox--state-primary">
+                      <input type="checkbox" name="selectcompany"
+                             [(ngModel)]="selectcompany" (change)="selectall(selectcompany)" />
+                      <span></span>
+                    </label>
+                    <div class="input-group-prepend">
+                      <label for="example-text-input"
+                             style="font-weight:bold">Company</label>
+                    </div>
+                  </div>
+                </th>
+                <th>
+                  <label for="example-text-input"
+                         style="font-weight:bold">ProForma Invoice Number</label>
+                </th>
+                <th>
+                  <label for="example-text-input"
+                         style="font-weight:bold">ProForma Invoice Value</label>
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let customer of mfcustomers.data, let i= index">
+                <td>
+                  <div class="input-group m-input-group">
+                    <label class="m-checkbox m-checkbox--single m-checkbox--state m-checkbox--state-primary">
+                      <input type="checkbox" name="{{customer.proFormaInvoice.id}}"
+                             (change)="comselect(customer.isSelected)"
+                             [(ngModel)]="customer.isSelected" />
+                      <span></span>
+                    </label>
+                    <div class="input-group-prepend">
+                      <span> {{customer.clientName}}</span>
+                    </div>
+                  </div>
+                </td>
+                <td>
+                  {{customer.refrenceNumber}}
+                </td>
+                <td>
+                  {{customer.proformaInvoicevalue}}
+                </td>
+              </tr>
+            </tbody>
+            <tfoot>
+              <tr style="text-align:right">
+                <td colspan="3">
+                  <mfBootstrapPaginator></mfBootstrapPaginator>
+                </td>
+              </tr>
+            </tfoot>
+          </table>
+        </div>
+        <div class="row">
+          <div class="col-4">
+
+          </div>
+          <div class="col-4">
+
+          </div>
+          <div class="col-4">
+            <div class="m-form__actions pull-right">
+              <button type="button" class="btn btn-success" (click)="processSelected()">Send Email</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+ 
+    <div *ngFor="let p of proformaSelectedcustomerlist let i=index">
+      <div class="m-portlet__body" id="ProformaInvoice{{i}}" style="display:none">
+        <div class="row">
+          <div class="col-6" style="text-align:left">
+            <a href="#">
+              <img src="../../../assets/demo/demo12/media/img/logo/Login-Page-Logo.png" />
+            </a>
+          </div>
+          <div class="col-6" style="background:#00334d;color:#ffffff;text-align:center;height:80px">
+            <h1 style="padding-top:4%">
+              PROFORMA INVOICE
+            </h1>
+          </div>
+        </div>
+        <br />
+        <br />
+        <br />
+        <div class="row">
+          <div class="col-7">
+            <label class="col-4 pull-left"><h3>INVOICE TO:</h3></label>
+          </div>
+          <div class="col-5">
+
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-6">
+            <label class="col-4 font-weight-bold" style="text-align:left">CLIENT NAME:</label>
+            <label class="col-7 col-form-label" style="text-align:left">
+              {{p.clientName}}
+            </label>
+          </div>
+          <div class="col-6">
+            <label class="col-6 right font-weight-bold" style="text-align:right">REFERENCE NUMBER:</label>
+            <label class="col-4 col-form-label" style="text-align:left">{{p.refrenceNumber}}</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-6">
+            <label class="col-4 font-weight-bold" style="text-align:left">ADDRESS :</label>
+            <label class="col-7 col-form-label" style="text-align:left">{{p.address}}</label>
+          </div>
+          <div class="col-6">
+            <label class="col-6 font-weight-bold" style="text-align:right">DATE:</label>
+            <label class="col-4 col-form-label" style="text-align:left">{{p.date}}</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-6">
+            <label class="col-4 font-weight-bold" style="text-align:left">CODE :</label>
+            <label class="col-7 col-form-label" style="text-align:left">{{p.code}}</label>
+          </div>
+          <div class="col-6">
+            <label class="col-6 font-weight-bold" style="text-align:right">TEL:</label>
+            <label class="col-4 col-form-label" style="text-align:left">{{p.telePhoneNumber}}</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-6">
+            <label class="col-4 font-weight-bold" style="text-align:left">EMAIL :</label>
+            <label class="col-7 col-form-label" style="text-align:left">{{p.email}}</label>
+          </div>
+          <div class="col-6">
+            <label class="col-6 font-weight-bold" style="text-align:right">VAT NUMBER:</label>
+            <label class="col-4 col-form-label" style="text-align:left">{{p.vatNumber}}</label>
+          </div>
+        </div>
+        <br />
+        <br />
+        <br />
+        <div class="row">
+          <div class="col-12">
+            <div class="card">
+              <div class="card-body">
+                <table class="table table-bordered table-responsive-md table-striped text-center">
+                  <tr style="background-color:#990000; color:#ffffff">
+                    <th class="text-center">Description</th>
+                    <th class="text-center">Quantity</th>
+                    <th class="text-center">Unit Price</th>
+                    <th class="text-center">Amount</th>
+                  </tr>
+                  <tr *ngFor="let item of p.proFormaInvoice.proformaInvoiceLineItems let i=index">
+                    <td>
+                      <label class="col-form-label"
+                             *ngFor="let prod of productList">
+                        <span *ngIf="prod.id==item.productId">
+                          {{prod.name}}
+                        </span>
+                      </label>
+                    </td>
+                    <td>
+                      <label class="col-form-label">{{item.quantity}}</label>
+                    </td>
+                    <td>
+                      <label class="col-form-label">{{item.unitPrice | number:'.2'}}</label>
+                    </td>
+                    <td>
+                      <label class="col-form-label">{{item.amount | number:'.2'}}</label>
+                    </td>
+                  </tr>
+                  <br />
+                  <tr>
+                    <td style="border:none"></td>
+                    <td style="border:none"></td>
+                    <td style="border:none">
+                      <div style="border:none;background:#00334d;color:#ffffff;height:35px">
+                        <h5 style="padding-top:7px">
+                          SUB TOTAL :
+                        </h5>
+                      </div>
+                    </td>
+                    <td style="border:none">
+                      <label style="padding-top:7px;font-size:18px;"
+                             class="font-weight-bold">
+                        R {{p.proFormaInvoice.subTotal | number:'.2'}}
+                      </label>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td style="border:none"></td>
+                    <td style="border:none"></td>
+                    <td style="border:none">
+                      <div style="border:none;background:#00334d;color:#ffffff;height:35px">
+                        <h5 style="padding-top:7px">
+                          VAT TOTAL :
+                        </h5>
+                      </div>
+                    </td>
+                    <td style="border:none">
+                      <label style="padding-top:7px;font-size:18px;"
+                             class="font-weight-bold">
+                        R {{p.proFormaInvoice.vatTotal | number:'.2'}}
+                      </label>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td style="border:none"></td>
+                    <td style="border:none"></td>
+                    <td style="border:none">
+                      <div style="border:none;background:#00334d;color:#ffffff;height:35px">
+                        <h5 style="padding-top:7px">
+                          TOTAL(INCL VAT) :
+                        </h5>
+                      </div>
+                    </td>
+                    <td style="border:none">
+                      <label style="padding-top:7px;font-size:18px;"
+                             class="font-weight-bold">
+                        R {{p.proFormaInvoice.total | number:'.2'}}
+                      </label>
+                    </td>
+                  </tr>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+        <br />
+        <br />
+        <br />
+        <div class="row">
+          <div class="col-10">
+            <label class="col-form-label col-4 pull-left"><h3>PAYMENT DETAILS:</h3></label>
+          </div>
+          <div class="col-2">
+
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-6">
+            <label class="col-form-label col-4 font-weight-bold" style="text-align:left">BANK:</label>
+            <label class="col-form-label col-7" style="text-align:left">
+              {{p.bankName}}
+            </label>
+          </div>
+          <div class="col-6">
+
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-6">
+            <label class="col-form-label col-4 font-weight-bold" style="text-align:left">ACCOUNT NUMBER:</label>
+            <label class="col-form-label col-7" style="text-align:left">
+              {{p.accountNumber}}
+            </label>
+          </div>
+          <div class="col-6">
+
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-6">
+            <label class="col-form-label col-4 font-weight-bold" style="text-align:left">BRANCH CODE:</label>
+            <label class="col-form-label col-7" style="text-align:left">
+              {{p.branchCode}}
+            </label>
+          </div>
+          <div class="col-6">
+
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-6">
+            <label class="col-form-label col-4 font-weight-bold" style="text-align:left">Comments:</label>
+            <label class="col-form-label col-7" style="text-align:left">
+              {{p.comments}}
+            </label>
+          </div>
+          <div class="col-6">
+
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12">
+            <label class="col-form-label col-12 font-weight-bold" style="text-align:left;color:#990000">
+              YOUR REFERENCE: QUOTE THE REFERENCE NUMBER ABOVE
+            </label>
+          </div>
+        </div>
+        <br />
+        <br />
+        <br />
+        <br />
+        <div class="row">
+          <div class="col-6">
+            <label class="col-form-label col-6 font-weight-bold" style="text-align:left">IDAS Company Address:</label>
+            <label class="col-form-label col-6" style="text-align:left">
+              {{p.idasCompanyAddress}}
+            </label>
+          </div>
+          <div class="col-6">
+
+          </div>
+        </div>
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <div class="form-group m-form__group row">
+          <div class="col-12" style="background:#00334d;color:#ffffff;text-align:center;height:80px">
+            <h5 style="padding-top:3%">
+              PLEASE NOTE: THIS IS NOT A VAT INVOICE. A VAT INVOICE WILL BE ISSUED ON RECEIPT OF PAYMENT
+            </h5>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<button data-toggle="modal" id="nopermission" data-target="#per" [hidden]="true"></button>
+
+<div id="per" class="modal" tabindex="-1" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div  style="background: linear-gradient(#103f56, #094868, #00527c, #066f9e)" class="modal-header">
+        <h4 style="color:#ffffff" class="modal-title">IDAS says:</h4>
+      </div>
+      <div class="modal-body">You don't have permission to access.</div>
+      <div class="modal-footer">
+        <button style="width:150px" (click)="dash()" type="button" class="btn btn-accent" data-dismiss="modal">Ok</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<button data-toggle="modal" id="error" data-target="#errormsg" [hidden]="true"></button>
+
+<div id="errormsg" class="modal" tabindex="-1" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div  style="background: linear-gradient(#103f56, #094868, #00527c, #066f9e)" class="modal-header">
+        <h4 style="color:#ffffff" class="modal-title">IDAS says:</h4>
+      </div>
+      <div class="modal-body">{{message}}</div>
+      <div class="modal-footer">
+        <button style="width:150px" type="button" (click)="list()" *ngIf="islist == true" class="btn btn-accent" data-dismiss="modal">Ok</button>
+        <button style="width:150px" type="button" *ngIf="islist == false" class="btn btn-accent" data-dismiss="modal">Ok</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  #cover {
+    background: url("http://www.aveva.com/Images/ajax-loader.gif") no-repeat scroll center center;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    top: 0px;
+    left: 0px;
+    z-index: 1;
+  }
+  .modal-footer {
+    justify-content: center !important;
+  }
+</style>

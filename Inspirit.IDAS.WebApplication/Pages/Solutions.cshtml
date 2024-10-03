@@ -1,0 +1,1179 @@
+﻿@page
+@{
+    Layout = "_Layout2";
+}
+<head>
+    <title>Data Cleaning | Credit Bureau Solutions | IDAS, South Africa</title>
+    <meta name="description" content="Inspirit Data Analytics Services gives you access to multiple credit bureau services, from data cleaning to criminal checks and more.">
+
+</head>
+<style>
+    #rowshiftleft {
+        margin-left: 33px;
+    }
+
+    .img-fluid1 {
+        width: 100%;
+        max-width: 65%;
+        height: auto;
+    }
+
+    .gap {
+        background-color: #ffffff;
+        padding: 0px 0px;
+    }
+
+    .gap1 {
+        background-color: #ffffff;
+        padding: 30px 0px 30px 0px;
+    }
+
+    .gap2 {
+        background-color: #ffffff;
+        padding: 10px 0px 10px 0px;
+    }
+
+    .navbar-brand {
+        display: inline-block;
+        padding-top: .3125rem;
+        padding-bottom: .3125rem;
+        margin-right: 0rem;
+        margin-left: 0rem;
+        font-size: 1.25rem;
+        line-height: inherit;
+        white-space: nowrap;
+    }
+
+    .table-txt-grid h4 {
+        padding-top: 5px !important;
+        padding-bottom: 5px !important;
+        font-size: 17px;
+    }
+
+    label {
+        position: relative;
+        width: 300px;
+        height: 375px;
+        z-index: 2;
+        perspective: 1000px;
+        -webkit-perspective: 1000px;
+        cursor: pointer;
+    }
+
+    .card {
+        width: 100%;
+        height: 100%;
+        transform: rotateX(0deg);
+        -webkit-transform: rotateX(0deg);
+        transform-style: preserve-3d;
+        -webkit-transform-style: preserve-3d;
+        transition: all 1.0s linear;
+        border: none !important;
+        border-radius: 0rem !important;
+        position: absolute;
+        background-color: transparent !important;
+    }
+
+        .card div {
+            width: 100%;
+            height: 100%;
+            transform-style: preserve-3d;
+            -webkit-transform-style: preserve-3d;
+            -webkit-backface-visibility: hidden !important;
+            backface-visibility: hidden !important;
+            -moz-backface-visibility: hidden !important;
+        }
+
+        .card .back {
+            transform: rotateX(180deg);
+            -webkit-transition: all 1.0s linear;
+            transition: all 1.0s linear;
+            transform-style: preserve-3d;
+            display: block;
+            box-sizing: border-box;
+            text-align: center;
+            position: absolute;
+            -webkit-transform: rotateX(180deg);
+            -webkit-transform-style: preserve-3d;
+            -webkit-backface-visibility: visible !important;
+            backface-visibility: visible !important;
+            -moz-backface-visibility: visible !important;
+            margin-bottom: 0px !important;
+        }
+
+
+
+    label:checked .cardClick {
+        -webkit-transform: rotateX(180deg);
+        transform: rotateX(180deg);
+    }
+
+    label:hover .card {
+        -webkit-transform: rotateX(180deg);
+        transform: rotateX(180deg);
+    }
+
+    input {
+        display: none;
+    }
+</style>
+
+<div align="center" class="header_block container-fluid">
+    <div align="center" class="header-w3layouts" data-role="header" data-position="fixed">
+        <div align="center" class="container">
+            <!--navigation section -->
+            <nav align="center" class="navbar navbar-expand-lg navbar-light">
+                <div class="hedder-up ">
+
+                    <a class="navbar-brand" href="">
+                        @*<img src="~/web/images/IDAS-Authorised-Agent-Website-Logo.png" />*@
+                        <img src="~/web/images/IDAS Authorised Logo 11-03.svg" width="320" height="140" />
+                    </a>
+                </div>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link" href="Home">Home <span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="Products" class="nav-link">Products</a>
+                        </li>
+                        <li class="nav-item active">
+                            <a href="Solutions" class="nav-link">Solutions</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="AboutUs" class="nav-link">About Us</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="@Url.Action("NewsBlog", "News")" class="nav-link">News</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="Complaints" class="nav-link">Complaints</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="ContactUs" class="nav-link">Contact Us</a>
+                        </li>
+                        <li><a class="btn btn-block click-me2" style="background-color: #0F3E55;color: #ffffff;" href="login">SIGN IN</a></li>&nbsp;&nbsp;
+                        @*<li><a class="btn btn-block click-me2" style="background-color: #0F3E55;color: #ffffff;" href="usersignup">REGISTER</a></li>*@
+                    </ul>
+                </div>
+            </nav>
+            <div class="clearfix"> </div>
+        </div>
+    </div>
+</div>
+<!-- //banner -->
+
+
+<div class="slider text-center">
+    <div class="callbacks_container">
+        <ul class="rslides" id="slider4">
+            <li style="height:320px;">
+                <div class="slider-img six-img" style="height: 381px; display:none;" id="imgLoadAll">
+                    <div class="container-fluid" id="layer">
+                        <div class="slider-info" align="center" style="padding-top: 146px;">
+                            <h3 class="heading text-uppercase" align="center" style="color: #ffffff;
+    text-align: center;
+    font-weight: bold;
+    border-bottom: 2px solid #ffffff;
+    border-top: 2px solid #ffffff;
+    width: 179px;
+    margin-bottom: -37px;
+    ">
+                                SOLUTIONS
+                            </h3>
+                        </div>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+
+    <div class="clearfix"></div>
+</div>
+
+
+
+
+<!-- //services -->
+<!-- Solutions -->
+
+
+
+<div class="gap1"></div>
+
+<div width="1366px" class="container">
+    <div class="row" id="rowshiftleft">
+        <div class="col-lg-2 col-md-12 col-xs-12"></div>
+        <div class="col-lg-4 col-md-12 col-xs-12">
+
+            <label>
+                <input type="checkbox" />
+                <div class="card" id="cardId">
+                    <div class="front">
+                        <div align="center">
+                            <div align="center" class="w3ls-bottom-new">
+                                <div align="center" class="table-txt-grid">
+
+                                    <h4>API INTEGRATION</h4>
+
+                                    <ul style="color: #ffffff;font-size: 12px; text-align: left; padding: 15px 15px 50px 15px !important;">
+                                        <li style="color: #ffffff;font-size: 11px;list-style-type: disc;display: list-item;">Allows you Real Time  access to information from your own CRM solution using an API with just an ID number input.</li>
+                                        <li style="color: #ffffff;font-size: 11px;list-style-type: disc;display: list-item;">Ideal for clients looking for a tracing solution within their own system.</li>
+                                    </ul>
+
+                                    <h4 style="background-color: #79A5BA; margin: 10px -16px; text-decoration: none;"> <span class="sup">from</span><br>50c<br><span class="sup">per record received</span></h4>
+                                    <a id="cardIdLink"><img src="~/web/images/arrow.png" class="img-fluid" alt="" style="width: 25px;height: auto;margin-top: 5px;"></a>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="back">
+                        <div align="center">
+                            <div align="center" class="w3ls-bottom-new">
+                                <div align="center" class="table-txt-grid">
+                                    <h4>API INTEGRATION</h4>
+                                    <ul style="color: #ffffff;font-size: 12px; text-align: left;padding-left: 15px !important;padding-top: 15px;padding-right: 15px;padding-bottom:5px; height: 250px;">
+                                        <li style="color: #ffffff;font-size: 11px;list-style-type: disc;display: list-item;">Allows you Real Time  access to information from your own CRM solution using an API with just an ID number input.</li>
+                                        <li style="color: #ffffff;font-size: 11px;list-style-type: disc;display: list-item;">Ideal for clients looking for a tracing solution within their own system.</li>
+                                    </ul>
+                                 @*   <div class="more" style="margin-bottom:0px; margin-left: 0px; display:-webkit-box; width:110px; height:30px;">
+                                        <a href="usersignup">SIGN UP</a>
+                                    </div>*@
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </label>
+        </div>
+
+        <div class="col-lg-4 col-md-12 col-xs-12" id="float-down">
+            <label>
+                <input type="checkbox" />
+                <div class="card" id="cardId1">
+                    <div class="front">
+                        <div align="center">
+                            <div align="center" class="w3ls-bottom-new">
+                                <div align="center" class="table-txt-grid">
+
+                                    <h4>DATA CLEANING</h4>
+                                    <ul style="color: #ffffff;font-size: 12px; text-align: left; padding: 15px 15px 113px 15px;">
+                                        <li style="color: #ffffff;font-size: 11px;list-style-type: disc;display: list-item;">Correcting incomplete or inaccurate information from your database</li>
+                                    </ul>
+                                    <h4 style="background-color: #79A5BA; margin: 10px -16px 0px;text-decoration: none;padding-top: 6px !important;"><span class="sup">contact us for</span><br>CUSTOM PRICING<br><span class="sup">&nbsp;</span></h4>
+
+                                    <a id="cardIdLink1"><img src="~/web/images/arrow.png" class="img-fluid" alt="" style="width: 25px;height: auto;margin-top: 15px;"></a>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="back">
+                        <div align="center">
+                            <div align="center" class="w3ls-bottom-new">
+                                <div align="center" class="table-txt-grid">
+
+                                    <h4>DATA CLEANING</h4>
+                                    <ul style="color: #ffffff;font-size: 12px; text-align: left;padding-left: 15px !important;padding-top: 15px;padding-right: 15px;padding-bottom:5px;height: 250px;">
+                                        <li style="color: #ffffff;font-size: 11px;list-style-type: disc;display: list-item;">Correcting incomplete or inaccurate information from your database</li>
+                                    </ul>
+                                @*    <div class="more" style="margin-bottom:0px; margin-left: 0px; display:-webkit-box; width:110px; height:30px;">
+                                        <a href="usersignup">SIGN UP</a>
+                                    </div>*@
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </label>
+        </div>
+        <div class="col-lg-2 col-md-12 col-xs-12"></div>
+        <!-- flip effect end -->
+    </div>
+</div>
+<!-- //Solutions -->
+
+<div class="gap"></div>
+
+<div class="about-color py-lg-4 py-md-3 py-sm-3 py-3" align="center">
+    <div class="container py-lg-5 py-md-5 py-sm-4 py-3" align="center">
+        <div class="row">
+            <div class="line-w3ls-title col-lg-12 col-md-12 text-center" style="background-color: #40667C; color:#ffffff; padding: 10px; font-style: italic;">
+                <h4 style="font-size: 16px;font-weight: bold;">CREDIT BUREAU<br>CONSUMER SOLUTIONS</h4>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div align="center" class="col-lg-12 col-12 mt-lg-0 mt-5 team_grid1" style="margin-top: 1% !important;margin-bottom: 3% !important;">
+    <h3 class="heading" style="color: #000000;text-align: center;font-weight: bold;font-size: 15px;">Contact us for Custom Pricing</h3>
+</div>
+
+<div class="gap"></div>
+
+<div width="1366px" class="container">
+    <div class="row" id="rowshiftleft">
+
+        <div class="col-lg-4 col-md-12 col-xs-12">
+
+            <label>
+                <input type="checkbox" />
+                <div class="card" id="cardId2">
+                    <div class="front">
+                        <div align="center">
+                            <div align="center" class="w3ls-bottom-new">
+                                <div align="center" class="table-txt-grid">
+
+                                    <h4 style="background-color: #79A5BA; margin: 10px -16px; text-decoration: none;">CREDIT<br>APPLICATION</h4>
+
+                                    <ul style="color: #ffffff;font-size: 12px; text-align: left; padding: 5px 15px 145px 15px;">
+                                        <li style="color: #ffffff;font-size: 11px;list-style-type: disc;display: list-item;">Obtain consumer information regarding a consumer’s credit record in order to grant credit, up sell, cross sell and raise credit limits to the consumer.</li>
+                                    </ul>
+                                    <a id="cardIdLink2"><img src="~/web/images/arrow.png" class="img-fluid" alt="" style="width: 25px;height: auto;"></a>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="back">
+                        <div align="center">
+                            <div align="center" class="w3ls-bottom-new">
+                                <div align="center" class="table-txt-grid">
+
+                                    <h4 style="background-color: #79A5BA; margin: 10px -16px; text-decoration: none;">CREDIT<br>APPLICATION</h4>
+                                    <ul style="color: #ffffff;font-size: 10px; text-align: left; padding-left: 15px !important;padding-top:5px;padding-right:5px; padding-bottom:5px; height: 230px;">
+                                        <li style="color: #ffffff;font-size: 11px;list-style-type: disc;display: list-item;">A view of the consumer's current debt.</li>
+                                        <li style="color: #ffffff;font-size: 11px;list-style-type: disc;display: list-item;">Functionality to grant or adjust credit limits.</li>
+                                        <li style="color: #ffffff;font-size: 11px;list-style-type: disc;display: list-item;">Home Affairs verification providing ID, Deceased and Martial Status information.</li>
+                                        <li style="color: #ffffff;font-size: 11px;list-style-type: disc;display: list-item;">Consumer Property information - conduct a more thorough affordability assessment and determine if a consumer possesses assets to cover their debts.</li>
+                                        <li style="color: #ffffff;font-size: 11px;list-style-type: disc;display: list-item;">Consumer Directorship Link - determine a consumers employment stability or their business connections in order to</li>
+                                    </ul>
+                                @*    <div class="more" style="margin-top: -15px !important;margin-bottom: 0px !important;margin-left: 0px; display:-webkit-box; width:110px; height:30px;">
+                                        <a href="usersignup">SIGN UP</a>
+                                    </div>*@
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </label>
+        </div>
+
+        <div class="col-lg-4 col-md-12 col-xs-12" id="float-down">
+            <label>
+                <input type="checkbox" />
+                <div class="card" id="cardId3">
+                    <div class="front">
+                        <div align="center">
+                            <div align="center" class="w3ls-bottom-new">
+                                <div align="center" class="table-txt-grid">
+
+                                    <h4 style="background-color: #79A5BA; margin: 10px -16px; text-decoration: none;">LINKAGE<br>DETECTION</h4>
+
+                                    <ul style="color: #ffffff;font-size: 12px; text-align: left; padding: 5px 15px 160px 15px;">
+                                        <li style="color: #ffffff;font-size: 11px;list-style-type: disc;display: list-item;">Linkage Detector is a tool that assists in identifying collusion between suppliers, witnesses, and clients.</li>
+                                    </ul>
+                                    <a id="cardIdLink3"><img src="~/web/images/arrow.png" class="img-fluid" alt="" style="width: 25px;height: auto;"></a>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="back">
+                        <div align="center">
+                            <div align="center" class="w3ls-bottom-new">
+                                <div align="center" class="table-txt-grid">
+
+                                    <h4 style="background-color: #79A5BA; margin: 10px -16px; text-decoration: none;">LINKAGE<br>DETECTION</h4>
+                                    <ul style="color: #ffffff;font-size: 10px; text-align: left; padding-left:15px;padding-right:5px;padding-top:5px;padding-bottom:5px; height: 210px;">
+                                        <li style="color: #ffffff;font-size: 11px;list-style-type: disc;display: list-item;">The ability to compare contactability between two individuals and view the results in real-time via web services.</li>
+                                        <li style="color: #ffffff;font-size: 11px;list-style-type: disc;display: list-item;">This allows fraud departments, investigators, and claims departments to determine whether there is possible  collusion between the witness, the insured, the 3rd party or any other party involved.</li>
+                                    </ul>
+                                  @*  <div class="more mt-lg-5 mt-md-4 mt-sm-4 mt-3 p-2" style=" margin-top: 0px !important; margin-bottom:0px !important;margin-left: 0px; display:-webkit-box; width:110px; height:30px;">
+                                        <a href="usersignup">SIGN UP</a>
+                                    </div>*@
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </label>
+        </div>
+
+        <div class="col-lg-4 col-md-12 col-xs-12" id="float-down">
+            <label>
+                <input type="checkbox" />
+                <div class="card" id="cardId4">
+                    <div class="front">
+                        <div align="center">
+                            <div align="center" class="w3ls-bottom-new">
+                                <div align="center" class="table-txt-grid">
+
+                                    <h4 style="background-color: #79A5BA; margin: 10px -16px; text-decoration: none;">COLLECTIONS<br>SNAPSHOT</h4>
+
+                                    <ul style="color: #ffffff;font-size: 12px; text-align: left; padding: 5px 15px 128px 15px;">
+                                        <li style="color: #ffffff;font-size: 11px;list-style-type: disc;display: list-item;">The Collections Snapshot offers a comprehensive overview for tracing a consumer and provides the facility or decision-making on the viability of collection.</li>
+                                    </ul>
+                                    <a id="cardIdLink4"><img src="~/web/images/arrow.png" class="img-fluid" alt="" style="width: 25px;height: auto;"></a>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="back">
+                        <div align="center">
+                            <div align="center" class="w3ls-bottom-new">
+                                <div align="center" class="table-txt-grid">
+
+                                    <h4 style="background-color: #79A5BA; margin: 10px -16px; text-decoration: none;">COLLECTIONS<br>SNAPSHOT</h4>
+                                    <ul style="color: #ffffff;font-size: 10px; text-align: left;padding-left:15px;padding-right:5px;padding-top:5px;padding-bottom:5px;height: 210px;">
+                                        <li style="color: #ffffff;font-size: 11px;list-style-type: disc;display: list-item;">Consumer Summary - the consumer's propensity of repayment.</li>
+                                        <li style="color: #ffffff;font-size: 11px;list-style-type: disc;display: list-item;">Debt Summary - the consumer’s 24 month credit activity.</li>
+                                        <li style="color: #ffffff;font-size: 11px;list-style-type: disc;display: list-item;">Payment Gap - Time of month when consumers pay their account.</li>
+                                        <li style="color: #ffffff;font-size: 11px;list-style-type: disc;display: list-item;">Credit Activeness - 12 month view of a consumer's credit activity.</li>
+                                    </ul>
+                              @*      <div class="more mt-lg-5 mt-md-4 mt-sm-4 mt-3 p-2" style="margin-top: 0px !important;margin-bottom: 0px !important;margin-left: 0px; display:-webkit-box; width:110px; height:30px;">
+                                        <a href="usersignup">SIGN UP</a>
+                                    </div>*@
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </label>
+
+
+        </div>
+        <!-- flip effect end -->
+    </div>
+</div>
+
+<div class="gap2"></div>
+
+<div width="1366px" class="container">
+    <div class="row" id="rowshiftleft">
+
+        <div class="col-lg-4 col-md-12 col-xs-12">
+
+            <label>
+                <input type="checkbox" />
+                <div class="card" id="cardId5">
+                    <div class="front">
+                        <div align="center">
+                            <div align="center" class="w3ls-bottom-new">
+                                <div align="center" class="table-txt-grid">
+
+                                    <h4 style="background-color: #79A5BA; margin: 10px -16px; text-decoration: none;">BANK ACCOUNT<br>VERIFICATION</h4>
+
+                                    <ul style="color: #ffffff;font-size: 12px; text-align: left; padding: 5px 15px 140px 15px;">
+                                        <li style="color: #ffffff;font-size: 12px;font-weight:bold">Realtime consumer verification for:</li>
+                                        <li style="color: #ffffff;font-size: 11px;list-style-type: disc;display: list-item;"> Verify Bank Account Details</li>
+                                        <li style="color: #ffffff;font-size: 11px;list-style-type: disc;display: list-item;">Fraud Detection with payment of Creditors</li>
+                                    </ul>
+                                    <a id="cardIdLink5"><img src="~/web/images/arrow.png" class="img-fluid" alt="" style="width: 25px;height: auto;"></a>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="back">
+                        <div align="center">
+                            <div align="center" class="w3ls-bottom-new">
+                                <div align="center" class="table-txt-grid">
+
+                                    <h4 style="background-color: #79A5BA; margin: 10px -16px; text-decoration: none;">BANK ACCOUNT<br>VERIFICATION</h4>
+                                    <ul style="color: #ffffff;font-size: 10px; text-align: left;padding-left:15px;padding-right:5px;padding-top:5px;padding-bottom:5px;height: 220px;">
+                                        <li style="color: #ffffff;font-size: 12px;font-weight:bold">Information required:</li>
+                                        <li style="color: #ffffff;font-size: 11px;list-style-type: disc;display: list-item;">Company Name</li>
+                                        <li style="color: #ffffff;font-size: 11px;list-style-type: disc;display: list-item;">Trading Name</li>
+                                        <li style="color: #ffffff;font-size: 11px;list-style-type: disc;display: list-item;">Registration Number</li>
+                                        <li style="color: #ffffff;font-size: 11px;list-style-type: disc;display: list-item;">Bank Name and Bank Code</li>
+                                        <li style="color: #ffffff;font-size: 11px;list-style-type: disc;display: list-item;">Account Number</li>
+                                    </ul>
+                             @*       <div class="more mt-lg-5 mt-md-4 mt-sm-4 mt-3 p-2" style="margin-top: -5px !important;margin-bottom: 0px !important;margin-left: 0px; display:-webkit-box; width:110px; height:30px;">
+                                        <a href="usersignup">SIGN UP</a>
+                                    </div>*@
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </label>
+        </div>
+
+        <div class="col-lg-4 col-md-12 col-xs-12" id="float-down">
+            <label>
+                <input type="checkbox" />
+                <div class="card" id="cardId6">
+                    <div class="front">
+                        <div align="center">
+                            <div align="center" class="w3ls-bottom-new">
+                                <div align="center" class="table-txt-grid">
+
+                                    <h4 style="background-color: #79A5BA; margin: 10px -16px; text-decoration: none;">ACCOUNT<br>ORIGINATION</h4>
+
+                                    <ul style="color: #ffffff;font-size: 12px; text-align: left; padding: 5px 15px 95px 15px;">
+                                        <li style="color: #ffffff;font-size: 11px;list-style-type: disc;display: list-item;">Allows credit providers to associate odds by predicting the likelihood that the consumer will either fail to make payments on a newly opened account within the first year, lodge a claim or respond to a call, and in turn minimise risk and enhance risk control.</li>
+                                    </ul>
+                                    <a id="cardIdLink6"><img src="~/web/images/arrow.png" class="img-fluid" alt="" style="width: 25px;height: auto;"></a>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="back">
+                        <div align="center">
+                            <div align="center" class="w3ls-bottom-new">
+                                <div align="center" class="table-txt-grid">
+
+                                    <h4 style="background-color: #79A5BA; margin: 10px -16px; text-decoration: none;">ACCOUNT<br>ORIGINATION</h4>
+                                    <ul style="color: #ffffff;font-size: 10px; text-align: left; padding-left:15px;padding-right:5px;padding-top:5px;padding-bottom:5px;height: 210px;">
+                                        <li style="color: #ffffff;font-size: 11px;list-style-type: disc;display: list-item;">Minimising risk and enhancing risk control.</li>
+                                        <li style="color: #ffffff;font-size: 11px;list-style-type: disc;display: list-item;">Reducing operational costs.</li>
+                                        <li style="color: #ffffff;font-size: 11px;list-style-type: disc;display: list-item;">Efficient bad debt management.</li>
+                                        <li style="color: #ffffff;font-size: 11px;list-style-type: disc;display: list-item;">Industry & consumer book profiling reports.</li>
+                                    </ul>
+                                @*    <div class="more mt-lg-5 mt-md-4 mt-sm-4 mt-3 p-2" style="margin-top: 0px !important;margin-bottom:0px !important;margin-left: 0px; display:-webkit-box; width:110px; height:30px;">
+                                        <a href="usersignup">SIGN UP</a>
+                                    </div>*@
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </label>
+        </div>
+
+        <div class="col-lg-4 col-md-12 col-xs-12" id="float-down">
+            <label>
+                <input type="checkbox" />
+                <div class="card" id="cardId7">
+                    <div class="front">
+                        <div align="center">
+                            <div align="center" class="w3ls-bottom-new">
+                                <div align="center" class="table-txt-grid">
+
+                                    <h4 style="background-color: #79A5BA; margin: 10px -16px; text-decoration: none;">ACCOUNT<br>MANAGEMENT</h4>
+
+                                    <ul style="color: #ffffff;font-size: 12px; text-align: left;padding: 5px 15px 104px 15px;">
+                                        <li style="color: #ffffff;font-size: 12px;font-weight:bold">Minimise Risk by predicting a Consumers future behaviour by using:</li>
+                                        <li style="color: #ffffff;font-size: 11px;list-style-type: disc;display: list-item;">Customised Scorecards</li>
+                                        <li style="color: #ffffff;font-size: 11px;list-style-type: disc;display: list-item;"> Customer profitability modelling</li>
+                                        <li style="color: #ffffff;font-size: 11px;list-style-type: disc;display: list-item;">Customer churn models</li>
+                                    </ul>
+                                    <a id="cardIdLink7"><img src="~/web/images/arrow.png" class="img-fluid" alt="" style="width: 25px;height: auto;"></a>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="back">
+                        <div align="center">
+                            <div align="center" class="w3ls-bottom-new">
+                                <div align="center" class="table-txt-grid">
+
+                                    <h4 style="background-color: #79A5BA; margin: 10px -16px; text-decoration: none;">ACCOUNT<br>MANAGEMENT</h4>
+                                    <ul style="color: #ffffff;font-size: 10px; text-align: left; padding-left:15px;padding-right:5px;padding-top:5px;padding-bottom:5px;height: 210px;">
+                                        <li style="color: #ffffff;font-size: 11px;list-style-type: disc;display: list-item;">Assess your accounts and apply appropriate credit strategies.</li>
+                                        <li style="color: #ffffff;font-size: 11px;list-style-type: disc;display: list-item;">Predict Future Payment delinquencies based on Current Financial Status.</li>
+                                        <li style="color: #ffffff;font-size: 11px;list-style-type: disc;display: list-item;">Create retention strategies for Cross/upselling.</li>
+                                        <li style="color: #ffffff;font-size: 11px;list-style-type: disc;display: list-item;">Manage Bad Debt thereby minimising risk.</li>
+                                        <li style="color: #ffffff;font-size: 11px;">Increase Account profitability and reduce operational cost.</li>
+                                    </ul>
+                                   @* <div class="more mt-lg-5 mt-md-4 mt-sm-4 mt-3 p-2" style="margin-top: 0px !important; margin-bottom:0px !important;margin-left: 0px; display:-webkit-box; width:110px; height:30px;">
+                                        <a href="usersignup">SIGN UP</a>
+                                    </div>*@
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </label>
+
+
+        </div>
+        <!-- flip effect end -->
+    </div>
+</div>
+<!-- 3 column section end -->
+<div class="gap"></div>
+
+<div class="about-color py-lg-4 py-md-3 py-sm-3 py-3">
+    <div class="container py-lg-5 py-md-5 py-sm-4 py-3">
+        <div class="row">
+            <div class="line-w3ls-title col-lg-12 col-md-12 text-center" style="background-color: #40667C; color:#ffffff; padding: 10px; font-style: italic;">
+                <h4 style="font-size: 16px;font-weight: bold;">CREDIT BUREAU<br>COMPANY SOLUTIONS</h4>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div align="center" class="col-lg-12 col-12 mt-lg-0 mt-5 team_grid1" style="margin-top: 1% !important;margin-bottom: 3% !important;">
+    <h3 class="heading" style="color: #000000;text-align: center;font-weight: bold;font-size: 15px;">Contact us for Custom Pricing</h3>
+</div>
+
+
+<div class="gap"></div>
+
+<div width="1366px" class="container">
+    <div class="row" id="rowshiftleft">
+
+        <div class="col-lg-3 col-md-12 col-xs-12">
+
+            <label style="width: 220px !important;">
+                <input type="checkbox" />
+                <div class="card" id="cardId8">
+                    <div class="front">
+                        <div align="center">
+                            <div align="center" class="w3ls-bottom-new">
+                                <div align="center" class="table-txt-grid">
+
+                                    <h4 style="background-color: #79A5BA; margin: 10px -16px; text-decoration: none;">BANK<br>CODE</h4>
+
+                                    <ul style="color: #ffffff;font-size: 12px; text-align: left; padding: 5px 15px 144px 15px;">
+                                        <li style="color: #ffffff;font-size: 11px;list-style-type: disc;display: list-item;">Assess affordability for a specific credit limit.</li>
+                                        <li style="color: #ffffff;font-size: 11px;list-style-type: disc;display: list-item;">Determine a company's financial position.</li>
+                                    </ul>
+                                    <a id="cardIdLink8"><img src="~/web/images/arrow.png" class="img-fluid" alt="" style="width: 25px;height: auto;"></a>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="back">
+                        <div align="center">
+                            <div align="center" class="w3ls-bottom-new">
+                                <div align="center" class="table-txt-grid">
+
+                                    <h4 style="background-color: #79A5BA; margin: 10px -16px; padding-bottom:5px !important;text-decoration: none;">BANK<br>CODE</h4>
+                                    <ul style="color: #ffffff;font-size: 10px; text-align: left; padding-left:15px;padding-right:5px;padding-top:5px;padding-bottom:5px;height: 210px;">
+                                        <li style="color: #ffffff;font-size: 11px;list-style-type: disc;display: list-item;">The main benefit of the bank code is the interpretation of the bank of a client’s financial stability.</li>
+                                        <li style="color: #ffffff;font-size: 11px;list-style-type: disc;display: list-item;">Useful in Commercial scoring and detailed investigative reports</li>
+                                    </ul>
+                             @*       <div class="more mt-lg-5 mt-md-4 mt-sm-4 mt-3 p-2" style="margin-top: 0px !important; margin-bottom:0px !important;margin-left: 0px; display:-webkit-box; width:110px; height:30px;">
+                                        <a href="usersignup">SIGN UP</a>
+                                    </div>*@
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </label>
+        </div>
+
+        <div class="col-lg-3 col-md-12 col-xs-12" id="float-down">
+            <label style="width: 220px !important;">
+                <input type="checkbox" />
+                <div class="card" id="cardId9">
+                    <div class="front">
+                        <div align="center">
+                            <div align="center" class="w3ls-bottom-new">
+                                <div align="center" class="table-txt-grid">
+
+                                    <h4 style="background-color: #79A5BA; margin: 10px -16px; text-decoration: none;">COMMERCIAL<br>DEBTOR SCORING</h4>
+
+                                    <ul style="color: #ffffff;font-size: 12px; text-align: left; padding: 5px 15px 77px 15px;">
+                                        <li style="color: #ffffff;font-size: 11px;list-style-type: disc;display: list-item;">Useful during client on-boarding.</li>
+                                        <li style="color: #ffffff;font-size: 11px;list-style-type: disc;display: list-item;">Risk profile can indicate return on investment in terms of time and effort.</li>
+                                        <li style="color: #ffffff;font-size: 11px;list-style-type: disc;display: list-item;">Determine when to adjust credit limits.</li>
+                                    </ul>
+                                    <a id="cardIdLink9"><img src="~/web/images/arrow.png" class="img-fluid" alt="" style="width: 25px;height: auto; margin-top: 20px;"></a>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="back">
+                        <div align="center">
+                            <div align="center" class="w3ls-bottom-new">
+                                <div align="center" class="table-txt-grid">
+
+                                    <h4 style="background-color: #79A5BA; margin: 10px -16px; padding-bottom:5px !important; text-decoration: none;">COMMERCIAL<br>DEBTOR SCORING</h4>
+                                    <ul style="color: #ffffff;font-size: 10px; text-align: left;padding-left:15px;padding-right:5px;padding-top:5px;padding-bottom:5px;height: 210px;">
+                                        <li style="color: #ffffff;font-size: 11px;list-style-type: disc;display: list-item;">The main feature of Commercial Scoring is that it allows a glimpse into the possible risk a company will be to a supplier, allowing the required strategy to be formulated around this.</li>
+                                        <li style="color: #ffffff;font-size: 11px;list-style-type: disc;display: list-item;">The primary benefit of the product is that it will allow you to have an in - dept view as to what the perceived risk of a company.</li>
+                                    </ul>
+                                @*    <div class="more mt-lg-5 mt-md-4 mt-sm-4 mt-3 p-2" style="margin-top: 0px !important; margin-bottom:0px !important;margin-left: 0px; display:-webkit-box; width:110px; height:30px;">
+                                        <a href="usersignup">SIGN UP</a>
+                                    </div>*@
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </label>
+        </div>
+
+        <div class="col-lg-3 col-md-12 col-xs-12" id="float-down">
+            <label style="width: 220px !important;">
+                <input type="checkbox" />
+                <div class="card" id="cardId10">
+                    <div class="front">
+                        <div align="center">
+                            <div align="center" class="w3ls-bottom-new">
+                                <div align="center" class="table-txt-grid">
+
+                                    <h4 style="background-color: #79A5BA; margin: 10px -16px; text-decoration: none;">COMMERCIAL<br>INVESTIGATION</h4>
+
+                                    <ul style="color: #ffffff;font-size: 12px; text-align: left; padding: 5px 15px 144px 15px;">
+                                        <li style="color: #ffffff;font-size: 11px;list-style-type: disc;display: list-item;">Provides businesses with a detailed overview of a company in order to evaluate credit worthiness</li>
+                                    </ul>
+                                    <a id="cardIdLink10"><img src="~/web/images/arrow.png" class="img-fluid" alt="" style="width: 25px;height: auto;"></a>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="back">
+                        <div align="center">
+                            <div align="center" class="w3ls-bottom-new">
+                                <div align="center" class="table-txt-grid">
+
+                                    <h4 style="background-color: #79A5BA; margin: 10px -16px; padding-bottom:5px !important; text-decoration: none;">COMMERCIAL<br>INVESTIGATION</h4>
+                                    <ul style="color: #ffffff;font-size: 10px; text-align: left; padding: 5px 5px 50px 15px; height: 210px;">
+                                        <li style="color: #ffffff;font-size: 11px;list-style-type: disc;display: list-item;">BEE status of the subject plus ISO status.</li>
+                                        <li style="color: #ffffff;font-size: 11px;list-style-type: disc;display: list-item;">Workman's Compensation.</li>
+                                        <li style="color: #ffffff;font-size: 11px;list-style-type: disc;display: list-item;">Between 3 and 5 Trade References.</li>
+                                        <li style="color: #ffffff;font-size: 11px;list-style-type: disc;display: list-item;">Obtain a Balance Sheet or Income Statement.</li>
+                                        <li style="color: #ffffff;font-size: 11px;list-style-type: disc;display: list-item;">Current Bank details and a bank Code.</li>
+                                    </ul>
+                                   @* <div class="more mt-lg-5 mt-md-4 mt-sm-4 mt-3 p-2" style="margin-top: 0px !important; margin-bottom: 40px !important;margin-left: 0px; display:-webkit-box; width:110px; height:30px;">
+                                        <a href="usersignup">SIGN UP</a>
+                                    </div>*@
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </label>
+        </div>
+
+        <div class="col-lg-3 col-md-12 col-xs-12" id="float-down">
+            <label style="width: 220px !important;">
+                <input type="checkbox" />
+                <div class="card" id="cardId11">
+                    <div class="front">
+                        <div align="center">
+                            <div align="center" class="w3ls-bottom-new">
+                                <div align="center" class="table-txt-grid">
+
+                                    <h4 style="background-color: #79A5BA; margin: 10px -16px; text-decoration: none;">DEBTOR AGE<br>ANALYSIS</h4>
+
+                                    <ul style="color: #ffffff;font-size: 12px; text-align: left; padding: 5px 15px 144px 15px;">
+                                        <li style="color: #ffffff;font-size: 11px;list-style-type: disc;display: list-item;">Ensure that high risk and defaulting clients receive the attention they should be getting</li>
+                                    </ul>
+                                    <a id="cardIdLink11"><img src="~/web/images/arrow.png" class="img-fluid" alt="" style="width: 25px;height: auto;"></a>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="back">
+                        <div align="center">
+                            <div align="center" class="w3ls-bottom-new">
+                                <div align="center" class="table-txt-grid">
+
+                                    <h4 style="background-color: #79A5BA;margin: 10px -16px; padding-bottom:5px !important; text-decoration: none;">DEBTOR AGE<br>ANALYSIS</h4>
+                                    <ul style="color: #ffffff;font-size: 10px; text-align: left; padding: 5px 5px 66px 15px;height: 210px;">
+                                        <li style="color: #ffffff;font-size: 11px;list-style-type: disc;display: list-item;">High risk and defaulting clients can be focused on and receive the attention that is required to increase return on investment.</li>
+                                        <li style="color: #ffffff;font-size: 11px;list-style-type: disc;display: list-item;">Aids in determining the financial position of the company.</li>
+                                    </ul>
+                                  @*  <div class="more mt-lg-5 mt-md-4 mt-sm-4 mt-3 p-2" style="margin-top: 0px !important; margin-bottom: 40px !important;margin-left: 0px; display:-webkit-box; width:110px; height:30px;">
+                                        <a href="usersignup">SIGN UP</a>
+                                    </div>*@
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </label>
+        </div>
+
+        <!-- flip effect end -->
+    </div>
+</div>
+<!-- 4 column section end -->
+<!-- 3 and 4 column section start -->
+<div class="gap"></div>
+
+<div class="about-color py-lg-4 py-md-3 py-sm-3 py-3">
+    <div class="container py-lg-5 py-md-5 py-sm-4 py-3">
+        <div class="row">
+            <div class="line-w3ls-title col-lg-12 col-md-12 text-center" style="background-color: #40667C; color:#ffffff; padding: 10px; font-style: italic;">
+                <h4 style="font-size: 16px;font-weight: bold;">VALUE ADDED SERVICES</h4>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div align="center" class="col-lg-12 col-12 mt-lg-0 mt-5 team_grid1" style="margin-top: 1% !important;margin-bottom: 3% !important;">
+    <h3 class="heading" style="color: #000000;text-align: center;font-weight: bold;font-size: 15px;">Contact us for Custom Pricing</h3>
+</div>
+
+<div class="gap"></div>
+
+<div width="1366px" class="container">
+    <div class="row" id="rowshiftleft">
+
+        <div class="col-lg-4 col-md-12 col-xs-12">
+            <label>
+                <div>
+                    <div align="center">
+                        <div align="center" class="w3ls-bottom-new">
+                            <div align="center" class="table-txt-grid">
+
+                                <h4 style="background-color: #79A5BA; margin: 10px -16px; text-decoration: none;">
+                                    EDUCATION &<br>
+                                    QUALIFICATION CHECKS
+                                </h4>
+                                <ul style="color: #ffffff;font-size: 10px; text-align: left; padding: 5px 5px 18px 5px;">
+                                    <li style="color: #ffffff;font-size: 11px;list-style-type: disc;display: list-item;">Pay per record search to confirm an academic qualification.</li>
+                                    <li style="color: #ffffff;font-size: 11px;list-style-type: disc;display: list-item;">Perfect for companies and recruitment agencies that would like to verify the qualification of job applicants and prospective employees.</li>
+                                    <li style="color: #ffffff;font-size: 11px;">Focus areas:</li>
+                                    <li style="color: #ffffff;font-size: 11px;list-style-type: disc;display: list-item;">Matric qualification, technical certificates, tertiary qualification (degrees and diplomas).</li>
+                                </ul>
+                         @*       <div class="more mt-lg-5 mt-md-4 mt-sm-4 mt-3 p-2" style="margin-top: 20px !important; margin-bottom: 0px !important;margin-left: 0px;">
+                                    <a href="usersignup">SIGN UP</a>
+                                </div>*@
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+            </label>
+        </div>
+
+        <div class="col-lg-4 col-md-12 col-xs-12" id="float-down">
+            <label>
+                <div>
+                    <div align="center">
+                        <div align="center" class="w3ls-bottom-new">
+                            <div align="center" class="table-txt-grid">
+
+                                <h4 style="background-color: #79A5BA; margin: 10px -16px; text-decoration: none;">CRIMINAL<br />CHECKS</h4>
+                                <ul style="color: #ffffff;font-size: 10px; text-align: left; padding: 5px 5px 98px 5px;">
+                                    <li style="color: #ffffff;font-size: 11px;list-style-type: disc;display: list-item;">Obtain detail background screening information and records of an individual.</li>
+                                    <li style="color: #ffffff;font-size: 11px;">Benefits:</li>
+                                    <li style="color: #ffffff;font-size: 11px;list-style-type: disc;display: list-item;">Boost employee hiring confidence  reducing staff turnover.</li>
+                                </ul>
+                               @* <div class="more mt-lg-5 mt-md-4 mt-sm-4 mt-3 p-2" style="margin-top: 20px !important; margin-bottom: 0px !important;margin-left: 0px;">
+                                    <a href="usersignup">SIGN UP</a>
+                                </div>*@
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+            </label>
+        </div>
+
+        <div class="col-lg-4 col-md-12 col-xs-12" id="float-down">
+            <label>
+                <div>
+                    <div align="center">
+                        <div align="center" class="w3ls-bottom-new">
+                            <div align="center" class="table-txt-grid">
+
+                                <h4 style="background-color: #79A5BA; margin: 10px -16px; text-decoration: none;">
+                                    IDENTITY BIOMETRIC<br>
+                                    VERIFICATION
+                                </h4>
+                                <ul style="color: #ffffff;font-size: 10px; text-align: left; padding: 5px 5px 98px 5px;">
+                                    <li style="color: #ffffff;font-size: 11px;list-style-type: disc;display: list-item;">Used to verify the fingerprints of a consumer against Home Affairs.</li>
+                                    <li style="color: #ffffff;font-size: 11px;list-style-type: disc;display: list-item;">Returns Contact-ability Information, Payment  Gap and Affordability and Latest XDS Presage Score</li>
+                                </ul>
+                        @*        <div class="more mt-lg-5 mt-md-4 mt-sm-4 mt-3 p-2" style="margin-top: 20px !important; margin-bottom: 0px !important;margin-left: 0px;">
+                                    <a href="usersignup">SIGN UP</a>
+                                </div>*@
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+            </label>
+        </div>
+        <!-- flip effect end -->
+    </div>
+</div>
+
+<div align="center" class="col-lg-12 col-12 mt-lg-0 mt-5 team_grid1" id="space-down23" style="margin-top: 10% ;margin-bottom: 2%;">
+
+</div>
+
+<div class="gap"></div>
+
+<div width="1366px" class="container">
+    <div class="row" id="rowshiftleft">
+
+        <div class="col-lg-3 col-md-12 col-xs-12" style="display: flex;">
+            <label style="width: 220px !important; height: 100%;background: #242323;">
+                <div>
+                    <div align="center">
+                        <div align="center" class="w3ls-bottom-new">
+                            <div align="center" class="table-txt-grid">
+
+                                <h4 style="background-color: #79A5BA; margin: 10px -16px; text-decoration: none;">
+                                    COMMERCIAL &<br>
+                                    CONSUMER TRIGGERS
+                                </h4>
+                                <ul style="color: #ffffff;font-size: 10px; text-align: left; padding: 5px 5px 70px 5px;">
+                                    <li style="color: #ffffff;font-size: 11px;list-style-type: disc;display: list-item;">A monthly update of information can be sent to our customers on any changes that have been made to a registered entity regarding, adverse details, status of company or principals, vat status changes.</li>
+                                </ul>
+                    @*            <div class="more mt-lg-5 mt-md-4 mt-sm-4 mt-3 p-2" style="margin-top: 40px !important; margin-bottom: 0px !important;margin-left: -7px;">
+                                    <a href="usersignup">SIGN UP</a>
+                                </div>*@
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+            </label>
+        </div>
+
+        <div class="col-lg-3 col-md-12 col-xs-12" id="float-down" style="display: flex;">
+            <label style="width: 220px !important; height: 100%;background: #242323;">
+                <div>
+                    <div align="center">
+                        <div align="center" class="w3ls-bottom-new">
+                            <div align="center" class="table-txt-grid">
+
+                                <h4 style="background-color: #79A5BA; margin: 10px -16px; text-decoration: none;">XBRL<br />&nbsp;</h4>
+                                <ul style="color: #ffffff;font-size: 10px; text-align: left; padding: 5px 5px 12px 5px;">
+                                    <li style="color: #ffffff;font-size: 11px;list-style-type: disc;display: list-item;">The iXBRL reporting platform for CIPC is developed by XDS and IRIS Business Services, a leading global provider of compliance solutions.</li>
+                                    <li style="color: #ffffff;font-size: 11px;list-style-type: disc;display: list-item;">CIPC has chosen IRIS's iFile XBRL submission portal as well as IRIS's validator product to ensure the highest standards of output files which will be used to screen quality of all things submitted to CIPC.</li>
+                                </ul>
+                         @*       <div class="more mt-lg-5 mt-md-4 mt-sm-4 mt-3 p-2" style="margin-top: 20px !important; margin-bottom: 0px !important;margin-left: -7px;">
+                                    <a href="usersignup">SIGN UP</a>
+                                </div>*@
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+            </label>
+        </div>
+
+        <div class="col-lg-3 col-md-12 col-xs-12" id="float-down" style="display: flex;">
+            <label style="width: 220px !important; height: 100%;background: #242323;">
+                <div>
+                    <div align="center">
+                        <div align="center" class="w3ls-bottom-new">
+                            <div align="center" class="table-txt-grid">
+
+                                <h4 style="background-color: #79A5BA; margin: 10px -16px; text-decoration: none;">
+                                    INCOME<br>
+                                    PREDICTOR
+                                </h4>
+                                <ul style="color: #ffffff;font-size: 10px; text-align: left; padding: 5px 5px 188px 5px;">
+                                    <li style="color: #ffffff;font-size: 11px;list-style-type: disc;display: list-item;">Provides an estimate of a consumer's monthly income</li>
+                                </ul>
+                          @*      <div class="more mt-lg-5 mt-md-4 mt-sm-4 mt-3 p-2" style="margin-top: 20px !important; margin-bottom: 0px !important;margin-left: -7px;">
+                                    <a href="usersignup">SIGN UP</a>
+                                </div>*@
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+            </label>
+        </div>
+
+        <div class="col-lg-3 col-md-12 col-xs-12" id="float-down" style="display: flex;">
+            <label style="width: 220px !important; height: 100%;background: #242323;">
+                <div>
+                    <div align="center">
+                        <div align="center" class="w3ls-bottom-new">
+                            <div align="center" class="table-txt-grid">
+
+                                <h4 style="background-color: #79A5BA; margin: 10px -16px; text-decoration: none;">
+                                    MOTOR VEHICLE<br>
+                                    VERIFICATION
+                                </h4>
+                                <ul style="color: #ffffff;font-size: 10px; text-align: left; padding: 5px 5px 5px 5px; height:224px;">
+                                    <li style="color: #ffffff;font-size: 11px; list-style-type: disc;display: list-item;">The MVV enquiry assists with:</li>
+                                    <li style="color: #ffffff;font-size: 11px; list-style-type: disc;display: list-item;">Motor dealers, finance houses, Insurers and loss adjusters to confirm the manufacturer details of the said vehicle, thus creating the opportunity to finance the correct vehicle at the market related values.</li>
+                                    <li style="color: #ffffff;font-size: 11px; list-style-type: disc;display: list-item;">Required: Consumer's ID and vehicle VIN number.</li>
+                                </ul>
+                              @*  <div class="more mt-lg-5 mt-md-4 mt-sm-4 mt-3 p-2" style="margin-top: 20px !important; margin-bottom: 0px !important;margin-left: -7px;">
+                                    <a href="usersignup">SIGN UP</a>
+                                </div>*@
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+            </label>
+        </div>
+        <!-- flip effect end -->
+    </div>
+</div>
+<!-- 3 and 4 column section end -->
+<div class="gap2"></div>
+
+<div class="about-color py-lg-4 py-md-3 py-sm-3 py-3" style="margin-top: -6px !important;" id="imgLoadAll">
+    <div class="container-fluid py-lg-5 py-md-5 py-sm-4 py-3">
+        <div class="row">
+            <div align="center" class="container-fluid" style="background-color: #C71212; color:#ffffff;">
+                <div class="row">
+                    <div class="col-lg-12"><h5 style="padding-top: 46px;font-size: 15px !important;font-weight: bold;">Contact us for more information & pricing on our solutions</h5></div>
+                </div>
+            </div>
+            <div align="center" class="container-fluid" style="background-color: #C71212; color:#ffffff;">
+                <div class="row">
+                    <div class="col-lg-4 hide-me"></div>
+                    <div class="col-lg-4"><a href="ContactUs"><button type="submit" class="btn btn-block click-me1" style="background-color: #ffffff;color: #C71212;margin-top: 28px; margin-bottom: 30px;">CONTACT US</button></a></div>
+                    <div class="col-lg-4 hide-me"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="gap"></div>
+
+
+<script src="~/web/js/jquery-2.2.3.min.js"></script>
+<script type="text/javascript">
+    $(window).on("load", function () {
+        $('#imgLoadAll').show();
+    })
+
+    $(document).ready(function () {
+
+        var isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+        if (!isMobile) {
+
+            $('#cardIdLink').click(function () {
+                $("#cardIdLink").attr('card', 'cardClick');
+            })
+
+            $('#cardId').click(function () {
+                $("#cardId").attr('card', 'cardClick');
+            })
+
+            $('#cardIdLink1').click(function () {
+                $("#cardIdLink1").attr('card', 'cardClick');
+            })
+
+            $('#cardId1').click(function () {
+                $("#cardId1").attr('card', 'cardClick');
+            })
+
+            $('#cardIdLink2').click(function () {
+                $("#cardIdLink2").attr('card', 'cardClick');
+            })
+
+            $('#cardId2').click(function () {
+                $("#cardId2").attr('card', 'cardClick');
+            })
+
+            $('#cardIdLink3').click(function () {
+                $("#cardIdLink3").attr('card', 'cardClick');
+            })
+
+            $('#cardId3').click(function () {
+                $("#cardId3").attr('card', 'cardClick');
+            })
+
+            $('#cardIdLink4').click(function () {
+                $("#cardIdLink4").attr('card', 'cardClick');
+            })
+
+            $('#cardId4').click(function () {
+                $("#cardId4").attr('card', 'cardClick');
+            })
+
+            $('#cardIdLink5').click(function () {
+                $("#cardIdLink5").attr('card', 'cardClick');
+            })
+
+            $('#cardId5').click(function () {
+                $("#cardId5").attr('card', 'cardClick');
+            })
+
+            $('#cardIdLink6').click(function () {
+                $("#cardIdLink6").attr('card', 'cardClick');
+            })
+
+            $('#cardId6').click(function () {
+                $("#cardId6").attr('card', 'cardClick');
+            })
+
+            $('#cardIdLink7').click(function () {
+                $("#cardIdLink7").attr('card', 'cardClick');
+            })
+
+            $('#cardId7').click(function () {
+                $("#cardId7").attr('card', 'cardClick');
+            })
+
+            $('#cardIdLink8').click(function () {
+                $("#cardIdLink8").attr('card', 'cardClick');
+            })
+
+            $('#cardId8').click(function () {
+                $("#cardId8").attr('card', 'cardClick');
+            })
+
+            $('#cardIdLink9').click(function () {
+                $("#cardIdLink9").attr('card', 'cardClick');
+            })
+
+            $('#cardId9').click(function () {
+                $("#cardId9").attr('card', 'cardClick');
+            })
+
+            $('#cardIdLink10').click(function () {
+                $("#cardIdLink10").attr('card', 'cardClick');
+            })
+
+            $('#cardId10').click(function () {
+                $("#cardId10").attr('card', 'cardClick');
+            })
+
+            $('#cardIdLink11').click(function () {
+                $("#cardIdLink11").attr('card', 'cardClick');
+            })
+
+            $('#cardId11').click(function () {
+                $("#cardId11").attr('card', 'cardClick');
+            })
+        }
+    })
+</script>

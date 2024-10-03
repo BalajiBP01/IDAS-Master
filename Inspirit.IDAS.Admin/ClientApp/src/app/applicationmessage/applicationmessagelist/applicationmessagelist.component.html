@@ -1,0 +1,52 @@
+<div class="m-subheader" appunwraptag="">
+  <div class="d-flex align-items-center">
+    <div class="mr-auto">
+      <h3 class="m-subheader__title">Application Messages</h3>
+    </div>
+  </div>
+</div>
+
+
+<div class="m-content" *ngIf="userper.viewAction">
+  <div class="m-portlet  m-portlet--unair">
+    <div class="m-portlet__body  m-portlet__body--no-padding">
+      <div class="m-portlet__body">
+        <div *ngIf="userper.addAction" class="btn-group pull-right">
+          <a style="margin: 10px 5px;" class="btn btn-accent" (click)="applicationmessagedetailform()">
+            Add New
+            &nbsp;
+            <i class="fa fa-plus"></i>
+          </a>
+        </div>
+        <div class="m-form__section m-form__section--first">
+          <table datatable [dtOptions]="dtOptions" class="table table-striped"></table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<button data-toggle="modal" id="nopermission" data-target="#per" [hidden]="true"></button>
+
+<div id="per" class="modal" tabindex="-1" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div style="background: linear-gradient(#103f56, #094868, #00527c, #066f9e)"  class="modal-header">
+        <h4 style="color:#ffffff" class="modal-title">IDAS says:</h4>
+      </div>
+      <div class="modal-body">You don't have permission to access.</div>
+      <div class="modal-footer">
+        <button style="width:150px" (click)="dash()" type="button" class="btn btn-accent" data-dismiss="modal">Ok</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .modal-footer {
+    justify-content: center !important;
+  }
+</style>
+
+

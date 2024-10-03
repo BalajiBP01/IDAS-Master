@@ -1,0 +1,199 @@
+﻿
+@{
+
+    Layout = "~/Pages/_Layout2.cshtml";
+}
+<head>
+    <title>Blogs - Inspirit Data Analytics Services, Durban, South Africa</title>
+</head>
+<style>
+    .img-fluid1 {
+        width: 100%;
+        max-width: 65%;
+        height: auto;
+    }
+
+    .navbar-brand {
+        display: inline-block;
+        padding-top: .3125rem;
+        padding-bottom: .3125rem;
+        margin-right: 0rem;
+        margin-left: 0rem;
+        font-size: 1.25rem;
+        line-height: inherit;
+        white-space: nowrap;
+    }
+
+    .more a {
+        font-size: 11px;
+        font-weight: 500;
+        padding: 7px 14px;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        color: #fff;
+        background: #E60000;
+        border-radius: 5px;
+        transition: 0.5s all;
+        -webkit-transition: 0.5s all;
+        transition: 0.5s all;
+        -moz-transition: 0.5s all;
+    }
+
+
+    h1 {
+        color: #000000 !important;
+        font-size: 26px !important;
+        padding: 20px !important;
+        font-weight: bold !important;
+        font-family: 'Roboto', sans-serif !important;
+        text-align: center !important;
+        line-height: 32px !important;
+    }
+
+    a span {
+        background-color: #ffffff !important;
+        border: 0px !important;
+        color: #000000 !important;
+        cursor: pointer;
+        text-decoration: none !important;
+        font-family: arial, sans-serif;
+        font-size: small;
+        text-align: center;
+    }
+
+    font {
+        background-color: #ffffff !important;
+        border: 0px !important;
+        color: #000000 !important;
+        cursor: pointer;
+        text-decoration: none !important;
+        font-family: arial, sans-serif;
+        font-size: small;
+        text-align: center;
+    }
+
+    .s-link ul li a span:hover, .social-icons ul li a span:hover, .more a:hover {
+        color: #ffffff !important;
+        background: #232323;
+    }
+</style>
+
+<div align="center" class="header_block container-fluid">
+    <div align="center" class="header-w3layouts" data-role="header" data-position="fixed">
+        <div align="center" class="container">
+            <!--navigation section -->
+            <nav align="center" class="navbar navbar-expand-lg navbar-light">
+                <div class="hedder-up ">
+
+                    <a class="navbar-brand" href="">
+                        @*<img src="~/web/images/IDAS-Authorised-Agent-Website-Logo.png" />*@
+                        <img src="~/web/images/IDAS Authorised Logo 11-03.svg" width="320" height="140" />
+                    </a>
+                </div>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link" href="/Home">Home <span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/Products" class="nav-link">Products</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/Solutions" class="nav-link">Solutions</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/AboutUs" class="nav-link">About Us</a>
+                        </li>
+                        <li class="nav-item active">
+                            <a href="@Url.Action("NewsBlog", "News")" class="nav-link">News</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/Complaints" class="nav-link">Complaints</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/ContactUs" class="nav-link">Contact Us</a>
+                        </li>
+                        <li><a class="btn btn-block click-me2" style="background-color: #0F3E55;color: #ffffff;" href="/login">SIGN IN</a></li>&nbsp;&nbsp;
+                        @*<li><a class="btn btn-block click-me2" style="background-color: #0F3E55;color: #ffffff;" href="/usersignup">REGISTER</a></li>*@
+                    </ul>
+                </div>
+            </nav>
+            <div class="clearfix"> </div>
+        </div>
+    </div>
+</div>
+
+<div class="slider text-center">
+    <div class="callbacks_container">
+        <ul class="rslides" id="slider4">
+            <li style="height:320px;">
+                <div class="slider-img seven-img" style="height: 381px;background-color: rgba(0,0,0,0.5);" id="imgLoadAll">
+                    <div class="container-fluid" id="layer">
+                        <div class="slider-info" align="center" style="padding-top: 146px;">
+                            <h3 class="heading text-uppercase" align="center" style="color: #ffffff;
+    text-align: center;
+    font-weight: bold;
+    border-bottom: 2px solid #ffffff;
+    border-top: 2px solid #ffffff;
+    width: 100px;
+    margin-bottom: -37px;
+    ">
+                                NEWS
+                            </h3>
+                        </div>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+
+    <div class="clearfix"></div>
+</div>
+
+
+<div align="center" class="col-lg-12 col-12 mt-lg-0 mt-5 team_grid1" style="margin-top: 2% !important;margin-bottom: 10% !important;">
+    <div class="col-md-10 column-15">
+        @{
+
+            var item = @ViewBag.key;
+            var keywords = item.keywords;
+            if (@item != null)
+            {
+                @(Html.Raw(@item.Content))
+                <h4 class="more"><a href="@Url.Action("NewsBlog", "News")">Go Back</a></h4>
+            }
+
+        }
+        <ul align="center" class="classified_list" style="color:#ffffff; font-size: 13px;font-weight: normal;font-style: normal;padding: 20px 0px; font-family: 'Roboto', sans-serif; text-transform:uppercase;">
+            @{
+                @if (@ViewBag.key != null)
+                {
+                    @if (@ViewBag.key.keywords.Count > 0)
+                    {
+
+                        @foreach (var key in @ViewBag.key.keywords)
+                        {
+                            <li style="margin: 10px;"><a href="@Url.Action("GetKeywordDetails", "News", new { key = @key })" style="color:#ffffff; font-size: 13px;font-weight: normal;font-style: normal;padding: 5px 10px; font-family: 'Roboto', sans-serif; text-transform:uppercase;background-color:#0F3E55;">@key</a></li>
+                        }
+                    }
+                }
+            }
+        </ul>
+    </div>
+
+</div>
+
+<div class="clearfix"> </div>
+
+
+<script src="~/web/js/jquery-2.2.3.min.js"></script>
+<script type="text/javascript">
+    $(window).on("load", function () {
+        $('#imgLoadAll').show();
+
+    })
+</script>
+

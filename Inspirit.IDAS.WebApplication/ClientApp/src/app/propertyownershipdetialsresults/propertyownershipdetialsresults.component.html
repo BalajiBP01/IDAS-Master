@@ -1,0 +1,47 @@
+     <div class="m-portlet">
+  <div *ngIf="load==true" id="cover"></div>
+
+  <form class="m-form m-form--label-align-right" style="padding:12px;background-color:#f2f3f8;">
+    <div class="m-portlet__body" style="background-color:#ffffff;padding:12px;border:1px solid #000000">
+
+      <div class="m-section">
+        <div class="m-section__content">
+          <div class="table-responsive">
+            <table datatable [dtOptions]="dtOptions" class="table table-striped">
+              <thead>
+                <tr>
+                  <th>Transaction Type</th>
+                  <th>Date of Purchase / Sold</th>
+                  <th>Current Owner</th>
+                  <th class="fulladdress">Address</th>
+                  <th>Township</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let property of result ">
+                  <td><button type="button" style="padding:0px;word-break: break-all;white-space: normal" class="btn btn-link" (click)="showModal(property.propertyDeedId)">{{property.type}}</button></td>
+
+                  <td>{{ property.datePurchase |date:'yyyy-MM-dd'}}</td>
+                  <td class="tablevalue" *ngIf="property.isCurrentOwner == true">TRUE</td>
+                  <td class="tablevalue" *ngIf="property.isCurrentOwner == false">FALSE</td>
+                  <td class="tablevalue" *ngIf="property.isCurrentOwner == null">null</td>
+                  <td class="fulladdress">
+                    {{property.fullAddress}}
+                  </td>
+                  <td>
+                    {{property.town}}
+                  </td>
+                  
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      <!--end::Section-->
+    </div>
+  </form>
+
+  <!--end::Form-->
+</div>
+          <!--end::Portlet-->

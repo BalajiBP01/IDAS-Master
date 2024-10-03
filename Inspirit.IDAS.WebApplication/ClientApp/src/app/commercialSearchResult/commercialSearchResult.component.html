@@ -1,0 +1,93 @@
+
+<div class="m-grid__item m-grid__item--fluid m-grid m-grid--ver-desktop m-grid--desktop m-body">
+  <div class="m-grid__item m-grid__item--fluid m-wrapper">
+
+    <div class="m-subheader " style="padding-top:12px !important">
+      <form (keyup.enter)="GlobalSearch()">
+        <div id="global_search2" class="input-group" style="width:50%">
+          <input  type="text" style="border-color: #bbbbbb !important;text-transform:uppercase" class="form-control" placeholder="GLOBAL SEARCH..." [(ngModel)]="globalSearch" name="globalSearch">
+          <button (click)="GlobalSearch()" style="margin:0px!important;color:#000000;padding:3px">
+            <i class="fa fa-search"></i>
+          </button>
+        </div>
+      </form>
+      <div class="d-flex align-items-center">
+        <div class="mr-auto">
+          <h3 class="m-subheader__title ">
+            <button style="padding:0px;font-size:14px!important; width:78px !important; color: #016fa2 !important;font-weight: 600 !important;font-family: Avenir !important;text-transform:uppercase" class="btn btn-link" (click)="list()"> Tracing</button>
+            <i style="padding: 6px 5px 0px 5px !important;" class="fa fa-angle-right"></i>
+            Commercial Search Results
+          </h3>
+        </div>
+        <div class="m-portlet__head-tools">
+          <ul class="nav nav-pills nav-pills--brand m-nav-pills--align-right m-nav-pills--btn-pill m-nav-pills--btn-sm" role="tablist">
+            <li class="nav-item m-tabs__item">
+              <p style="color:#000000!important;margin:0px!important">Time Taken: {{timetaken}} seconds</p>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div *ngIf="loading==true" id="cover"></div>
+    <div class="m-content">
+      <div class="row">
+        <div class="col-xl-12">
+
+          <div class="m-portlet">
+            <div class="m-portlet__body">
+              <div class="m-section">
+                <div class="m-section__content">
+                  <div class="table-responsive">
+                    <table datatable [dtOptions]="dtOptions" class="table table-striped"></table>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<button id="load" (click)="load()" style="display:none"></button>
+<style>
+  #cover {
+    background: url("http://www.aveva.com/Images/ajax-loader.gif") no-repeat scroll center center;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    top: 0px;
+    left: 0px;
+    z-index: 1;
+  }
+
+  input {
+    padding: 10px;
+    font-size: 12px !important;
+    border-color: #bbbbbb !important;
+    width: 80%;
+  }
+
+    input::placeholder {
+      color: #A11E21;
+      font-size: 12px !important;
+    }
+  @media (max-width: 1200px) {
+    #global_search2 {
+      width: 70% !important;
+      margin-bottom: 20px;
+    }
+  }
+
+  @media (max-width: 760px) {
+    #global_search2 {
+      width: 90% !important;
+      margin-bottom: 20px;
+    }
+  }
+</style>
+
+
+

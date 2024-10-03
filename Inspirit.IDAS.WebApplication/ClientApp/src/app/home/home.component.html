@@ -1,0 +1,1074 @@
+<div class="m-grid__item m-grid__item--fluid m-grid m-grid--ver-desktop m-grid--desktop m-body">
+  <div class="m-grid__item m-grid__item--fluid m-wrapper">
+
+    <div *ngIf="loading==true" id="cover"></div>
+
+
+    <div class="m-subheader ">
+      <div class="d-flex align-items-center">
+        <div class="mr-auto">
+          <h3 class="m-subheader__title ">Dashboard</h3>
+        </div>
+      </div>
+    </div>
+    <!-- END: Subheader -->
+    <div class="m-content">
+      <!--begin:: Widgets/Stats-->
+      <div class="m-portlet ">
+        <div class="m-portlet__body  m-portlet__body--no-padding">
+          <div class="row m-row--no-padding m-row--col-separator-xl">
+            <div class="col-md-12 col-lg-6 col-xl-3">
+              <!--begin::Total Profit-->
+              <div class="m-widget24">
+                <div class="m-widget24__item">
+                  <h4 class="m-widget24__title">
+                    Consumers
+                  </h4><br>
+                  <span class="m-widget24__desc">
+                    All Consumers Value
+                  </span>
+                  <span class="m-widget24__stats m--font-brand">
+                    {{allconsumers |number: '1.0-0'}}
+                  </span>
+                  <div class="m--space-10"></div>
+                  <div class="progress m-progress--sm">
+                    <div id="inseartConsumerper" class="progress-bar m--bg-brand" role="progressbar" style="width: 10%;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                  </div>
+                  <span class="m-widget24__change">
+                    Consumers added :{{" "}}{{consumersmonth| number: '1.0-0'}}
+                  </span>
+                  <span class="m-widget24__number">
+                    {{inseartConsumerper| number:'.2'}}%
+                  </span>
+                </div>
+              </div>
+              <!--end::Total Profit-->
+            </div>
+            <div class="col-md-12 col-lg-6 col-xl-3">
+              <!--begin::New Feedbacks-->
+              <div class="m-widget24">
+                <div class="m-widget24__item">
+                  <h4 class="m-widget24__title">
+                    Telephone
+                  </h4><br>
+                  <span class="m-widget24__desc">
+                    All Telephone Value
+                  </span>
+                  <span class="m-widget24__stats m--font-info">
+                    {{alltelephone| number: '1.0-2'}}
+                  </span>
+                  <div class="m--space-10"></div>
+                  <div class="progress m-progress--sm">
+                    <div id="telephoneinsertper" class="progress-bar m--bg-info" role="progressbar" style="width: 10%;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                  </div>
+                  <span class="m-widget24__change">
+                    Telephones added: {{" "}}{{telephonemonth| number: '1.0-0'}}
+                  </span>
+                  <span class="m-widget24__number">
+                    {{telephoneinsertper| number:'.2'}}%
+                  </span>
+                </div>
+              </div>
+              <!--end::New Feedbacks-->
+            </div>
+            <div class="col-md-12 col-lg-6 col-xl-3">
+              <!--begin::New Orders-->
+              <div class="m-widget24">
+                <div class="m-widget24__item">
+                  <h4 class="m-widget24__title">
+                    Address
+                  </h4><br>
+                  <span class="m-widget24__desc">
+                    All Address Value
+                  </span>
+                  <span class="m-widget24__stats m--font-danger">
+                    {{alladdress| number: '1.0-0'}}
+                  </span>
+                  <div class="m--space-10"></div>
+                  <div class="progress m-progress--sm">
+                    <div id="addressinsertper" class="progress-bar m--bg-danger" role="progressbar" style="width: 20%;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                  </div>
+                  <span class="m-widget24__change">
+                    Address added: {{" "}}{{addressmonth| number: '1.0-0'}}
+                  </span>
+                  <span class="m-widget24__number">
+                    {{addressinsertper| number:'.2'}}%
+                  </span>
+                </div>
+              </div>
+              <!--end::New Orders-->
+            </div>
+            <div class="col-md-12 col-lg-6 col-xl-3">
+              <!--begin::New Users-->
+              <div class="m-widget24">
+                <div class="m-widget24__item">
+                  <h4 class="m-widget24__title">
+                    Deeds
+                  </h4><br>
+                  <span class="m-widget24__desc">
+                    All Deeds Value
+                  </span>
+                  <span class="m-widget24__stats m--font-success">
+                    {{alldeeds| number: '1.0-0' }}
+                  </span>
+                  <div class="m--space-10"></div>
+                  <div class="progress m-progress--sm">
+                    <div id="deedsinsertper" class="progress-bar m--bg-success" role="progressbar" style="width: 50%;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                  </div>
+                  <span class="m-widget24__change">
+                    deeds added: {{" "}}{{deedsmonth| number: '1.0-0'}}
+                  </span>
+                  <span class="m-widget24__number">
+                    {{deedsinsertper| number:'.2'}}%
+                  </span>
+                </div>
+              </div>
+              <!--end::New Users-->
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="m-portlet ">
+        <div class="m-portlet__body  m-portlet__body--no-padding">
+          <div class="row m-row--no-padding m-row--col-separator-xl">
+            <div class="col-md-12 col-lg-12 col-xl-4">
+              <!--begin::Total Profit-->
+              <div class="m-widget24">
+                <div class="m-widget24__item">
+                  <h4 class="m-widget24__title">
+                    Directorship
+                  </h4><br>
+                  <span class="m-widget24__desc">
+                    All Directorship Value
+                  </span>
+                  <span class="m-widget24__stats m--font-brand">
+                    {{alldirector| number: '1.0-0'}}
+                  </span>
+                  <div class="m--space-10"></div>
+                  <div class="progress m-progress--sm">
+                    <div id="directorinsertper" class="progress-bar m--bg-brand" role="progressbar" style="width: 10%;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                  </div>
+                  <span class="m-widget24__change">
+                    Directorship added : {{" "}}{{directormonth| number: '1.0-0'}}
+                  </span>
+                  <span class="m-widget24__number">
+                    {{directorinsertper| number:'.2'}}%
+                  </span>
+                </div>
+              </div>
+              <!--end::Total Profit-->
+            </div>
+            <div class="col-md-12 col-lg-12 col-xl-4">
+              <!--begin::New Feedbacks-->
+              <div class="m-widget24">
+                <div class="m-widget24__item">
+                  <h4 class="m-widget24__title">
+                    Adverse Indicators
+                  </h4><br>
+                  <span class="m-widget24__desc">
+                    All Adverse Indicators Value
+                  </span>
+                  <span class="m-widget24__stats m--font-info">
+                    {{alladverse|number: '1.0-0'}}
+                  </span>
+                  <div class="m--space-10"></div>
+                  <div class="progress m-progress--sm">
+                    <div id="adverseinsertper" class="progress-bar m--bg-info" role="progressbar" style="width: 10%;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                  </div>
+                  <span class="m-widget24__change">
+                    Adverse Indicators added: {{" "}}{{adversemonth|number: '1.0-0'}}
+                  </span>
+                  <span class="m-widget24__number">
+                    {{adverseinsertper| number:'.2'}}%
+                  </span>
+                </div>
+              </div>
+              <!--end::New Feedbacks-->
+            </div>
+            <div class="col-md-12 col-lg-12 col-xl-4">
+              <!--begin::New Orders-->
+              <div class="m-widget24">
+                <div class="m-widget24__item">
+                  <h4 class="m-widget24__title">
+                    Company
+                  </h4><br>
+                  <span class="m-widget24__desc">
+                    All Company Value
+                  </span>
+                  <span class="m-widget24__stats m--font-danger">
+                    {{allcompany| number: '1.0-0'}}
+                  </span>
+                  <div class="m--space-10"></div>
+                  <div class="progress m-progress--sm">
+                    <div id="companyinsertper" class="progress-bar m--bg-danger" role="progressbar" style="width: 20%;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                  </div>
+                  <span class="m-widget24__change">
+                    Company added:{{" "}}{{companymonth| number: '1.0-0'}}
+                  </span>
+                  <span class="m-widget24__number">
+                    {{companyinsertper| number:'.2'}}%
+                  </span>
+                </div>
+              </div>
+              <!--end::New Orders-->
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <!--end:: Widgets/Stats-->
+      <!--Begin::Section-->
+      <div class="row">
+        <div class="col-xl-4">
+          <!--begin:: Widgets/New Users-->
+          <div class="m-portlet m-portlet--full-height ">
+            <div class="m-portlet__head">
+              <div class="m-portlet__head-caption">
+                <div class="m-portlet__head-title">
+                  <h3 class="m-portlet__head-text">
+                    Updated Consumers
+                  </h3>
+                </div>
+              </div>
+              <div class="m-portlet__head-tools">
+                <ul class="nav nav-pills nav-pills--brand m-nav-pills--align-right m-nav-pills--btn-pill m-nav-pills--btn-sm" role="tablist">
+                  <li class="nav-item m-tabs__item">
+                    <a class="nav-link m-tabs__link active" data-toggle="tab" href="#m_widget4_tab1_content" role="tab">
+                      Month
+                    </a>
+                  </li>
+                  <li class="nav-item m-tabs__item">
+                    <a class="nav-link m-tabs__link" data-toggle="tab" href="#m_widget4_tab2_content" role="tab">
+                      Year
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="m-portlet__body" style="margin-top: 10px;">
+              <div class="tab-content">
+                <div class="tab-pane active" id="m_widget4_tab1_content">
+                  <div class="m-widget24">
+                    <div class="m-widget24__item">
+                      <span class="m-widget24__desc">
+                        All Consumers Value
+                      </span>
+                      <span class="m-widget24__stats m--font-danger">
+                        {{allconsumers| number: '1.0-0'}}
+                      </span>
+                      <div class="m--space-10"></div>
+                      <div class="progress m-progress--sm">
+                        <div id="updateconsumermonthper" class="progress-bar m--bg-danger" role="progressbar" style="width: 20%;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                      </div>
+                      <span class="m-widget24__change">
+                        Consumers Updated in month:{{" "}}{{updateconsumermonth| number: '1.0-0'}}
+                      </span>
+                      <span class="m-widget24__number">
+                        {{updateconsumermonthper| number:'.2'}}%
+                      </span>
+                    </div>
+                  </div>
+                </div>
+                <div class="tab-pane" id="m_widget4_tab2_content">
+                  <div class="m-widget24">
+                    <div class="m-widget24__item">
+                      <span class="m-widget24__desc">
+                        All Consumers Value
+                      </span>
+                      <span class="m-widget24__stats m--font-danger">
+                        {{allconsumers| number: '1.0-0'}}
+                      </span>
+                      <div class="m--space-10"></div>
+                      <div class="progress m-progress--sm">
+                        <div id="updateconsumeryearper" class="progress-bar m--bg-danger" role="progressbar" style="width: 20%;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                      </div>
+                      <span class="m-widget24__change">
+                        Company Updated in year:{{" "}}{{updateconsumeryear| number: '1.0-0'}}
+                      </span>
+                      <span class="m-widget24__number">
+                        {{updateconsumeryearper| number:'.2'}}%
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-xl-4">
+          <!--begin:: Widgets/New Users-->
+          <div class="m-portlet m-portlet--full-height ">
+            <div class="m-portlet__head">
+              <div class="m-portlet__head-caption">
+                <div class="m-portlet__head-title">
+                  <h3 class="m-portlet__head-text">
+                    Updated Telephone
+                  </h3>
+                </div>
+              </div>
+              <div class="m-portlet__head-tools">
+                <ul class="nav nav-pills nav-pills--brand m-nav-pills--align-right m-nav-pills--btn-pill m-nav-pills--btn-sm" role="tablist">
+                  <li class="nav-item m-tabs__item">
+                    <a class="nav-link m-tabs__link active" data-toggle="tab" href="#m_widget4_tab2_content1" role="tab">
+                      Month
+                    </a>
+                  </li>
+                  <li class="nav-item m-tabs__item">
+                    <a class="nav-link m-tabs__link" data-toggle="tab" href="#m_widget4_tab2_content2" role="tab">
+                      Year
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="m-portlet__body" style="margin-top: 10px;">
+              <div class="tab-content">
+                <div class="tab-pane active" id="m_widget4_tab2_content1">
+                  <div class="m-widget24">
+                    <div class="m-widget24__item">
+                      <span class="m-widget24__desc">
+                        All Telephone Value
+                      </span>
+                      <span class="m-widget24__stats m--font-success">
+                        {{alltelephone|number: '1.0-0'}}
+                      </span>
+                      <div class="m--space-10"></div>
+                      <div class="progress m-progress--sm">
+                        <div id="updatetelmonthper" class="progress-bar m--bg-success" role="progressbar" style="width: 20%;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                      </div>
+                      <span class="m-widget24__change">
+                        Telephone Updated in month:{{" "}}{{updatetelmonth| number: '1.0-0'}}
+                      </span>
+                      <span class="m-widget24__number">
+                        {{updatetelmonthper| number:'.2'}}%
+                      </span>
+                    </div>
+                  </div>
+                </div>
+                <div class="tab-pane" id="m_widget4_tab2_content2">
+                  <div class="m-widget24">
+                    <div class="m-widget24__item">
+                      <span class="m-widget24__desc">
+                        All Telephone Value
+                      </span>
+                      <span class="m-widget24__stats m--font-success">
+                        {{alltelephone| number: '1.0-0'}}
+                      </span>
+                      <div class="m--space-10"></div>
+                      <div class="progress m-progress--sm">
+                        <div id="updatetelyearper" class="progress-bar m--bg-success" role="progressbar" style="width: 20%;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                      </div>
+                      <span class="m-widget24__change">
+                        Telephone Updated in year:{{" "}}{{updatetelyear| number: '1.0-0'}}
+                      </span>
+                      <span class="m-widget24__number">
+                        {{updatetelyearper| number:'.2'}}%
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-xl-4">
+          <!--begin:: Widgets/New Users-->
+          <div class="m-portlet m-portlet--full-height ">
+            <div class="m-portlet__head">
+              <div class="m-portlet__head-caption">
+                <div class="m-portlet__head-title">
+                  <h3 class="m-portlet__head-text">
+                    Updated Address
+
+                  </h3>
+                </div>
+              </div>
+              <div class="m-portlet__head-tools">
+                <ul class="nav nav-pills nav-pills--brand m-nav-pills--align-right m-nav-pills--btn-pill m-nav-pills--btn-sm" role="tablist">
+                  <li class="nav-item m-tabs__item">
+                    <a class="nav-link m-tabs__link active" data-toggle="tab" href="#m_widget4_tab3_content1" role="tab">
+                      Month
+                    </a>
+                  </li>
+                  <li class="nav-item m-tabs__item">
+                    <a class="nav-link m-tabs__link" data-toggle="tab" href="#m_widget4_tab3_content2" role="tab">
+                      Year
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="m-portlet__body" style="margin-top: 10px;">
+              <div class="tab-content">
+                <div class="tab-pane active" id="m_widget4_tab3_content1">
+                  <div class="m-widget24">
+                    <div class="m-widget24__item">
+                      <span class="m-widget24__desc">
+                        All Address Value
+                      </span>
+                      <span class="m-widget24__stats m--font-primary">
+                        {{alladdress|number: '1.0-0'}}
+                      </span>
+                      <div class="m--space-10"></div>
+                      <div class="progress m-progress--sm">
+                        <div id="updateaddmonthper" class="progress-bar m--bg-primary" role="progressbar" style="width: 20%;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                      </div>
+                      <span class="m-widget24__change">
+                        Address Updated in month:{{" "}}{{updateaddmonth|number: '1.0-0'}}
+                      </span>
+                      <span class="m-widget24__number">
+                        {{updateaddmonthper| number:'.2'}}%
+                      </span>
+                    </div>
+                  </div>
+                </div>
+                <div class="tab-pane" id="m_widget4_tab3_content2">
+                  <div class="m-widget24">
+                    <div class="m-widget24__item">
+                      <span class="m-widget24__desc">
+                        All Address Value
+                      </span>
+                      <span class="m-widget24__stats m--font-primary">
+                        {{alladdress| number: '1.0-0'}}
+                      </span>
+                      <div class="m--space-10"></div>
+                      <div class="progress m-progress--sm">
+                        <div id="updateaddyearper" class="progress-bar m--bg-primary" role="progressbar" style="width: 20%;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                      </div>
+                      <span class="m-widget24__change">
+                        Address Updated in year:{{" "}}{{updateaddyear| number: '1.0-0'}}
+                      </span>
+                      <span class="m-widget24__number">
+                        {{updateaddyearper| number:'.2'}}%
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+
+      <div class="row">
+        <div class="col-xl-4">
+          <!--begin:: Widgets/New Users-->
+          <div class="m-portlet m-portlet--full-height ">
+            <div class="m-portlet__head">
+              <div class="m-portlet__head-caption">
+                <div class="m-portlet__head-title">
+                  <h3 class="m-portlet__head-text">
+                    Updated Deeds
+                  </h3>
+                </div>
+              </div>
+              <div class="m-portlet__head-tools">
+                <ul class="nav nav-pills nav-pills--brand m-nav-pills--align-right m-nav-pills--btn-pill m-nav-pills--btn-sm" role="tablist">
+                  <li class="nav-item m-tabs__item">
+                    <a class="nav-link m-tabs__link active" data-toggle="tab" href="#m_widget4_tab4_content1" role="tab">
+                      Month
+                    </a>
+                  </li>
+                  <li class="nav-item m-tabs__item">
+                    <a class="nav-link m-tabs__link" data-toggle="tab" href="#m_widget4_tab4_content2" role="tab">
+                      Year
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="m-portlet__body" style="margin-top: 10px;">
+              <div class="tab-content">
+                <div class="tab-pane active" id="m_widget4_tab4_content1">
+                  <div class="m-widget24">
+                    <div class="m-widget24__item">
+                      <span class="m-widget24__desc">
+                        All Deeds Value
+                      </span>
+                      <span class="m-widget24__stats m--font-danger">
+                        {{alldeeds| number: '1.0-0'}}
+                      </span>
+                      <div class="m--space-10"></div>
+                      <div class="progress m-progress--sm">
+                        <div id="updatedeedsmonthper" class="progress-bar m--bg-danger" role="progressbar" style="width: 20%;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                      </div>
+                      <span class="m-widget24__change">
+                        Deeds Updated in month:{{" "}}{{updatedeedsmonth|number: '1.0-0'}}
+                      </span>
+                      <span class="m-widget24__number">
+                        {{updatedeedsmonthper| number:'.2'}}%
+                      </span>
+                    </div>
+                  </div>
+                </div>
+                <div class="tab-pane" id="m_widget4_tab4_content2">
+                  <div class="m-widget24">
+                    <div class="m-widget24__item">
+                      <span class="m-widget24__desc">
+                        All Deeds Value
+                      </span>
+                      <span class="m-widget24__stats m--font-danger">
+                        {{alldeeds| number: '1.0-0'}}
+                      </span>
+                      <div class="m--space-10"></div>
+                      <div class="progress m-progress--sm">
+                        <div id="updatedeedsyearper" class="progress-bar m--bg-danger" role="progressbar" style="width: 20%;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                      </div>
+                      <span class="m-widget24__change">
+                        Deeds Updated in year:{{" "}}{{updatedeedsyear| number: '1.0-0'}}
+                      </span>
+                      <span class="m-widget24__number">
+                        {{updatedeedsyearper| number:'.2'}}%
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-xl-4">
+          <!--begin:: Widgets/New Users-->
+          <div class="m-portlet m-portlet--full-height ">
+            <div class="m-portlet__head">
+              <div class="m-portlet__head-caption">
+                <div class="m-portlet__head-title">
+                  <h3 class="m-portlet__head-text">
+                    Directorship
+                  </h3>
+                </div>
+              </div>
+              <div class="m-portlet__head-tools">
+                <ul class="nav nav-pills nav-pills--brand m-nav-pills--align-right m-nav-pills--btn-pill m-nav-pills--btn-sm" role="tablist">
+                  <li class="nav-item m-tabs__item">
+                    <a class="nav-link m-tabs__link active" data-toggle="tab" href="#m_widget4_tab5_content1" role="tab">
+                      Month
+                    </a>
+                  </li>
+                  <li class="nav-item m-tabs__item">
+                    <a class="nav-link m-tabs__link" data-toggle="tab" href="#m_widget4_tab5_content2" role="tab">
+                      Year
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="m-portlet__body" style="margin-top: 10px;">
+              <div class="tab-content">
+                <div class="tab-pane active" id="m_widget4_tab5_content1">
+                  <div class="m-widget24">
+                    <div class="m-widget24__item">
+                      <span class="m-widget24__desc">
+                        All Directorship Value
+                      </span>
+                      <span class="m-widget24__stats m--font-success">
+                        {{alldirector|number: '1.0-0'}}
+                      </span>
+                      <div class="m--space-10"></div>
+                      <div class="progress m-progress--sm">
+                        <div id="updatedirmonthper" class="progress-bar m--bg-success" role="progressbar" style="width: 20%;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                      </div>
+                      <span class="m-widget24__change">
+                        Directorship Updated in month:{{" "}}{{updatedirmonth| number: '1.0-0'}}
+                      </span>
+                      <span class="m-widget24__number">
+                        {{updatedirmonthper| number:'.2'}}%
+                      </span>
+                    </div>
+                  </div>
+                </div>
+                <div class="tab-pane" id="m_widget4_tab5_content2">
+                  <div class="m-widget24">
+                    <div class="m-widget24__item">
+                      <span class="m-widget24__desc">
+                        All Directorship Value
+                      </span>
+                      <span class="m-widget24__stats m--font-success">
+                        {{alldirector|number: '1.0-0'}}
+                      </span>
+                      <div class="m--space-10"></div>
+                      <div class="progress m-progress--sm">
+                        <div id="updatediryearper" class="progress-bar m--bg-success" role="progressbar" style="width: 20%;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                      </div>
+                      <span class="m-widget24__change">
+                        Directorship Updated in year:{{" "}}{{updatediryear|number: '1.0-0'}}
+                      </span>
+                      <span class="m-widget24__number">
+                        {{updatediryearper| number:'.2'}}%
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-xl-4">
+          <!--begin:: Widgets/New Users-->
+          <div class="m-portlet m-portlet--full-height ">
+            <div class="m-portlet__head">
+              <div class="m-portlet__head-caption">
+                <div class="m-portlet__head-title">
+                  <h3 class="m-portlet__head-text">
+                    Adverse Indicators
+                  </h3>
+                </div>
+              </div>
+              <div class="m-portlet__head-tools">
+                <ul class="nav nav-pills nav-pills--brand m-nav-pills--align-right m-nav-pills--btn-pill m-nav-pills--btn-sm" role="tablist">
+                  <li class="nav-item m-tabs__item">
+                    <a class="nav-link m-tabs__link active" data-toggle="tab" href="#m_widget4_tab6_content1" role="tab">
+                      Month
+                    </a>
+                  </li>
+                  <li class="nav-item m-tabs__item">
+                    <a class="nav-link m-tabs__link" data-toggle="tab" href="#m_widget4_tab6_content2" role="tab">
+                      Year
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="m-portlet__body" style="margin-top: 10px;">
+              <div class="tab-content">
+                <div class="tab-pane active" id="m_widget4_tab6_content1">
+                  <div class="m-widget24">
+                    <div class="m-widget24__item">
+                      <span class="m-widget24__desc">
+                        All Adverse Indicators Value
+                      </span>
+                      <span class="m-widget24__stats m--font-primary">
+                        {{alladverse|number: '1.0-0'}}
+                      </span>
+                      <div class="m--space-10"></div>
+                      <div class="progress m-progress--sm">
+                        <div id="updateadvmonthper" class="progress-bar m--bg-primary" role="progressbar" style="width: 20%;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                      </div>
+                      <span class="m-widget24__change">
+                        Adverse Indicators Updated in month:{{" "}}{{updateadvmonth|number: '1.0-0'}}
+                      </span>
+                      <span class="m-widget24__number">
+                        {{updateadvmonthper| number:'.2'}}%
+                      </span>
+                    </div>
+                  </div>
+                </div>
+                <div class="tab-pane" id="m_widget4_tab6_content2">
+                  <div class="m-widget24">
+                    <div class="m-widget24__item">
+                      <span class="m-widget24__desc">
+                        All Adverse Indicators Value
+                      </span>
+                      <span class="m-widget24__stats m--font-primary">
+                        {{alladverse| number: '1.0-0'}}
+                      </span>
+                      <div class="m--space-10"></div>
+                      <div class="progress m-progress--sm">
+                        <div id="updateadvyearper" class="progress-bar m--bg-primary" role="progressbar" style="width: 20%;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                      </div>
+                      <span class="m-widget24__change">
+                        Adverse Indicators Updated in year:{{" "}}{{updateadvyear|number: '1.0-0'}}
+                      </span>
+                      <span class="m-widget24__number">
+                        {{updateadvyearper| number:'.2'}}%
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xl-4">
+          <!--begin:: Widgets/New Users-->
+          <div class="m-portlet m-portlet--full-height ">
+            <div class="m-portlet__head">
+              <div class="m-portlet__head-caption">
+                <div class="m-portlet__head-title">
+                  <h3 class="m-portlet__head-text">
+                    Updated Company
+                  </h3>
+                </div>
+              </div>
+              <div class="m-portlet__head-tools">
+                <ul class="nav nav-pills nav-pills--brand m-nav-pills--align-right m-nav-pills--btn-pill m-nav-pills--btn-sm" role="tablist">
+                  <li class="nav-item m-tabs__item">
+                    <a class="nav-link m-tabs__link active" data-toggle="tab" href="#m_widget4_tab7_content1" role="tab">
+                      Month
+                    </a>
+                  </li>
+                  <li class="nav-item m-tabs__item">
+                    <a class="nav-link m-tabs__link" data-toggle="tab" href="#m_widget4_tab7_content2" role="tab">
+                      Year
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="m-portlet__body" style="margin-top: 10px;">
+              <div class="tab-content">
+                <div class="tab-pane active" id="m_widget4_tab7_content1">
+                  <div class="m-widget24">
+                    <div class="m-widget24__item">
+                      <span class="m-widget24__desc">
+                        All Company Value
+                      </span>
+                      <span class="m-widget24__stats m--font-danger">
+                        {{allcompany|number: '1.0-0'}}
+                      </span>
+                      <div class="m--space-10"></div>
+                      <div class="progress m-progress--sm">
+                        <div id="updatecommonthper" class="progress-bar m--bg-danger" role="progressbar" style="width: 20%;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                      </div>
+                      <span class="m-widget24__change">
+                        Company Updated in month:{{" "}}{{updatecommonth| number: '1.0-0'}}
+                      </span>
+                      <span class="m-widget24__number">
+                        {{updatecommonthper| number:'.2'}}%
+                      </span>
+                    </div>
+                  </div>
+                </div>
+                <div class="tab-pane" id="m_widget4_tab7_content2">
+                  <div class="m-widget24">
+                    <div class="m-widget24__item">
+                      <span class="m-widget24__desc">
+                        All Company Value
+                      </span>
+                      <span class="m-widget24__stats m--font-danger">
+                        {{allcompany|number: '1.0-0'}}
+                      </span>
+                      <div class="m--space-10"></div>
+                      <div class="progress m-progress--sm">
+                        <div id="updatecomyearper" class="progress-bar m--bg-danger" role="progressbar" style="width: 20%;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                      </div>
+                      <span class="m-widget24__change">
+                        Company Updated in year:{{" "}}{{updatecompyear| number: '1.0-0'}}
+                      </span>
+                      <span class="m-widget24__number">
+                        {{updatecomyearper| number:'.2'}}%
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-xl-4">
+          <!--begin:: Widgets/New Users-->
+          <div class="m-portlet m-portlet--full-height ">
+            <div class="m-portlet__head">
+              <div class="m-portlet__head-caption">
+                <div class="m-portlet__head-title">
+                  <h3 class="m-portlet__head-text">
+                    Deceased Status
+                  </h3>
+                </div>
+              </div>
+              <div class="m-portlet__head-tools">
+                <ul class="nav nav-pills nav-pills--brand m-nav-pills--align-right m-nav-pills--btn-pill m-nav-pills--btn-sm" role="tablist">
+                  <li class="nav-item m-tabs__item">
+                    <a class="nav-link m-tabs__link active" data-toggle="tab" href="#m_widget4_tab8_content1" role="tab">
+                      Month
+                    </a>
+                  </li>
+                  <li class="nav-item m-tabs__item">
+                    <a class="nav-link m-tabs__link" data-toggle="tab" href="#m_widget4_tab8_content2" role="tab">
+                      Year
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="m-portlet__body" style="margin-top: 10px;">
+              <div class="tab-content">
+                <div class="tab-pane active" id="m_widget4_tab8_content1">
+                  <div class="m-widget24">
+                    <div class="m-widget24__item">
+                      <span class="m-widget24__desc">
+                        All Deceased Value
+                      </span>
+                      <span class="m-widget24__stats m--font-success">
+                        {{alldeceased | number: '1.0-0'}}
+                      </span>
+                      <div class="m--space-10"></div>
+                      <div class="progress m-progress--sm">
+                        <div id="updatedeceasedmonthper" class="progress-bar m--bg-success" role="progressbar" style="width: 20%;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                      </div>
+                      <span class="m-widget24__change">
+                        Deceased Updated in month: {{updatedeceasedmonth | number: '1.0-0' }}
+                      </span>
+                      <span class="m-widget24__number">
+                        {{updatedeceasedmonthper | number:'.2'}}%
+                      </span>
+                    </div>
+                  </div>
+                </div>
+                <div class="tab-pane" id="m_widget4_tab8_content2">
+                  <div class="m-widget24">
+                    <div class="m-widget24__item">
+                      <span class="m-widget24__desc">
+                        All Deceased Value
+                      </span>
+                      <span class="m-widget24__stats m--font-success">
+                        {{alldeceased | number: '1.0-0'}}
+                      </span>
+                      <div class="m--space-10"></div>
+                      <div class="progress m-progress--sm">
+                        <div id="updatedeceasedyearper" class="progress-bar m--bg-success" role="progressbar" style="width: 20%;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                      </div>
+                      <span class="m-widget24__change">
+                        Deceased Updated in year: {{updatedeceasedyear | number: '1.0-0'}}
+                      </span>
+                      <span class="m-widget24__number">
+                        {{updatedeceasedyearper | number: '.2'}}%
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-xl-4">
+          <!--begin:: Widgets/New Users-->
+          <div class="m-portlet m-portlet--full-height ">
+            <div class="m-portlet__head">
+              <div class="m-portlet__head-caption">
+                <div class="m-portlet__head-title">
+                  <h3 class="m-portlet__head-text">
+                    marital status
+                  </h3>
+                </div>
+              </div>
+              <div class="m-portlet__head-tools">
+                <ul class="nav nav-pills nav-pills--brand m-nav-pills--align-right m-nav-pills--btn-pill m-nav-pills--btn-sm" role="tablist">
+                  <li>
+                    <select style="padding: 4px 9px 4px 10px !important;" placeholder="Please select" name="marritalStatus" (click)="getstatus(marritalStatus)" [(ngModel)]="marritalStatus">
+                      <option value="m">Married</option>
+                      <option value="d">Divorced</option>
+                    </select>
+                  </li>
+                  <li *ngIf="marritalStatus == 'm'" class="nav-item m-tabs__item">
+                    <a class="nav-link m-tabs__link active" data-toggle="tab" href="#m_widget4_tab9_content1_marital1" (click)="getmarried('m')" role="tab">
+                      Month
+                    </a>
+                  </li>
+                  <li *ngIf="marritalStatus == 'm'" class="nav-item m-tabs__item">
+                    <a class="nav-link m-tabs__link" data-toggle="tab" href="#m_widget4_tab9_content2_marital2" (click)="getmarried('y')" role="tab">
+                      Year
+                    </a>
+                  </li>
+                  <li *ngIf="marritalStatus == 'd'" class="nav-item m-tabs__item">
+                    <a class="nav-link m-tabs__link active" data-toggle="tab" id="divget" href="#m_widget4_tab9_content3_divorce1" (click)="getdiv('m')" role="tab">
+                      Month
+                    </a>
+                  </li>
+                  <li *ngIf="marritalStatus == 'd'" class="nav-item m-tabs__item">
+                    <a class="nav-link m-tabs__link" data-toggle="tab" href="#m_widget4_tab9_content4_divorce2" (click)="getdiv('y')" role="tab">
+                      Year
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="m-portlet__body" style="margin-top: 10px;">
+              <div class="tab-content">
+                <div *ngIf="marritalStatus == 'm'" class="tab-pane active" id="m_widget4_tab9_content1_marital1">
+                  <div *ngIf="married == 'm'" class="m-widget24">
+                    <div class="m-widget24__item">
+                      <span class="m-widget24__desc">
+                        All Married Value
+                      </span>
+                      <span class="m-widget24__stats m--font-primary">
+                        {{allmarried | number: '1.0-0'}}
+                      </span>
+                      <div class="m--space-10"></div>
+                      <div class="progress m-progress--sm">
+                        <div id="updatemarriedmonthper" class="progress-bar m--bg-primary" role="progressbar" style="width: 20%;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                      </div>
+                      <span class="m-widget24__change">
+                        Married Updated in month:{{updatemarriedmonth | number: '1.0-0' }}
+                      </span>
+                      <span class="m-widget24__number">
+                        {{updatemarriedmonthper | number:'.2'}}%
+                      </span>
+                    </div>
+                  </div>
+                  <div *ngIf="married == 'y'" class="m-widget24">
+                    <div class="m-widget24__item">
+                      <span class="m-widget24__desc">
+                        All Married Value
+                      </span>
+                      <span class="m-widget24__stats m--font-primary">
+                        {{allmarried | number: '1.0-0'}}
+                      </span>
+                      <div class="m--space-10"></div>
+                      <div class="progress m-progress--sm">
+                        <div id="updatemarriedyearper" class="progress-bar m--bg-primary" role="progressbar" style="width: 20%;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                      </div>
+                      <span class="m-widget24__change">
+                        Married Updated in Year:{{updatemarriedyear | number: '1.0-0'}}
+                      </span>
+                      <span class="m-widget24__number">
+                        {{updatemarriedyearper | number: '.2'}}%
+                      </span>
+                    </div>
+                  </div>
+                </div>
+                <div *ngIf="marritalStatus == 'd'" class="tab-pane active" id="m_widget4_tab9_content3_divorce1">
+                  <div *ngIf="divorsed == 'm'" class="m-widget24">
+                    <div class="m-widget24__item">
+                      <span class="m-widget24__desc">
+                        All Divorced Value
+                      </span>
+                      <span class="m-widget24__stats m--font-primary">
+                        {{alldivorsed | number: '1.0-0'}}
+                      </span>
+                      <div class="m--space-10"></div>
+                      <div class="progress m-progress--sm">
+                        <div id="updatedivorsedmonthper" class="progress-bar m--bg-primary" role="progressbar" style="width: 20%;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                      </div>
+                      <span class="m-widget24__change">
+                        Divorced Updated in month: {{updatedivorsedmonth | number: '1.0-0'}}
+                      </span>
+                      <span class="m-widget24__number">
+                        {{updatedivorsedmonthper | number: '.2'}}%
+                      </span>
+                    </div>
+                  </div>
+                  <div *ngIf="divorsed == 'y'" class="m-widget24">
+                    <div class="m-widget24__item">
+                      <span class="m-widget24__desc">
+                        All Divorced Value
+                      </span>
+                      <span class="m-widget24__stats m--font-primary">
+                        {{alldivorsed | number: '1.0-0'}}
+                      </span>
+                      <div class="m--space-10"></div>
+                      <div class="progress m-progress--sm">
+                        <div id="updatedivorsedyearper" class="progress-bar m--bg-primary" role="progressbar" style="width: 20%;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                      </div>
+                      <span class="m-widget24__change">
+                        Divorced Updated in year:{{updatedivorsedyear | number: '1.0-0'}}
+                      </span>
+                      <span class="m-widget24__number">
+                        {{updatedivorsedyearper | number: '.2'}}%
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Reset Password Modal -->
+<button data-toggle="modal" id="pwdReset" data-target="#passwordReset" [hidden]="true"></button>
+
+<div id="passwordReset" class="modal" tabindex="-1" role="dialog" data-backdrop="static" data-keyboard="false">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div style="background: linear-gradient(#103f56, #094868, #00527c, #066f9e) !important;" class="modal-header">
+        <h4 style="color:#ffffff" class="modal-title">IDAS says:</h4>
+      </div>
+      <div class="modal-body"><h6>Your password is expired, please reset password </h6></div>
+     <div class="modal-footer">
+        <button (click)="resetPasswordRoute()" type="button" class="btn btn-accent" data-dismiss="modal">Reset Password</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+    .modal-footer {
+    justify-content: center !important;
+  }
+  #cover {
+    background: url("http://www.aveva.com/Images/ajax-loader.gif") no-repeat scroll center center;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    top: 0px;
+    left: 0px;
+    z-index: 1;
+  }
+  .nav.nav-pills.m-nav-pills--btn-sm .m-tabs__link {
+    font-size: 12px;
+    border-bottom: 0px !important;
+    border-radius: 2px !important;
+  }
+
+  .nav.nav-pills.nav-pills--brand .nav-link.active {
+    background-color: #024f76 !important;
+    color: #fff;
+  }
+
+  .m-portlet .m-portlet__head .m-portlet__head-caption .m-portlet__head-title .m-portlet__head-text {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    font-size: 12px !important;
+    font-weight: 600 !important;
+    font-family: Avenir !important;
+    margin: 0;
+    padding: 0;
+    text-transform: uppercase !important;
+  }
+
+  .nav-link {
+    display: block;
+    padding: 3px 10px 3px 10px !important;
+  }
+
+  .nav.nav-pills .nav-link, .nav.nav-tabs .nav-link {
+    color: #ffffff !important;
+    background-color: #2b2c3a !important;
+    margin-right: -8px !important;
+    margin-left: 4px !important;
+    font-size: 12px !important;
+    min-height: 20px !important;
+    line-height: 14px !important;
+    text-transform: uppercase;
+    border-bottom: 5px solid #0a4868;
+  }
+
+  .m-widget24 .m-widget24__item .m-widget24__stats {
+    float: right;
+    margin-right: 1.8rem;
+    margin-top: -1.43rem;
+    font-size: 18px;
+    font-weight: 600;
+  }
+
+  .m-dropdown .m-dropdown__wrapper .m-dropdown__body {
+    padding: 10px;
+  }
+
+  .m-nav .m-nav__section.m-nav__section--first {
+    margin-top: 10px;
+    color: #2b2c3a;
+  }
+
+  .m-nav .m-nav__section.m-nav__section--first {
+    color: #0a4868 !important;
+  }
+</style>

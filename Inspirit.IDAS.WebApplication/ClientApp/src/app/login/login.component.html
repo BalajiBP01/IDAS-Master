@@ -1,0 +1,1459 @@
+
+<div class="login-page">
+
+  <!-- [ngStyle]="{backgroundImage:'url(../../images/backgriound_image.jpg)'}" -->
+
+  <div class="form">
+
+    <div class="m-login__logo">
+      <!--<a href="#">-->
+      <img src="../../assets/demo/demo2/media/img/logo/XDS without text.jpg" class="img-fluid" alt="" width="190"
+           height="90" style="max-width:80% !important;" />
+      <!--<img id="loginimg" src="../../assets/demo/demo2/media/img/Icons/Login-mod.png" class="img-fluid" alt="" width="95"
+       height="25" style="max-width:80% !important;" />-->
+      <!--<h3 class="m-login__title" style="text-transform:uppercase;font-family:Roboto, sans-serif; text-align: center;
+    font-size: 1.5rem;
+    color: #21668b;
+    font-weight: 600;
+    padding: 30px 0px 30px 0px;">
+        Sign In
+      </h3>-->
+      <h3 class="m-login__title" style="text-transform: uppercase; font-family: Roboto, sans-serif; text-align: center; font-size: 1.5rem; color: #1a4f6e; font-weight: 600; padding: 30px -20px 30px 0px;">
+        Sign In
+      </h3>
+      <!--</a>-->
+    </div>
+
+    <div class="m-login__head">
+      <!--<h3 class="m-login__title" style="text-transform:uppercase;font-family:Roboto, sans-serif; text-align: center;
+    font-size: 1.5rem;
+    color: #21668b;
+    font-weight: 600;
+    padding: 40px 0px 40px 0px;">
+        Sign In
+      </h3>-->
+    </div>
+    <div *ngIf="loading==true" id="cover"></div>
+    <form class="login-form">
+
+      <div class="form-group m-form__group">
+        <span style="margin-left:-40px;" class="icon-fix"><img
+            src="../../assets/demo/demo2/media/img/Icons/Login-username-icon.png" width="15" height="15"
+            border="0" /></span>
+        <input (keyup)="validation()" style="font-size: 11.5px; padding-left: 35px;" class="form-control m-input"
+          type="text" [(ngModel)]="_loginRequest.userName" name="userName" placeholder="Enter UserName"
+          autocomplete="off">
+      </div>
+      <div class="form-group m-form__group">
+        <span style="margin-left:-40px;" class="icon-fix"><img
+            src="../../assets/demo/demo2/media/img/Icons/Login-password-icon.png" width="15" height="15"
+            border="0" /></span>
+        <input (keyup)="validation()" style="font-size: 11.5px; padding-left: 35px;"
+          class="form-control m-input m-login__form-input--last" type="password" [(ngModel)]="_loginRequest.password"
+          name="password" placeholder="Enter Password">
+      </div>
+
+      <!-- <div class="form-group m-form__group">
+        <label>1 + 1 = </label>
+        <input style="font-size: 11.5px; padding-left: 35px;" class="form-control m-input m-login__form-input--last" type="userAnswer" [(ngModel)]="userAnswer" name="userAnswer" placeholder="?">
+      </div> -->
+      <!-- <div class="form-group m-form__group">
+      <span>
+        <label for="pin">1 + 1:</label>
+        <input type="text" [(ngModel)]="userAnswer" name="answer" maxlength="4" size="4" style="font-size: 11.5px; padding-left: 10px;"><br><br>
+      </span>
+      </div> -->
+
+      <!-- <span>
+        <label>1 + 1 </label>  <input [(ngModel)]="userAnswer" name="userAnswer" placeholder="?">
+        </span>
+      </div> -->
+
+      <div id="error_value" class="form-group m-form__group"
+        *ngIf="_loginRespose.errorMessage != '' && _loginRespose.errorMessage !='Found another active session, kindly try after 5 minutes or contact administrator.'">
+        <span class="errorMessageValue">{{_loginRespose.errorMessage}}</span>
+      </div>
+      <div class="row m-login__form-sub">
+
+        <div class="col m--align-center">
+          <a href="javascript:;" [routerLink]="'/forgetpassword'" class="m-link">Forgot Password ?</a>
+        </div>
+      </div>
+      <div class="m-login__form-action">
+        <button class="btn btn-dark m-btn m-btn--pill m-btn--custom m-btn--air g-recaptcha" id="login_button"
+                (click)="login()">
+          Sign In
+        </button>
+        <br />
+        <br />
+
+        <img src="../../assets/demo/demo2/media/img/logo/inspirit.png" class="img-fluid" alt="" width="226"
+             height="90" style="max-width:80% !important;" />
+        <!-- <button type="button" id="btn_recaptcha">my button</button> -->
+        <!-- <button class="btn btn-dark m-btn m-btn--pill m-btn--custom m-btn--air g-recaptcha" id="login_button" (click)="login()">Sign In</button> -->
+      </div>
+      <!--<div align="center" class="m-login__account">
+        <span align="center" class="m-login__account-msg" style="font-family:Roboto, sans-serif;font-size: 11px;
+    font-weight: 400;
+    color: #0a0a0a;
+    text-transform: uppercase;
+    margin-left: 0px;
+    margin-right: 0px;">
+          Don't have an account yet ? <a href="javascript:;" [routerLink]="'/usersignup'"
+            style="font-size: 11px;color: #af0017 !important;text-transform:uppercase;"
+            class="m-link m-link--skin-dark m-login__account-link">Sign Up</a>
+        </span>
+      </div>-->
+    </form>
+  </div>
+</div>
+
+<button data-toggle="modal" id="loginerror" data-target="#logerror" [hidden]="true"></button>
+
+<div id="logerror" class="modal" tabindex="-1" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div style="background: linear-gradient(#103f56, #094868, #00527c, #066f9e) !important;" class="modal-header">
+        <h4 style="color:#ffffff" class="modal-title">IDAS says:</h4>
+      </div>
+      <div class="modal-body" style="font-size:12px !important"><span style="color: red;font-size: 1.2rem !important;"
+          class="fa fa-times-circle">
+        </span>Found another active session, kindly try after 5 minutes or contact administrator.</div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-accent" data-dismiss="modal">Ok</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .modal-footer {
+    justify-content: center !important;
+  }
+
+  #cover {
+    background: url("http://www.aveva.com/Images/ajax-loader.gif") no-repeat scroll center center;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    top: 0px;
+    left: 0px;
+  }
+
+
+
+  body {
+    background: #242323 !important;
+    /* fallback for old browsers */
+    background: -webkit-linear-gradient(right, #76b852, #8DC26F);
+    background: -moz-linear-gradient(right, #76b852, #8DC26F);
+    background: -o-linear-gradient(right, #76b852, #8DC26F);
+    background: linear-gradient(to left, #76b852, #8DC26F);
+    font-family: "Roboto", sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+
+  }
+
+  .login-page {
+    width: 310px;
+    padding: 0;
+    margin: auto;
+  }
+
+  .form {
+    position: relative;
+    border-radius: 2%;
+    z-index: 1;
+    background: #FFFFFF;
+    max-width: 320px;
+    margin: 0 auto;
+    padding: 20px 45px;
+    text-align: center;
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+  }
+
+  .form input {
+    border-radius: 8px;
+    border: 2px solid #000000;
+    padding: 1.5rem 4rem;
+    margin: -1rem 0rem 0rem -1rem;
+    color: #000000;
+    width: 255px;
+  }
+
+  .form button {
+    font-family: "Roboto", sans-serif !important;
+    outline: 0;
+    background: #302d2f;
+    width: 100%;
+    border: 0;
+    padding: 15px;
+    color: #FFFFFF;
+    font-size: 14px;
+    -webkit-transition: all 0.3 ease;
+    transition: all 0.3 ease;
+    cursor: pointer;
+    display: inline-block;
+    text-align: center;
+    padding: 0.7rem 1rem;
+    border-radius: 10px;
+    width: 111px !important;
+  }
+
+  .form button:hover,
+  .form button:active,
+  .form button:focus {
+    background: #302d2f;
+  }
+
+  .form .message {
+    margin: 15px 0 0;
+    color: #b3b3b3;
+    font-size: 12px;
+  }
+
+  .form .message a {
+    color: #4CAF50;
+    text-decoration: none;
+  }
+
+  .form .register-form {
+    display: none;
+  }
+
+  .container {
+    position: relative;
+    z-index: 1;
+    max-width: 300px;
+    margin: 0 auto;
+  }
+
+  .container:before,
+  .container:after {
+    content: "";
+    display: block;
+    clear: both;
+  }
+
+  .container .info {
+    margin: 50px auto;
+    text-align: center;
+  }
+
+  .container .info h1 {
+    margin: 0 0 15px;
+    padding: 0;
+    font-size: 36px;
+    font-weight: 300;
+    color: #1a1a1a;
+  }
+
+  .container .info span {
+    color: #4d4d4d;
+    font-size: 12px;
+  }
+
+  .container .info span a {
+    color: #000000;
+    text-decoration: none;
+  }
+
+  .container .info span .fa {
+    color: #EF3B3A;
+  }
+
+  .m--align-center {
+    text-align: center;
+    margin-left: 0px !important;
+  }
+
+  .icon-fix {
+    position: relative;
+    top: 15px;
+    left: -82px;
+  }
+
+  .m-link {
+    color: #716aca;
+    font-size: 10px;
+    color: #af0017;
+    text-transform: uppercase;
+    font-family: "Roboto", sans-serif;
+    padding: 30px 0px !important;
+  }
+
+  .m-login.m-login--1 .m-login__wrapper .m-login__form .m-login__form-action .btn {
+    display: inline-block;
+    text-align: center;
+    padding: 0.7rem 1rem;
+    border-radius: 10px;
+    width: 111px !important;
+  }
+
+  .errorMessageValue {
+    color: red;
+    font-size: 10px;
+  }
+
+  .fa {
+    font-size: 1.1rem !important;
+    padding-left: 7px !important;
+  }
+
+  .m-stack {
+    display: block;
+    width: 100%;
+    height: 100%;
+    border-radius: 2%;
+    margin-top: 11px;
+    margin-bottom: 6px;
+    padding: 13px 55px 13px 55px;
+    background: #ffffff;
+  }
+
+  .m-login.m-login--1 .m-login__wrapper .m-login__logo {
+    text-align: center;
+    margin: auto;
+    padding: 5px 0px 5px 0px;
+    border-radius: 2%;
+    background-color: #ffffff !important;
+    position: absolute;
+    margin-left: 10px;
+  }
+
+  .m-login.m-login--1 .m-login__wrapper .m-login__head .m-login__title {
+    text-align: center;
+    font-size: 1.5rem;
+    color: #21668b;
+    font-weight: 600;
+    padding: 130px 0px 0px 0px;
+  }
+
+  .m-login.m-login--1 .m-login__account .m-login__account-link {
+    font-size: 1.1rem;
+    font-weight: 400;
+    color: #ffffff !important;
+    padding-top: 10px;
+  }
+
+  .m-login.m-login--1 .m-login__wrapper .m-login__form .m-login__form-sub .m-link {
+    font-size: 10px;
+    color: #af0017;
+    text-transform: uppercase;
+  }
+
+  .m-login.m-login--1 .m-login__wrapper .m-login__form .m-form__group .form-control {
+    border-radius: 8px;
+    border: 2px solid #000000;
+    padding: 1.5rem 3rem;
+    margin: 0rem -1rem;
+    color: #000000;
+  }
+
+  .m-login.m-login--1 .m-login__wrapper .m-login__form .m-form__group {
+    margin: 0;
+    padding: 0;
+    position: relative;
+    margin-right: -23px !important;
+  }
+
+  .m-grid.m-grid--hor:not(.m-grid--desktop):not(.m-grid--desktop-and-tablet):not(.m-grid--tablet):not(.m-grid--tablet-and-mobile):not(.m-grid--mobile)>.m-grid__item.m-grid__item--fluid,
+  .m-grid.m-grid--hor:not(.m-grid--desktop):not(.m-grid--desktop-and-tablet):not(.m-grid--tablet):not(.m-grid--tablet-and-mobile):not(.m-grid--mobile)>.m-grid__item.m-grid__item--fluid-general {
+    background: url(../../assets/demo/demo2/media/img/logo/Login-Page-Image.png);
+    min-height: 100%;
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+  }
+
+  .m-login.m-login--1 .m-login__account .m-login__account-msg {
+    font-size: 11px;
+    font-weight: 400;
+    color: #0a0a0a;
+    text-transform: uppercase;
+    margin-left: 17px;
+    margin-right: 26px;
+  }
+
+  @media (max-width: 1200px) {
+    .m-login.m-login--1 .m-login__wrapper .m-login__logo {
+      text-align: center;
+      margin: auto;
+      padding: 5px 0px 5px 0px;
+      border-radius: 2%;
+      background-color: #ffffff !important;
+      position: absolute;
+      margin-left: -37px !important;
+    }
+
+    .form input {
+      border-radius: 8px;
+      border: 2px solid #000000;
+      padding: 1.5rem 4rem;
+      margin: -1rem 0rem 0rem -1rem;
+      color: #000000;
+      width: 255px;
+    }
+  }
+
+  @media (max-width: 1025px) {
+    .m-login.m-login--1 .m-login__wrapper .m-login__logo {
+      text-align: center;
+      margin: auto;
+      padding: 5px 0px 5px 0px;
+      border-radius: 2%;
+      background-color: #ffffff !important;
+      position: absolute;
+      margin-left: -37px !important;
+    }
+  }
+
+  @media (max-width: 1024px) {
+    .m-login.m-login--1 .m-login__wrapper .m-login__logo {
+      text-align: center;
+      margin: auto;
+      padding: 5px 0px 5px 0px;
+      border-radius: 2%;
+      background-color: #ffffff !important;
+      position: absolute;
+      margin-left: 14px !important;
+    }
+  }
+
+  @media (max-width: 1023px) {
+    .m-login.m-login--1 .m-login__wrapper .m-login__logo {
+      text-align: center;
+      margin: auto;
+      padding: 5px 0px 5px 0px;
+      border-radius: 2%;
+      background-color: #ffffff !important;
+      position: absolute;
+      margin-left: 14px !important;
+    }
+
+    .form input {
+      border-radius: 8px;
+      border: 2px solid #000000;
+      padding: 1.5rem 4rem;
+      margin: -1rem 0rem 0rem -1rem;
+      color: #000000;
+      width: 255px;
+    }
+  }
+
+  @media (max-width: 768px) {
+
+    .m-login.m-login--1 .m-login__wrapper .m-login__form {
+      margin-top: 4rem;
+      margin-left: -14px;
+    }
+
+    .m-login.m-login--1 .m-login__wrapper .m-login__form .m-form__group {
+      margin: 0;
+      padding: 0;
+      position: relative;
+      margin-right: -5px !important;
+    }
+
+    .form input {
+      border-radius: 8px;
+      border: 2px solid #000000;
+      padding: 1.5rem 4rem;
+      margin: -1rem 0rem 0rem -1rem;
+      color: #000000;
+      width: 255px;
+    }
+
+    .m-stack[_ngcontent-c2] {
+      display: block;
+      width: 50%;
+      margin-left: 25%;
+      height: 100%;
+      border-radius: 2%;
+      padding: 15px 5px 15px 15px !important;
+      background: #ffffff;
+    }
+
+    .m-login.m-login--1 .m-login__aside .m-login__wrapper {
+      padding-top: 2rem;
+      padding: 0px 0px 0px 62px;
+    }
+
+    .m-login.m-login--1 .m-login__wrapper .m-login__form .m-login__form-action .btn {
+      display: inline-block;
+      text-align: center;
+      padding: 0.7rem 1rem;
+      border-radius: 10px;
+      width: 111px !important;
+      margin-left: -17px;
+    }
+
+    .m-login.m-login--1 .m-login__wrapper .m-login__head .m-login__title {
+      text-align: center;
+      font-size: 1.5rem;
+      color: #21668b;
+      font-weight: 600;
+      padding: 130px 0px 0px 2px;
+      margin: 0px 71px 0px 20px;
+    }
+
+    .m-login.m-login--1 .m-login__account .m-login__account-msg {
+      font-size: 11px;
+      font-weight: 400;
+      color: #0a0a0a;
+      text-transform: uppercase;
+      table-layout: center;
+      margin: 0px 27px 0px 20px;
+    }
+
+
+    .m-login.m-login--1 .m-login__wrapper .m-login__logo {
+      text-align: center;
+      margin: auto;
+      margin-left: -8px !important;
+      padding: 5px 0px 5px 0px;
+      border-radius: 2%;
+      background-color: #ffffff !important;
+      position: absolute;
+    }
+
+    .m--align-right {
+      text-align: right;
+      margin-left: -52px;
+    }
+
+    .m-login.m-login--1 .m-login__wrapper .m-login__form .m-form__group .form-control {
+      border-radius: 8px;
+      border: 2px solid #000000;
+      padding: 1.5rem 4rem;
+      margin: 0rem 4rem 0rem 1rem;
+      color: #000000;
+      margin-left: -16px;
+    }
+
+    .m-login.m-login--1 .m-login__wrapper .m-login__form .m-login__form-action {
+      margin: 3rem 15px 3rem 0 !important;
+      text-align: center;
+    }
+
+    .m--align-center {
+      text-align: center;
+      margin-left: 0px !important;
+    }
+  }
+
+  @media (max-width: 650px) {
+
+    .m-login.m-login--1 .m-login__wrapper .m-login__form {
+      margin-top: 4rem;
+      margin-left: -14px;
+    }
+
+    .m-login.m-login--1 .m-login__wrapper .m-login__form .m-form__group {
+      margin: 0;
+      padding: 0;
+      position: relative;
+      margin-right: -16px !important;
+    }
+
+    .m-stack[_ngcontent-c2] {
+      display: block;
+      width: 56%;
+      margin-left: 19%;
+      height: 100%;
+      border-radius: 2%;
+      padding: 15px 5px 15px 15px;
+      background: #ffffff;
+    }
+
+    .m-login.m-login--1 .m-login__aside .m-login__wrapper {
+      padding-top: 2rem;
+      padding: 0px 0px 0px 42px;
+    }
+
+    .m-login.m-login--1 .m-login__wrapper .m-login__form .m-login__form-action .btn {
+      display: inline-block;
+      text-align: center;
+      padding: 0.7rem 1rem;
+      border-radius: 10px;
+      width: 111px !important;
+      margin-left: -17px;
+    }
+
+    .m-login.m-login--1 .m-login__wrapper .m-login__head .m-login__title {
+      text-align: center;
+      font-size: 1.5rem;
+      color: #21668b;
+      font-weight: 600;
+      padding: 130px 0px 0px 2px;
+      margin: 0px 71px 0px 20px;
+    }
+
+    .m-login.m-login--1 .m-login__account .m-login__account-msg {
+      font-size: 11px;
+      font-weight: 400;
+      color: #0a0a0a;
+      text-transform: uppercase;
+      table-layout: center;
+      margin: 0px 27px 0px 20px;
+    }
+
+
+    .m-login.m-login--1 .m-login__wrapper .m-login__logo {
+      text-align: center;
+      margin: auto;
+      margin-left: -18px !important;
+      padding: 5px 0px 5px 0px;
+      border-radius: 2%;
+      background-color: #ffffff !important;
+      position: absolute;
+    }
+
+    .m--align-right {
+      text-align: right;
+      margin-left: -52px;
+    }
+
+    .m-login.m-login--1 .m-login__wrapper .m-login__form .m-form__group .form-control {
+      border-radius: 8px;
+      border: 2px solid #000000;
+      padding: 1.5rem 4rem;
+      margin: 0rem 4rem 0rem 1rem;
+      color: #000000;
+      margin-left: -23px;
+    }
+
+    .m-login.m-login--1 .m-login__wrapper .m-login__form .m-login__form-action {
+      margin: 3rem 15px 3rem 0 !important;
+      text-align: center;
+    }
+
+    .m--align-center {
+      text-align: center;
+      margin-left: 0px !important;
+    }
+  }
+
+  @media (max-width: 560px) {
+
+    .m-login.m-login--1 .m-login__wrapper .m-login__form {
+      margin-top: 4rem;
+      margin-left: -14px;
+    }
+
+    .m-login.m-login--1 .m-login__wrapper .m-login__form .m-form__group {
+      margin: 0;
+      padding: 0;
+      position: relative;
+      margin-right: -16px !important;
+    }
+
+    .m-stack[_ngcontent-c2] {
+      display: block;
+      width: 64%;
+      margin-left: 18%;
+      height: 100%;
+      border-radius: 2%;
+      padding: 15px 5px 15px 15px;
+      background: #ffffff;
+    }
+
+    .m-login.m-login--1 .m-login__aside .m-login__wrapper {
+      padding-top: 2rem;
+      padding: 0px 0px 0px 42px;
+    }
+
+    .m-login.m-login--1 .m-login__wrapper .m-login__form .m-login__form-action .btn {
+      display: inline-block;
+      text-align: center;
+      padding: 0.7rem 1rem;
+      border-radius: 10px;
+      width: 111px !important;
+      margin-left: -17px;
+    }
+
+    .m-login.m-login--1 .m-login__wrapper .m-login__head .m-login__title {
+      text-align: center;
+      font-size: 1.5rem;
+      color: #21668b;
+      font-weight: 600;
+      padding: 130px 0px 0px 2px;
+      margin: 0px 71px 0px 20px;
+    }
+
+    .m-login.m-login--1 .m-login__account .m-login__account-msg {
+      font-size: 11px;
+      font-weight: 400;
+      color: #0a0a0a;
+      text-transform: uppercase;
+      table-layout: center;
+      margin: 0px 27px 0px 20px;
+    }
+
+
+    .m-login.m-login--1 .m-login__wrapper .m-login__logo {
+      text-align: center;
+      margin: auto;
+      margin-left: -18px !important;
+      padding: 5px 0px 5px 0px;
+      border-radius: 2%;
+      background-color: #ffffff !important;
+      position: absolute;
+    }
+
+    .m--align-right {
+      text-align: right;
+      margin-left: -52px;
+    }
+
+    .m-login.m-login--1 .m-login__wrapper .m-login__form .m-form__group .form-control {
+      border-radius: 8px;
+      border: 2px solid #000000;
+      padding: 1.5rem 4rem;
+      margin: 0rem 4rem 0rem 1rem;
+      color: #000000;
+      margin-left: -23px;
+    }
+
+    .m-login.m-login--1 .m-login__wrapper .m-login__form .m-login__form-action {
+      margin: 3rem 15px 3rem 0 !important;
+      text-align: center;
+    }
+
+    .m--align-center {
+      text-align: center;
+      margin-left: 0px !important;
+    }
+  }
+
+  @media (max-width: 520px) {
+    .m-login.m-login--1 .m-login__wrapper .m-login__form {
+      margin-top: 4rem;
+      margin-left: -14px;
+    }
+
+    .m-login.m-login--1 .m-login__wrapper .m-login__form .m-form__group {
+      margin: 0;
+      padding: 0;
+      position: relative;
+      margin-right: -16px !important;
+    }
+
+    .m-stack[_ngcontent-c2] {
+      display: block;
+      width: 66%;
+      margin-left: 17%;
+      height: 100%;
+      border-radius: 2%;
+      padding: 15px 5px 15px 15px;
+      background: #ffffff;
+    }
+
+    .m-grid.m-grid--hor:not(.m-grid--desktop):not(.m-grid--desktop-and-tablet):not(.m-grid--tablet):not(.m-grid--tablet-and-mobile):not(.m-grid--mobile)>.m-grid__item.m-grid__item--fluid,
+    .m-grid.m-grid--hor:not(.m-grid--desktop):not(.m-grid--desktop-and-tablet):not(.m-grid--tablet):not(.m-grid--tablet-and-mobile):not(.m-grid--mobile)>.m-grid__item.m-grid__item--fluid-general {
+      background: url(../../assets/demo/demo2/media/img/logo/Login-Page-Image.png);
+      margin-top: 0px;
+    }
+
+    .m-login.m-login--1 .m-login__aside .m-login__wrapper {
+      padding-top: 2rem;
+      padding: 0px 0px 0px 42px;
+    }
+
+    .m-login.m-login--1 .m-login__wrapper .m-login__form .m-login__form-action .btn {
+      display: inline-block;
+      text-align: center;
+      padding: 0.7rem 1rem;
+      border-radius: 10px;
+      width: 111px !important;
+      margin-left: -29px;
+    }
+
+    .m-login.m-login--1 .m-login__wrapper .m-login__head .m-login__title {
+      text-align: center;
+      font-size: 1.5rem;
+      color: #21668b;
+      font-weight: 600;
+      padding: 130px 0px 0px 2px;
+      margin: 0px 71px 0px 20px;
+    }
+
+    .m-login.m-login--1 .m-login__account .m-login__account-msg {
+      font-size: 11px;
+      font-weight: 400;
+      color: #0a0a0a;
+      text-transform: uppercase;
+      table-layout: center;
+      margin: 0px 27px 0px 20px;
+    }
+
+    .m--align-right {
+      text-align: right;
+      margin-left: -52px;
+    }
+
+    .m-login.m-login--1 .m-login__wrapper .m-login__form .m-form__group .form-control {
+      border-radius: 8px;
+      border: 2px solid #000000;
+      padding: 1.5rem 4rem;
+      margin: 0rem -1rem;
+      color: #000000;
+      margin-left: -23px;
+    }
+
+    .m-login.m-login--1 .m-login__wrapper .m-login__logo {
+      text-align: center;
+      margin: auto;
+      margin-left: -34px !important;
+      padding: 5px 0px 5px 0px;
+      border-radius: 2%;
+      background-color: #ffffff !important;
+      position: absolute;
+    }
+
+    .m-login__account-msg {
+      margin-left: 5px !important;
+    }
+  }
+
+  @media (max-width: 490px) {
+    .m-login.m-login--1 .m-login__wrapper .m-login__form {
+      margin-top: 4rem;
+      margin-left: -14px;
+    }
+
+    .m-login.m-login--1 .m-login__wrapper .m-login__form .m-form__group {
+      margin: 0;
+      padding: 0;
+      position: relative;
+      margin-right: -16px !important;
+    }
+
+    .m-stack[_ngcontent-c2] {
+      display: block;
+      width: 69%;
+      margin-left: 13%;
+      height: 100%;
+      border-radius: 2%;
+      padding: 15px 5px 15px 15px;
+      background: #ffffff;
+    }
+
+    .m-grid.m-grid--hor:not(.m-grid--desktop):not(.m-grid--desktop-and-tablet):not(.m-grid--tablet):not(.m-grid--tablet-and-mobile):not(.m-grid--mobile)>.m-grid__item.m-grid__item--fluid,
+    .m-grid.m-grid--hor:not(.m-grid--desktop):not(.m-grid--desktop-and-tablet):not(.m-grid--tablet):not(.m-grid--tablet-and-mobile):not(.m-grid--mobile)>.m-grid__item.m-grid__item--fluid-general {
+      background: url(../../assets/demo/demo2/media/img/logo/Login-Page-Image.png);
+      margin-top: 0px;
+    }
+
+    .m-login.m-login--1 .m-login__aside .m-login__wrapper {
+      padding-top: 2rem;
+      padding: 0px 0px 0px 80px;
+    }
+
+    .m-login.m-login--1 .m-login__wrapper .m-login__form .m-login__form-action .btn {
+      display: inline-block;
+      text-align: center;
+      padding: 0.7rem 1rem;
+      border-radius: 10px;
+      width: 111px !important;
+      margin-left: -29px;
+    }
+
+    .m-login.m-login--1 .m-login__wrapper .m-login__head .m-login__title {
+      text-align: center;
+      font-size: 1.5rem;
+      color: #21668b;
+      font-weight: 600;
+      padding: 130px 0px 0px 2px;
+      margin: 0px 71px 0px 20px;
+    }
+
+    .m-login.m-login--1 .m-login__account .m-login__account-msg {
+      font-size: 11px;
+      font-weight: 400;
+      color: #0a0a0a;
+      text-transform: uppercase;
+      table-layout: center;
+      margin: 0px 27px 0px 20px;
+    }
+
+    .m--align-right {
+      text-align: right;
+      margin-left: -52px;
+    }
+
+    .m-login.m-login--1 .m-login__wrapper .m-login__form .m-form__group .form-control {
+      border-radius: 8px;
+      border: 2px solid #000000;
+      padding: 1.5rem 4rem;
+      margin: 0rem -1rem;
+      color: #000000;
+      margin-left: -23px;
+    }
+
+    .m-login.m-login--1 .m-login__wrapper .m-login__logo {
+      text-align: center;
+      margin: auto;
+      margin-left: -45px !important;
+      padding: 5px 0px 5px 0px;
+      border-radius: 2%;
+      background-color: #ffffff !important;
+      position: absolute;
+    }
+
+    .m-login__account-msg {
+      margin-left: 5px !important;
+    }
+  }
+
+  @media (max-width: 460px) {
+    .m-login.m-login--1 .m-login__wrapper .m-login__form {
+      margin-top: 4rem;
+      margin-left: -14px;
+    }
+
+    .m-login.m-login--1 .m-login__wrapper .m-login__form .m-form__group {
+      margin: 0;
+      padding: 0;
+      position: relative;
+      margin-right: -16px !important;
+    }
+
+    .m-stack[_ngcontent-c2] {
+      display: block;
+      width: 76%;
+      margin-left: 9%;
+      height: 100%;
+      border-radius: 2%;
+      padding: 15px 5px 15px 15px;
+      background: #ffffff;
+    }
+
+    .m-grid.m-grid--hor:not(.m-grid--desktop):not(.m-grid--desktop-and-tablet):not(.m-grid--tablet):not(.m-grid--tablet-and-mobile):not(.m-grid--mobile)>.m-grid__item.m-grid__item--fluid,
+    .m-grid.m-grid--hor:not(.m-grid--desktop):not(.m-grid--desktop-and-tablet):not(.m-grid--tablet):not(.m-grid--tablet-and-mobile):not(.m-grid--mobile)>.m-grid__item.m-grid__item--fluid-general {
+      background: url(../../assets/demo/demo2/media/img/logo/Login-Page-Image.png);
+      margin-top: 0px;
+    }
+
+    .m-login.m-login--1 .m-login__aside .m-login__wrapper {
+      padding-top: 2rem;
+      padding: 0px 0px 0px 42px;
+    }
+
+    .m-login.m-login--1 .m-login__wrapper .m-login__form .m-login__form-action .btn {
+      display: inline-block;
+      text-align: center;
+      padding: 0.7rem 1rem;
+      border-radius: 10px;
+      width: 111px !important;
+      margin-left: -29px;
+    }
+
+    .m-login.m-login--1 .m-login__wrapper .m-login__head .m-login__title {
+      text-align: center;
+      font-size: 1.5rem;
+      color: #21668b;
+      font-weight: 600;
+      padding: 130px 0px 0px 2px;
+      margin: 0px 71px 0px 20px;
+    }
+
+    .m-login.m-login--1 .m-login__account .m-login__account-msg {
+      font-size: 11px;
+      font-weight: 400;
+      color: #0a0a0a;
+      text-transform: uppercase;
+      table-layout: center;
+      margin: 0px 27px 0px 20px;
+    }
+
+    .m--align-right {
+      text-align: right;
+      margin-left: -52px;
+    }
+
+    .m-login.m-login--1 .m-login__wrapper .m-login__form .m-form__group .form-control {
+      border-radius: 8px;
+      border: 2px solid #000000;
+      padding: 1.5rem 4rem;
+      margin: 0rem -1rem;
+      color: #000000;
+      margin-left: -23px;
+    }
+
+    .m-login.m-login--1 .m-login__wrapper .m-login__logo {
+      text-align: center;
+      margin: auto;
+      margin-left: -28px !important;
+      padding: 5px 0px 5px 0px;
+      border-radius: 2%;
+      background-color: #ffffff !important;
+      position: absolute;
+    }
+
+    .m-login__account-msg {
+      margin-left: 5px !important;
+    }
+  }
+
+  @media (max-width: 420px) {
+    .m-login.m-login--1 .m-login__wrapper .m-login__form {
+      margin-top: 4rem;
+      margin-left: -14px;
+    }
+
+    .m-login.m-login--1 .m-login__wrapper .m-login__form .m-form__group {
+      margin: 0;
+      padding: 0;
+      position: relative;
+      margin-right: -16px !important;
+    }
+
+    .m-stack[_ngcontent-c2] {
+      display: block;
+      width: 82%;
+      margin-left: 9%;
+      height: 100%;
+      border-radius: 2%;
+      padding: 15px 5px 15px 15px;
+      background: #ffffff;
+    }
+
+    .m-grid.m-grid--hor:not(.m-grid--desktop):not(.m-grid--desktop-and-tablet):not(.m-grid--tablet):not(.m-grid--tablet-and-mobile):not(.m-grid--mobile)>.m-grid__item.m-grid__item--fluid,
+    .m-grid.m-grid--hor:not(.m-grid--desktop):not(.m-grid--desktop-and-tablet):not(.m-grid--tablet):not(.m-grid--tablet-and-mobile):not(.m-grid--mobile)>.m-grid__item.m-grid__item--fluid-general {
+      background: url(../../assets/demo/demo2/media/img/logo/Login-Page-Image.png);
+      margin-top: 0px;
+    }
+
+    .m-login.m-login--1 .m-login__aside .m-login__wrapper {
+      padding-top: 2rem;
+      padding: 0px 0px 0px 80px;
+    }
+
+    .m-login.m-login--1 .m-login__wrapper .m-login__form .m-login__form-action .btn {
+      display: inline-block;
+      text-align: center;
+      padding: 0.7rem 1rem;
+      border-radius: 10px;
+      width: 111px !important;
+      margin-left: -29px;
+    }
+
+    .m-login.m-login--1 .m-login__wrapper .m-login__head .m-login__title {
+      text-align: center;
+      font-size: 1.5rem;
+      color: #21668b;
+      font-weight: 600;
+      padding: 130px 0px 0px 2px;
+      margin: 0px 71px 0px 20px;
+    }
+
+    .m-login.m-login--1 .m-login__account .m-login__account-msg {
+      font-size: 11px;
+      font-weight: 400;
+      color: #0a0a0a;
+      text-transform: uppercase;
+      table-layout: center;
+      margin: 0px 27px 0px 20px;
+    }
+
+    .m--align-right {
+      text-align: right;
+      margin-left: -52px;
+    }
+
+    .m-login.m-login--1 .m-login__wrapper .m-login__form .m-form__group .form-control {
+      border-radius: 8px;
+      border: 2px solid #000000;
+      padding: 1.5rem 4rem;
+      margin: 0rem -1rem;
+      color: #000000;
+      margin-left: -23px;
+    }
+
+    .m-login.m-login--1 .m-login__wrapper .m-login__logo {
+      text-align: center;
+      margin: auto;
+      margin-left: -40px !important;
+      padding: 5px 0px 5px 0px;
+      border-radius: 2%;
+      background-color: #ffffff !important;
+      position: absolute;
+    }
+
+    .m-login__account-msg {
+      margin-left: 5px !important;
+    }
+  }
+
+
+  @media (max-width: 380px) {
+
+    .m-login.m-login--1 .m-login__wrapper .m-login__form {
+      margin-top: 4rem;
+      margin-left: -14px;
+    }
+
+    .m-login.m-login--1 .m-login__wrapper .m-login__form .m-form__group {
+      margin: 0;
+      padding: 0;
+      position: relative;
+      margin-right: -16px !important;
+    }
+
+    .m-stack[_ngcontent-c2] {
+      display: block;
+      width: 90%;
+      margin-left: 5%;
+      height: 100%;
+      border-radius: 2%;
+      padding: 15px 5px 15px 15px;
+      background: #ffffff;
+    }
+
+    .m-grid.m-grid--hor:not(.m-grid--desktop):not(.m-grid--desktop-and-tablet):not(.m-grid--tablet):not(.m-grid--tablet-and-mobile):not(.m-grid--mobile)>.m-grid__item.m-grid__item--fluid,
+    .m-grid.m-grid--hor:not(.m-grid--desktop):not(.m-grid--desktop-and-tablet):not(.m-grid--tablet):not(.m-grid--tablet-and-mobile):not(.m-grid--mobile)>.m-grid__item.m-grid__item--fluid-general {
+      background: url(../../assets/demo/demo2/media/img/logo/Login-Page-Image.png);
+      margin-top: 0px;
+    }
+
+    .m-login.m-login--1 .m-login__aside .m-login__wrapper {
+      padding-top: 2rem;
+      padding: 0px 0px 0px 82px !important;
+    }
+
+    .m-login.m-login--1 .m-login__wrapper .m-login__form .m-login__form-action .btn {
+      display: inline-block;
+      text-align: center;
+      padding: 0.7rem 1rem;
+      border-radius: 10px;
+      width: 111px !important;
+      margin-left: -29px;
+    }
+
+    .m-login.m-login--1 .m-login__wrapper .m-login__head .m-login__title {
+      text-align: center;
+      font-size: 1.5rem;
+      color: #21668b;
+      font-weight: 600;
+      padding: 130px 0px 0px 2px;
+      margin: 0px 71px 0px 20px;
+    }
+
+    .m-login.m-login--1 .m-login__account .m-login__account-msg {
+      font-size: 11px;
+      font-weight: 400;
+      color: #0a0a0a;
+      text-transform: uppercase;
+      table-layout: center;
+      margin: 0px 27px 0px 20px;
+    }
+
+    .m--align-right {
+      text-align: right;
+      margin-left: -52px;
+    }
+
+    .m-login.m-login--1 .m-login__wrapper .m-login__form .m-form__group .form-control {
+      border-radius: 8px;
+      border: 2px solid #000000;
+      padding: 1.5rem 4rem;
+      margin: 0rem -1rem;
+      color: #000000;
+      margin-left: -23px;
+    }
+
+    .m-login.m-login--1 .m-login__wrapper .m-login__logo {
+      text-align: center;
+      margin: auto;
+      margin-left: -37px !important;
+      padding: 5px 0px 5px 0px;
+      border-radius: 2%;
+      background-color: #ffffff !important;
+      position: absolute;
+    }
+
+    .m-login__account-msg {
+      margin-left: 5px !important;
+    }
+
+    .m-login.m-login--1 .m-login__wrapper .m-login__form .m-form__group {
+      margin: 0;
+      padding: 0;
+      position: relative;
+      margin-right: -14px !important;
+    }
+
+    .m-grid.m-grid--hor:not(.m-grid--desktop):not(.m-grid--desktop-and-tablet):not(.m-grid--tablet):not(.m-grid--tablet-and-mobile):not(.m-grid--mobile)>.m-grid__item.m-grid__item--fluid,
+    .m-grid.m-grid--hor:not(.m-grid--desktop):not(.m-grid--desktop-and-tablet):not(.m-grid--tablet):not(.m-grid--tablet-and-mobile):not(.m-grid--mobile)>.m-grid__item.m-grid__item--fluid-general {
+      background: url(../../assets/demo/demo2/media/img/logo/Login-Page-Image.png);
+      margin-top: 0px;
+    }
+
+    .m-stack {
+      display: block;
+      width: 100%;
+      margin-left: 1%;
+      height: 100%;
+      border-radius: 2%;
+      padding: 15px 5px 15px 15px;
+      background: #ffffff;
+    }
+
+    .m-login.m-login--1 .m-login__aside .m-login__wrapper {
+      padding-top: 2rem;
+      padding: 0px 0px 0px 42px;
+    }
+
+    .m-login.m-login--1 .m-login__wrapper .m-login__form .m-login__form-action .btn {
+      display: inline-block;
+      text-align: center;
+      padding: 0.7rem 1rem;
+      border-radius: 10px;
+      width: 111px !important;
+      margin-left: -65px;
+    }
+
+    .m-login.m-login--1 .m-login__wrapper .m-login__head .m-login__title {
+      text-align: center;
+      font-size: 1.5rem;
+      color: #21668b;
+      font-weight: 600;
+      padding: 130px 0px 0px 2px;
+      margin: 0px 71px 0px 20px;
+    }
+
+    .m-login.m-login--1 .m-login__account .m-login__account-msg {
+      font-size: 11px;
+      font-weight: 400;
+      color: #0a0a0a;
+      text-transform: uppercase;
+      table-layout: center;
+      margin: 0px 27px 0px 20px;
+    }
+
+    .m--align-right {
+      text-align: right;
+      margin-left: -52px;
+    }
+
+    .m-login.m-login--1 .m-login__wrapper .m-login__form .m-form__group .form-control {
+      border-radius: 8px;
+      border: 2px solid #000000;
+      padding: 1.5rem 4rem;
+      margin: 0rem -1rem;
+      color: #000000;
+      margin-left: -23px;
+    }
+
+    .m-login.m-login--1 .m-login__wrapper .m-login__logo {
+      text-align: center;
+      margin: auto;
+      margin-left: -38px !important;
+      padding: 5px 0px 5px 0px;
+      border-radius: 2%;
+      background-color: #ffffff !important;
+      position: absolute;
+    }
+  }
+
+  @media (max-width: 325px) {
+
+    .m-login.m-login--1 .m-login__wrapper .m-login__form {
+      margin-top: 4rem;
+      margin-left: -14px;
+    }
+
+    .m-login.m-login--1 .m-login__wrapper .m-login__form .m-form__group {
+      margin: 0;
+      padding: 0;
+      position: relative;
+      margin-right: -16px !important;
+    }
+
+    .m-stack[_ngcontent-c2] {
+      display: block;
+      width: 100%;
+      margin-left: -1%;
+      height: 100%;
+      border-radius: 2%;
+      padding: 15px 5px 15px 15px;
+      background: #ffffff;
+    }
+
+    .m-grid.m-grid--hor:not(.m-grid--desktop):not(.m-grid--desktop-and-tablet):not(.m-grid--tablet):not(.m-grid--tablet-and-mobile):not(.m-grid--mobile)>.m-grid__item.m-grid__item--fluid,
+    .m-grid.m-grid--hor:not(.m-grid--desktop):not(.m-grid--desktop-and-tablet):not(.m-grid--tablet):not(.m-grid--tablet-and-mobile):not(.m-grid--mobile)>.m-grid__item.m-grid__item--fluid-general {
+      background: url(../../assets/demo/demo2/media/img/logo/Login-Page-Image.png);
+      margin-top: 0px;
+    }
+
+    .m-login.m-login--1 .m-login__aside .m-login__wrapper {
+      padding-top: 2rem;
+      padding: 0px 0px 0px 42px;
+    }
+
+    .m-login.m-login--1 .m-login__wrapper .m-login__form .m-login__form-action .btn {
+      display: inline-block;
+      text-align: center;
+      padding: 0.7rem 1rem;
+      border-radius: 10px;
+      width: 111px !important;
+      margin-left: -29px;
+    }
+
+    .m-login.m-login--1 .m-login__wrapper .m-login__head .m-login__title {
+      text-align: center;
+      font-size: 1.5rem;
+      color: #21668b;
+      font-weight: 600;
+      padding: 130px 0px 0px 2px;
+      margin: 0px 71px 0px 20px;
+    }
+
+    .m-login.m-login--1 .m-login__account .m-login__account-msg {
+      font-size: 11px;
+      font-weight: 400;
+      color: #0a0a0a;
+      text-transform: uppercase;
+      table-layout: center;
+      margin: 0px 27px 0px 20px;
+    }
+
+    .m--align-right {
+      text-align: right;
+      margin-left: -52px;
+    }
+
+    .m-login.m-login--1 .m-login__wrapper .m-login__form .m-form__group .form-control {
+      border-radius: 8px;
+      border: 2px solid #000000;
+      padding: 1.5rem 4rem;
+      margin: 0rem -1rem;
+      color: #000000;
+      margin-left: -23px;
+    }
+
+    .m-login.m-login--1 .m-login__wrapper .m-login__logo {
+      text-align: center;
+      margin: auto;
+      margin-left: -35px !important;
+      padding: 5px 0px 5px 0px;
+      border-radius: 2%;
+      background-color: #ffffff !important;
+      position: absolute;
+    }
+
+    .m-login__account-msg {
+      margin-left: 5px !important;
+    }
+
+    .m-login.m-login--1 .m-login__wrapper .m-login__form .m-form__group {
+      margin: 0;
+      padding: 0;
+      position: relative;
+      margin-right: -14px !important;
+    }
+
+    .m-grid.m-grid--hor:not(.m-grid--desktop):not(.m-grid--desktop-and-tablet):not(.m-grid--tablet):not(.m-grid--tablet-and-mobile):not(.m-grid--mobile)>.m-grid__item.m-grid__item--fluid,
+    .m-grid.m-grid--hor:not(.m-grid--desktop):not(.m-grid--desktop-and-tablet):not(.m-grid--tablet):not(.m-grid--tablet-and-mobile):not(.m-grid--mobile)>.m-grid__item.m-grid__item--fluid-general {
+      background: url(../../assets/demo/demo2/media/img/logo/Login-Page-Image.png);
+      margin-top: 0px;
+    }
+
+    .m-stack {
+      display: block;
+      width: 100%;
+      margin-left: 1%;
+      height: 100%;
+      border-radius: 2%;
+      padding: 15px 5px 15px 15px;
+      background: #ffffff;
+    }
+
+    .m-login.m-login--1 .m-login__aside .m-login__wrapper {
+      padding-top: 2rem;
+      padding: 0px 0px 0px 42px;
+    }
+
+    .m-login.m-login--1 .m-login__wrapper .m-login__form .m-login__form-action .btn {
+      display: inline-block;
+      text-align: center;
+      padding: 0.7rem 1rem;
+      border-radius: 10px;
+      width: 111px !important;
+      margin-left: -65px;
+    }
+
+    .m-login.m-login--1 .m-login__wrapper .m-login__head .m-login__title {
+      text-align: center;
+      font-size: 1.5rem;
+      color: #21668b;
+      font-weight: 600;
+      padding: 130px 0px 0px 2px;
+      margin: 0px 71px 0px 20px;
+    }
+
+    .m-login.m-login--1 .m-login__account .m-login__account-msg {
+      font-size: 11px;
+      font-weight: 400;
+      color: #0a0a0a;
+      text-transform: uppercase;
+      table-layout: center;
+      margin: 0px 27px 0px 20px;
+    }
+
+    .m--align-right {
+      text-align: right;
+      margin-left: -52px;
+    }
+
+    .m-login.m-login--1 .m-login__wrapper .m-login__form .m-form__group .form-control {
+      border-radius: 8px;
+      border: 2px solid #000000;
+      padding: 1.5rem 4rem;
+      margin: 0rem -1rem;
+      color: #000000;
+      margin-left: -23px;
+    }
+
+    .m-login.m-login--1 .m-login__wrapper .m-login__logo {
+      text-align: center;
+      margin: auto;
+      margin-left: -47px !important;
+      padding: 5px 0px 5px 0px;
+      border-radius: 2%;
+      background-color: #ffffff !important;
+      position: absolute;
+    }
+  }
+
+</style>
+
+
+<script type="text/javascript" src="/js/inspiritlogo.js"></script>
+<script src="~/web/js/jquery-2.2.3.min.js"></script>
+<script type="text/javascript">
+  $(window).on("load", function () {
+    $('#imgLoadAll').show();
+
+  });
+
+  var btn_login = document.getElementById('login_button')
+
+  btn_login.addEventListener('click', (e) => {
+    e.preventDefault();
+    grecaptcha.ready(function () {
+      grecaptcha.execute('6LdPoWkfAAAAAEnCQgt-T0tukRM0GSPu_mRo7CpR', {
+        action: 'loginpage'
+      }).then(function (token) {
+        console.log(token)
+      });
+    });
+  });
+
+</script>

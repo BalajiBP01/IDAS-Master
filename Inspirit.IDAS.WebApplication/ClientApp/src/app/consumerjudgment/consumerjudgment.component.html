@@ -1,0 +1,67 @@
+
+<div>
+  <div class="m-portlet">
+    <form class="m-form m-form--label-align-right" style="padding:12px;background-color:#f2f3f8">
+      <div class="m-portlet__body" style="background-color:#ffffff;padding:12px;border:1px solid #000000">
+       
+          <div class="m-section">
+            <div class="m-section__content">
+              <div class="table-responsive">
+                <table [dtOptions]="dtOptions" *ngIf="pagename == 'profile'" datatable class="table table-striped">
+                  <thead>
+                    <tr>
+                      <th class="tablevalue">CaseNumber</th>
+                      <th class="tablevalue"> Case Filing Date</th>
+                      <th class="tablevalue"> Case Type</th>
+                      <th class="tablevalue"> Case Reason</th>
+                      <th class="tablevalue">Plaintiff Name</th>
+                      <th class="tablevalue">Created On Date</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let result of results">
+                      <td class="tablename"><button type="button" class="btn btn-link" style="padding:0px;word-break: break-all;white-space: normal" (click)="showdetail(result.id)">{{result.casenumber}}</button></td>
+                      <td class="tablename">{{result.casefilingdate | date:'yyyy-MM-dd'}}</td>
+                      <td class="tablename">{{result.casetype}}</td>
+                      <td class="tablename">{{result.casereason}}</td>
+                      <td class="tablename">{{result.plaintiffname}}</td>
+                      <td class="tablename">{{result.createdodate| date:'yyyy-MM-dd'}}</td>
+                    </tr>
+                  </tbody>
+                </table>
+
+                <table [dtOptions]="dtOptions" *ngIf="pagename == 'company'" datatable class="table table-striped">
+                  <thead>
+                    <tr>
+                      <th class="tablevalue">CaseNumber</th>
+                      <th class="tablevalue"> Case Filing Date</th>
+                      <th class="tablevalue"> Case Type</th>
+                      <th class="tablevalue"> Case Reason</th>
+                      <th class="tablevalue">Plaintiff Name</th>
+                      <th class="tablevalue">Created On Date</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let result of results">
+                      <td class="tablename"><button type="button" class="btn btn-link" style="padding:0px" (click)="showdetail(result.commercialJudgmentID)">{{result.caseNumber}}</button></td>
+                      <td class="tablename">{{result.caseFilingDate | date:'yyyy-MM-dd'}}</td>
+                      <td class="tablename">{{result.caseType}}</td>
+                      <td class="tablename">{{result.caseReason}}</td>
+                      <td class="tablename">{{result.plaintiffName}}</td>
+                      <td class="tablename">{{result.createdOnDate| date:'yyyy-MM-dd'}}</td>
+                    </tr>
+                  </tbody>
+                </table>
+
+
+              </div>
+            </div>
+          </div>
+          <!--end::Section-->
+        </div>
+      </form>
+        <!--end::Form-->
+      </div>
+      <!--end::Portlet-->
+  </div>
+

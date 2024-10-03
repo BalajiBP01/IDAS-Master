@@ -1,0 +1,587 @@
+<div class="m-subheader" appunwraptag="">
+  <div class="m-portlet__head-caption">
+    <div class="m-portlet__head-title">
+      <span class="m-portlet__head-icon m--hide">
+        <i class="la la-gear"></i>
+      </span>
+      <h3 class="m-subheader__title ">
+        <button style="font-size: 14px;
+        font-weight: 600;
+        text-transform: uppercase;
+        color: #016fa2;
+        font-family: Avenir !important;
+        margin-top: -2px;" class="btn btn-link"
+                (click)="list()">
+          Proforma Invoices
+        </button>
+        <i style="margin-left:-12px" class="fa fa-angle-right"></i>
+        Proforma Invoice
+      </h3>
+      <div class="btn-group pull-right m-form__actions">
+        <a style="margin: 10px 5px;" class="btn btn-accent" (click)="list()">
+          Back
+          &nbsp;
+          <i class="fa fa-angle-double-left"></i>
+        </a>
+        <button *ngIf="mode == 'view'&&currentObj.status=='In Progress'" [disabled]="!userper.editAction" style="margin: 10px 5px;" class="btn btn-accent"
+                (click)="edit()">
+          Edit
+          &nbsp;
+          <i class="fa fa-pencil-alt"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+<div *ngIf="loading==true" id="cover"></div>
+
+<div class="m-content">
+  <div class="m-portlet">
+    <div class="m-portlet__body">
+      <div class="form-group m-form__group row">
+        <label class="col-form-label col-lg-1 col-sm-12">Customer</label>
+        <div class="col-4">
+          <input type="text" readonly="readonly"
+                 class="form-control m-input border-dark"
+                 name="customer.tradingName"
+                 [(ngModel)]="customer.tradingName">
+          <input type="hidden" id="customer" value="{{customer.id}}" />
+        </div>
+        <i class="fa fa-search" *ngIf="!iscustomer" style="padding-top:1%"
+           (click)="searchcustomer()"></i>
+        <label class="col-form-label col-lg-1 col-sm-12">Date</label>
+        <div class="col-md-4">
+          <input class="form-control m-input border-dark" [readonly]="isreadonly" #proformDate type="date"
+                 name="proformDate" value="{{datestring}}">
+        </div>
+      </div>
+      <div class="form-group m-form__group row">
+        <label class="col-form-label col-lg-1 col-sm-12" *ngIf="iscustomer">Proforma Invoice Number</label>
+        <div class="col-md-4" *ngIf="iscustomer">
+          <input class="form-control m-input border-dark" type="text"
+                 name="proFormaInvoiceNumber" readonly="readonly"
+                 [(ngModel)]="currentObj.proformaDisplyNumber">
+        </div>
+        <label for="example-text-input" class="col-1 col-form-label">Comments</label>
+        <div class="col-4">
+          <textarea class="form-control m-input border-dark"
+                    name="comments" [readonly]="isreadonly"
+                    [(ngModel)]="currentObj.remarks">
+          </textarea>
+        </div>
+      </div>
+      <div class="form-group m-form__group row">
+        <div class="col-12">
+          <div class="card">
+            <h4 class="card-header text-center">Details</h4>
+            <div class="card-body">
+              <div class="row">
+                <div class="col-6">
+                  <div style="color:red;font-weight:100"
+                       [innerHTML]="errorMessage"></div>
+                </div>
+              </div>
+              <table *ngIf="mode != 'view'" class="table table-bordered table-responsive-md table-striped text-center">
+                <tr>
+                  <th></th>
+                  <th></th>
+                  <th></th>
+                  <th></th>
+                  <th></th>
+                  <th>
+                    <button [disabled]="disable" style="border:none"
+                            (click)="AddProduct()">
+                      <i class="fa fa-plus-circle"></i>
+                    </button>
+                  </th>
+                </tr>
+                <tr style="background-color:#000000; color:#ffffff;font-size:12px;text-transform:uppercase">
+                  <th class="text-center">Product</th>
+                  <th class="text-center">Unit Price</th>
+                  <th class="text-center">Quantity</th>
+                  <th class="text-center">Amount</th>
+                  <th class="text-center">Action</th>
+                </tr>
+                <tr *ngFor="let item of currentObj.proformaInvoiceLineItems let i=index">
+                  <td>
+                    <select name="productId_{{i}}" [disabled]="isreadonly" [(ngModel)]="item.productId" class="form-control border-dark">
+                      <option *ngFor="let prod of productList"
+                              value="{{prod.id}}" [selected]="prod.id==item.productId">
+                        {{prod.name}}
+                      </option>
+                      <option value=""></option>
+                    </select>
+                  </td>
+                  <td>
+                    <input class="form-control border-dark" type="number" min="0.5"
+                           name="unitPrice_{{i}}" [readonly]="ireadonly"
+                           [(ngModel)]="item.unitPrice" (keyup)="Onchange(i)" />
+                  </td>
+                  <td>
+                    <input class="form-control border-dark" type="number" min="1"
+                           name="quantity_{{i}}" [readonly]="isreadonly"
+                           [(ngModel)]="item.quantity" (keyup)="Onchange(i)" />
+                  </td>
+                  <td>
+                    <input class="form-control border-dark" type="number" min="0.5"
+                           name="amount_{{i}}" readonly="readonly"
+                           [(ngModel)]="item.amount" />
+                  </td>
+                  <td>
+                    <button [disabled]="disable" style="border:none"
+                            (click)="Removeproduct(item.id)">
+                      <i class="fa fa-trash-alt"></i>
+                    </button>
+                  </td>
+                </tr>
+              </table>
+
+              <table *ngIf="mode == 'view'" class="table table-bordered table-responsive-md table-striped text-center">
+                <tr>
+                  <th></th>
+                  <th></th>
+                  <th></th>
+                  <th></th>
+                  <th></th>
+                  <th>
+                    <button [disabled]="disable" style="border:none"
+                            (click)="AddProduct()">
+                      <i class="fa fa-plus-circle"></i>
+                    </button>
+                  </th>
+                </tr>
+                <tr style="background-color:#000000; color:#ffffff;font-size:12px;text-transform:uppercase">
+                  <th class="text-center">Product</th>
+                  <th class="text-center">Unit Price</th>
+                  <th class="text-center">Quantity</th>
+                  <th class="text-center">Amount</th>
+                  <th class="text-center">Action</th>
+                </tr>
+                <tr *ngFor="let item of currentObj.proformaInvoiceLineItems">
+                  <td>
+                    <select name="productId_{{i}}" [disabled]="isreadonly" [(ngModel)]="item.productId" class="form-control border-dark">
+                      <option *ngFor="let prod of productList"
+                              value="{{prod.id}}" [selected]="prod.id==item.productId">
+                        {{prod.name}}
+                      </option>
+                      <option value=""></option>
+                    </select>
+                  </td>
+                  <td>
+                   
+                    <div class="form-control border-dark"> {{item.unitPrice |number:'1.2-2' }}</div>
+                  </td>
+                  <td>
+                  
+                    <div class="form-control border-dark"> {{item.quantity |number:'1.2-2' }}</div>
+                  </td>
+                  <td>
+                  
+                    <div class="form-control border-dark">    {{item.amount |number:'1.2-2' }}</div>
+
+                  </td>
+                  <td>
+                    <button [disabled]="disable" style="border:none"
+                            (click)="Removeproduct(item.id)">
+                      <i class="fa fa-trash-alt"></i>
+                    </button>
+                  </td>
+                </tr>
+              </table>
+
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="form-group m-form__group row">
+        <label for="example-text-input" class="col-2 col-form-label">Sub Total</label>
+        <div class="col-4">
+          <input class="form-control m-input border-dark" type="text" step="0.01" name="subTotal"
+                 (change)="setTwoNumberDecimal($event)"
+                 (ngModelChange)="currentObj.subTotal= $event"
+                 [ngModelOptions]="{updateOn: 'blur'}"
+                 [ngModel]="currentObj.subTotal | number:'1.2-2'" readonly="readonly">
+
+        </div>
+        <label for="example-text-input" class="col-2 col-form-label">Vat Total</label>
+        <div class="col-4">
+          <input class="form-control m-input border-dark" type="text" step="0.01" name="vatTotal"
+                 (change)="setTwoNumberDecimal($event)"
+                 (ngModelChange)="currentObj.vatTotal = $event"
+                 [ngModelOptions]="{updateOn: 'blur'}"
+                 [ngModel]="currentObj.vatTotal | number:'1.2-2'" readonly="readonly">
+        </div>
+      </div>
+      <div class="form-group m-form__group row">
+        <label for="example-text-input" class="col-2 col-form-label">Total Amount</label>
+        <div class="col-4">
+          <input class="form-control m-input border-dark" type="text" step="0.01"  name="total" 
+                 (change)="setTwoNumberDecimal($event)"
+                 (ngModelChange)="currentObj.total = $event"
+                 [ngModelOptions]="{updateOn: 'blur'}"
+                 [ngModel]="currentObj.total | number:'1.2-2'"  readonly="readonly">
+
+        </div>
+      </div>
+      <div class="form-group m-form__group row">
+        <div class="col-3">
+        </div>
+        <div class="col-9">
+          <div class="m-form__actions pull-right">
+            <button *ngIf="mode != 'view'" type="button"
+                    [disabled]="isSave" class="btn btn-success"
+                    (click)="save(proformDate.value)">
+              Save
+            </button>
+            <button *ngIf="mode != 'view'" type="button"
+                    [disabled]="isSubmitted" class="btn btn-success"
+                    data-toggle="modal"
+                    data-target="#bootstrapModel" (click)="invoicegenerate()">
+              Generate Invoice
+            </button>
+            <button *ngIf="mode != 'view'" type="button"
+                    [disabled]="isCancel" class="btn btn-success"
+                    data-toggle="modal"
+                    data-target="#bootstrapModel" (click)="invoicecancel()">
+              Cancel Proforma Invoice
+            </button>
+            <button type="button" *ngIf="mode == 'view' || mode == 'edit'" class="btn btn-success"
+                    (click)="downloadPdf()">
+              Download as Pdf
+            </button>
+            <button type="button" *ngIf="mode != 'add' && currentObj.status !='Cancelled'" class="btn btn-success" data-toggle="modal"  data-target="#SendEmail1"
+                 (click)="sendEmail()"   >
+              Send Mail
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="m-portlet__body" id="ProformaInvoice" style="display:none">
+      <div class="row">
+        <div class="col-6" style="text-align:left">
+          <a href="#">
+            <!--<img src="../../../assets/demo/demo12/media/img/logo/Login-Page-Logo.png" />-->
+            <img src="../../../assets/demo/demo12/media/img/logo/Inspirit-Logo-Small.png" style="height:240px;width:570px"/>
+          </a>
+        </div>
+        <div class="col-6" style="background:#00334d;color:#ffffff;text-align:center;height:120px">
+          <h1 style="padding-top:4%">
+            PROFORMA INVOICE
+          </h1>
+        </div>
+      </div>
+      <br />
+      <div class="row">
+        <div class="col-7">
+          <label class="col-4 pull-left"><h3>INVOICE TO:</h3></label>
+        </div>
+        <div class="col-5">
+
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-6">
+          <label class="col-4 font-weight-bold" style="text-align:left">CLIENT NAME:</label>
+          <label class="col-7 col-form-label" style="text-align:left">
+            {{proformaReport.clientName}}
+          </label>
+        </div>
+        <div class="col-6">
+          <label class="col-6 right font-weight-bold" style="text-align:right">REFERENCE NUMBER:</label>
+          <label class="col-4 col-form-label" style="text-align:left">{{proformaReport.refrenceNumber}}</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-6">
+          <label class="col-4 font-weight-bold" style="text-align:left">ADDRESS :</label>
+          <label class="col-7 col-form-label" style="text-align:left">{{proformaReport.address}}</label>
+        </div>
+        <div class="col-6">
+          <label class="col-6 font-weight-bold" style="text-align:right">DATE:</label>
+          <label class="col-4 col-form-label" style="text-align:left">{{proformaReport.date}}</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-6">
+          <label class="col-4 font-weight-bold" style="text-align:left">CODE :</label>
+          <label class="col-7 col-form-label" style="text-align:left">{{proformaReport.code}}</label>
+        </div>
+        <div class="col-6">
+          <label class="col-6 font-weight-bold" style="text-align:right">TEL:</label>
+          <label class="col-4 col-form-label" style="text-align:left">{{proformaReport.telePhoneNumber}}</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-6">
+          <label class="col-4 font-weight-bold" style="text-align:left">EMAIL :</label>
+          <label class="col-7 col-form-label" style="text-align:left">{{proformaReport.email}}</label>
+        </div>
+        <div class="col-6">
+          <label class="col-6 font-weight-bold" style="text-align:right">VAT NUMBER:</label>
+          <label class="col-4 col-form-label" style="text-align:left">{{proformaReport.vatNumber}}</label>
+        </div>
+      </div>
+    
+      <div class="row">
+        <div class="col-12">
+          <div class="card">
+            <div class="card-body">
+              <table class="table table-bordered table-responsive-md table-striped text-center">
+                <tr style="background-color:#990000; color:#ffffff">
+                  <th class="text-center">Description</th>
+                  <th class="text-center">Quantity</th>
+                  <th class="text-center">Unit Price</th>
+                  <th class="text-center">Amount</th>
+                </tr>
+                <tr *ngFor="let item of currentObj.proformaInvoiceLineItems let i=index">
+                  <td>
+                    <label class="col-form-label"
+                           *ngFor="let prod of productList">
+                      <span *ngIf="prod.id==item.productId">
+                        {{prod.name}}
+                      </span>
+                    </label>
+                  </td>
+                  <td>
+                    <label class="col-form-label">{{item.quantity}}</label>
+                  </td>
+                  <td>
+                    <label class="col-form-label">{{item.unitPrice | number:'.2'}}</label>
+                  </td>
+                  <td>
+                    <label class="col-form-label">{{item.amount | number:'.2'}}</label>
+                  </td>
+                </tr>
+                <br />
+                <tr>
+                  <td style="border:none"></td>
+                  <td style="border:none"></td>
+                  <td style="border:none">
+                    <div style="border:none;background:#00334d;color:#ffffff;height:35px">
+                      <h5 style="padding-top:7px">
+                        SUB TOTAL :
+                      </h5>
+                    </div>
+                  </td>
+                  <td style="border:none">
+                    <label style="padding-top:7px;font-size:18px;"
+                           class="font-weight-bold">
+                      R {{currentObj.subTotal | number:'.2'}}
+                    </label>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="border:none"></td>
+                  <td style="border:none"></td>
+                  <td style="border:none">
+                    <div style="border:none;background:#00334d;color:#ffffff;height:35px">
+                      <h5 style="padding-top:7px">
+                        VAT TOTAL :
+                      </h5>
+                    </div>
+                  </td>
+                  <td style="border:none">
+                    <label style="padding-top:7px;font-size:18px;"
+                           class="font-weight-bold">
+                      R {{currentObj.vatTotal | number:'.2'}}
+                    </label>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="border:none"></td>
+                  <td style="border:none"></td>
+                  <td style="border:none">
+                    <div style="border:none;background:#00334d;color:#ffffff;height:35px">
+                      <h5 style="padding-top:7px">
+                        TOTAL(INCL VAT) :
+                      </h5>
+                    </div>
+                  </td>
+                  <td style="border:none">
+                    <label style="padding-top:7px;font-size:18px;"
+                           class="font-weight-bold">
+                      R {{currentObj.total | number:'.2'}}
+                    </label>
+                  </td>
+                </tr>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-10">
+          <label class="col-form-label col-4 pull-left"><h3>PAYMENT DETAILS:</h3></label>
+        </div>
+        <div class="col-2">
+
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-6">
+          <label class="col-form-label col-4 font-weight-bold" style="text-align:left">BANK:</label>
+          <label class="col-form-label col-7" style="text-align:left">
+            {{proformaReport.bankName}}
+          </label>
+        </div>
+        <div class="col-6">
+
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-6">
+          <label class="col-form-label col-4 font-weight-bold" style="text-align:left">ACCOUNT NUMBER:</label>
+          <label class="col-form-label col-7" style="text-align:left">
+            {{proformaReport.accountNumber}}
+          </label>
+        </div>
+        <div class="col-6">
+
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-6">
+          <label class="col-form-label col-4 font-weight-bold" style="text-align:left">BRANCH CODE:</label>
+          <label class="col-form-label col-7" style="text-align:left">
+            {{proformaReport.branchCode}}
+          </label>
+        </div>
+        <div class="col-6">
+
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-6">
+          <label class="col-form-label col-4 font-weight-bold" style="text-align:left">Comments:</label>
+          <label class="col-form-label col-7" style="text-align:left">
+            {{proformaReport.comments}}
+          </label>
+        </div>
+        <div class="col-6">
+
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12">
+          <label class="col-form-label col-12 font-weight-bold" style="text-align:left;color:#990000">
+            YOUR REFERENCE: QUOTE THE REFERENCE NUMBER ABOVE
+          </label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-6">
+          <label class="col-form-label col-6 font-weight-bold" style="text-align:left">IDAS Company Address:</label>
+          <label class="col-form-label col-6" style="text-align:left">
+            {{proformaReport.idasCompanyAddress}}
+          </label>
+        </div>
+        <div class="col-6">
+
+        </div>
+      </div>
+      <div class="form-group m-form__group row">
+        <div class="col-12" style="background:#00334d;color:#ffffff;text-align:center;height:30px">
+          <h5 style="padding-top: 6px;">
+            PLEASE NOTE: THIS IS NOT A VAT INVOICE. A VAT INVOICE WILL BE ISSUED ON RECEIPT OF PAYMENT
+          </h5>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div id="bootstrapModel" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <!-- Modal content-->
+    <div class="modal-content">
+      <!-- model body section -->
+      <div style="background: linear-gradient(#103f56, #094868, #00527c, #066f9e)" class="modal-header">
+        <h4 style="color:#ffffff" class="modal-title">IDAS Inspirit says:</h4>
+      </div>
+      <div class="modal-body">{{errorInfo}}</div>
+      <div class="modal-footer">
+        <button style="width:150px" type="button" class="btn btn-accent" data-dismiss="modal"
+                (click)="saveORcancelProformainvoice(errorInfo)">
+          Ok
+        </button>
+        <button style="width:150px" type="button" class="btn btn-accent"
+                data-dismiss="modal">
+          Cancel
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+<div id="SendEmail1" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"
+                aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="m-portlet__body">
+          <div class="form-group m-form__group row">
+            <label class="col-form-label col-lg-1 col-sm-12">Email</label>
+            <div class="col-md-7">
+              <input class="form-control m-input border-dark" type="text"
+                     name="email" placeholder="Enter your billing email...."
+                     [(ngModel)]="emailProperty.toMail">
+            </div>
+          </div>
+          <div class="form-group m-form__group row">
+            <div class="col-6">
+              <div class="m-form__actions pull-right">
+                <button type="button" data-dismiss="modal"
+                        class="btn btn-success"
+                        (click)="sendEmailAttachment()">
+                  Send Email
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<button data-toggle="modal" id="nopermission" data-target="#per" [hidden]="true"></button>
+
+<div id="per" class="modal" tabindex="-1" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div style="background: linear-gradient(#103f56, #094868, #00527c, #066f9e)" class="modal-header">
+        <h4 style="color:#ffffff" class="modal-title">IDAS says:</h4>
+      </div>
+      <div class="modal-body">You don't have permission to access.</div>
+      <div class="modal-footer">
+        <button style="width:150px" (click)="dash()" type="button" class="btn btn-accent" data-dismiss="modal">Ok</button>
+      </div>
+    </div>
+  </div>
+</div>
+<button data-toggle="modal" id="error" data-target="#bootstrapModel" [hidden]="true"></button>
+
+
+
+
+
+<style>
+  #cover {
+    background: url("http://www.aveva.com/Images/ajax-loader.gif") no-repeat scroll center center;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    top: 0px;
+    left: 0px;
+    z-index: 1;
+  }
+
+  .modal-footer {
+    justify-content: center !important;
+  }
+</style>

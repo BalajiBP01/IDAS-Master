@@ -1,0 +1,89 @@
+<div class="m-subheader" appunwraptag="">
+  <div class="m-portlet__head-caption">
+    <div class="m-portlet__head-title">
+      <span class="m-portlet__head-icon m--hide">
+        <i class="la la-gear"></i>
+      </span>
+
+
+      <h3 class="m-subheader__title ">
+        <button style="font-size: 14px;
+        font-weight: 600;
+        text-transform: uppercase;
+        color: #016fa2;
+        font-family: Avenir !important;
+        margin-top: -2px;" class="btn btn-link" (click)="list()">
+          Credit Notes
+        </button>
+        <i style="margin-left:-12px" class="fa fa-angle-right"></i>
+        Credit Note
+      </h3>
+
+      <div class="btn-group pull-right m-form__actions">
+
+        <a style="margin: 10px 5px;" class="btn btn-accent" (click)="list()">
+          Back
+          &nbsp;
+          <i class="fa fa-angle-double-left"></i>
+        </a>
+     
+      </div>
+
+
+    </div>
+  </div>
+</div>
+<div class="m-content">
+  <div class="m-portlet">
+    <div class="m-portlet__body">
+      <div class="form-group m-form__group row">
+        <label class="col-form-label col-2">Invoice Amount</label>
+        <div class="col-4">
+         
+          <input class="form-control m-input border-dark" type="text" step="0.01" name="invoiceAmount"
+                 (change)="setTwoNumberDecimal($event)"
+                 (ngModelChange)="invoiceAmount = $event"
+                 [ngModelOptions]="{updateOn: 'blur'}"
+                 [ngModel]="invoiceAmount| number:'1.2-2'" readonly="readonly">
+
+        </div>
+        <label class="col-form-label col-2">Payment Amount</label>
+        <div class="col-4">
+        
+          <input class="form-control m-input border-dark" type="text" step="0.01" name="paymentAmount"
+                 (change)="setTwoNumberDecimal($event)"
+                 (ngModelChange)="paymentAmount = $event"
+                 [ngModelOptions]="{updateOn: 'blur'}"
+                 [ngModel]="paymentAmount| number:'1.2-2'" readonly="readonly">
+
+        </div>
+      </div>
+      <div class="form-group m-form__group row">
+        <label class="col-form-label col-1">Credit Note Value</label>
+        <label class="col-form-label col-1" style="color:red">*</label>
+        <div class="col-4">
+          <input type="text" class="form-control m-input border-dark"
+                 name="creditNoteValue" [(ngModel)]="currentobject.creditNoteValue"
+                 (keypress)="onKey($event)" />
+        </div>
+        <label class="col-form-label col-1">Comments</label>
+        <label class="col-form-label col-1" style="color:red">*</label>
+        <div class="col-4">
+          <textarea type="text" class="form-control m-input border-dark"
+                    name="comments" [(ngModel)]="currentobject.comments">
+          </textarea>
+        </div>
+      </div>
+      <div class="form-group m-form__group row">
+        <div class="col-6">
+        </div>
+        <div class="col-6">
+          <div class="m-form__actions">
+            <button type="button" class="btn btn-success" (click)="save()">Submit</button>
+            <button type="button" class="btn btn-success" (click)="list()">Cancel</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

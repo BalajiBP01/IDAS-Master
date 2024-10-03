@@ -1,0 +1,589 @@
+<div class="modal-content">
+  <div class="modal-header" style=" background: linear-gradient( #066f9e, #00527c, #094868, #103f56) !important;">
+    <h5 class="modal-title" style="color:#ffffff!important">DEEDS INFORMATION</h5>
+    <button type="button" class="close" data-dismiss="modal" style="color:#ffffff!important" (click)="close()" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+
+
+  <div class="modal-body" *ngIf="deeds">
+    <div class="m-scrollable" data-scrollbar-shown="true" data-scrollable="true" data-height="200">
+      <form class="m-form m-form--label-align-right" style="background-color:#f2f3f8!important;padding:12px;">
+        <div *ngIf="deeds.type == 'Buyer' ||deeds.type=='Seller' " class="m-portlet__body" style="background-color:#ffffff;padding:12px;border:1px solid #b7b5b5">
+          <div><h6>PERSONAL INFORMATION</h6></div>
+          <div class="row" style="height:6px;background-color:#066f9e;margin:0px !important;width:100%;"></div>
+          <div class="m-form__section m-form__section--first">
+
+            <!-- Buyer Information -->
+            <div *ngIf="deeds.type == 'Buyer'" class="m-form__section m-form__section--first">
+              <div class="form-group m-form__group row">
+                <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 name">
+                  Property Deed Identifier:
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 value ">
+                  {{deeds.propertyDeedId}}
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 name">
+                  Buyer ID Number:
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 value">
+                  {{deeds.buyerIDNO}}
+                </div>
+
+              </div>
+              <div class="form-group m-form__group row">
+                <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 name">
+                  Buyer Name:
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 value ">
+                  {{deeds.buyerName}}
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 name">
+                  Buyer Type:
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 value">
+                  {{deeds.buyerType}}
+                </div>
+              </div>
+              <div class="form-group m-form__group row">
+                <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 name">
+                  Buyer Status:
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 value ">
+                  {{deeds.buyerStatus}}
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 name">
+                  Share:
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 value">
+                  {{deeds.share}}
+                </div>
+              </div>
+              <div class="form-group m-form__group row">
+                <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 name">
+                  Is Current Owner:
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 value">
+                  {{deeds.isCurrentOwner}}
+                </div>
+              </div>
+              <!--Buyer and Seller Details-->
+              <!-- <div class="form-group m-form__group row">
+                <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 name">
+                  Seller Name:
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 value ">
+                  {{deeds.sellerName}}
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 name">
+                  Seller Date of Birth:
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 value">
+                  {{deeds.sellerIDNO |  slice : 0  : 2 }}-{{deeds.sellerIDNO |  slice : 2  : 4 }}-{{deeds.sellerIDNO |  slice : 4  : 6 }}
+                </div>
+              </div>
+
+              <div class="form-group m-form__group row">
+                <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 name">
+                  Buyer Name :
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 value ">
+                  {{deeds.buyerName}}
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 name">
+                  Buyer Date of Birth :
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 value">
+                  {{deeds.buyerIDNO |  slice : 0  : 2 }}-{{deeds.buyerIDNO |  slice : 2  : 4 }}-{{deeds.buyerIDNO  |  slice : 4  : 6 }}
+                </div>
+              </div> -->
+            </div>
+
+            <!--Seller Information-->
+            <div *ngIf="deeds.type=='Seller'" class="m-form__section m-form__section--first">
+              <div class="form-group m-form__group row">
+                <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 name">
+                  Property Deed Identifier:
+
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 value ">
+                  {{deeds.propertyDeedId}}
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 name">
+                  Seller ID Number:
+
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 value">
+                  {{deeds.sellerIDNO}}
+                </div>
+              </div>
+              <div class="form-group m-form__group row">
+                <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 name">
+                  Seller Name:
+
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 value ">
+                  {{deeds.sellerName}}
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 name">
+                  Seller Type:
+
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 value">
+                  {{deeds.sellerType}}
+                </div>
+              </div>
+              <div class="form-group m-form__group row">
+                <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 name">
+                  Seller Status:
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 value ">
+                  {{deeds.sellerStatus}}
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 name">
+                  Is Current Owner:
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 value">
+                  {{deeds.isCurrentOwner}}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row" style="height:20px;background-color:#f2f3f8!important"></div>
+
+        <!--Buyer and Seller Details-->
+        <div class="m-portlet__body" style="background-color:#ffffff;padding:12px;border:1px solid #b7b5b5">
+        <div><h6>BUYER AND SELLER DETAILS</h6></div>
+        <div class="row" style="height:6px;background-color:#A11E21;margin:0px !important;width:100%;"></div>
+        <div class="m-form__section m-form__section--first">
+            <div class="form-group m-form__group row">
+              <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 name">
+                Seller Name:
+              </div>
+              <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 value ">
+                {{deeds.sellerName}}
+              </div>
+              <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 name">
+                Seller Date of Birth:
+              </div>
+              <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 value">
+                {{deeds.sellerIDNO |  slice : 0  : 2 }}-{{deeds.sellerIDNO |  slice : 2  : 4 }}-{{deeds.sellerIDNO |  slice : 4  : 6 }}
+              </div>
+            </div>
+
+            <div class="form-group m-form__group row">
+              <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 name">
+                Buyer Name :
+              </div>
+              <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 value ">
+                {{deeds.buyerName}}
+              </div>
+              <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 name">
+                Buyer Date of Birth :
+              </div>
+              <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 value">
+                {{deeds.buyerIDNO |  slice : 0  : 2 }}-{{deeds.buyerIDNO |  slice : 2  : 4 }}-{{deeds.buyerIDNO  |  slice : 4  : 6 }}
+              </div>
+            </div>
+        </div>
+        </div>
+        <div class="row" style="height:20px;background-color:#f2f3f8!important"></div>
+    
+
+        <div class="m-portlet__body" style="background-color:#ffffff;padding:12px;margin:0px !important;width:100%;border:1px solid #b7b5b5">
+          <div><h6>PROPERTY DETAILS</h6></div>
+          <div class="row" style="height:6px;background-color:#A11E21;margin:0px !important;width:100%;"></div>
+          <div class="m-form__section m-form__section--first">
+            <div class="form-group m-form__group row">
+              <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 name">
+                Deeds Office Identifier:
+              </div>
+              <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 value">
+                {{deeds.deedsOfficeId}}
+              </div>
+              <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 name">
+                Title Deed Number:
+              </div>
+              <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 value">
+                {{deeds.titleDeedNo}}
+              </div>
+            </div>
+            <div class="form-group m-form__group row">
+              <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 name">
+                Title Deed Number Old:
+              </div>
+              <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 value">
+                {{deeds.titleDeedNoOLD}}
+              </div>
+              <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 name">
+                Title Deed Fee:
+              </div>
+              <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 value">
+                {{deeds.titleDeedFee |  number:'.2'}}
+              </div>
+            </div>
+            <div class="form-group m-form__group row">
+              <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 name">
+                Date of Purchase:
+              </div>
+              <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 value ">
+                {{deeds.datePurchase |  date:'yyyy-MM-dd'}}
+              </div>
+              <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 name">
+                Date of Register:
+              </div>
+              <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 value">
+                {{deeds.dateRegister | date:'yyyy-MM-dd'}}
+              </div>
+            </div>
+            <div class="form-group m-form__group row">
+              <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 name">
+                Purchase Amount:
+              </div>
+              <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 value ">
+
+                {{deeds.purchaseAmount | number:'.2'}}
+              </div>
+
+              <div *ngIf="deeds.streetAddress" class="col-lg-3 col-md-6 col-sm-12 col-xs-12 name">
+                Street Address:
+              </div>
+              <div *ngIf="deeds.streetAddress" class="col-lg-3 col-md-6 col-sm-12 col-xs-12 value">
+
+                {{deeds.streetAddress}}
+              </div>
+
+            </div>
+            <div *ngIf="deeds.streetNumber || deeds.streetName" class="form-group m-form__group row">
+
+              <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 name">
+                Street Number:
+              </div>
+              <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 value">
+                {{deeds.streetNumber}}
+              </div>
+
+
+              <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 name">
+                Street Name:
+              </div>
+              <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 value">
+                {{deeds.streetName}}
+              </div>
+            </div>
+            <div *ngIf="deeds.streetType || deeds.y" class="form-group m-form__group row">
+              <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 name">
+                Street Type:
+              </div>
+              <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 value ">
+                {{deeds.streetType}}
+              </div>
+              <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 name">
+                Y co ordinate:
+              </div>
+              <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 value">
+                {{deeds.y}}
+              </div>
+            </div>
+            <div *ngIf="deeds.x || deeds.suburbCode" class="form-group m-form__group row">
+              <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 name">
+                X co ordinate:
+              </div>
+              <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 value">
+                {{deeds.x}}
+              </div>
+
+              <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 name">
+                Suburb Code:
+              </div>
+              <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 value">
+                {{deeds.suburbCode}}
+              </div>
+            </div>
+            <div *ngIf="deeds.town ||deeds.suburbDeeds " class="form-group m-form__group row">
+              <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 name">
+                Suburb Deeds:
+              </div>
+              <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 value">
+                {{deeds.suburbDeeds}}
+              </div>
+
+              <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 name">
+                Town:
+              </div>
+              <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 value">
+                {{deeds.town}}
+              </div>
+            </div>
+            <div *ngIf="deeds.authority || deeds.municipalityName" class="form-group m-form__group row">
+
+              <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 name">
+                Authority:
+              </div>
+              <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 value ">
+                {{deeds.authority}}
+              </div>
+
+
+              <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 name">
+                Municipality Name:
+              </div>
+              <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 value">
+                {{deeds.municipalityName}}
+              </div>
+            </div>
+
+
+
+            <div class="form-group m-form__group row">
+              <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 name">
+                Suburb Identifier:
+              </div>
+              <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 value">
+                {{deeds.suburbId}}
+              </div>
+              <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 name">
+                Bond Number:
+              </div>
+              <div class=" col-lg-3 col-md-6 col-sm-12 col-xs-12 value">
+                {{deeds.bondNumber}}
+              </div>
+            </div>
+            <div class="form-group m-form__group row">
+              <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 name">
+                Bond Holder:
+              </div>
+              <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 value">
+                {{deeds.bondHolder}}
+              </div>
+              <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 name">
+                Bond Amount:
+              </div>
+              <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 value">
+                {{deeds.bondAmount | number:'.2'}}
+              </div>
+            </div>
+
+
+            <div class="form-group m-form__group row">
+              <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 name">
+                Portion Number:
+              </div>
+              <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 value ">
+                {{deeds.portionNo}}
+              </div>
+              <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 name">
+                Township Number:
+              </div>
+              <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 value">
+                {{deeds.townShipNo}}
+              </div>
+            </div>
+            <div class="form-group m-form__group row">
+              <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 name">
+                Previous Extent:
+              </div>
+              <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 value ">
+                {{deeds.prevExtent}}
+              </div>
+              <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 name">
+                Is Current Owner Updated:
+              </div>
+              <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 value">
+                {{deeds.isCurrOwnerUpdated}}
+              </div>
+            </div>
+            <div class="form-group m-form__group row">
+              <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 name">
+                Province Identifier:
+              </div>
+              <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 value ">
+                {{deeds.provinceId}}
+              </div>
+              <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 name">
+                Property Name:
+              </div>
+              <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 value ">
+                {{deeds.propertyName}}
+              </div>
+
+            </div>
+          </div>
+        </div>
+        <div class="row" style="height:20px;margin:0px !important;width:100%;background-color:#f2f3f8!important"></div>
+        <div class="m-portlet__body" style="background-color:#ffffff;padding:12px;border:1px solid #b7b5b5">
+
+          <div><h6>TRANSFER DETAILS</h6></div>
+          <div class="row" style="height:6px;margin:0px !important;width:100%;background-color:#A11E21"></div>
+          <div class="m-form__section m-form__section--first">
+
+            <div class="form-group m-form__group row">
+              <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 name">
+                Extent:
+              </div>
+              <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 value ">
+                {{deeds.extent}}
+              </div>
+              <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 name">
+                Attorney Firm Number:
+              </div>
+              <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 value">
+                {{deeds.attorneyFirmNumber}}
+              </div>
+            </div>
+            <div class="form-group m-form__group row">
+              <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 name">
+                Attorney File Number:
+              </div>
+              <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 value">
+                {{deeds.attorneyFileNumber}}
+              </div>
+              <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 name">
+                Transfer Sequence Number:
+              </div>
+              <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 value">
+                {{deeds.transferSeqNo}}
+              </div>
+            </div>
+
+            <div class="form-group m-form__group row">
+              <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 name">
+                Date Captured:
+              </div>
+              <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 value ">
+                {{deeds.dateCaptured| date:'yyyy-MM-dd'}}
+              </div>
+              <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 name">
+                Scheme Identifier:
+              </div>
+              <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 value">
+                {{deeds.schemeId}}
+              </div>
+            </div>
+
+            <div class="form-group m-form__group row">
+              <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 name">
+                Erf Number:
+              </div>
+              <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 value ">
+                {{deeds.erf}}
+              </div>
+              <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 name">
+                Portion:
+              </div>
+              <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 value">
+                {{deeds.portion}}
+              </div>
+            </div>
+
+            <div class="form-group m-form__group row">
+              <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 name">
+                Erf Size:
+              </div>
+              <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 value ">
+                {{deeds.erfSize}}
+              </div>
+              <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 name">
+                Stand Number:
+              </div>
+              <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 value">
+                {{deeds.standNo}}
+              </div>
+            </div>
+            <div class="form-group m-form__group row">
+              <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 name">
+                Created on Date:
+              </div>
+              <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 value">
+                {{deeds.createdOndate |  date:'yyyy-MM-dd'}}
+              </div>
+              <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 name">
+                Unit:
+              </div>
+              <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 value">
+                {{deeds.unit}}
+              </div>
+            </div>
+
+          </div>
+        </div>
+        <div class="row" style="height:20px;margin:0px !important;width:100%;background-color:#f2f3f8!important"></div>
+        <div class="m-portlet__body" style="background-color:#ffffff;padding:12px;border:1px solid #b7b5b5">
+
+          <div><h6>ENDORSEMENT DETAILS</h6></div>
+          <div class="row" style="height:6px;margin:0px !important;width:100%;background-color:#A11E21"></div>
+          <div class="m-form__section m-form__section--first">
+
+            <div class="form-group m-form__group row">
+              <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 name">
+                Endorsement Number:
+              </div>
+              <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 value ">
+                {{endorsement.endorsementNumber}}
+              </div>
+              <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 name">
+                Endorsement Holder:
+              </div>
+              <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 value">
+                {{endorsement.endorsementHolder}}
+              </div>
+            </div>
+            <div class="form-group m-form__group row">
+              <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 name">
+                Endorsement Amount:
+              </div>
+              <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 value">
+                {{endorsement.endorsementAmount | number:'.2'}}
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+
+<style>
+  .col-md-3 {
+    -webkit-box-flex: 0;
+    -ms-flex: 0 0 25%;
+    flex: 0 0 25%;
+    max-width: 25%;
+    font-size: 0.9rem;
+    font-weight: normal;
+    padding-top: 12px;
+    vertical-align: middle;
+  }
+
+  .m-form .m-form__group {
+    padding-top: 0px;
+    border-bottom: #b7b5b5 1px solid;
+  }
+
+  h6 {
+    font-size: 14px;
+    font-weight: bold;
+  }
+</style>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

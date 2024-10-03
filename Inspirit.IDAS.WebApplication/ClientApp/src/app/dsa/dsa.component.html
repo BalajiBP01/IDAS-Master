@@ -1,0 +1,833 @@
+<style>
+  m-portlet {
+    margin-bottom: 2.2rem;
+    margin-top: -25px !important;
+  }
+
+  .m-body .m-wrapper {
+    width: 100%;
+    margin-top: -25px !important;
+  }
+
+  FIELDSET {
+    margin: 8px;
+    border: 1px solid silver;
+    padding: 8px 150px;
+    border-radius: 4px;
+  }
+
+  LEGEND {
+    display: block;
+    width: 65%;
+    max-width: 100%;
+    padding: 0;
+    margin-left: 180px;
+    margin-bottom: .5rem;
+    font-size: 1.5rem;
+    line-height: inherit;
+    color: inherit;
+    white-space: normal;
+    padding: 5px 0px 5px 37px;
+  }
+
+  .modal-footer {
+    justify-content: center !important;
+  }
+
+  table, th, td {
+    border: 1px solid;
+    padding: 0 0 0 10px;
+  }
+
+  .btn-dark {
+    color: #fff;
+    background-color: #A11E21;
+    border-color: #343a40;
+  }
+
+  pdfdata {
+    text-transform: uppercase;
+  }
+
+  #cover {
+    background: url("http://www.aveva.com/Images/ajax-loader.gif") no-repeat scroll center center;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    top: 0px;
+    left: 0px;
+    z-index: 1;
+  }
+</style>
+<div *ngIf="loading==true" id="cover"></div>
+<div class="m-grid__item m-grid__item--fluid m-wrapper" style="margin-top: -60px !important;">
+  <div class="m-content">
+    <div class="m-portlet">
+      <form class="m-form m-form--fit m-form--label-align-right">
+        <div class="m-portlet__body" style="margin-bottom: -6.0rem;">
+          <div class="form-group m-form__group row">
+            <div class="m-section">
+              <h3 class="m-section__heading">
+                Data Service Agreement
+              </h3>
+              <hr />
+              <div class="m-section__content">
+                <div class="row">
+                  <div class="col-1">
+
+                  </div>
+                  <div class="col-lg-10 col-md-10 col-sm-12 col-xs-12">
+                    <div [innerHTML]="description"
+                         style="overflow-y:scroll;overflow-x:scroll;height:500px">
+                    </div>
+                  </div>
+                  <div class="col-1">
+
+                  </div>
+                </div>
+                <hr />
+                <div class="row">
+                  <div class="input-group">
+                    <div style="margin-left:20px" class="input-group-append">
+                      <label class="m-checkbox m-checkbox--single m-checkbox--state m-checkbox--state-primary">
+                        <input type="checkbox" name="turnover"
+                               [(ngModel)]="isAgreed">
+                        <span></span>
+                      </label>
+                      <span>
+                        Click here to indicate that you have read and agree to the terms presented in the Terms and Conditions agreement
+                      </span>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-4">
+
+                  </div>
+                  <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                    <button [disabled]="isAgreed == false" type="submit"
+                            class="btn m-btn--md btn-dark" data-toggle="modal"
+                            aria-pressed="false" data-target="#SendEmail">
+                      Accept & Proceed
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+      <div class="m-portlet__body">
+        <div id="CustomerDetails0" style="display:none">
+          <div class="form-group m-form__group row">
+            <div class="col-md-12">
+              <a href="#">
+                <img alt="" style="width:100%"
+                      src="../../assets/demo/demo2/media/img/logo/IDAS Letterhead Header.png" />
+              </a>
+            </div>
+          </div>
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <div class="form-group m-form__group row">
+            <div class="col-md-3">
+
+            </div>
+            <div class="col-md-6">
+              <h1 style="font-weight:bold;text-align:center;color:#231f20">Data Services Agreement</h1>
+            </div>
+            <div class="col-md-3"></div>
+          </div>
+          <div class="form-group m-form__group row">
+            <div class="col-md-12">
+              <hr style="height:10px;width:90%;background: linear-gradient(#103f56, #094868, #00527c, #066f9e) !important;" />
+            </div>
+          </div>
+          <div class="form-group m-form__group row">
+            <div class="col-md-4">
+
+            </div>
+            <div class="col-md-4">
+              <h2 style="font-weight:bold;text-align:center;text-transform:uppercase;color:#231f20">CLIENT AGREEMENT</h2>
+            </div>
+            <div class="col-md-4"></div>
+          </div>
+          <div class="form-group m-form__group row">
+            <div class="col-md-4">
+
+            </div>
+            <div class="col-md-4">
+              <h3 style="font-weight:bold;text-align:center;text-transform:uppercase;color:#231f20">Entered Into Between</h3>
+            </div>
+            <div class="col-md-4"></div>
+          </div>
+          <div class="form-group m-form__group row">
+            <div class="col-md-3">
+
+            </div>
+            <div class="col-md-6">
+              <h3 style="font-weight:bold;padding-left:1%;text-align:center;text-transform:uppercase;color:#231f20">
+                Inspirit Data Analytics Services (PTY) LTD
+              </h3><br />
+              <h3 style="font-weight:bold;padding-left:8%;text-align:center;color:#231f20">
+                (Hereinafter referred to as “IDAS”)
+              </h3>
+            </div>
+            <div class="col-md-3">
+
+            </div>
+          </div>
+          <div class="form-group m-form__group row">
+            <div class="col-md-3">
+
+            </div>
+            <div class="col-md-6">
+              <h3 style="font-weight:bold;text-align:center;color:#231f20">
+                And
+              </h3>
+            </div>
+            <div class="col-md-3">
+
+            </div>
+          </div>
+          <div class="form-group m-form__group row">
+            <div class="col-md-4">
+
+            </div>
+            <div class="col-md-4">
+              <h3 style="font-weight:bold;text-align:center;text-transform:uppercase;color:#231f20">
+                {{_signupRequest.customer.tradingName}}
+              </h3>
+            </div>
+            <div class="col-md-4">
+
+            </div>
+          </div>
+          <div class="form-group m-form__group row">
+            <div class="col-md-12">
+              <hr style="height:10px;width:90%;background: linear-gradient(#103f56, #094868, #00527c, #066f9e) !important;" />
+            </div>
+          </div>
+          <div class="form-group m-form__group row">
+            <div class="col-md-12">
+              <a href="#">
+                <img alt="" style="width:100%"
+                     src="../../assets/demo/demo2/media/img/logo/IDAS Letterhead Footer.png"  />
+              </a>
+            </div>
+          </div>
+        </div>
+        <div id="CustomerDetails1" style="padding-left:2%;display:none">
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <div class="form-group m-form__group row">
+            <div class="col-md-12">
+              <h2 style="font-weight: bold;
+    color: #084b6f;
+    text-transform: uppercase;
+    font-size: 22px;
+    line-height: 20px;
+    padding-top: 6px;">
+                Client Details:
+              </h2>
+            </div>
+          </div>
+          <div class="form-group m-form__group row pdfdata">
+            <div class="col-md-12">
+              <table style="width: 95%">
+                <tbody style="text-transform: uppercase;font-size: 16px;color:#231f20">
+                  <tr>
+                    <td style="width: 50%"class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                      Company  Name :
+                    </td>
+                    <td class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                      {{_signupRequest.customer.tradingName}}
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                      Company Registration Number :
+                    </td>
+                    <td class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                      {{_signupRequest.customer.registrationNumber}}
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                      Is the Asset value or turnover
+                      of the Company
+                      greater than R2 million rand [If no, please supply a
+                      confirmation letter from the Company’s Auditors]
+                    </td>
+                    <td *ngIf="_signupRequest.customer.turnover" class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                      {{'Yes'}}
+                    </td>
+
+                    <td *ngIf="!_signupRequest.customer.turnover" class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                      {{'No'}}
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                      ID Number (For Sole Ownership or Partnership):
+                    </td>
+                    <td class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                      {{_signupRequest.customer.custOwnIDNumber}}
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                      Full Name of Signatory:
+                    </td>
+                    <td class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                      {{_signupRequest.customer.authFirstName}} {{'  '}} {{_signupRequest.customer.authSurName}}
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                      VAT Number:
+                    </td>
+                    <td class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                      {{_signupRequest.customer.vatNumber}}
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                      [If the company is a not registered or not required
+                      to register for VAT,
+                      written confirmation on the company’s letterhead is required]
+                    </td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                      Physical Address:
+                    </td>
+                    <td class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                      {{_signupRequest.customer.physicalAddress}}
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                      Postal Address:
+                    </td>
+                    <td class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                      {{_signupRequest.customer.postalAddress}}
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                      Tel Number:
+                    </td>
+                    <td class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                      {{_signupRequest.customer.telephoneNumber}}
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                      Fax Number:
+                    </td>
+                    <td class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                      {{_signupRequest.customer.faxNumber}}
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                      Website Address:
+                    </td>
+                    <td class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                      {{_signupRequest.customer.webAddress}}
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                      Business Type :
+                    </td>
+                    <td class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                      {{_signupRequest.displayBusinessName}}
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                      Business Activities/Description:
+                    </td>
+                    <td class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                      {{_signupRequest.customer.businessDescription}}
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                      Credit Bureau Information In terms of company activities:
+                    </td>
+                    <td class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                      {{_signupRequest.customer.creditBureauInformation}}
+                    </td>
+                  </tr>
+                  <tr>
+                    <td *ngIf="purposeA == true || purposeB == true || purposeC == true ||
+                        purposeD == true || purposeE == true" class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                      Purpose:
+                    </td>
+                    <td class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                      <p *ngIf="purposeA == true">
+                        <span>.</span>An assessment of the debtor’s book of a business or the tracing of debtors
+                        <br />
+                      </p>
+                      <p *ngIf="purposeB == true">
+                        <span>.</span> Obtaining consumer information to distribute unclaimed funds, including pension funds and insurance claims
+                        <br />
+                      </p>
+                      <p *ngIf="purposeC == true">
+                        <span>.</span> Tracing a consumer for the purpose of validating the consumer’s personal details
+                        <br />
+                      </p>
+                      <p *ngIf="purposeD == true">
+                        <span>.</span>Obtaining consumer information in order to generate leads for the purposes of marketing
+                        <br />
+                      </p>
+                      <p *ngIf="purposeE == true">
+                        <span>.</span>Utilise consumer information for the purpose of profiling your company’s data
+                      </p>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <h2 style="    font-weight: bold;
+    color: #084b6f;
+    text-transform: uppercase;
+    font-size: 22px;
+    line-height: 20px;
+    padding-top: 6px;">
+                        Accounts Department Information:
+                      </h2>
+                    </td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                      Contact Person for Payments:
+                    </td>
+                    <td class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                      {{_signupRequest.customer.accountDeptContactPerson}}
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                      Tel Number:
+                    </td>
+                    <td class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                      {{_signupRequest.customer.accountDeptTelephoneNumber}}
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                      Fax Number:
+                    </td>
+                    <td class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                      {{_signupRequest.customer.accountDeptFaxNumber}}
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                      Email Address:
+                    </td>
+                    <td class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                      {{_signupRequest.customer.accountDeptEmail}}
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <h2 style="font-weight: bold;
+    color: #084b6f;
+    text-transform: uppercase;
+    font-size: 22px;
+    line-height: 20px;
+    padding-top: 6px;">
+                        Authorised Signatory Details:
+                      </h2>
+                    </td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                      First Name:
+                    </td>
+                    <td class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                      {{_signupRequest.customer.authFirstName}}
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                      Surname:
+                    </td>
+                    <td class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                      {{_signupRequest.customer.authSurName}}
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                      ID Number or Passport Number:
+                    </td>
+                    <td class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                      {{_signupRequest.customer.authIDNumber}}
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                      Position within Company:
+                    </td>
+                    <td class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                      {{_signupRequest.customer.authPosition}}
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                      Cell Number:
+                    </td>
+                    <td class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                      {{_signupRequest.customer.authCellNumber}}
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                      Email Address:
+                    </td>
+                    <td class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                      {{_signupRequest.customer.authEmail}}
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <h2 style="    font-weight: bold;
+    color: #084b6f;
+    text-transform: uppercase;
+    font-size: 22px;
+    line-height: 24px;
+    padding-top: 6px;">
+                        Administrator Details:
+                      </h2>
+                    </td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                      Administrator Name and Surname:
+                    </td>
+                    <td class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                      {{_signupRequest.firstName}}{{'  '}}{{_signupRequest.lastName}}
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                      Title
+                    </td>
+                    <td *ngIf="_signupRequest.title=='1'" class="col-lg-6 col-md-6 col-sm-6 col-xs-12"></td>
+                    <td *ngIf="_signupRequest.title=='2'" class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                      {{'Mr.'}}
+                    </td>
+                    <td *ngIf="_signupRequest.title=='3'" class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                      {{'Mrs.'}}
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                      Contact Number:
+                    </td>
+                    <td class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                      {{_signupRequest.contactNumber}}
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                      Email Address:
+                    </td>
+                    <td class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                      {{_signupRequest.emailid}}
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="col-md-1">
+
+            </div>
+          </div>
+        </div>
+        <div id="CustomerDetails2" style="padding-left:2%;display:none">
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <div class="form-group m-form__group row">
+            <div class="col-md-12">
+          
+            </div>
+          </div>
+          <div class="form-group m-form__group row">
+            <div class="col-md-12">
+              <span style="font-size:20px;font-weight:bold;color:#231f20">Signed on this :</span><span style="font-size:20px;color:#231f20;text-transform:uppercase">{{" "}}{{_signupRequest.customer.authFirstName}} {{'  '}} {{_signupRequest.customer.authSurName}} {{' '}} [{{_signupRequest.customer.authIDNumber}}]</span>
+            </div>
+            <div class="col-md-12">
+              <span style="font-size:20px;font-weight:bold;color:#231f20">Date and Time:</span><span style="font-size:20px;color:#231f20">{{" "}}{{datetime}}</span>
+            </div>
+            <br />
+            <br />
+            <br />
+            <div class="col-md-12">
+              <span style="font-size:20px;font-weight:bold;color:#231f20">For and on behalf of the “Client”:</span><span style="font-size:20px;color:#231f20;text-transform:uppercase">{{" "}}{{_signupRequest.customer.tradingName}}</span>
+            </div>
+            <br />
+            <br />
+            <br />
+            <div class="col-md-12">
+              <span style="font-size:20px;font-weight:bold;color:#231f20">Who represents:</span>
+            </div>
+            <br />
+            <br />
+            <div class="col-md-12" style="font-size:20px;color:#231f20">
+              Who warrants that he/she is authorized to do so, hereby accepts and agrees to the terms and conditions of this agreement.
+            </div>
+            <div class="col-md-12" style="font-size:20px;color:#231f20">
+              This document is designed to inform you of your rights and obligations when using Inspirit Data Analytics Services.
+            </div>
+          </div>
+        </div>
+        <div id="CustomerDetails3" style="display:none;padding-left:2%">
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <div class="form-group m-form__group row">
+            <div class="col-md-12">
+              <h2 style="font-weight: bold;
+    color: #084b6f;
+    text-transform: uppercase;
+    font-size: 22px;">
+                ANNEXURE A – PAYMENT TERMS FOR SERVICES
+              </h2>
+            </div>
+          </div>
+          <div class="form-group m-form__group row">
+            <div class="col-md-12">
+              <table style="width: 95%">
+                <thead>
+                  <tr>
+                    <th>
+                      <h3 style="font-weight:bold;">
+                        SERVICE
+                      </h3>
+                    </th>
+                    <th>
+                      <h3 style="font-weight:bold;">
+                        SERVICE TYPE
+                      </h3>
+                    </th>
+                    <th>
+                      <h3 style="font-weight:bold;">
+                        PAYMENT TERMS
+                      </h3>
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>
+                      <h4>
+                        •	Premium License
+                      </h4>
+                    </td>
+                    <td>
+                      <h4>
+                        •	Monthly subscription to utilize IDAS Tracing application
+                        using multiple search inputs.
+                      </h4>
+                    </td>
+                    <td>
+                      <h4>
+                        •	Payment of the subscription fee to be paid monthly, in advance, by the Client.
+                        •	If no payment is received by the 7th of the relevant month, the subscription will be suspended.
+                        •	If the Client wishes to take the account out of suspension,
+                        the Client must pay a re-activation fee of R300.
+                      </h4>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <h4>
+                        •	IDAS Prepaid
+                      </h4>
+                    </td>
+                    <td>
+                      <h4>
+                        •	This is a pre-paid facility to utilize the IDAS
+                        tracing application.
+                      </h4>
+                    </td>
+                    <td>
+                      <h4>
+                        •	Credits are purchased by the Client prior to any
+                        search and are automatically redeemed upon search.
+                      </h4>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <h4>
+                        •	IDAS Leads
+                      </h4>
+                    </td>
+                    <td>
+                      <h4>
+                        •	This is a per transaction lead creation service,
+                        based on a data profile indicated by the client.
+                      </h4>
+                    </td>
+                    <td>
+                      <h4>
+                        •	Payment for the leads are to be made by the Client
+                        in full prior to any leads being supplied by
+                        the Service Provider.
+                      </h4>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <h4>
+                        •	IDAS Batch Tracing
+                      </h4>
+                    </td>
+                    <td>
+                      <h4>
+                        •	This is a per transaction batch tracing service, in terms of
+                        which the Client will provide the Service Provider with specific criteria in order
+                        to extract any information from the database of the Service Provider.
+                      </h4>
+                    </td>
+                    <td>
+                      <h4>
+                        •	Payment for the traced information is to be made by
+                        the Client in full prior to any traced information
+                        being supplied by the Service Provider. all data is
+                        priced per record returned. Therefore if a result
+                        record is not returned for a submitted record,
+                        there will be no cost to the client. In the event
+                        that more than one result record is retuned for a submitted record,
+                        the client will be charged for each result record returned.
+                      </h4>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <h4>
+                        •	IDAS API Integration
+                      </h4>
+                    </td>
+                    <td>
+                      <h4>
+                        •	This is a transaction-based web-enabled service
+                        in terms of which the IDAS service will
+                        link directly to the Client’s CRM tool.
+                        The Client will request IDAS information
+                        from their CRM tool using a web service call
+                        to the Service Provider’s IDAS database.
+                      </h4>
+                    </td>
+                    <td>
+                      <h4>
+                        •	Every web service call made will be charged for.
+                        •	The Client will be billed on either the 24th or 25th of each month, with such invoice
+                        being payable within 7 days of receipt of the invoice by the Client.
+                      </h4>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<button data-toggle="modal" id="error" data-target="#errormodal" [hidden]="true"></button>
+
+<div id="errormodal" class="modal" tabindex="-1" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div  style="background: linear-gradient(#103f56, #094868, #00527c, #066f9e) !important;" class="modal-header">
+        <h4 style="color:#ffffff" class="modal-title">IDAS says:</h4>
+      </div>
+      <div class="modal-body">{{message}}</div>
+      <div class="modal-footer">
+        <button *ngIf="home == false" type="button" class="btn btn-accent" data-dismiss="modal">Ok</button>
+        <button *ngIf="home == true" type="button" (click)="homepath()" class="btn btn-accent" data-dismiss="modal">Ok</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<div id="SendEmail" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header"  style="background: linear-gradient(#103f56, #094868, #00527c, #066f9e) !important;text-align:center;text-transform:uppercase;color:#ffffff"  >
+        Enter Email id
+        <button type="button" class="close" data-dismiss="modal"
+                aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="m-portlet__body">
+          <div class="form-group m-form__group row">
+            <div class="col-lg-2"></div>
+            <label class="col-form-label col-lg-2 col-md-4 col-sm-12">Email</label>
+            <div class="col-lg-6 col-md-8 col-sm-12">
+              <input class="form-control m-input border-dark" type="text"
+                     name="email" placeholder="Enter your billing email...."
+                     [(ngModel)]="_signupRequest.toMail">
+            </div>
+            <div class="col-lg-2"></div>
+          </div>
+          <div class="form-group m-form__group row" style="text-align:center">
+            <div class="col-md-4"></div>
+            <div class="col-md-4">
+              <button type="button" data-dismiss="modal"
+                      class="btn btn-success"
+                      (click)="accept()">
+                Send Email
+              </button>
+            </div>
+            <div class="col-md-4"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

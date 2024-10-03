@@ -1,0 +1,1114 @@
+<head>
+  <title>Online Tracing Solution</title>
+</head>
+
+<div class="m-grid__item m-grid__item--fluid m-grid m-grid--ver-desktop m-grid--desktop m-body" style="font-size:medium">
+
+  <div class="m-grid__item m-grid__item--fluid m-wrapper">
+
+    <!--<div *ngIf="loading==true" id="cover"></div>
+    <div class="m-portlet__head">
+      <div class="m-portlet__head-caption">
+        <div class="m-portlet__head-title">
+          <h3 class="m-portlet__head-text" style="
+                                                 color: #ffffff;
+                                                 font-size: 14px;
+                                                 padding: 5px 14px 3px 14px;
+                 background: linear-gradient(#103f56, #094868, #00527c, #066f9e) !important;">
+            CATEGORY
+          </h3>
+          <ul style="padding-left:8px" class="m-subheader__breadcrumbs m-nav m-nav--inline">
+            <li>
+              <div>
+                <select style="padding: 4px 9px 4px 10px !important;" (change)="getpoints()" placeholder="Please select" name="profileType" [(ngModel)]="profileType">
+                  <option value="1">CONSUMER SEARCH</option>
+                  <option value="2">COMMERCIAL SEARCH</option>
+                  <option value="3">ADDRESS SEARCH</option>
+                </select>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>-->
+
+    <div *ngIf="loading == false" id="content" class="m-content">
+      <div class="m-subheader" style="padding-top:12px !important">
+        <div 
+        *ngIf="IsRestrictedCustomer == 0 && IsRestrictedCustomerUser == 0">
+          <form (keyup.enter)="GlobalSearch()" >
+            <div id="global_search3" class="input-group" style="width:50%">
+              <input type="text" style="border-color: #bbbbbb !important;text-transform:uppercase" class="form-control" placeholder="GLOBAL SEARCH..." [(ngModel)]="globalSearch" name="globalSearch">
+              <button (click)="GlobalSearch()" style="margin:0px!important;color:#000000;padding:3px">
+                <i class="fa fa-search"></i>
+              </button>
+            </div>
+          </form>
+        </div>
+ 
+       
+        <div class="d-flex align-items-center">
+          <div class="mr-auto">
+            <h3 class="m-subheader__title ">
+              <button style="font-size:14px!important; width:78px !important; color: #016fa2 !important; text-transform:uppercase; font-weight : 600 !important;font-family: Avenir !important;" class="btn btn-link" (click)="tracing()">Tracing</button>
+
+              <i style=" padding: 6px 5px 0px 5px !important;" class="fa fa-angle-right"></i>
+              <button style="font-size:14px!important; width:219px !important;padding:0px!important;margin-right: -17px !important;margin-left:14px;color: #016fa2 !important;font-weight: 600 !important;font-family: Avenir !important;text-transform:uppercase" class="btn btn-link" (click)="consumerlist()">Consumer Search Results</button>
+              <i style=" padding: 6px 5px 0px 5px !important;" class="fa fa-angle-right"></i><span style="margin-left:14px">Consumer Information</span>
+            </h3>
+          </div>
+          <div class="m-portlet__head-tools">
+            <ul class="nav nav-pills nav-pills--brand m-nav-pills--align-right m-nav-pills--btn-pill m-nav-pills--btn-sm" role="tablist">
+              <li class="nav-item m-tabs__item">
+                <p style="color:#000000!important;margin:0px!important">Time Taken: {{timetaken}} seconds</p>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="m-content">
+        <div class="m-portlet">
+          <div class="m-portlet__body">
+            <!-- Pending Below line Inspirit Refno -->
+            <div class="form-group m-form__group row">
+
+              <div class="col-lg-7 col-md-7 col-sm-12 col-xs-12">
+                <h5><span style="color:#2b2c3a;font-size: 14px;font-family: Avenir !important;">INFORMATION OF:</span> <span style="color:#A11E21;font-size:14px"> {{userName}} [{{idNumber}}]</span></h5>
+              </div>
+
+              <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
+                <h5><span style="color:#2b2c3a;font-size: 14px;font-family: Avenir !important;">REFERENCE:</span> <span style="color:#A11E21;font-size:14px"> {{response.refNum}}</span></h5>
+              </div>
+
+              <!-- Pending next line Enquiry Input & probably name -->
+              
+            </div>
+
+              <h5><span style="color:#2b2c3a;font-size: 14px;font-family: Avenir !important;">ENQUIRY INPUT:</span> <span style="color:#A11E21;font-size:14px"> {{response.searchCriteria}}</span></h5>
+              
+
+              <div style="height:20px"></div>
+              <ngb-tabset type="nav nav-tabs">
+
+                <ngb-tab *ngIf="timelinePresent">
+                  <ng-template ngbTabTitle>TimeLine  &nbsp;</ng-template>
+
+                  <ng-template ngbTabContent>
+                    <div>
+                      <timeline [contacts]="response.timelines"></timeline>
+                    </div>
+                  </ng-template>
+                </ngb-tab>
+
+                <ngb-tab title="Profile" *ngIf="profilePresent">
+                  <ng-template ngbTabContent>
+                    <button type="submit" class="btn m-btn--md btn-dark pull-right" style="text-transform:uppercase;width: 14% !important;height: 13% !important;font-family: Avenir !important;font-size:12px" (click)="downloadReportMain()">Export</button>
+                    <button type="submit" class="btn m-btn--md btn-dark pull-right" style="text-transform:uppercase;width: 14% !important;height: 13% !important;font-family: Avenir !important;font-size:12px" (click)="downloadReport()">Export To pdf</button>
+
+                    <br><br>
+                    <form id="Personaldetail" class="m-form m-form--label-align-right" style="padding:12px;background-color:#f2f3f8">
+
+                      <div id="logoprint" style="display:none">
+                        <img src="../../assets/demo/demo2/media/img/logo/Web Application Logo.svg" class="img-fluid" alt="" width="160" height="80" style="max-width:95% !important;" />
+
+                      </div>
+
+
+                      <div *ngIf="printconsumer">
+                        <div class="m-portlet__body" style="background-color:#ffffff;padding:12px;border:1px solid #000000">
+
+                          <div class="form-group m-form__group row">
+                            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12"><h6 style="color:#2b2c3a;font-size:18px">NAME: {{sname}} {{fname}} {{secname}}</h6></div>
+                            <!--   Krishna start            -->
+                            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12"><h6 style="color:#2b2c3a;font-size:18px">EXTERNAL REFERENCE: {{response.customerRefNum}}</h6></div>
+                            <!--   Krishna end            -->
+                          </div>
+
+                          <div class="row" style="height:6px; width:100%; margin:0 !important; background-color:#066f9e"></div>
+
+
+                          <div class="form-group m-form__group row">
+                            <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 name">
+                              ID Number:
+                            </div>
+                            <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 value">
+                              {{response.idNumber}}
+                            </div>
+                            <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 name">
+                              Passport Number:
+                            </div>
+                            <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 value">
+                              {{response.passportNo}}
+                            </div>
+                          </div>
+
+                          <div class="form-group m-form__group row">
+                            <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 name">
+                              Birth Date:
+                            </div>
+                            <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 value">
+                              {{response.birthDate | date:'dd-MM-yyyy' }}
+                            </div>
+                            <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 name">
+                              Gender:
+                            </div>
+                            <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 value">
+                              {{response.genderInd}}
+                            </div>
+                          </div>
+                          <div class="form-group m-form__group row">
+
+                            <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 name">
+                              ID Issued Date:
+                            </div>
+                            <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 value">
+                              {{response.iDIssuedDate | date:'dd-MM-yyyy'}}
+                            </div>
+                            <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 name">
+                              Title Code:
+                            </div>
+                            <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 value">
+                              {{response.titleCode}}
+                            </div>
+                          </div>
+
+
+                          <div class="form-group m-form__group row">
+
+                            <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 name">
+                              Maiden Name:
+                            </div>
+                            <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 value">
+                              {{response.maidenName}}
+                            </div>
+
+                            <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 name">
+                              Initial:
+                            </div>
+                            <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 value">
+                              {{response.firstInitial}}
+                            </div>
+                          </div>
+                          <div class="form-group m-form__group row">
+
+
+
+                            <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 name">
+                              LSM:
+                              <span data-title="Indicates standard of living and disposable income with a range of 1 to 10">
+                                <img style="width:18px;margin-bottom:2px" src="../../assets/demo/demo2/media/img/Icons/Information.png" />
+                              </span>
+                            </div>
+                            <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 value">
+                              {{response.lsm}}
+                            </div>
+                            <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 name">
+                              Contact Score:
+                              <span data-title=" Predicts contactability of an individual"><img style="width:18px;margin-bottom:2px" src="../../assets/demo/demo2/media/img/Icons/Information.png"></span>
+                            </div>
+                            <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 value">
+                              {{response.contactScore}}
+                            </div>
+                          </div>
+                          <div class="form-group m-form__group row">
+
+                            <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 name">
+                              Risk Score:
+                              <span data-title="Payment propensity score based on public domain information"><img style="width:18px;margin-bottom:2px" src="../../assets/demo/demo2/media/img/Icons/Information.png"></span>
+                            </div>
+
+
+                            <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 value">
+                              {{response.riskScore}}
+                            </div>
+                          </div>
+                        </div>
+
+
+                        <div *ngIf="response.marriageDate" class="row" style="height:12px; width:100%; margin:0 !important; background-color:#f2f3f8"></div>
+                        <div *ngIf="response.marriageDate" class="m-portlet__body" style="background-color:#ffffff;padding:12px;border:1px solid #000000">
+
+                          <!-- Marital Information-->
+
+                          <div><h6 style="color:#2b2c3a">MARITAL INFORMATION</h6></div>
+                          <div class="row" style="height:6px; width:100%; margin:0 !important; background-color:#A11E21"></div>
+
+                          <div class="form-group m-form__group row">
+                            <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 name">
+                              Marital Status:
+                            </div>
+                            <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 value">
+                              {{response.maritalStatus}}
+                            </div>
+                            <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 name">
+                              Marriage Date:
+                            </div>
+                            <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 value">
+                              {{response.marriageDate| date:'dd-MM-yyyy'}}
+                            </div>
+                          </div>
+                          <div class="form-group m-form__group row">
+                            <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 name">
+                              Place Of Marriage:
+                            </div>
+                            <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 value">
+                              {{response.placeOfMarriage}}
+                            </div>
+                            <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 name">
+                              Spouse Date Of Birth:
+                            </div>
+                            <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 value">
+
+                              <!-- {{response.spouseIdnoOrDOB}} -->
+                              {{response.spouseIdnoOrDOB |  slice : 0  : 2 }}-{{response.spouseIdnoOrDOB |  slice : 2  : 4 }}-{{response.spouseIdnoOrDOB  |  slice : 4  : 6 }}
+                              <!--<button class="btn btn-link" style="padding:0px!important;height:20px!important; text-align: left;" (click)="searchprofile(response.spouseIdnoOrDOB,'spouse')"></button>-->
+                            </div>
+                          </div>
+                          <div class="form-group m-form__group row">
+                            <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 name">
+                              Spouse SurName:
+                            </div>
+                            <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 value">
+                              {{response.spouseSurName}}
+                            </div>
+                            <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 name">
+                              Spouse ForeNames:
+                            </div>
+                            <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 value">
+                              {{response.spouseForeNames}}
+                            </div>
+                          </div>
+                          <div class="form-group m-form__group row">
+                            <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 name">
+                              Name Combo:
+                            </div>
+                            <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 value">
+                              {{response.nameCombo}}
+                            </div>
+                          </div>
+                        </div>
+
+
+
+                        <div *ngIf="response.divorceDate" class="row" style="height:12px; width:100%; margin:0 !important; background-color:#f2f3f8"></div>
+                        <div *ngIf="response.divorceDate" class="m-portlet__body" style="background-color:#ffffff;padding:12px;border:1px solid #000000">
+
+                          <!--  Divorse Information-->
+
+                          <div><h6 style="color:#2b2c3a">DIVORCED INFORMATION</h6></div>
+                          <div class="row" style="height:6px; width:100%; margin:0 !important; background-color:#A11E21"></div>
+
+                          <div class="form-group m-form__group row">
+                            <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 name">
+                              Divorce Date:
+                            </div>
+                            <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 value">
+                              {{response.divorceDate | date:'dd-MM-yyyy'}}
+                            </div>
+                            <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 name">
+                              Divorce Issued By Court:
+                            </div>
+                            <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 value">
+                              {{response.divorceIssuedCourt}}
+                            </div>
+                          </div>
+                        </div>
+
+                        <div *ngIf="response.deceasedStatus =='Deceased'" class="row" style="height:12px; width:100%; margin:0 !important; background-color:#f2f3f8"></div>
+                        <div *ngIf="response.deceasedStatus =='Deceased'" class="m-portlet__body" style="background-color:#ffffff;padding:12px;border:1px solid #000000">
+
+                          <!-- Deceased Information -->
+                          <div><h6 style="color:#2b2c3a">DECEASE INFORMATION</h6></div>
+                          <div class="row" style="height:6px; width:100%; margin:0 !important; background-color:#A11E21"></div>
+
+
+
+
+                          <div class="m-form__section m-form__section--first">
+                            <div class="form-group m-form__group row">
+                              <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 name">
+                                Deceased Date:
+                              </div>
+                              <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 value">
+                                {{response.deceasedDate| date:'dd-MM-yyyy'}}
+                              </div>
+                              <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 name">
+                                Deceased Status:
+                              </div>
+                              <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 value">
+                                {{response.deceasedStatus}}
+                              </div>
+                            </div>
+                            <div class="form-group m-form__group row">
+                              <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 name">
+                                Place Of Death:
+                              </div>
+                              <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 value">
+                                {{response.placeOfDeath}}
+                              </div>
+                              <!--<div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 name">
+                      Cause Of Death:
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 value">
+                      {{response.causeOfDeath}}
+                    </div>-->
+                              
+                            </div>
+                          </div>
+                        </div>
+
+
+
+                        <div class="row" style="height:12px;width:100%; margin:0 !important; background-color:#f2f3f8"></div>
+
+                        <!--<div class="m-portlet__body" style="background-color:#ffffff;padding:12px;border:1px solid #000000">-->
+                        <!-- Updated Information-->
+                        <!--<div><h6 style="color:#2b2c3a">LAST UPDATED</h6></div>
+                <div class="row" style="height:6px; width:100%; margin:0 !important; background-color:#A11E21"></div>
+                <div class="form-group m-form__group row">
+                  <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 name">
+                    Created On Date:
+                  </div>
+                  <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 value">
+                    {{response.createdOnDate| date:'dd-MM-yyyy'}}
+                  </div>
+
+                  <div *ngIf="!response.spouseIdnoOrDOB" class="col-lg-3 col-md-6 col-sm-12 col-xs-12 name">
+                    Last Updated Date (Credit Bureau):
+                  </div>
+                  <div *ngIf="!response.spouseIdnoOrDOB" class="col-lg-3 col-md-6 col-sm-12 col-xs-12 value">
+                    {{response.lastUpdatedDate| date:'dd-MM-yyyy'}}
+                  </div>
+
+                  <div *ngIf="response.spouseIdnoOrDOB" class="col-lg-3 col-md-6 col-sm-12 col-xs-12 name">
+                    Last Updated Date (Home Affair):
+                  </div>
+                  <div *ngIf="response.spouseIdnoOrDOB" class="col-lg-3 col-md-6 col-sm-12 col-xs-12 value">
+                    {{response.lastupdatesHomeAffire| date:'dd-MM-yyyy'}}
+                  </div>
+
+                </div>
+              </div>-->
+                      </div>
+
+                      <!-- pending AKA start -->
+
+
+                      <div *ngIf="printaka" class="m-portlet__body" style="background-color:#ffffff;padding:12px;border:1px solid #000000">
+
+
+                        <!-- Krishna -->
+
+                        <div *ngIf="printaka" class="form-group m-form__group row">
+                          <div class="col-12">
+                            <div class="m-portlet__head">
+                              <div class="m-portlet__head-caption">
+                                <div class="m-portlet__head-title">
+                                  <h3 class="m-portlet__head-text" style="text-transform:uppercase;font-family:Avenir !important">
+                                    AKA NAME
+                                  </h3>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="table-responsive">
+                              <table class="table table-striped">
+                                <thead style="color:#ffffff;font-family:Avenir !important">
+                                  <tr>
+                                    <th class="tablevalue">Bureau Update</th>
+                                    <th class="tablevalue">Name</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  <tr *ngFor="let aka of response.akadet" style="font-family:Avenir !important">
+                                    <td type="date">{{ aka.lastUpdatedDate |date:'yyyy-MM-dd'}}</td>
+                                    <td>{{aka.akas}}</td>
+                                  </tr>
+                                </tbody>
+                              </table>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <!--
+              <div *ngIf="printaka" class="row" style="height:12px; width:100%; margin:0 !important; background-color:#f2f3f8"></div>
+              <div><h6 style="color:#2b2c3a">AKA NAMES</h6></div>
+              <div class="row" style="height:6px; width:100%; margin:0 !important; background-color:#A11E21"></div>
+
+              <div class="form-group m-form__group row">
+                <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 name">
+                  Bureau Update:
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 name">
+                  Name:
+                </div>
+                <div *ngFor="let aka of response.akadet">
+                  <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 value">
+                    {{aka.LastupdatedDate | date:'dd-MM-yyyy'}}
+                  </div>
+
+                  <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 value">
+                    {{aka.akas}}
+                  </div>
+                </div>
+              </div>
+            </div>
+            -->
+
+
+
+
+
+
+                      <div id="DetailsList" style="display:none">
+                        <div *ngIf="addressPresent" class="form-group m-form__group row">
+                          <div class="col-12">
+                            <div class="m-portlet__head">
+                              <div class="m-portlet__head-caption">
+                                <div class="m-portlet__head-title">
+                                  <h3 class="m-portlet__head-text" style="text-transform:uppercase;font-family:Avenir !important">
+                                    Address Detail
+                                  </h3>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="table-responsive">
+                              <table class="table table-striped">
+                                <thead style="color:#ffffff;font-family:Avenir !important">
+                                  <tr>
+                                    <th class="tablevalue">Type</th>
+                                    <th class="tablevalue">Address</th>
+                                    <th class="tablevalue">Last Updated Date</th>
+                                    <th class="tablevalue">Created On Date</th>
+                                    <th class="tablevalue">Province</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  <tr *ngFor="let address of response.addresses" style="font-family:Avenir !important">
+                                    <td *ngIf="address.addressTypeInd == 'Residential'" data-title="Residential Address"><div style="display:none">{{address.addressTypeInd}}</div><img style="width:35px" src="../../assets/demo/demo2/media/img/Icons/Home-Address.png" /></td>
+                                    <td *ngIf="address.addressTypeInd == 'Postal'" data-title="Postal Address"><div style="display:none">{{address.addressTypeInd}}</div><img style="width:35px" src="../../assets/demo/demo2/media/img/Icons/Postal-Address.png" /></td>
+                                    <td *ngIf="address.addressTypeInd == 'Business'" data-title="Business Address"><div style="display:none">{{address.addressTypeInd}}</div><img style="width:35px" src="../../assets/demo/demo2/media/img/Icons/Work-Address.png" /></td>
+                                    <td *ngIf="address.addressTypeInd == null" data-title="UnKnown">{{null}}</td>
+                                    <td><button type="button" class="btn btn-link" style="padding:0px" (click)="showModal(address.fullAddress)">{{address.fullAddress}}</button></td>
+                                    <td type="date">{{ address.lastUpdatedDate |date:'yyyy-MM-dd'}}</td>
+                                    <td type="date">{{ address.createdOnDate | date:'yyyy-MM-dd'}}</td>
+                                    <td>{{address.province}}</td>
+                                  </tr>
+                                </tbody>
+                              </table>
+                            </div>
+                          </div>
+                        </div>
+                        <div *ngIf="contactPresent == true" class="form-group m-form__group row">
+                          <div class="col-12">
+                            <div class="m-portlet__head">
+                              <div class="m-portlet__head-caption">
+                                <div class="m-portlet__head-title">
+                                  <h3 class="m-portlet__head-text" style="text-transform:uppercase;font-family:Avenir !important">
+                                    Telephone Detail
+                                  </h3>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="table-responsive">
+                              <table class="table table-striped">
+                                <thead style="color:#ffffff;font-family:Avenir !important">
+                                  <tr>
+                                    <th>Type</th>
+                                    <th>Contact</th>
+                                    <th>People Linked</th>
+                                    <th>Created On Date</th>
+                                    <th>Last Updated Date</th>
+
+
+                                  </tr>
+                                </thead>
+                                <tbody>
+
+                                  <tr *ngFor="let list of response.contacts let i = index" style="font-family:Avenir !important">
+                                    <td *ngIf="list.type=='Home'" data-title="Home Number"><img style="width:35px" src="../../assets/demo/demo2/media/img/Icons/Telephone.png"><div style="display:none">{{list.type}}</div></td>
+                                    <td *ngIf="list.type=='Work'" data-title="Work Number"><img style="width:35px" src="../../assets/demo/demo2/media/img/Icons/Work-Address.png"><div style="display:none">{{list.type}}</div></td>
+                                    <td *ngIf="list.type=='Cell'" data-title="Cell Number"><img style="width:35px" src="../../assets/demo/demo2/media/img/Icons/Mobile.png" /><div style="display:none">{{list.type}}</div></td>
+                                    <td *ngIf="list.type=='Email'" data-title="E-Mail"><img style="width:35px" src="../../assets/demo/demo2/media/img/Icons/Email.png" /><div style="display:none">{{list.type}}</div></td>
+
+                                    <td *ngIf="list.type== null" data-title="UnKnown">{{null}}<div style="display:none">{{list.type}}</div></td>
+                                    <td class="tablename">
+                                      <button type="button" style="padding:0px" class="btn btn-link" (click)="showModalContact(list.telephoneNo,list.type,list.internationalDialingCode)">
+                                        {{list.telephoneNo}}
+                                      </button>
+                                    </td>
+                                    <td> +/- {{list.peopleLinked}}</td>
+                                    <td>{{list.createdonDate | date:'yyyy-MM-dd'}}</td>
+                                    <td>{{list.lastUpdatedDate |date:'yyyy-MM-dd'}}</td>
+
+                                  </tr>
+                                </tbody>
+                              </table>
+                            </div>
+                          </div>
+                        </div>
+                        <div *ngIf="debtPresent" class="form-group m-form__group row">
+                          <div class="col-12">
+                            <div class="m-portlet__head">
+                              <div class="m-portlet__head-caption">
+                                <div class="m-portlet__head-title">
+                                  <h3 class="m-portlet__head-text" style="text-transform:uppercase;font-family:Avenir !important">
+                                    Debt Review
+                                  </h3>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="table-responsive">
+                              <table class="table table-striped">
+                                <thead style="color:#ffffff;font-family:Avenir !important">
+                                  <tr>
+                                    <th class="tablevalue">
+                                      Debt Counsellor Registration Number
+                                    </th>
+                                    <th class="tablevalue">
+                                      DC First Name
+                                    </th>
+                                    <th class="tablevalue">
+                                      DC Surname
+                                    </th>
+                                    <th class="tablevalue">
+                                      Debt Review Status Code
+                                    </th>
+                                    <th class="tablevalue">
+                                      Application Created on Date
+                                    </th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  <tr *ngFor="let result of response.consumerDebtReview" style="font-family:Avenir !important">
+                                    <td class="tablename">
+                                      <button type="button" class="btn btn-link" style="padding:0px" (click)="showdetail(result.id)">
+                                        {{result.debtCounsellorRegistrationNo}}
+                                      </button>
+                                    </td>
+                                    <td class="tablename">
+                                      {{result.debtCounsellorFirstName }}
+                                    </td>
+                                    <td class="tablename">
+                                      {{result.debtCounsellorSurname }}
+                                    </td>
+                                    <td class="tablename">
+                                      {{result.debtReviewStatusCode  }}
+                                    </td>
+                                    <td class="tablename">
+                                      {{ result.applicationCreationDate |date:'yyyy-MM-dd'  }}
+                                    </td>
+                                  </tr>
+                                </tbody>
+                              </table>
+                            </div>
+                          </div>
+                        </div>
+                        <div *ngIf="judgePresent" class="form-group m-form__group row">
+                          <div class="col-12">
+                            <div class="m-portlet__head">
+                              <div class="m-portlet__head-caption">
+                                <div class="m-portlet__head-title">
+                                  <h3 class="m-portlet__head-text" style="font-family:Avenir !important;text-transform:uppercase">
+                                    Consumer Judgement Data
+                                  </h3>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="table-responsive">
+                              <table class="table table-striped">
+                                <thead style="color:#ffffff;font-family:Avenir !important">
+                                  <tr>
+                                    <th class="tablevalue">CaseNumber</th>
+                                    <th class="tablevalue"> Case Filing Date</th>
+                                    <th class="tablevalue"> Case Type</th>
+                                    <th class="tablevalue"> Case Reason</th>
+                                    <th class="tablevalue">Plaintiff Name</th>
+                                    <th class="tablevalue">Created On Date</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  <tr *ngFor="let result of response.consumerjudgements" style="font-family:Avenir !important">
+                                    <td class="tablename"><button type="button" class="btn btn-link" style="padding:0px" (click)="showdetail(result.id)">{{result.casenumber}}</button></td>
+                                    <td class="tablename">{{result.casefilingdate | date:'yyyy-MM-dd'}}</td>
+                                    <td class="tablename">{{result.casetype}}</td>
+                                    <td class="tablename">{{result.casereason}}</td>
+                                    <td class="tablename">{{result.plaintiffname}}</td>
+                                    <td class="tablename">{{result.createdodate| date:'yyyy-MM-dd'}}</td>
+                                  </tr>
+                                </tbody>
+                              </table>
+                            </div>
+                          </div>
+                        </div>
+                        <div *ngIf="employmentPresent" class="form-group m-form__group row">
+                          <div class="col-12">
+                            <div class="m-portlet__head">
+                              <div class="m-portlet__head-caption">
+                                <div class="m-portlet__head-title">
+                                  <h3 class="m-portlet__head-text" style="text-transform:uppercase;font-family:Avenir !important">
+                                    Employment
+                                  </h3>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="table-responsive">
+                              <table class="table table-striped">
+                                <thead>
+                                  <tr>
+                                    <th class="tablevalue">Commercial Name</th>
+                                    <th class="tablevalue">Designation</th>
+                                    <th class="tablevalue">Last updated Date</th>
+                                    <th class="tablevalue">Created On Date</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  <tr *ngFor="let employmentlist of response.employees">
+                                    <td class="tablename">{{employmentlist.employer}}</td>
+                                    <td class="tablename">{{employmentlist.occupation}}</td>
+                                    <td class="tablename">{{employmentlist.date | date:'yyyy-MM-dd'}}</td>
+                                    <td class="tablename">{{employmentlist.createdDate| date:'yyyy-MM-dd'}}</td>
+                                  </tr>
+                                </tbody>
+                              </table>
+                            </div>
+                          </div>
+                        </div>
+                        <div *ngIf="directorPresent" class="form-group m-form__group row">
+                          <div class="col-12">
+                            <div class="m-portlet__head">
+                              <div class="m-portlet__head-caption">
+                                <div class="m-portlet__head-title">
+                                  <h3 class="m-portlet__head-text" style="text-transform:uppercase;font-family:Avenir !important">
+                                    Directorship Details
+                                  </h3>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="table-responsive">
+                              <table class="table table-striped">
+                                <thead style="color:#ffffff;font-family:Avenir !important">
+                                  <tr>
+                                    <th>Commercial Name</th>
+                                    <th>Director Status Code</th>
+                                    <th>Appointment Date</th>
+                                    <th>Member Control Percentage</th>
+                                    <th>Profession</th>
+                                    <th>Last Updated Date</th>
+                                    <th>Created on Date</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  <tr *ngFor="let employmentlist of response.directorShips" style="font-family:Avenir !important">
+                                    <td>{{employmentlist.companyname}}</td>
+                                    <td>{{employmentlist.directorStatusCode}}</td>
+                                    <td>{{employmentlist.appointmentDate | date:'dd-MM-yyyy'}}</td>
+                                    <td>{{employmentlist.memberControlPerc}}</td>
+                                    <td>{{employmentlist.profession}}</td>
+                                    <td>{{employmentlist.lastUpdatedDate | date:'dd-MM-yyyy'}}</td>
+                                    <td>{{employmentlist.createdOnDate | date:'dd-MM-yyyy'}}</td>
+                                  </tr>
+                                </tbody>
+                              </table>
+                            </div>
+                          </div>
+                        </div>
+                        <div *ngIf="deedsPresent" class="form-group m-form__group row">
+                          <div class="col-12">
+                            <div class="m-portlet__head">
+                              <div class="m-portlet__head-caption">
+                                <div class="m-portlet__head-title">
+                                  <h3 class="m-portlet__head-text" style="text-transform:uppercase;font-family:Avenir !important">
+                                    Property Ownership Details
+                                  </h3>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="table-responsive">
+                              <table class="table table-striped">
+                                <thead style="color:#ffffff;font-family:Avenir !important">
+                                  <tr>
+                                    <th class="tablevalue">Transaction Type</th>
+                                    <th class="tablevalue">Date of Purchase / Sold</th>
+                                    <th class="tablevalue">Current Owner</th>
+                                    <th class="tablevalue">Address</th>
+                                    <th class="tablevalue">Township</th>
+                                    <th class="tablevalue">Sale/ Purchase Amount</th>
+                                    <!--<th class="tablevalue">Province</th>-->
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  <tr *ngFor="let property of response.propertyOwners" style="font-family:Avenir !important">
+                                    <td><button type="button" style="padding:0px" class="btn btn-link" (click)="showModal(property.propertyDeedId)">{{property.type}}</button></td>
+
+                                    <td>{{ property.datePurchase |date:'yyyy-MM-dd'}}</td>
+
+
+                                    <td class="tablevalue" *ngIf="property.isCurrentOwner == true">TRUE</td>
+                                    <td class="tablevalue" *ngIf="property.isCurrentOwner == false">FALSE</td>
+                                    <td class="tablevalue" *ngIf="property.isCurrentOwner == null">null</td>
+                                    <td>
+                                      {{property.fullAddress}}
+                                    </td>
+                                    <td>
+                                      {{property.town}}
+                                    </td>
+                                    <!--<td>{{property.province}}</td>-->
+          >
+                                    <td>> {{property.purchaseAmount | number:'.2'}}</td>
+                                  </tr>
+                                </tbody>
+                              </table>
+                            </div>
+                          </div>
+                        </div>
+                        <div *ngIf="relationPresent" class="form-group m-form__group row">
+                          <div class="col-12">
+                            <div class="m-portlet__head">
+                              <div class="m-portlet__head-caption">
+                                <div class="m-portlet__head-title">
+                                  <h3 class="m-portlet__head-text" style="text-transform:uppercase;font-family:Avenir !important">
+                                    RelationShip Link
+                                  </h3>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="table-responsive">
+                              <table class="table table-striped">
+                                <thead style="color:#ffffff;font-family:Avenir !important">
+                                  <tr>
+                                    <th>Link</th>
+                                    <th>Type</th>
+                                    <th>Link Value</th>
+                                    <th>Id Number</th>
+                                    <th>Full Name</th>
+                                    <td style="display:none">id</td>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  <tr *ngFor="let relation of response.relationships">
+                                    <td *ngIf="relation.type == 'Telephone'" data-title="Telephone Link"><img style="width:35px" src="../../assets/demo/demo2/media/img/Icons/Telephone.png" /></td>
+                                    <td *ngIf="relation.type == 'Director'" data-title="Director Link"><img style="width:35px" src="../../assets/demo/demo2/media/img/Icons/Work-Address.png" /></td>
+                                    <td *ngIf="relation.type == 'Property'" data-title="Property Link"><img style="width:35px" src="../../assets/demo/demo2/media/img/Icons/Property.png" /></td>
+                                    <td>{{relation.type}}</td>
+                                    <td>{{relation.keyMatch}}</td>
+                                    <td><button type="button" class="btn btn-link" style="padding:0px">{{relation.idNumber}}</button></td>
+                                    <td>{{relation.fullName}}</td>
+                                    <td style="display:none">{{relation.displayno}}</td>
+                                  </tr>
+                                </tbody>
+                              </table>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </form>
+                    <div class="form-group m-form__group row">
+                    </div>
+                    <div class="form-group m-form__group row">
+                      <div class="col-lg-4"></div>
+                      <div class="col-lg-5 col-md-8 col-sm-8 col-xs-8"></div>
+                      <div class="col-lg-3 col-md-4 col-sm-4 col-xs-4">
+                        <!-- <button type="submit" class="btn m-btn--md btn-dark pull-right" style="text-transform:uppercase;width: 100% !important;height: 94% !important;font-family: Avenir !important;font-size:14px" (click)="downloadpdf()">Download</button> -->
+                      </div>
+                    </div>
+                  </ng-template>
+                </ngb-tab>
+
+
+                <ngb-tab *ngIf="contactPresent">
+                  <ng-template ngbTabTitle>Contacts   &nbsp;<span *ngIf="response.contacts.length" style="font-size:1.0rem" class="m-badge m-badge--accent">{{response.contacts?.length}}</span></ng-template>
+                  <ng-template ngbTabContent>
+
+                    <div class="m-portlet">
+                      <form id="Personaldetail" class="m-form m-form--label-align-right" style="padding:12px;background-color:#f2f3f8">
+
+                        <div class="m-portlet__body" style="background-color:#ffffff;padding:12px;border:1px solid #000000">
+
+
+
+                          <div class="m-section">
+                            <div class="m-section__content">
+                              <div class="table-responsive">
+                                <table datatable [dtOptions]="dtOptions" class="table table-striped">
+                                  <thead>
+                                    <tr>
+                                      <th>Type</th>
+                                      <th class="fulladdress">Contact</th>
+                                      <th>People Linked</th>
+                                      <th>Created On Date</th>
+                                      <th>Last Updated Date</th>
+                                      <th>Info</th>
+                                    </tr>
+                                  </thead>
+                                  <tbody>
+
+                                    <tr *ngFor="let list of response.contacts let i = index">
+                                      <td *ngIf="list.type=='Home'" data-title="Home Number" style="text-align:center"><img style="width:30px" src="../../assets/demo/demo2/media/img/Icons/Telephone.png"><div style="display:none">{{list.type}}</div></td>
+                                      <td *ngIf="list.type=='Work'" data-title="Work Number" style="text-align:center"><img style="width:30px" src="../../assets/demo/demo2/media/img/Icons/Work-Address.png"><div style="display:none">{{list.type}}</div></td>
+                                      <td *ngIf="list.type=='Cell'" data-title="Cell Number" style="text-align:center"><img style="width:30px" src="../../assets/demo/demo2/media/img/Icons/Mobile.png" /><div style="display:none">{{list.type}}</div></td>
+                                      <td *ngIf="list.type=='Email'" data-title="E-Mail" style="text-align:center"><img style="width:30px" src="../../assets/demo/demo2/media/img/Icons/Email.png" /><div style="display:none">{{list.type}}</div></td>
+
+                                      <td *ngIf="list.type== null" data-title="UnKnown">{{null}}<div style="display:none">{{list.type}}</div></td>
+
+                                      <td class="fulladdress"
+                                          *ngIf="IsRestrictedCustomer == 0 && IsRestrictedCustomerUser == 0">
+                                        <button type="button" style="padding:0px;word-break: break-all;white-space: normal" class="btn btn-link" (click)="showModalContact(list.telephoneNo,list.type,list.internationalDialingCode)">
+                                          {{list.telephoneNo}}
+                                        </button>
+                                      </td>
+                                      <td class="fulladdress"
+                                          *ngIf="IsRestrictedCustomer == 1 || IsRestrictedCustomerUser == 1">
+                                        {{list.telephoneNo}}
+                                      </td>
+                                      <td> +/- {{list.peopleLinked}}</td>
+                                      <td>{{list.createdonDate | date:'yyyy-MM-dd'}}</td>
+                                      <td>{{list.lastUpdatedDate |date:'yyyy-MM-dd'}}</td>
+                                      <!--<td title="{{list.telephoneCodeInformation}}">{{list.telephoneCode}}</td>-->
+                                      ng
+                                      <td *ngIf="list.type != 'Email'" style="text-align:center"><img (click)="contactmodal(list.id)" style="width:30px" src="../../assets/demo/demo2/media/img/Icons/Information.png" /></td>
+                                      <td *ngIf="list.type == 'Email'">{{null}}</td>
+                                  </tbody>
+                                </table>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </form>
+                    </div>
+
+                  </ng-template>
+
+                </ngb-tab>
+
+                <ngb-tab *ngIf="addressPresent">
+                  <ng-template ngbTabTitle>Address   &nbsp;<span *ngIf="response.addresses.length" style="font-size:1.0rem" class="m-badge m-badge--accent">{{response.addresses?.length}}</span></ng-template>
+                  <ng-template ngbTabContent>
+                    <div>
+                      <addresslist [addresslist]="response.addresses" pagename="profile"></addresslist>
+                    </div>
+                  </ng-template>
+                </ngb-tab>
+
+                <ngb-tab *ngIf="employmentPresent">
+                  <ng-template ngbTabTitle>Employment  &nbsp;<span *ngIf="response.employees.length" style="font-size:1.0rem" class="m-badge m-badge--accent">{{response.employees?.length}}</span></ng-template>
+                  <ng-template ngbTabContent>
+                    <div>
+                      <employmentlist [employmentlist]="response.employees"></employmentlist>
+                    </div>
+                  </ng-template>
+                </ngb-tab>
+
+                <ngb-tab *ngIf="deedsPresent">
+                  <ng-template ngbTabTitle>Property Owners  &nbsp;<span *ngIf="response.propertyOwners.length" style="font-size:1.0rem" class="m-badge m-badge--accent">{{response.propertyOwners?.length}}</span></ng-template>
+                  <ng-template ngbTabContent>
+                    <div>
+                      <propertyownershipdetialsresults [property]="response.propertyOwners" pagename="profile"></propertyownershipdetialsresults>
+                    </div>
+                  </ng-template>
+
+                </ngb-tab>
+
+                <ngb-tab *ngIf="directorPresent">
+                  <ng-template ngbTabTitle>Director  &nbsp;<span *ngIf="response.directorShips.length" style="font-size:1.2rem" class="m-badge m-badge--accent">{{response.directorShips?.length}}</span></ng-template>
+
+                  <ng-template ngbTabContent>
+                    <div>
+                      <directorshiplist [directorship]="response.directorShips" pagename="profile"></directorshiplist>
+                    </div>
+                  </ng-template>
+                </ngb-tab>
+
+                <ngb-tab *ngIf="debtPresent">
+                  <ng-template ngbTabTitle>Debt Review   &nbsp;<span *ngIf="response.consumerDebtReview.length" style="font-size:1.0rem" class="m-badge m-badge--accent">{{response.consumerDebtReview?.length}}</span></ng-template>
+
+                  <ng-template ngbTabContent>
+                    <div>
+                      <consumerdebtreview [consumer]="response.consumerDebtReview"></consumerdebtreview>
+                    </div>
+                  </ng-template>
+                </ngb-tab>
+
+                <ngb-tab *ngIf="judgePresent">
+                  <ng-template ngbTabTitle>Judgement  &nbsp;<span *ngIf="response.consumerjudgements.length" class="m-badge m-badge--accent">{{response.consumerjudgements?.length}}</span></ng-template>
+
+                  <ng-template ngbTabContent>
+                    <div>
+                      <consumerjudgment [consumerjudgementlist]="response.consumerjudgements" pagename="profile"></consumerjudgment>
+                    </div>
+                  </ng-template>
+                </ngb-tab>
+
+                <ngb-tab *ngIf="relationPresent">
+                  <ng-template ngbTabTitle>Relationship Link  &nbsp;<span *ngIf="response.relationships.length" class="m-badge m-badge--accent">{{response.relationships?.length}}</span></ng-template>
+
+                  <ng-template ngbTabContent>
+                    <div>
+                      <relationshipLink [relationshipLinkList]="response.relationships"></relationshipLink>
+                    </div>
+                  </ng-template>
+                </ngb-tab>
+
+
+
+              </ngb-tabset>
+            </div>
+
+          </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+<button data-toggle="modal" id="nodata" data-target="#data" [hidden]="true"></button>
+
+<div id="data" class="modal" tabindex="-1" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div style="background: linear-gradient(#103f56, #094868, #00527c, #066f9e) !important;" class="modal-header">
+        <h4 style="color:#ffffff" class="modal-title">IDAS says:</h4>
+      </div>
+      <div class="modal-body">No Data available.</div>
+      <div class="modal-footer">
+        <button (click)="consumerlist()" type="button" class="btn btn-accent" data-dismiss="modal">Ok</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<button data-toggle="modal" id="nopoints" data-target="#point" [hidden]="true"></button>
+
+<div id="point" class="modal" tabindex="-1" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div style="background: linear-gradient(#103f56, #094868, #00527c, #066f9e) !important;" class="modal-header">
+        <h4 style="color:#ffffff" class="modal-title">IDAS says:</h4>
+      </div>
+      <div class="modal-body">No credits Available.</div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-accent" data-dismiss="modal">Ok</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+
+  #cover {
+    background: url("http://www.aveva.com/Images/ajax-loader.gif") no-repeat scroll center center;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    top: 0px;
+    left: 0px;
+  }
+
+  .modal-footer {
+    justify-content: center !important;
+  }
+
+  .blow {
+    height: 100px;
+    width: 100px;
+    background: tomato;
+    -webkit-print-color-adjust: exact;
+  }
+
+  .nav.nav-pills .nav-item:first-child, .nav.nav-tabs .nav-item:first-child {
+    margin-left: 6px !important;
+  }
+
+  .fa {
+    font-size: 1.2rem !important;
+  }
+
+  .col-md-3 {
+    -webkit-box-flex: 0;
+    -ms-flex: 0 0 25%;
+    flex: 0 0 25%;
+    max-width: 25%;
+    font-size: 0.9rem;
+    font-weight: normal;
+    vertical-align: middle;
+  }
+
+  h6 {
+    font-size: 12px;
+    font-weight: bold;
+  }
+
+  .nav.nav-pills .nav-link, .nav.nav-tabs .nav-link {
+    color: #ffffff !important;
+    background-color: #2b2c3a !important;
+    margin-right: -4px !important;
+  }
+
+  .m-badge.m-badge--accent {
+    background-color: #A11E21;
+    color: #fff;
+  }
+
+  .btn-dark {
+    color: #fff;
+    background-color: #A11E21;
+    border-color: #343a40;
+  }
+
+  input {
+    padding: 10px;
+    font-size: 12px !important;
+    border-color: #bbbbbb !important;
+    width: 80%;
+  }
+
+    input::placeholder {
+      color: #A11E21;
+      font-size: 12px !important;
+    }
+
+  [data-title]:hover:after {
+    opacity: 1;
+    transition: all 0.1s ease 0.5s;
+    visibility: visible;
+  }
+
+  [data-title]:after {
+    width: 100px;
+    font-family: Avenir !important;
+    content: attr(data-title);
+    background-color: #ffffff !important;
+    color: #094868 !important;
+    font-size: 12px !important;
+    position: absolute;
+    padding: 2px 4px 2px 4px;
+    margin-left: 15px !important;
+    margin-top: 15px !important;
+    white-space: normal;
+    opacity: 0;
+    border: 1px solid #111111;
+    z-index: 99999;
+    visibility: hidden;
+    text-transform: initial;
+  }
+
+
+  [data-title] {
+    position: relative;
+  }
+
+  @media (max-width: 1200px) {
+    #global_search3 {
+      width: 70% !important;
+      margin-bottom: 20px;
+    }
+  }
+
+  @media (max-width: 760px) {
+    #global_search3 {
+      width: 90% !important;
+      margin-bottom: 20px;
+    }
+  }
+</style>

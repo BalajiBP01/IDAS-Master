@@ -1,0 +1,11 @@
+
+<div class="modal-content">
+  <div style="background: linear-gradient(#103f56, #094868, #00527c, #066f9e) !important;" class="modal-header">
+    <h4 style="color:#ffffff" class="modal-title">IDAS says:</h4>
+  </div>
+  <div class="modal-body">{{message}}</div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-accent" (click)="ok()">Ok</button>
+    <button *ngIf="isconfirm" type="button" class="btn btn-accent"  (click)="close()">Cancel</button>
+  </div>
+</div>

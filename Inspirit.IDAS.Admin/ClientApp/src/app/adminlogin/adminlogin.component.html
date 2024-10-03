@@ -1,0 +1,455 @@
+<div class="m-grid m-grid--hor m-grid--root m-page" style="margin-top:-70px;margin-bottom:-60px">
+  <div class="m-grid__item m-grid__item--fluid m-grid m-grid--ver-desktop m-grid--desktop m-grid--tablet-and-mobile m-grid--hor-tablet-and-mobile m-login m-login--1 m-login--signin justify-content-center" id="m_login">
+    <div class="m-grid__item m-grid__item--order-tablet-and-mobile-2 m-login__aside">
+      <div class="m-stack m-stack--hor m-stack--mobile">
+        <div class="m-stack__item m-stack__item--fluid">
+
+          <div *ngIf="loading==true" id="cover"></div>
+
+
+          <div class="m-login__wrapper">
+            <div class="m-login__logo">
+              <a href="#">
+                <img style="width: 70%;margin-left: -40px;" src="../../assets/demo/demo12/media/img/logo/Login_Page_Logo_svg.svg" />
+              </a>
+            </div>
+            <div class="m-login__signin">
+              <div class="m-login__head">
+                <h3 class="m-login__title" style="text-transform:uppercase;font-family: Avenir !important;">SIGN IN IDAS ADMIN</h3>
+              </div>
+              <form class="m-login__form m-form" action="">
+                <div class="form-group m-form__group">
+                  <span class="icon-fix"><img src="../../assets/demo/demo12/media/img/logo/Login-username-icon.png" width="15" height="15" border="0" /></span>
+                  <input (keyup)="validation()" class="form-control m-input" type="text" [(ngModel)]="_request.userName" name="userName" placeholder="Enter UserName" autocomplete="off">
+                </div>
+                <div class="form-group m-form__group">
+                  <span class="icon-fix"><img src="../../assets/demo/demo12/media/img/logo/Login-password-icon.png" width="15" height="15" border="0" /></span>
+                  <input (keyup)="validation()" class="form-control m-input m-login__form-input--last" type="password" [(ngModel)]="_request.password" name="password" placeholder="Enter Password">
+                </div>
+                <div class="form-group m-form__group" *ngIf="!_response.isSucsess">
+                  <span class="errorMessageValue">{{errorMessage}}</span>
+                </div>
+                <div class="row m-login__form-sub">
+                </div>
+                <div class="m-login__form-action">
+                  <button id="login_button" class="btn btn-dark m-btn m-btn--pill m-btn--custom m-btn--air" (click)="login()">Sign In</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  #cover {
+    background: url("http://www.aveva.com/Images/ajax-loader.gif") no-repeat scroll center center;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    top: 0px;
+    left: 0px;
+    z-index:1 !important;
+  }
+  .m-content--skin-light2 .m-body{
+    background-color:transparent !important;
+  }
+  .m-login.m-login--1 .m-login__wrapper {
+    overflow: hidden;
+    padding: 0% 2rem 2rem 2rem !important;
+  }
+    .icon-fix {
+    position: relative;
+    top: 30px;
+  }
+
+  .m-login.m-login--1 .m-login__wrapper .m-login__form .m-login__form-action .btn {
+    display: inline-block;
+    text-align: center;
+    padding: 0.7rem 1rem;
+    border-radius: 10px;
+    width: 111px !important;
+  }
+
+  .errorMessageValue {
+    color: red;
+    font-size: 10px;
+  }
+
+  .fa {
+    font-size: 1.1rem !important;
+    padding-left: 7px !important;
+  }
+
+  .m-stack {
+    display: block;
+    width: 100%;
+    height: 100%;
+    border-radius: 2%;
+    padding: 55px 55px 37px 55px;
+    background: #ffffff;
+  }
+
+  .m-login.m-login--1 .m-login__wrapper .m-login__logo {
+    text-align: center;
+    margin: auto;
+    padding: 5px 0px 5px 0px;
+    border-radius: 2%;
+    background-color: #ffffff !important;
+    position: absolute;
+    margin-left: 10px;
+  }
+
+  .m-login.m-login--1 .m-login__wrapper .m-login__head .m-login__title {
+    text-align: center;
+    font-size: 1.5rem;
+    color: #21668b;
+    font-weight: 600;
+    padding: 130px 0px 0px 0px;
+  }
+
+  .m-login.m-login--1 .m-login__account .m-login__account-link {
+    font-size: 1.1rem;
+    font-weight: 400;
+    color: #ffffff !important;
+    padding-top: 10px;
+  }
+
+  .m-login.m-login--1 .m-login__wrapper .m-login__form .m-login__form-sub .m-link {
+    font-size: 10px;
+    color: #af0017;
+    text-transform: uppercase;
+  }
+
+  .m-login.m-login--1 .m-login__wrapper .m-login__form .m-form__group .form-control {
+    border-radius: 8px;
+    border: 2px solid #000000;
+    padding: 1rem 3rem;
+    margin: 0rem -1rem;
+    color: #000000;
+  }
+
+  .m-login.m-login--1 .m-login__wrapper .m-login__form .m-form__group {
+    margin: 0;
+    padding: 0;
+    position: relative;
+    margin-right: -23px !important;
+  }
+  .m-login.m-login--1 .m-login__account .m-login__account-msg {
+    font-size: 11px;
+    font-weight: 400;
+    color: #0a0a0a;
+    text-transform: uppercase;
+    margin-left: 17px;
+    margin-right: 26px;
+  }
+
+  @media (max-width: 768px) {
+    .m-content--skin-light2 .m-body {
+      background-color: transparent !important;
+    }
+    .m-login.m-login--1[_ngcontent-c2] .m-login__wrapper[_ngcontent-c2] .m-login__form[_ngcontent-c2] .m-form__group[_ngcontent-c2] {
+      margin: 0;
+      padding: 0;
+      position: relative;
+      margin-right: -16px !important;
+    }
+
+    .m-stack[_ngcontent-c2] {
+      display: block;
+      width: 50%;
+      margin-left: 25%;
+      height: 100%;
+      border-radius: 2%;
+      padding: 15px 5px 15px 15px;
+      background: #ffffff;
+    }
+
+    .m-login.m-login--1 .m-login__aside .m-login__wrapper {
+      padding-top: 2rem;
+      padding: 0px 0px 0px 42px;
+    }
+
+    .m-login.m-login--1[_ngcontent-c2] .m-login__wrapper[_ngcontent-c2] .m-login__form[_ngcontent-c2] .m-login__form-action[_ngcontent-c2] .btn[_ngcontent-c2] {
+      display: inline-block;
+      text-align: center;
+      padding: 0.7rem 1rem;
+      border-radius: 10px;
+      width: 111px !important;
+      margin-left: -17px;
+    }
+
+    .m-login.m-login--1[_ngcontent-c2] .m-login__wrapper[_ngcontent-c2] .m-login__head[_ngcontent-c2] .m-login__title[_ngcontent-c2] {
+      text-align: center;
+      font-size: 1.5rem;
+      color: #21668b;
+      font-weight: 600;
+      padding: 130px 0px 0px 2px;
+      margin: 0px 71px 0px 20px;
+    }
+
+    .m-login.m-login--1[_ngcontent-c2] .m-login__account[_ngcontent-c2] .m-login__account-msg[_ngcontent-c2] {
+      font-size: 11px;
+      font-weight: 400;
+      color: #0a0a0a;
+      text-transform: uppercase;
+      table-layout: center;
+      margin: 0px 27px 0px 20px;
+    }
+
+    .m--align-right {
+      text-align: right;
+      margin-left: -52px;
+    }
+
+    .m-login.m-login--1[_ngcontent-c2] .m-login__wrapper[_ngcontent-c2] .m-login__form[_ngcontent-c2] .m-form__group[_ngcontent-c2] .form-control[_ngcontent-c2] {
+      border-radius: 8px;
+      border: 2px solid #000000;
+      padding: 1.5rem 4rem;
+      margin: 0rem -1rem;
+      color: #000000;
+      margin-left: -23px;
+    }
+  }
+
+  @media (max-width: 415px) {
+    .m-content--skin-light2 .m-body {
+      background-color: transparent !important;
+    }
+    .m-grid.m-grid--hor[_ngcontent-c2]:not(.m-grid--desktop):not(.m-grid--desktop-and-tablet):not(.m-grid--tablet):not(.m-grid--tablet-and-mobile):not(.m-grid--mobile) > .m-grid__item.m-grid__item--fluid[_ngcontent-c2], .m-grid.m-grid--hor[_ngcontent-c2]:not(.m-grid--desktop):not(.m-grid--desktop-and-tablet):not(.m-grid--tablet):not(.m-grid--tablet-and-mobile):not(.m-grid--mobile) > .m-grid__item.m-grid__item--fluid-general[_ngcontent-c2] {
+      margin-top: -70px;
+    }
+
+    .m-stack[_ngcontent-c2] {
+      display: block;
+      width: 100%;
+      margin-left: 1%;
+      height: 100%;
+      border-radius: 2%;
+      padding: 15px 5px 15px 15px;
+      background: #ffffff;
+    }
+
+    .m-login.m-login--1 .m-login__aside .m-login__wrapper {
+      padding-top: 2rem;
+      padding: 0px 0px 0px 42px;
+    }
+
+    .m-login.m-login--1[_ngcontent-c2] .m-login__wrapper[_ngcontent-c2] .m-login__form[_ngcontent-c2] .m-login__form-action[_ngcontent-c2] .btn[_ngcontent-c2] {
+      display: inline-block;
+      text-align: center;
+      padding: 0.7rem 1rem;
+      border-radius: 10px;
+      width: 111px !important;
+      margin-left: -65px;
+    }
+
+    .m-login.m-login--1[_ngcontent-c2] .m-login__wrapper[_ngcontent-c2] .m-login__head[_ngcontent-c2] .m-login__title[_ngcontent-c2] {
+      text-align: center;
+      font-size: 1.5rem;
+      color: #21668b;
+      font-weight: 600;
+      padding: 130px 0px 0px 2px;
+      margin: 0px 71px 0px 20px;
+    }
+
+    .m-login.m-login--1[_ngcontent-c2] .m-login__account[_ngcontent-c2] .m-login__account-msg[_ngcontent-c2] {
+      font-size: 11px;
+      font-weight: 400;
+      color: #0a0a0a;
+      text-transform: uppercase;
+      table-layout: center;
+      margin: 0px 27px 0px 20px;
+    }
+
+    .m--align-right {
+      text-align: right;
+      margin-left: -52px;
+    }
+
+    .m-login.m-login--1[_ngcontent-c2] .m-login__wrapper[_ngcontent-c2] .m-login__form[_ngcontent-c2] .m-form__group[_ngcontent-c2] .form-control[_ngcontent-c2] {
+      border-radius: 8px;
+      border: 2px solid #000000;
+      padding: 1.5rem 4rem;
+      margin: 0rem -1rem;
+      color: #000000;
+      margin-left: -23px;
+    }
+
+    .m-login.m-login--1[_ngcontent-c2] .m-login__wrapper[_ngcontent-c2] .m-login__logo[_ngcontent-c2] {
+      text-align: center;
+      margin: auto;
+      margin-left: 0px;
+      padding: 5px 0px 5px 0px;
+      border-radius: 2%;
+      background-color: #ffffff !important;
+      position: absolute;
+    }
+  }
+
+
+  @media (max-width: 380px) {
+    .m-content--skin-light2 .m-body {
+      background-color: transparent !important;
+    }
+    .m-login.m-login--1[_ngcontent-c2] .m-login__wrapper[_ngcontent-c2] .m-login__form[_ngcontent-c2] .m-form__group[_ngcontent-c2] {
+      margin: 0;
+      padding: 0;
+      position: relative;
+      margin-right: -14px !important;
+    }
+
+    .m-grid.m-grid--hor[_ngcontent-c2]:not(.m-grid--desktop):not(.m-grid--desktop-and-tablet):not(.m-grid--tablet):not(.m-grid--tablet-and-mobile):not(.m-grid--mobile) > .m-grid__item.m-grid__item--fluid[_ngcontent-c2], .m-grid.m-grid--hor[_ngcontent-c2]:not(.m-grid--desktop):not(.m-grid--desktop-and-tablet):not(.m-grid--tablet):not(.m-grid--tablet-and-mobile):not(.m-grid--mobile) > .m-grid__item.m-grid__item--fluid-general[_ngcontent-c2] {
+     
+      margin-top: -70px;
+    }
+
+    .m-stack[_ngcontent-c2] {
+      display: block;
+      width: 100%;
+      margin-left: 1%;
+      height: 100%;
+      border-radius: 2%;
+      padding: 15px 5px 15px 15px;
+      background: #ffffff;
+    }
+
+    .m-login.m-login--1 .m-login__aside .m-login__wrapper {
+      padding-top: 2rem;
+      padding: 0px 0px 0px 42px;
+    }
+
+    .m-login.m-login--1[_ngcontent-c2] .m-login__wrapper[_ngcontent-c2] .m-login__form[_ngcontent-c2] .m-login__form-action[_ngcontent-c2] .btn[_ngcontent-c2] {
+      display: inline-block;
+      text-align: center;
+      padding: 0.7rem 1rem;
+      border-radius: 10px;
+      width: 111px !important;
+      margin-left: -65px;
+    }
+
+    .m-login.m-login--1[_ngcontent-c2] .m-login__wrapper[_ngcontent-c2] .m-login__head[_ngcontent-c2] .m-login__title[_ngcontent-c2] {
+      text-align: center;
+      font-size: 1.5rem;
+      color: #21668b;
+      font-weight: 600;
+      padding: 130px 0px 0px 2px;
+      margin: 0px 71px 0px 20px;
+    }
+
+    .m-login.m-login--1[_ngcontent-c2] .m-login__account[_ngcontent-c2] .m-login__account-msg[_ngcontent-c2] {
+      font-size: 11px;
+      font-weight: 400;
+      color: #0a0a0a;
+      text-transform: uppercase;
+      table-layout: center;
+      margin: 0px 27px 0px 20px;
+    }
+
+    .m--align-right {
+      text-align: right;
+      margin-left: -52px;
+    }
+
+    .m-login.m-login--1[_ngcontent-c2] .m-login__wrapper[_ngcontent-c2] .m-login__form[_ngcontent-c2] .m-form__group[_ngcontent-c2] .form-control[_ngcontent-c2] {
+      border-radius: 8px;
+      border: 2px solid #000000;
+      padding: 1.5rem 4rem;
+      margin: 0rem -1rem;
+      color: #000000;
+      margin-left: -23px;
+    }
+
+    .m-login.m-login--1[_ngcontent-c2] .m-login__wrapper[_ngcontent-c2] .m-login__logo[_ngcontent-c2] {
+      text-align: center;
+      margin: auto;
+      margin-left: -20px;
+      padding: 5px 0px 5px 0px;
+      border-radius: 2%;
+      background-color: #ffffff !important;
+      position: absolute;
+    }
+  }
+
+  @media (max-width: 320px) {
+    .m-content--skin-light2 .m-body {
+      background-color: transparent !important;
+    }
+    .m-grid.m-grid--hor[_ngcontent-c2]:not(.m-grid--desktop):not(.m-grid--desktop-and-tablet):not(.m-grid--tablet):not(.m-grid--tablet-and-mobile):not(.m-grid--mobile) > .m-grid__item.m-grid__item--fluid[_ngcontent-c2], .m-grid.m-grid--hor[_ngcontent-c2]:not(.m-grid--desktop):not(.m-grid--desktop-and-tablet):not(.m-grid--tablet):not(.m-grid--tablet-and-mobile):not(.m-grid--mobile) > .m-grid__item.m-grid__item--fluid-general[_ngcontent-c2] {
+     
+      margin-top: -70px;
+    }
+
+    .m-stack[_ngcontent-c2] {
+      display: block;
+      width: 100%;
+      margin-left: 0%;
+      height: 100%;
+      border-radius: 2%;
+      padding: 15px 0px 9px 0px;
+      background: #ffffff;
+    }
+
+    .m-login.m-login--1 .m-login__aside .m-login__wrapper {
+      padding-top: 2rem;
+      padding: 0px 0px 0px 42px;
+    }
+
+    .m-login.m-login--1[_ngcontent-c2] .m-login__wrapper[_ngcontent-c2] .m-login__form[_ngcontent-c2] .m-login__form-action[_ngcontent-c2] .btn[_ngcontent-c2] {
+      display: inline-block;
+      text-align: center;
+      padding: 0.7rem 1rem;
+      border-radius: 10px;
+      width: 111px !important;
+      margin-left: -65px;
+    }
+
+    .m-login.m-login--1[_ngcontent-c2] .m-login__wrapper[_ngcontent-c2] .m-login__head[_ngcontent-c2] .m-login__title[_ngcontent-c2] {
+      text-align: center;
+      font-size: 1.5rem;
+      color: #21668b;
+      font-weight: 600;
+      padding: 130px 0px 0px 2px;
+      margin: 0px 71px -22px 20px;
+    }
+
+    .m-login.m-login--1[_ngcontent-c2] .m-login__account[_ngcontent-c2] .m-login__account-msg[_ngcontent-c2] {
+      font-size: 10px;
+      font-weight: 400;
+      color: #0a0a0a;
+      text-transform: uppercase;
+      margin: 0px 0px 0px 0px;
+    }
+
+    .m--align-right {
+      text-align: right;
+      margin-left: -52px;
+    }
+
+    .m-login.m-login--1[_ngcontent-c2] .m-login__wrapper[_ngcontent-c2] .m-login__form[_ngcontent-c2] .m-form__group[_ngcontent-c2] .form-control[_ngcontent-c2] {
+      border-radius: 8px;
+      border: 2px solid #000000;
+      padding: 1.5rem 4rem;
+      margin: 0rem -1rem;
+      color: #000000;
+      margin-left: -23px;
+    }
+
+    .m-login.m-login--1[_ngcontent-c2] .m-login__wrapper[_ngcontent-c2] .m-login__logo[_ngcontent-c2] {
+      text-align: center;
+      margin: auto;
+      margin-left: -30px;
+      padding: 5px 0px 5px 0px;
+      border-radius: 2%;
+      background-color: #ffffff !important;
+      position: absolute;
+    }
+  }
+</style>
+
+
+

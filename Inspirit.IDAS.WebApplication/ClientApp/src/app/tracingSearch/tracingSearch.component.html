@@ -1,0 +1,528 @@
+<script>
+  $("#searchCityOfBirth").on('focusout', function () {
+    $.ajax({
+      url: "/Criminals/GetProvinceOfBirth",
+      type: "GET",
+      dataType: "json",
+      data: { fetch: $("#searchCityOfBirth").val() },
+      success: function (query) {
+        $("#searchCityOfBirth").val(query[0]);
+      },
+    });
+  });
+</script>
+<!-- Is Not Restricted -->
+<div *ngIf="IsRestrictedCustomer == 0 && IsRestrictedCustomerUser == 0" class="m-grid__item m-grid__item--fluid m-grid m-grid--ver-desktop m-grid--desktop m-body">
+  <div class="m-grid__item m-grid__item--fluid m-wrapper">
+    <div *ngIf="loading==true" id="cover"></div>
+    <div class="m-subheader " style="padding-top:12px !important">
+      <form *ngIf="profileType != 3" (keyup.enter)="GlobalSearch()">
+
+        <div class="input-group" id="global_search" style="width: 50%">
+          <input type="text" style="border-color: #bbbbbb !important;text-transform:uppercase" class="form-control" placeholder="GLOBAL SEARCH..." [(ngModel)]="globalSearch" name="globalSearch">
+          <button (click)="GlobalSearch()" style="margin:0px!important;color:#000000;padding:3px">
+            <i class="fa fa-search"></i>
+          </button>
+
+        </div>
+      </form>
+      <div class="d-flex align-items-center">
+        <div class="mr-auto">
+          <h3 class="m-subheader__title ">Tracing</h3>
+        </div>
+      </div>
+    </div>
+    <div class="m-content">
+      <div class="m-portlet ">
+
+        <div class="m-portlet m-portlet--full-height ">
+          <div class="m-portlet__head">
+            <div class="m-portlet__head-caption">
+              <div class="m-portlet__head-title">
+                <h3 class="m-portlet__head-text" style="
+                                                 color: #ffffff;
+                                                 font-size: 14px;
+                                                 padding: 5px 14px 3px 14px;
+                 background: linear-gradient(#103f56, #094868, #00527c, #066f9e) !important;">
+                  CATEGORY
+                </h3>
+                
+               
+                <!--<label for="browser">Choose your browser from the list:</label>
+                <input list="browsers" name="browser" id="browser">
+
+                <datalist id="browsers">
+                  <option value="Edge">
+                  <option value="Firefox">
+                  <option value="Chrome">
+                  <option value="Opera">
+                  <option value="Safari">
+                </datalist>-->
+
+                <ul style="padding-left:8px" class="m-subheader__breadcrumbs m-nav m-nav--inline">
+                  <li>
+                    <div>
+                      <select style="padding: 4px 9px 4px 10px !important;" (change)="getpoints()" placeholder="Please select" name="profileType" [(ngModel)]="profileType">
+                        <option value="1">CONSUMER SEARCH</option>
+                        <option value="2">COMMERCIAL SEARCH</option>
+                        <option value="3">ADDRESS SEARCH</option>
+                      </select>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+
+          <!--<input asp-for="CityOfBirth" class="form-control" autocomplete="off" id="searchCityOfBirth" (keypress)="submit(778894523)"/>-->
+
+          <div class="m-portlet__body  m-portlet__body--no-padding">
+
+            <div class="tab-content">
+              <form class="m-form m-form--fit m-form--label-align-right" *ngIf="profileType == 1" (keyup.enter)="profilesearch($event)">
+                <div class="m-portlet__body">
+                  <div class="m-form__section m-form__section--first">
+                    <div class="form-group m-form__group row">
+                    </div>
+                    <!--Padmavati code start-->
+                    <div class="form-group m-form__group row" style="padding-bottom:0px !important">
+                      <label class="col-lg-2 col-md-2 col-form-label ">Enquiry Reason</label>
+                      <div class="col-lg-4 col-md-4">
+                        <select class="form-select" style=" width: 80%;"
+                                name="enquiryReason" [(ngModel)]="_tracingRequest.enquiryReason">
+                          <option *ngFor="let type of enquiryReasons"
+                                  value="{{type.value}}" >
+
+                            {{type.text}}
+                          </option>
+                        </select>
+                      </div>
+
+                      <label class="col-lg-2 col-md-2 col-form-label">Address:</label>
+                      <div class="col-lg-4 col-md-4 ">
+                        <input type="text" style="border-color: #bbbbbb !important;text-transform:uppercase" class="form-control m-input" [(ngModel)]="_tracingRequest.address" name="address" autocomplete="off" (keypress)="AddressonKey($event)">
+                      </div>
+                    </div>
+                    <!--Padmavati code end-->
+
+                    <div class="form-group m-form__group row" style="padding-bottom:0px !important">
+                      <!--<label class="col-lg-2 col-md-2 col-form-label ">Id Number/Passport Number:</label>
+                      <div class="col-lg-4 col-md-4">
+                        <input type="text" style="border-color: #bbbbbb !important;text-transform:uppercase" class="form-control m-input" [(ngModel)]="_tracingRequest.iDNumber" ng-disabled="expression" name="iDNumber" autocomplete="off" (keypress)="onKey($event)">
+                      </div>-->
+                       <!--padmavati added new code for separate ID and Passport-->
+                        <label class="col-lg-2 col-md-2 col-form-label ">Id Number:</label>
+                      <div class="col-lg-4 col-md-4">
+                        <input type="text" style="border-color: #bbbbbb !important;text-transform:uppercase" class="form-control m-input" [(ngModel)]="_tracingRequest.iDNumber" ng-disabled="expression" name="iDNumber" autocomplete="off" (keypress)="onKey($event)">
+                      </div>
+                      <label class="col-lg-2 col-md-2 col-form-label ">Passport Number:</label>
+                      <div class="col-lg-4 col-md-4">
+                        <input type="text" style="border-color: #bbbbbb !important;text-transform:uppercase" class="form-control m-input" [(ngModel)]="_tracingRequest.passport" ng-disabled="expression" name="passport" autocomplete="off" (keypress)="onKey($event)">
+                      </div>
+                      <!--<label class="col-lg-2 col-md-2 col-form-label">Address:</label>
+                      <div class="col-lg-4 col-md-4 ">
+                        <input type="text" style="border-color: #bbbbbb !important;text-transform:uppercase" class="form-control m-input" [(ngModel)]="_tracingRequest.address" name="address" autocomplete="off" (keypress)="AddressonKey($event)">
+                      </div>-->
+                    </div>
+                    <div class="form-group m-form__group row">
+                      <label class="col-lg-2  col-md-2 col-form-label">First Name:</label>
+                      <div class="col-lg-4 col-md-4">
+                        <input type="text" style="border-color: #bbbbbb !important;text-transform:uppercase" class="form-control m-input" [(ngModel)]="_tracingRequest.firstname" name="firstName" autocomplete="off" (keypress)="onlyAlphabets($event)">
+                      </div>
+                      <label class="col-lg-2 col-md-2 col-form-label">Surname:</label>
+                      <div class="col-lg-4  col-md-4">
+                        <input type="text" style="border-color: #bbbbbb !important;text-transform:uppercase" class="form-control m-input" [(ngModel)]="_tracingRequest.surname" name="surname" autocomplete="off" (keypress)="onlyAlphabets($event)">
+                      </div>
+                    </div>
+
+                    <!--padmavati code start-->
+                    <div class="form-group m-form__group row">
+                      <label class="col-lg-2  col-md-2 col-form-label">Voucher Code:</label>
+                      <div class="col-lg-4 col-md-4">
+                        <input type="text" style="border-color: #bbbbbb !important;text-transform:uppercase" class="form-control m-input" [(ngModel)]="_tracingRequest.voucherCode" name="voucherCode" autocomplete="off" (keypress)="onKey($event)">
+                      </div>
+                      <label class="col-lg-2 col-md-2 col-form-label">Your Reference:</label>
+                      <div class="col-lg-4  col-md-4">
+                        <input type="text" style="border-color: #bbbbbb !important;text-transform:uppercase" class="form-control m-input" [(ngModel)]="_tracingRequest.customerRefNum" name="customerRefNum" autocomplete="off" (keypress)="onKey($event)">
+                      </div>
+                    </div>
+                    <!-- padmavati code end -->
+
+                    <div class="form-group m-form__group row">
+                      <label class="col-lg-2  col-md-2 col-form-label">Phone Number:</label>
+                      <div class="col-lg-4  col-md-4">
+                        <input type="text" style="border-color: #bbbbbb !important;text-transform:uppercase" class="form-control m-input" [(ngModel)]="_tracingRequest.phoneNumber" name="phoneNumber" autocomplete="off" minlength="10" maxlength="10" (keypress)="isNumberKey($event)">
+                      </div>
+                      <label class="col-lg-2 col-md-2 col-form-label">Date of Birth:</label>
+                      <div class="col-lg-4  col-md-4">
+                        <input type="date" style="border-color: #bbbbbb !important;text-transform:uppercase" class="form-control m-input" [(ngModel)]="_tracingRequest.dateOfBirth" name="dateOfBirth">
+                      </div>
+                    </div>
+                    <div class="form-group m-form__group row">
+                      <label class="col-lg-2  col-md-2 col-form-label">DoB From Range:</label>
+                      <div class="col-lg-4 col-md-4">
+                        <input type="date" style="border-color: #bbbbbb !important;text-transform:uppercase" class="form-control m-input" [(ngModel)]="_tracingRequest.fromDate" name="fromDate">
+                      </div>
+                      <label class="col-lg-2 col-md-2 col-form-label">DoB To Range:</label>
+                      <div class="col-lg-4 col-md-4">
+                        <input type="date" style="border-color: #bbbbbb !important;text-transform:uppercase" class="form-control m-input" [(ngModel)]="_tracingRequest.toDate" name="toDate">
+                      </div>
+                    </div>
+                    <div style="text-align:center">
+                      <span style="color:red!important;font-size:12px!important">{{errormsg}}</span>
+                    </div>
+                    <br />
+                    <div class="form-group m-form__group row">
+                      <div class="col-lg-4 col-md-2 col-sm-2 col-xs-4"></div>
+                      <div class="col-lg-2 col-md-4 col-sm-4 col-xs-4" id="search-btn" style=" margin-left: 60px;
+    margin-right: -66px;">
+                        <button type="submit" class="btn btn-dark" style="width:60% !important;text-transform:uppercase" (click)="profilesearch()">Search</button>
+                      </div>
+                      <div class="col-lg-2 col-md-4 col-sm-4 col-xs-4">
+                        <button type="reset" class="btn btn-dark" style="width:60% !important;text-transform:uppercase">Reset</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </form>
+              <form class="m-form m-form--fit m-form--label-align-right" *ngIf="profileType == 2" (keyup.enter)="companysearch($event)">
+                <div class="m-portlet__body" *ngIf="profileType == 2">
+                  <div class="m-form__section m-form__section--first">
+                    <div class="form-group m-form__group row">
+                      <label class="col-lg-2 col-md-2 col-form-label">Commercial Register Number:</label>
+                      <div class="col-lg-4 col-md-4">
+                        <input type="text" style="border-color: #bbbbbb !important;text-transform:uppercase" class="form-control m-input" [(ngModel)]="_companyRequest.companyRegNumber" name="companyRegNumber" (keypress)="RegNumberonKey($event)">
+                      </div>
+                      <label class="col-lg-2 col-md-2 col-form-label">Commercial Name:</label>
+                      <div class="col-lg-4 col-md-4">
+                        <input type="text" style="border-color: #bbbbbb !important;text-transform:uppercase" class="form-control m-input" [(ngModel)]="_companyRequest.companyName" name="companyName" (keypress)="onlyAlphabets($event)">
+                      </div>
+                    </div>
+                    <div style="text-align:center">
+                      <span style="color:red!important;font-size:12px!important">{{errormsg}}</span>
+                    </div>
+                    <br />
+                    <div class="form-group m-form__group row">
+                      <div class="col-lg-4 col-md-2 col-sm-2 col-xs-4"></div>
+                      <div class="col-lg-2 col-md-4 col-sm-4 col-xs-4">
+                        <button type="submit" class="btn btn-dark" style="width:100%;text-transform:uppercase;font-size:12px" (click)="companysearch()">Search</button>
+                      </div>
+                      <div class="col-lg-2 col-md-4 col-sm-4 col-xs-4">
+                        <button type="reset" class="btn btn-dark" style="width:100%;text-transform:uppercase;font-size:12px">Reset</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </form>
+              <form class="m-form m-form--fit m-form--label-align-right" *ngIf="profileType == 3" (keyup.enter)="companysearch($event)">
+                <div class="m-portlet__body" *ngIf="profileType == 3">
+                  <div class="m-form__section m-form__section--first">
+                    <div class="form-group m-form__group row">
+                      <label class="col-lg-2 col-md-2 col-form-label">Address 1:</label>
+                      <div class="col-lg-4 col-md-4">
+                        <input type="text" style="border-color: #bbbbbb !important;text-transform:uppercase" class="form-control m-input" [(ngModel)]="_addressRequest.address1" name="address1">
+                      </div>
+                      <label class="col-lg-2 col-md-2 col-form-label">Address 2:</label>
+                      <div class="col-lg-4 col-md-4">
+                        <input type="text" style="border-color: #bbbbbb !important;text-transform:uppercase" class="form-control m-input" [(ngModel)]="_addressRequest.address2" name="address2">
+                      </div>
+                    </div>
+                    <div class="form-group m-form__group row">
+                      <label class="col-lg-2 col-md-2 col-form-label">Address 3:</label>
+                      <div class="col-lg-4 col-md-4">
+                        <input type="text" style="border-color: #bbbbbb !important;text-transform:uppercase" class="form-control m-input" [(ngModel)]="_addressRequest.address3" name="address3">
+                      </div>
+                      <label class="col-lg-2 col-md-2 col-form-label">Address 4:</label>
+                      <div class="col-lg-4 col-md-4">
+                        <input type="text" style="border-color: #bbbbbb !important;text-transform:uppercase" class="form-control m-input" [(ngModel)]="_addressRequest.address4" name="address4">
+                      </div>
+                    </div>
+                    <div class="form-group m-form__group row">
+                      <label class="col-lg-2 col-md-2 col-form-label">Postal Code:</label>
+                      <div class="col-lg-4 col-md-4">
+                        <input type="text" style="border-color: #bbbbbb !important;text-transform:uppercase" class="form-control m-input" [(ngModel)]="_addressRequest.postalCode" name="postalCode" (keypress)="isNumberKey($event)">
+                      </div>
+                    </div>
+                    <div style="text-align:center">
+                      <span style="color:red!important;font-size:12px!important">{{errormsg}}</span>
+                    </div>
+                    <br />
+                    <div class="form-group m-form__group row">
+                      <div class="col-lg-4 col-md-2 col-sm-2 col-xs-4"></div>
+                      <div class="col-lg-2 col-md-4 col-sm-4 col-xs-4">
+                        <button type="submit" class="btn btn-dark" style="width:100%;text-transform:uppercase;font-size:12px" (click)="address_search()">Search</button>
+                      </div>
+                      <div class="col-lg-2 col-md-4 col-sm-4 col-xs-4">
+                        <button type="reset" class="btn btn-dark" style="width:100%;text-transform:uppercase;font-size:12px">Reset</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Is Restricted -->
+<div *ngIf="IsRestrictedCustomer == 1 || IsRestrictedCustomerUser == 1" class="m-grid__item m-grid__item--fluid m-grid m-grid--ver-desktop m-grid--desktop m-body">
+  <div class="m-grid__item m-grid__item--fluid m-wrapper">
+    <div *ngIf="loading==true" id="cover"></div>
+    <div class="m-subheader " style="padding-top:12px !important">
+      <form *ngIf="profileType != 3" (keyup.enter)="GlobalSearch()">
+
+        <!-- <div class="input-group" id="global_search" style="width: 50%">
+          <input type="text" style="border-color: #bbbbbb !important;text-transform:uppercase" class="form-control" placeholder="GLOBAL SEARCH..." [(ngModel)]="globalSearch" name="globalSearch">
+          <button (click)="GlobalSearch()" style="margin:0px!important;color:#000000;padding:3px">
+            <i class="fa fa-search"></i>
+          </button>
+
+        </div> -->
+      </form>
+      <div class="d-flex align-items-center">
+        <div class="mr-auto">
+          <h3 class="m-subheader__title ">Tracing</h3>
+        </div>
+      </div>
+    </div>
+    <div class="m-content">
+      <div class="m-portlet ">
+
+        <div class="m-portlet m-portlet--full-height ">
+          <div class="m-portlet__head">
+            <div class="m-portlet__head-caption">
+              <div class="m-portlet__head-title">
+                <h3 class="m-portlet__head-text" style="
+                                                 color: #ffffff;
+                                                 font-size: 14px;
+                                                 padding: 5px 14px 3px 14px;
+                 background: linear-gradient(#103f56, #094868, #00527c, #066f9e) !important;">
+                  CATEGORY
+                </h3>
+                
+                <ul style="padding-left:8px" class="m-subheader__breadcrumbs m-nav m-nav--inline">
+                  <li>
+                    <div>
+                      <select style="padding: 4px 9px 4px 10px !important;" (change)="getpoints()" placeholder="Please select" name="profileType" [(ngModel)]="profileType">
+                        <option value="1">CONSUMER SEARCH</option>
+                        <option value="2">COMMERCIAL SEARCH</option>
+                        <option value="3">ADDRESS SEARCH</option>
+                      </select>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+
+          <!--<input asp-for="CityOfBirth" class="form-control" autocomplete="off" id="searchCityOfBirth" (keypress)="submit(778894523)"/>-->
+
+          <div class="m-portlet__body  m-portlet__body--no-padding">
+
+            <div class="tab-content">
+              <form class="m-form m-form--fit m-form--label-align-right" *ngIf="profileType == 1" (keyup.enter)="profilesearch($event)"  [formGroup]="userForm" novalidate name="userForm">
+                <div class="m-portlet__body">
+                  <div class="m-form__section m-form__section--first">
+                    <div class="form-group m-form__group row">
+                    </div>
+                    <div class="form-group m-form__group row" style="padding-bottom:0px !important">
+                      <label class="col-lg-2 col-md-2 col-form-label ">Id Number:</label>
+                      <div class="col-lg-4 col-md-4">
+                        <input type="text" style="border-color: #bbbbbb !important;text-transform:uppercase" class="form-control m-input" [(ngModel)]="_tracingRequest.iDNumber" ng-disabled="expression" formControlName="iDNumber" autocomplete="off" (keypress)="onKey($event)">
+                      </div>
+                      <!--<label class="col-lg-2 col-md-2 col-form-label ">Passport Number:</label>
+                      <div class="col-lg-4 col-md-4">
+                        <input type="text" style="border-color: #bbbbbb !important;text-transform:uppercase" class="form-control m-input" [(ngModel)]="_tracingRequest.passport" ng-disabled="expression" formControlName="iDNumber" autocomplete="off" (keypress)="onKey($event)">
+                      </div>-->
+                      <!--<label class="col-lg-2 col-md-2 col-form-label ">Id Number/Passport Number:</label>
+  <div class="col-lg-4 col-md-4">
+    <input type="text" style="border-color: #bbbbbb !important;text-transform:uppercase" class="form-control m-input" [(ngModel)]="_tracingRequest.iDNumber" ng-disabled="expression" formControlName="iDNumber" autocomplete="off" (keypress)="onKey($event)">
+  </div>-->
+                      <!-- <div *ngIf="getControl.iDNumber.touched && getControl.iDNumber.invalid" class="text-danger">
+    <div *ngIf="getControl.iDNumber.errors.required">ID Number/Passport Number is required.</div>
+  </div> -->
+                    </div>
+                    <div class="form-group m-form__group row">
+                      <label class="col-lg-2  col-md-2 col-form-label">First Name:</label>
+                      <div class="col-lg-4 col-md-4">
+                        <input type="text" style="border-color: #bbbbbb !important;text-transform:uppercase" class="form-control m-input" [(ngModel)]="_tracingRequest.firstname" formControlName="firstName" autocomplete="off" (keypress)="onlyAlphabets($event)">
+                      </div>
+                    </div>
+                    <div class="form-group m-form__group row">
+                      <label class="col-lg-2 col-md-2 col-form-label">Surname:</label>
+                      <div class="col-lg-4  col-md-4">
+                        <input type="text" style="border-color: #bbbbbb !important;text-transform:uppercase" class="form-control m-input" [(ngModel)]="_tracingRequest.surname" formControlName="surname" autocomplete="off" (keypress)="onlyAlphabets($event)">
+                      </div>
+                    </div>
+                    <div style="text-align:center">
+                      <span style="color:red!important;font-size:12px!important">{{errormsg}}</span>
+                    </div>
+                    <br />
+                    <div class="form-group m-form__group row">
+                      <div class="col-lg-4 col-md-2 col-sm-2 col-xs-4"></div>
+                      <div class="col-lg-2 col-md-4 col-sm-4 col-xs-4" id="search-btn" style=" margin-left: 60px;
+    margin-right: -66px;">
+                        <button type="submit" class="btn btn-dark" style="width:60% !important;text-transform:uppercase" (click)="profilesearch()">Search</button>
+                      </div>
+                      <div class="col-lg-2 col-md-4 col-sm-4 col-xs-4">
+                        <button type="reset" class="btn btn-dark" style="width:60% !important;text-transform:uppercase">Reset</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </form>
+              <form class="m-form m-form--fit m-form--label-align-right" *ngIf="profileType == 2" (keyup.enter)="companysearch($event)">
+                <div class="m-portlet__body" *ngIf="profileType == 2">
+                  <div class="m-form__section m-form__section--first">
+                    <div class="form-group m-form__group row">
+                      <label class="col-lg-2 col-md-2 col-form-label">Commercial Register Number:</label>
+                      <div class="col-lg-4 col-md-4">
+                        <input type="text" style="border-color: #bbbbbb !important;text-transform:uppercase" class="form-control m-input" [(ngModel)]="_companyRequest.companyRegNumber" name="companyRegNumber" (keypress)="RegNumberonKey($event)">
+                      </div>
+                      <label class="col-lg-2 col-md-2 col-form-label">Commercial Name:</label>
+                      <div class="col-lg-4 col-md-4">
+                        <input type="text" style="border-color: #bbbbbb !important;text-transform:uppercase" class="form-control m-input" [(ngModel)]="_companyRequest.companyName" name="companyName" (keypress)="onlyAlphabets($event)">
+                      </div>
+                    </div>
+                    <div style="text-align:center">
+                      <span style="color:red!important;font-size:12px!important">{{errormsg}}</span>
+                    </div>
+                    <br />
+                    <div class="form-group m-form__group row">
+                      <div class="col-lg-4 col-md-2 col-sm-2 col-xs-4"></div>
+                      <div class="col-lg-2 col-md-4 col-sm-4 col-xs-4">
+                        <button type="submit" class="btn btn-dark" style="width:100%;text-transform:uppercase;font-size:12px" (click)="companysearch()">Search</button>
+                      </div>
+                      <div class="col-lg-2 col-md-4 col-sm-4 col-xs-4">
+                        <button type="reset" class="btn btn-dark" style="width:100%;text-transform:uppercase;font-size:12px">Reset</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </form>
+              <form class="m-form m-form--fit m-form--label-align-right" *ngIf="profileType == 3" (keyup.enter)="companysearch($event)">
+                <div class="m-portlet__body" *ngIf="profileType == 3">
+                  <div class="m-form__section m-form__section--first">
+                    <div class="form-group m-form__group row">
+                      <label class="col-lg-2 col-md-2 col-form-label">Address 1:</label>
+                      <div class="col-lg-4 col-md-4">
+                        <input type="text" style="border-color: #bbbbbb !important;text-transform:uppercase" class="form-control m-input" [(ngModel)]="_addressRequest.address1" name="address1">
+                      </div>
+                      <label class="col-lg-2 col-md-2 col-form-label">Address 2:</label>
+                      <div class="col-lg-4 col-md-4">
+                        <input type="text" style="border-color: #bbbbbb !important;text-transform:uppercase" class="form-control m-input" [(ngModel)]="_addressRequest.address2" name="address2">
+                      </div>
+                    </div>
+                    <div class="form-group m-form__group row">
+                      <label class="col-lg-2 col-md-2 col-form-label">Address 3:</label>
+                      <div class="col-lg-4 col-md-4">
+                        <input type="text" style="border-color: #bbbbbb !important;text-transform:uppercase" class="form-control m-input" [(ngModel)]="_addressRequest.address3" name="address3">
+                      </div>
+                      <label class="col-lg-2 col-md-2 col-form-label">Address 4:</label>
+                      <div class="col-lg-4 col-md-4">
+                        <input type="text" style="border-color: #bbbbbb !important;text-transform:uppercase" class="form-control m-input" [(ngModel)]="_addressRequest.address4" name="address4">
+                      </div>
+                    </div>
+                    <div class="form-group m-form__group row">
+                      <label class="col-lg-2 col-md-2 col-form-label">Postal Code:</label>
+                      <div class="col-lg-4 col-md-4">
+                        <input type="text" style="border-color: #bbbbbb !important;text-transform:uppercase" class="form-control m-input" [(ngModel)]="_addressRequest.postalCode" name="postalCode" (keypress)="isNumberKey($event)">
+                      </div>
+                    </div>
+                    <div style="text-align:center">
+                      <span style="color:red!important;font-size:12px!important">{{errormsg}}</span>
+                    </div>
+                    <br />
+                    <div class="form-group m-form__group row">
+                      <div class="col-lg-4 col-md-2 col-sm-2 col-xs-4"></div>
+                      <div class="col-lg-2 col-md-4 col-sm-4 col-xs-4">
+                        <button type="submit" class="btn btn-dark" style="width:100%;text-transform:uppercase;font-size:12px" (click)="address_search()">Search</button>
+                      </div>
+                      <div class="col-lg-2 col-md-4 col-sm-4 col-xs-4">
+                        <button type="reset" class="btn btn-dark" style="width:100%;text-transform:uppercase;font-size:12px">Reset</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Reset Password Modal -->
+<button data-toggle="modal" id="pwdReset" data-target="#passwordReset" [hidden]="true"></button>
+
+<div id="passwordReset" class="modal" tabindex="-1" role="dialog" data-backdrop="static" data-keyboard="false">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div style="background: linear-gradient(#103f56, #094868, #00527c, #066f9e) !important;" class="modal-header">
+        <h4 style="color:#ffffff" class="modal-title">IDAS says:</h4>
+      </div>
+      <div class="modal-body"><h6>Your password is expired, please reset password </h6></div>
+     <div class="modal-footer">
+        <button (click)="resetPasswordRoute()" type="button" class="btn btn-accent" data-dismiss="modal">Reset Password</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .modal-footer {
+    justify-content: center !important;
+  }
+  #cover {
+    background: url("http://www.aveva.com/Images/ajax-loader.gif") no-repeat scroll center center;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    top: 0px;
+    left: 0px;
+    z-index: 1;
+  }
+
+  .btn-dark {
+    color: #fff;
+    background-color: #A11E21;
+    border-color: #343a40;
+  }
+
+  input {
+    padding: 10px;
+    font-size: 1.0em;
+    border-color: #bbbbbb !important;
+    width: 80%;
+  }
+
+    input::placeholder {
+      color: #A11E21;
+    }
+
+  .m-header--fixed .m-body {
+    padding-top: 80px !important;
+  }
+
+  @media (max-width: 1200px) {
+    #global_search {
+      width: 70% !important;
+      margin-bottom: 20px;
+    }
+  }
+
+  @media (max-width: 760px) {
+    #global_search {
+      width: 90% !important;
+      margin-bottom: 20px;
+    }
+  }
+</style>

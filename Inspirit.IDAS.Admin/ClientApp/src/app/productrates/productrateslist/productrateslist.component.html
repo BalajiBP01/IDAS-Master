@@ -1,0 +1,28 @@
+
+<div class="m-subheader" appunwraptag="">
+  <div class="d-flex align-items-center">
+    <div class="mr-auto">
+      <h3 class="m-subheader__title">Product Rates</h3>
+    </div>
+  </div>
+</div>
+
+
+<div class="m-content">
+  <div class="m-portlet  m-portlet--unair">
+    <div class="m-portlet__body  m-portlet__body--no-padding">
+      <div class="m-portlet__body">
+        <div class="btn-group pull-right">
+          <a style="margin: 10px 5px;" class="btn btn-accent" (click)="ProductRatesdetailform()">
+            Add New
+            &nbsp;
+            <i class="fa fa-plus"></i>
+          </a>
+        </div>
+        <div class="m-form__section m-form__section--first">
+          <table datatable [dtOptions]="dtOptions"> </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

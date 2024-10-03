@@ -1,0 +1,629 @@
+
+<div class="modal-content">
+  <div class="modal-header" style=" background:linear-gradient(#103f56, #094868, #00527c, #066f9e) !important;">
+    <h5 class="modal-title" style="color:#ffffff!important">JUDGEMENT INFORMATION</h5>
+    <button type="button" class="close" data-dismiss="modal" style="color:#ffffff!important" (click)="close()" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+
+
+  <div class="modal-body">
+    <div class="m-scrollable" data-scrollbar-shown="true" data-scrollable="true" data-height="200">
+      <form *ngIf="sales" class="m-form m-form--label-align-right" style="background-color:#f2f3f8!important;padding:12px;">
+
+        <!--Consumers-->
+        <div class="m-portlet__body" style="background-color:#ffffff;padding:12px;border:1px solid #b7b5b5">
+          <div class="m-form__section m-form__section--first">
+            <div class="form-group m-form__group row">
+              <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 name">
+                ID No:
+              </div>
+              <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 value">
+                {{sales.idno}}
+              </div>
+              <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 name">
+                Case Number:
+              </div>
+              <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 value">
+                {{sales.casenumber}}
+              </div>
+            </div>
+
+            <div class="form-group m-form__group row">
+              <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 name">
+                Case Filing Date:
+              </div>
+              <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 value">
+                {{sales.casefilingdate| date:'yyyy-MM-dd'}}
+              </div>
+              <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 name">
+                Case Reason:
+              </div>
+              <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 value">
+                {{sales.casereason}}
+              </div>
+            </div>
+
+            <div class="form-group m-form__group row">
+              <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 name">
+                Case Type:
+              </div>
+              <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 value ">
+                {{sales.casetype}}
+              </div>
+              <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 name">
+                Dispute Amount:
+              </div>
+              <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 value">
+                {{sales.disputeamt | number:'.2'}}
+              </div>
+            </div>
+
+
+            <div class="form-group m-form__group row">
+              <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 name">
+                Court Name:
+              </div>
+              <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 value">
+                {{sales.courtname}}
+              </div>
+              <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 name">
+                Court City:
+              </div>
+              <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 value">
+                {{sales.courtcity}}
+              </div>
+            </div>
+
+
+            <div class="form-group m-form__group row">
+              <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 name">
+                Court Type:
+              </div>
+              <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 value ">
+                {{sales.courttype}}
+              </div>
+              <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 name">
+                Plaintiff Name:
+              </div>
+              <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 value">
+                {{sales.plaintiffname}}
+              </div>
+            </div>
+            <div class="form-group m-form__group row">
+              <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 name">
+                Plaintiff Address1:
+              </div>
+              <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 value">
+                {{sales.plaintiffaddress1}}
+              </div>
+              <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 name">
+                Plaintiff Address2:
+              </div>
+              <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 value">
+                {{sales.plaintiffaddress2}}
+              </div>
+            </div>
+            <div class="form-group m-form__group row">
+              <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 name">
+                Plaintiff Address3:
+              </div>
+              <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 value">
+                {{sales.plaintiffaddress3}}
+              </div>
+              <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 name">
+                Plaintiff Address4:
+              </div>
+              <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 value">
+                {{sales.plaintiffaddress4}}
+              </div>
+            </div>
+            <div class="form-group m-form__group row">
+              <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 name">
+                Plaintiff Postal Code:
+              </div>
+              <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 value ">
+                {{sales.plaintifpostalcode}}
+              </div>
+              <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 name">
+                Attorney Name:
+              </div>
+              <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 value">
+                {{sales.attorneyname}}
+              </div>
+            </div>
+            <div class="form-group m-form__group row">
+              <div class="col-md-3 name">
+                Attorney Telephone Code:
+              </div>
+              <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 value ">
+                {{sales.attorneytelephonecode}}
+              </div>
+              <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 name">
+                Attorney Telephone No:
+              </div>
+              <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 value">
+                {{sales.attorneytelephoneno}}
+              </div>
+            </div>
+            <div class="form-group m-form__group row">
+              <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 name">
+                Attorney Fax Code:
+              </div>
+              <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 value ">
+                {{sales.attorneyfaxcode}}
+              </div>
+              <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 name">
+                Attorney Fax No:
+              </div>
+              <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 value">
+                {{sales.attorneyfaxno}}
+              </div>
+            </div>
+            <div class="form-group m-form__group row">
+              <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 name">
+                Attorney Address1:
+              </div>
+              <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 value">
+                {{sales.attorneyaddress1}}
+              </div>
+              <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 name">
+                Attorney Address2:
+              </div>
+              <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 value">
+                {{sales.attorneyaddress2}}
+              </div>
+            </div>
+            <div class="form-group m-form__group row">
+              <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 name">
+                Attorney Address3:
+              </div>
+              <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 value ">
+                {{sales.attorneyaddress3}}
+              </div>
+              <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 name">
+                Attorney Address4:
+              </div>
+              <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 value">
+                {{sales.attorneyaddress4}}
+              </div>
+            </div>
+            <div class="form-group m-form__group row">
+              <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 name">
+                Attorney Postal Code:
+              </div>
+              <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 value">
+                {{sales.attorneypostalcode}}
+              </div>
+              <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 name">
+                Judgement Type Code:
+              </div>
+              <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 value">
+                {{sales.judgementtypecode}}
+              </div>
+
+            </div>
+
+            <div class="form-group m-form__group row">
+              <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 name">
+                Dispute Date:
+              </div>
+              <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 value">
+                {{sales.disputedate| date:'yyyy-MM-dd'}}
+              </div>
+              <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 name">
+                Dispute Resolved Date:
+              </div>
+              <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 value">
+                {{sales.disputeresolveddate| date:'yyyy-MM-dd'}}
+              </div>
+            </div>
+            <div class="form-group m-form__group row">
+              <div class="col-md-3 name">
+                Rescinded:
+              </div>
+              <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 value ">
+                {{sales.rescinded}}
+              </div>
+              <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 name">
+                Rescission Date:
+              </div>
+              <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 value">
+                {{sales.rescissiondate| date:'yyyy-MM-dd'}}
+              </div>
+            </div>
+            <div class="form-group m-form__group row">
+              <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 name">
+                Rescission Reason:
+              </div>
+              <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 value ">
+                {{sales.rescissionreason}}
+              </div>
+              <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 name">
+                Rescinded Amount:
+              </div>
+              <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 value">
+                {{sales.rescindedamount | number:'.2'}}
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="row" style="height:20px;background-color:#f2f3f8!important;margin:0px !important;width:100%;"></div>
+        <div class="m-portlet__body" style="background-color:#ffffff;padding:12px;border:1px solid #b7b5b5">
+          <div><h6 style="color:#2b2c3a">LAST UPDATED</h6></div>
+          <div class="row" style="height:6px;margin:0px !important;width:100%;background-color:#A11E21"></div>
+          <div class="form-group m-form__group row">
+            <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 name">
+              Created On Date:
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 value ">
+              {{sales.createdodate| date:'yyyy-MM-dd'}}
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 name">
+              Last Updated Date:
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 value">
+              {{sales.lastupdateddate| date:'dd-MM-yyyy'}}
+            </div>
+          </div>
+        </div>
+
+
+
+      </form>
+
+
+
+
+      <!--Commercials-->
+      <form *ngIf="company" class="m-form m-form--label-align-right" style="background-color:#f2f3f8!important;padding:12px;">
+        <div class="m-portlet__body" style="background-color:#ffffff;padding:12px;border:1px solid #b7b5b5">
+          <div class="m-portlet__body">
+            <div class="m-form__section m-form__section--first">
+              <div class="form-group m-form__group row">
+                <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 name">
+                Company Name:
+              </div>
+                <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 value">
+                  {{company.commercialName}}
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 name">
+                  Address Line 1:
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 value">
+                  {{company.address1}}
+                </div>
+              </div>
+              <div class="form-group m-form__group row">
+                <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 name">
+                  Address Line 2:
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 value">
+                  {{company.address2}}
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 name">
+                  Address Line 3:
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 value">
+                  {{company.address3}}
+                </div>
+              </div>
+              <div class="form-group m-form__group row">
+                <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 name">
+                  Address Line 4:
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 value ">
+                  {{company.address4}}
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 name">
+                  Postal Code:
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 value">
+                  {{company.postalCode}}
+                </div>
+              </div>
+              <div class="form-group m-form__group row">
+                <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 name">
+                  HomeTelephone Code:
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 value ">
+
+                  {{company.homeTelephoneCode}}
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 name">
+                  HomeTelephone Number:
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 value">
+
+                  {{company.homeTelephoneNo}}
+                </div>
+              </div>
+              <div *ngIf="" class="form-group m-form__group row">
+                <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 name">
+                  Work Telephone Code:
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 value">
+                  {{company.workTelephoneCode}}
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 name">
+                  Work Telephone Number:
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 value">
+                  {{company.workTelephoneNo}}
+                </div>
+              </div>
+              <div class="form-group m-form__group row">
+                <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 name">
+                  Cell Number:
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 value ">
+                  {{company.cellularNo}}
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 name">
+                  Fax Code:
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 value">
+                  {{company.faxCode}}
+                </div>
+              </div>
+              <div class="form-group m-form__group row">
+                <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 name">
+                  Fax Number:
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 value">
+                  {{company.faxNo}}
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 name">
+                  Case Number:
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 value">
+                  {{company.caseNumber}}
+                </div>
+              </div>
+              <div class="form-group m-form__group row">
+                <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 name">
+                  Case Filing Date:
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 value">
+                  {{company.caseFilingDate | date:'yyyy-MM-dd'}}
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 name">
+                  Case Type:
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 value">
+                  {{company.caseType}}
+                </div>
+              </div>
+              <div class="form-group m-form__group row">
+                <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 name">
+                  Case Reason:
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 value ">
+                  {{company.caseReason}}
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 name">
+                  Dispute Amount:
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 value">
+                  {{company.disputeAmt | number:'.2'}}
+                </div>
+              </div>
+              <div class="form-group m-form__group row">
+                <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 name">
+                  Court Name:
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 value ">
+                  {{company.courtName}}
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 name">
+                  Court City:
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 value">
+                  {{company.courtCity}}
+                </div>
+              </div>
+              <div class="form-group m-form__group row">
+                <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 name">
+                  Court Type:
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 value ">
+                  {{company.courtType}}
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 name">
+                  Court Case Identifier:
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 value">
+                  {{company.courtCaseID}}
+                </div>
+              </div>
+              <div class="form-group m-form__group row">
+                <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 name">
+                  Plantiff Name:
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 value">
+                  {{company.plaintiffName}}
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 name">
+                  Plantiff Address:
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 value">
+                  {{company.plaintiff1Address}}
+                </div>
+              </div>
+              <div class="form-group m-form__group row">
+                <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 name">
+                  Attorney Name:
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 value ">
+                  {{company.attorneyName}}
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 name">
+                  Attorney Telephone Code:
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 value">
+                  {{company.attorneyTelephoneCode}}
+                </div>
+              </div>
+              <div class="form-group m-form__group row">
+                <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 name">
+                  Attorney Telephone Number:
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 value">
+                  {{company.attorneyTelephoneNo}}
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 name">
+                  Attorney Fax Code:
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 value">
+                  {{company.attorneyFaxCode}}
+                </div>
+              </div>
+              <div class="form-group m-form__group row">
+                <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 name">
+                  Attorney Fax Number:
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 value ">
+                  {{company.attorneyFaxNo}}
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 name">
+                  Attorney Address Line 1:
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 value">
+                  {{company.attorneyAddress1}}
+                </div>
+              </div>
+              <div class="form-group m-form__group row">
+                <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 name">
+                  Attorney Address Line 2:
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 value">
+                  {{company.attorneyAddress2}}
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 name">
+                  Attorney Address Line 3:
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 value">
+                  {{company.attorneyAddress3}}
+                </div>
+              </div>
+              <div class="form-group m-form__group row">
+                <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 name">
+                  Attorney Address Line 4:
+                </div>
+                <div class=" col-lg-3 col-md-6 col-sm-12 col-xs-12 value ">
+                  {{company.attorneyAddress4}}
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 name">
+                  Attorney Postal Code:
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 value">
+                  {{company.attorneyPostalCode}}
+                </div>
+              </div>
+              <div class="form-group m-form__group row">
+                <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 name">
+                  Reference Number:
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 value ">
+                  {{company.referenceNo}}
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 name">
+                  Dispute Date:
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 value">
+                  {{company.disputeDate |  date:'yyyy-MM-dd'}}
+                </div>
+              </div>
+
+              <div class="form-group m-form__group row">
+                <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 name">
+                  Dispute Resolved Date:
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 value ">
+                  {{company.disputeResolvedDate |  date:'yyyy-MM-dd'}}
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 name">
+                  Rescinded:
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 value">
+                  {{company.rescinded}}
+                </div>
+              </div>
+              <div class="form-group m-form__group row">
+                <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 name">
+                  Rescission Date:
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 value ">
+                  {{company.rescissionDate |  date:'yyyy-MM-dd'}}
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 name">
+                  Rescission Reason:
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 value">
+                  {{company.rescissionReason}}
+                </div>
+              </div>
+              <div class="form-group m-form__group row">
+                <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 name">
+                  Rescinded Amount:
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 value ">
+                  {{company.rescindedAmount | number:'.2'}}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row" style="height:20px;background-color:#f2f3f8!important;margin:0px !important;width:100%;"></div>
+        <div class="m-portlet__body" style="background-color:#ffffff;padding:12px;border:1px solid #b7b5b5">
+          <div><h6 style="color:#2b2c3a">LAST UPDATED</h6></div>
+          <div class="row" style="height:6px;background-color:#A11E21;margin:0px !important;width:100%;"></div>
+          <div class="form-group m-form__group row">
+            <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 name">
+              Created On Date:
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 value ">
+              {{company.createdOnDate |  date:'yyyy-MM-dd'}}
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 name">
+              Last Updated Date:
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 value">
+              {{company.lastUpdatedDate |  date:'yyyy-MM-dd'}}
+            </div>
+          </div>
+        </div>
+
+
+      </form>
+    </div>
+  </div>
+</div>
+
+
+<style>
+  .col-md-3 {
+    -webkit-box-flex: 0;
+    -ms-flex: 0 0 25%;
+    flex: 0 0 25%;
+    max-width: 25%;
+    font-size: 0.9rem;
+    font-weight: normal;
+    padding-top: 12px;
+    vertical-align: middle;
+  }
+
+  .m-form .m-form__group {
+    padding-top: 0px;
+    border-bottom: #b7b5b5 1px solid;
+  }
+
+  h6 {
+    font-size: 14px;
+    font-weight: bold;
+  }
+</style>

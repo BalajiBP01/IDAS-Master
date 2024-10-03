@@ -1,0 +1,56 @@
+<div>
+  <div class="m-portlet">
+    <form class="m-form m-form--label-align-right" style="padding:12px;background-color:#f2f3f8">
+      <div class="m-portlet__body" style="background-color:#ffffff;padding:12px;border:1px solid #000000">
+          <div class="m-section">
+            <div class="m-section__content">
+              <div class="table-responsive">
+                <table datatable [dtOptions]="dtOptions" class="table table-striped">
+                  <thead>
+                    <tr>
+                      <th class="tablevalue">
+                        Debt Counsellor Registration Number
+                      </th>
+                      <th class="tablevalue">
+                        DC First Name
+                      </th>
+                      <th class="tablevalue">
+                        DC Surname
+                      </th>
+                      <th class="tablevalue">
+                        Debt Review Status Code
+                      </th>
+                      <th class="tablevalue">
+                        Application Created on Date
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let result of results">
+                      <td class="tablename">
+                        <button type="button" class="btn btn-link" style="padding:0px;word-break: break-all;white-space: normal" (click)="showdetail(result.consumerDebtReviewID)">
+                          {{result.debtCounsellorRegistrationNo}}
+                        </button>
+                      </td>
+                      <td class="tablename">
+                        {{result.debtCounsellorFirstName }}
+                      </td>
+                      <td class="tablename">
+                        {{result.debtCounsellorSurname }}
+                      </td>
+                      <td class="tablename">
+                        {{result.debtReviewStatusCode  }}
+                      </td>
+                      <td class="tablename">
+                        {{ result.applicationCreationDate |date:'yyyy-MM-dd'  }}
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+      </div>
+  </div>

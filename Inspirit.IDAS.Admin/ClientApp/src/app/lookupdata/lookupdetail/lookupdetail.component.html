@@ -1,0 +1,182 @@
+<div class="m-subheader" appunwraptag="">
+  <div class="m-portlet__head-caption">
+    <div class="m-portlet__head-title">
+      <span class="m-portlet__head-icon m--hide">
+        <i class="la la-gear"></i>
+      </span>
+
+      <h3 class="m-subheader__title ">
+        <button style="font-size: 14px;
+        font-weight: 600;
+        text-transform: uppercase;
+        color: #016fa2;
+        font-family: Avenir !important;
+        margin-top: -2px;" class="btn btn-link" (click)="list()">
+          Lookup List
+        </button>
+        <i class="fa fa-angle-right"></i>
+        Lookup Data
+      </h3>
+
+      <div class="btn-group pull-right m-form__actions">
+
+        <a style="margin: 10px 5px;" class="btn btn-accent" (click)="list()">
+          Back
+          &nbsp;
+          <i class="fa fa-angle-double-left"></i>
+        </a>
+        <a *ngIf="mode == 'view' && userper.editAction" style="margin: 10px 5px;" class="btn btn-accent" (click)="edit()">
+          Edit
+          &nbsp;
+          <i class="fa fa-pencil-alt"></i>
+        </a>
+        <a *ngIf="mode == 'edit' && userper.privileged" style="margin: 10px 5px;"
+           class="btn btn-accent" (click)="delete()">
+          Delete
+          &nbsp;
+          <i class="fa fa-trash"></i>
+        </a>
+      </div>
+
+
+    </div>
+  </div>
+</div>
+
+<div *ngIf="loading==true" id="cover"></div>
+
+<div class="m-content">
+  <div class="m-portlet  m-portlet--unair">
+    <div class="m-portlet__body  m-portlet__body--no-padding">
+      <div class="m-portlet__body">
+        <form class="m-form m-form--fit m-form--label-align-right">
+          <div class="m-portlet__body col-8">
+            <div class="form-group m-form__group row">
+              <label for="example-text-input" class="col-2 col-form-label">Lookup Type<span style="color:red">*</span></label>
+              <div class="col-6">
+               
+                <select placeholder="Please select" class="form-control m-input"
+                        name="type" [disabled]="readonly" [(ngModel)]="currentObj.type">
+                  <option>Address Type Indicator</option>
+                  <option>Auditor Status Code</option>
+                  <option>Auditor Type Code</option>
+                  <option>Business Type</option>
+                  <option>Buyer Type</option>
+                  <option>Company Possible Duplicate Record Indicator</option>
+                  <option>Company Possible Name Conflict Indicator</option>
+                  <option>Company Withdrawn From Public Indicator</option>
+                  <option>Debt Review Status Code</option>
+                  <option>Deeds Office Identifier</option>
+                  <option>Director Designation Code</option>
+                  <option>Director Status Code</option>
+                  <option>Director Type Code</option>
+                  <option>Domain Valid YN</option>
+                  <option>Enquiry Reason</option>
+                  <option>Fine Letter</option>
+                  <option>Gender Indicator</option>
+                  <option>Is Current Owner Updated</option>
+                  <option>Is RSA Resident YN</option>
+                  <option>Is Verified YN</option>
+                  <option>Is Withdrawn from Public YN</option>
+                  <option>Judgement Type Code</option>
+                  <option>Occupant Type Indicator</option>
+                  <option>Payment Type</option>
+                  <option>Premium</option>
+                  <option>Profession Code</option>
+                  <option>Property Type</option>
+                  <option>Province Identifier</option>
+                  <option>SIC Code</option>
+                  <option>Status Code of Company</option>
+                  <option>Telephone Type Indicator</option>
+                  <option>Type Code of Company</option>
+                  <option>Type of Business</option>
+
+                </select>
+              </div>
+            </div>
+
+            <div class="form-group m-form__group row">
+              <label for="example-text-input" class="col-2 col-form-label">Lookup Value<span style="color:red">*</span></label>
+              <div class="col-6">
+                <input class="form-control m-input" type="text" name="value"
+                       [readonly]="readonly" [(ngModel)]="currentObj.value">
+              </div>
+            </div>
+
+            <div class="form-group m-form__group row">
+              <label for="example-text-input" class="col-2 col-form-label">Lookup Text<span style="color:red">*</span></label>
+              <div class="col-6">
+                <input class="form-control m-input" type="text" name="text"
+                       [readonly]="readonly" [(ngModel)]="currentObj.text">
+              </div>
+            </div>
+
+            <div class="form-group m-form__group row">
+              <label for="example-text-input" class="col-2 col-form-label">Is Active</label>
+              <div class="col-6">
+                <label class="m-checkbox m-checkbox--single m-checkbox--state m-checkbox--state-primary">
+                  <input type="checkbox" [disabled]="readonly" name="active" [(ngModel)]="currentObj.isActive">
+                  <span></span>
+                </label>
+              </div>
+            </div>
+
+            <div *ngIf="mode != 'view'" class="m-form__actions" style="text-align:center">
+              <button type="button" class="btn btn-success" (click)="save()">Submit</button>
+              <button type="button" class="btn btn-success" (click)="list()">Cancel</button>
+            </div>
+
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<button data-toggle="modal" id="nopermission" data-target="#per" [hidden]="true"></button>
+
+<div id="per" class="modal" tabindex="-1" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div style="background: linear-gradient(#103f56, #094868, #00527c, #066f9e)" class="modal-header">
+        <h4 style="color:#ffffff" class="modal-title">IDAS says:</h4>
+      </div>
+      <div class="modal-body">You don't have permission to access.</div>
+      <div class="modal-footer">
+        <button style="width:150px" (click)="dash()" type="button" class="btn btn-accent" data-dismiss="modal">Ok</button>
+      </div>
+    </div>
+  </div>
+</div>
+<button data-toggle="modal" id="errormsg" data-target="#error" [hidden]="true"></button>
+
+<div id="error" class="modal" tabindex="-1" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div style="background: linear-gradient(#103f56, #094868, #00527c, #066f9e)" class="modal-header">
+        <h4 style="color:#ffffff" class="modal-title">IDAS says:</h4>
+      </div>
+      <div class="modal-body">{{errormsg}}</div>
+      <div class="modal-footer">
+        <button style="width:150px" type="button" class="btn btn-accent" data-dismiss="modal">Ok</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<style>
+  .modal-footer {
+    justify-content: center !important;
+  }
+  #cover {
+    background: url("http://www.aveva.com/Images/ajax-loader.gif") no-repeat scroll center center;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    top: 0px;
+    left: 0px;
+    z-index: 1;
+  }
+</style>

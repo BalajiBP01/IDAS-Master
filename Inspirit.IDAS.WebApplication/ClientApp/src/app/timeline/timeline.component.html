@@ -1,0 +1,343 @@
+<div class="m-portlet m-portlet--full-height">
+  <form class="m-form m-form--label-align-right" style="padding:20px;background-color:#f2f3f8;padding-top:20px">
+    <div class="m-portlet__body" style="background-color:#ffffff;padding:20px;border:1px solid #000000">
+      <div class="tab-content" style="margin-left: 10px;">
+        <div class="tab-pane active" id="m_widget2_tab1_content" aria-expanded="true">
+          <div class="m-timeline-1">
+            <div *ngFor="let cust of contacts;let i = index;" class="m-timeline-1__items">
+              <div *ngIf="i == 0" class="m-timeline-1__marker"></div>
+              <div *ngIf="i % 2 != 0">
+                <div *ngIf="cust.type == 'Business'" class="m-timeline-1__item m-timeline-1__item--right" style="margin-top: 66px;">
+                  <div class="m-timeline-1__item-circle">
+                    <img *ngIf="cust.type == 'Business'" style="width:50px;border: 4px solid #026593;border-radius: 500px;margin: 10px;" src="../../assets/demo/demo2/media/img/Icons/Work-Address.png" />
+                  </div>
+                  <div class="m-timeline-1__item-arrow"></div>
+                  <div class="m-timeline-1__item-content">
+                    <h1 style="font-size:16px; font-weight:bold; color:#026593; text-transform:uppercase;">Business Address Details</h1>
+                    <div class="m-timeline-1__item-title">
+                      {{cust.lastupdatedDate | date:'yyyy-MM-dd'}}
+                    </div>
+                    <div class="m-timeline-1__item-body">
+                      <div class="m-timeline-1__item-body">
+                        {{cust.text}}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div *ngIf="cust.type == 'Residential'" class="m-timeline-1__item m-timeline-1__item--right" style="margin-top: 66px;">
+                  <div class="m-timeline-1__item-circle">
+                    <img *ngIf="cust.type == 'Residential'" style="width:50px;border: 4px solid #026593;border-radius: 500px;margin: 10px;" src="../../assets/demo/demo2/media/img/Icons/Home-Address.png" />
+                  </div>
+                  <div class="m-timeline-1__item-arrow"></div>
+                  <div class="m-timeline-1__item-content">
+                    <h1 style="font-size:16px; font-weight:bold; color:#026593; text-transform:uppercase;">Residential Address</h1>
+                    <div class="m-timeline-1__item-title">
+                      {{cust.lastupdatedDate | date:'yyyy-MM-dd'}}
+                    </div>
+                    <div class="m-timeline-1__item-body">
+                      <div class="m-timeline-1__item-body">
+                        {{cust.text}}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div *ngIf="cust.type == 'Postal'" class="m-timeline-1__item m-timeline-1__item--right" style="margin-top: 66px;">
+                  <div class="m-timeline-1__item-circle">
+                    <img *ngIf="cust.type == 'Postal'" style="width:50px;border: 4px solid #026593;border-radius: 500px;margin: 10px;" src="../../assets/demo/demo2/media/img/Icons/Postal-Address.png" />
+                  </div>
+                  <div class="m-timeline-1__item-arrow"></div>
+                  <div class="m-timeline-1__item-content">
+                    <h1 style="font-size:16px; font-weight:bold; color:#026593; text-transform:uppercase;">Postal Address</h1>
+                    <div class="m-timeline-1__item-title">
+                      {{cust.lastupdatedDate | date:'yyyy-MM-dd'}}
+                    </div>
+                    <div class="m-timeline-1__item-body">
+                      <div class="m-timeline-1__item-body">
+                        {{cust.text}}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div *ngIf="cust.type == 'Cell'" class="m-timeline-1__item m-timeline-1__item--right" style="margin-top: 66px;">
+                  <div class="m-timeline-1__item-circle">
+                    <img *ngIf="cust.type == 'Cell'" style="width:50px;border: 4px solid #026593;border-radius: 500px;margin: 10px;" src="../../assets/demo/demo2/media/img/Icons/Mobile.png" />
+                  </div>
+                  <div class="m-timeline-1__item-arrow"></div>
+                  <div class="m-timeline-1__item-content">
+                    <h1 style="font-size:16px; font-weight:bold; color:#026593; text-transform:uppercase;">Cell Contact Details</h1>
+                    <div class="m-timeline-1__item-title">
+                      {{cust.lastupdatedDate | date:'yyyy-MM-dd'}}
+                    </div>
+                    <div class="m-timeline-1__item-body">
+                      <div class="m-timeline-1__item-body">
+                        {{cust.text}}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div *ngIf="cust.type == 'Work'" class="m-timeline-1__item m-timeline-1__item--right" style="margin-top: 66px;">
+                  <div class="m-timeline-1__item-circle">
+                    <img *ngIf="cust.type == 'Work'" style="width:50px;border: 4px solid #026593;border-radius: 500px;margin: 10px;" src="../../assets/demo/demo2/media/img/Icons/Work-Address.png" />
+
+                  </div>
+                  <div class="m-timeline-1__item-arrow"></div>
+                  <div class="m-timeline-1__item-content">
+                    <h1 style="font-size:16px; font-weight:bold; color:#026593; text-transform:uppercase;">Work Contact Details</h1>
+                    <div class="m-timeline-1__item-title">
+                      {{cust.lastupdatedDate | date:'yyyy-MM-dd'}}
+                    </div>
+                    <div class="m-timeline-1__item-body">
+                      <div class="m-timeline-1__item-body">
+                        {{cust.text}}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div *ngIf="cust.type == 'Home'" class="m-timeline-1__item m-timeline-1__item--right" style="margin-top: 66px;">
+                  <div class="m-timeline-1__item-circle">
+                    <img *ngIf="cust.type == 'Home'" style="width:50px;border: 4px solid #026593;border-radius: 500px;margin: 10px;" src="../../assets/demo/demo2/media/img/Icons/Home-Address.png" />
+                  </div>
+                  <div class="m-timeline-1__item-arrow"></div>
+                  <div class="m-timeline-1__item-content">
+                    <h1 style="font-size:16px; font-weight:bold; color:#026593; text-transform:uppercase;">Home Contact Details</h1>
+                    <div class="m-timeline-1__item-title">
+                      {{cust.lastupdatedDate | date:'yyyy-MM-dd'}}
+                    </div>
+                    <div class="m-timeline-1__item-body">
+                      <div class="m-timeline-1__item-body">
+                        {{cust.text}}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div *ngIf="cust.type == 'Email'" class="m-timeline-1__item m-timeline-1__item--right" style="margin-top: 66px;">
+                  <div class="m-timeline-1__item-circle">
+                    <img *ngIf="cust.type == 'Email'" style="width:50px;border: 4px solid #026593;border-radius: 500px;margin: 10px;" src="../../assets/demo/demo2/media/img/Icons/Email.png" />
+                  </div>
+                  <div class="m-timeline-1__item-arrow"></div>
+                  <div class="m-timeline-1__item-content">
+                    <h1 style="font-size:16px; font-weight:bold; color:#026593; text-transform:uppercase;">Email Details</h1>
+                    <div class="m-timeline-1__item-title">
+                      {{cust.lastupdatedDate | date:'yyyy-MM-dd'}}
+                    </div>
+                    <div class="m-timeline-1__item-body">
+                      <div class="m-timeline-1__item-body">
+                        {{cust.text}}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div *ngIf="cust.type == 'Business Telephone Number'" class="m-timeline-1__item m-timeline-1__item--right" style="margin-top: 66px;">
+                  <div class="m-timeline-1__item-circle">
+                    <img *ngIf="cust.type == 'Business Telephone Number'" style="width:50px;border: 4px solid #026593;border-radius: 500px;margin: 10px;" src="../../assets/demo/demo2/media/img/Icons/Occupation.png" />
+                  </div>
+                  <div class="m-timeline-1__item-arrow"></div>
+                  <div class="m-timeline-1__item-content">
+                    <h1 style="font-size:16px; font-weight:bold; color:#026593; text-transform:uppercase;">Contact Details</h1>
+                    <div class="m-timeline-1__item-title">
+                      {{cust.lastupdatedDate | date:'yyyy-MM-dd'}}
+                    </div>
+                    <div class="m-timeline-1__item-body">
+                      <div class="m-timeline-1__item-body">
+                        {{cust.text}}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+
+
+
+              <div *ngIf="i % 2 == 0">
+                <div *ngIf="cust.type == 'Business'" class="m-timeline-1__item m-timeline-1__item--left">
+                  <div class="m-timeline-1__item-circle">
+                    <img *ngIf="cust.type == 'Business'" style="width:50px;border: 4px solid #026593;border-radius: 500px;margin: 10px;" src="../../assets/demo/demo2/media/img/Icons/Work-Address.png" />
+                  </div>
+                  <div class="m-timeline-1__item-arrow"></div>
+                  <div class="m-timeline-1__item-content">
+                    <h1 style="font-size:16px; font-weight:bold; color:#026593; text-transform:uppercase;">Business Address Details</h1>
+                    <div class="m-timeline-1__item-title">
+                      {{cust.lastupdatedDate | date:'yyyy-MM-dd'}}
+                    </div>
+                    <div class="m-timeline-1__item-body">
+                      <div class="m-timeline-1__item-body">
+                        {{cust.text}}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div *ngIf="cust.type == 'Residential'" class="m-timeline-1__item m-timeline-1__item--left">
+                  <div class="m-timeline-1__item-circle">
+                    <img *ngIf="cust.type == 'Residential'" style="width:50px;border: 4px solid #026593;border-radius: 500px;margin: 10px;" src="../../assets/demo/demo2/media/img/Icons/Home-Address.png" />
+                  </div>
+                  <div class="m-timeline-1__item-arrow"></div>
+                  <div class="m-timeline-1__item-content">
+                    <h1 style="font-size:16px; font-weight:bold; color:#026593; text-transform:uppercase;">Residential Address</h1>
+                    <div class="m-timeline-1__item-title">
+                      {{cust.lastupdatedDate | date:'yyyy-MM-dd'}}
+                    </div>
+                    <div class="m-timeline-1__item-body">
+                      <div class="m-timeline-1__item-body">
+                        {{cust.text}}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div *ngIf="cust.type == 'Postal'" class="m-timeline-1__item m-timeline-1__item--left">
+                  <div class="m-timeline-1__item-circle">
+                    <img *ngIf="cust.type == 'Postal'" style="width:50px;border: 4px solid #026593;border-radius: 500px;margin: 10px;" src="../../assets/demo/demo2/media/img/Icons/Postal-Address.png" />
+                  </div>
+                  <div class="m-timeline-1__item-arrow"></div>
+                  <div class="m-timeline-1__item-content">
+                    <h1 style="font-size:16px; font-weight:bold; color:#026593; text-transform:uppercase;">Postal Address</h1>
+                    <div class="m-timeline-1__item-title">
+                      {{cust.lastupdatedDate | date:'yyyy-MM-dd'}}
+                    </div>
+                    <div class="m-timeline-1__item-body">
+                      <div class="m-timeline-1__item-body">
+                        {{cust.text}}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div *ngIf="cust.type == 'Cell'" class="m-timeline-1__item m-timeline-1__item--left">
+                  <div class="m-timeline-1__item-circle">
+                    <img *ngIf="cust.type == 'Cell'" style="width:50px;border: 4px solid #026593;border-radius: 500px;margin: 10px;" src="../../assets/demo/demo2/media/img/Icons/Mobile.png" />
+                  </div>
+                  <div class="m-timeline-1__item-arrow"></div>
+                  <div class="m-timeline-1__item-content">
+                    <h1 style="font-size:16px; font-weight:bold; color:#026593; text-transform:uppercase;">Cell Contact Details</h1>
+                    <div class="m-timeline-1__item-title">
+                      {{cust.lastupdatedDate | date:'yyyy-MM-dd'}}
+                    </div>
+                    <div class="m-timeline-1__item-body">
+                      <div class="m-timeline-1__item-body">
+                        {{cust.text}}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div *ngIf="cust.type == 'Work'" class="m-timeline-1__item m-timeline-1__item--left">
+                  <div class="m-timeline-1__item-circle">
+                    <img *ngIf="cust.type == 'Work'" style="width:50px;border: 4px solid #026593;border-radius: 500px;margin: 10px;" src="../../assets/demo/demo2/media/img/Icons/Work-Address.png" />
+
+                  </div>
+                  <div class="m-timeline-1__item-arrow"></div>
+                  <div class="m-timeline-1__item-content">
+                    <h1 style="font-size:16px; font-weight:bold; color:#026593; text-transform:uppercase;">Work Contact Details</h1>
+                    <div class="m-timeline-1__item-title">
+                      {{cust.lastupdatedDate | date:'yyyy-MM-dd'}}
+                    </div>
+                    <div class="m-timeline-1__item-body">
+                      <div class="m-timeline-1__item-body">
+                        {{cust.text}}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div *ngIf="cust.type == 'Home'" class="m-timeline-1__item m-timeline-1__item--left">
+                  <div class="m-timeline-1__item-circle">
+                    <img *ngIf="cust.type == 'Home'" style="width:50px;border: 4px solid #026593;border-radius: 500px;margin: 10px;" src="../../assets/demo/demo2/media/img/Icons/Home-Address.png" />
+                  </div>
+                  <div class="m-timeline-1__item-arrow"></div>
+                  <div class="m-timeline-1__item-content">
+                    <h1 style="font-size:16px; font-weight:bold; color:#026593; text-transform:uppercase;">Home Contact Details</h1>
+                    <div class="m-timeline-1__item-title">
+                      {{cust.lastupdatedDate | date:'yyyy-MM-dd'}}
+                    </div>
+                    <div class="m-timeline-1__item-body">
+                      <div class="m-timeline-1__item-body">
+                        {{cust.text}}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div *ngIf="cust.type == 'Email'" class="m-timeline-1__item m-timeline-1__item--left">
+                  <div class="m-timeline-1__item-circle">
+                    <img *ngIf="cust.type == 'Email'" style="width:50px;border: 4px solid #026593;border-radius: 500px;margin: 10px;" src="../../assets/demo/demo2/media/img/Icons/Email.png" />
+                  </div>
+                  <div class="m-timeline-1__item-arrow"></div>
+                  <div class="m-timeline-1__item-content">
+                    <h1 style="font-size:16px; font-weight:bold; color:#026593; text-transform:uppercase;">Email Details</h1>
+                    <div class="m-timeline-1__item-title">
+                      {{cust.lastupdatedDate | date:'yyyy-MM-dd'}}
+                    </div>
+                    <div class="m-timeline-1__item-body">
+                      <div class="m-timeline-1__item-body">
+                        {{cust.text}}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div *ngIf="cust.type == 'Business Telephone Number'" class="m-timeline-1__item m-timeline-1__item--left">
+                  <div class="m-timeline-1__item-circle">
+                    <img *ngIf="cust.type == 'Business Telephone Number'" style="width:50px;border: 4px solid #026593;border-radius: 500px;margin: 10px;" src="../../assets/demo/demo2/media/img/Icons/Occupation.png" />
+                  </div>
+                  <div class="m-timeline-1__item-arrow"></div>
+                  <div class="m-timeline-1__item-content">
+                    <h1 style="font-size:16px; font-weight:bold; color:#026593; text-transform:uppercase;">Contact Details</h1>
+                    <div class="m-timeline-1__item-title">
+                      {{cust.lastupdatedDate | date:'yyyy-MM-dd'}}
+                    </div>
+                    <div class="m-timeline-1__item-body">
+                      <div class="m-timeline-1__item-body">
+                        {{cust.text}}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+            </div>
+          </div>
+        </div>
+      </div>
+  </form>
+</div>
+
+<style>
+  .m-timeline-1::after {
+    background-color: #026593 !important
+  }
+
+  .m-timeline-1 .m-timeline-1__items .m-timeline-1__marker {
+    background-color: #026593 !important
+  }
+
+  .m-timeline-1 .m-timeline-1__items {
+    padding-bottom: 0rem !important;
+    position: relative;
+  }
+
+  .m-timeline-1 .m-timeline-1__items {
+    padding-bottom: 0rem !important;
+    position: relative;
+  }
+
+    .m-timeline-1 .m-timeline-1__items .m-timeline-1__item .m-timeline-1__item-content {
+      position: relative;
+      border-radius: 0.3rem !important;
+      padding: 2.14rem;
+    }
+
+    .m-timeline-1 .m-timeline-1__items .m-timeline-1__item .m-timeline-1__item-content {
+      background-color: #f7f8fc;
+      box-shadow: 3px 3px #cccccc;
+    }
+
+    .m-timeline-1 .m-timeline-1__items .m-timeline-1__item.m-timeline-1__item--left .m-timeline-1__item-circle {
+      right: 0;
+      -webkit-transform: translate(54%,0);
+      transform: translate(54%,0);
+      top: 1.5rem !important;
+    }
+
+    .m-timeline-1 .m-timeline-1__items .m-timeline-1__marker {
+      margin-top: -5px !important;
+    }
+
+   
+</style>
+

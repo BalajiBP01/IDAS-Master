@@ -1,0 +1,1214 @@
+
+
+<div *ngIf="loading==true" id="cover"></div>
+
+<div class="m-grid__item m-grid__item--fluid m-wrapper">
+  <div class="m-content">
+    <div class="m-portlet">
+      <form class="m-form m-form--fit m-form--label-align-right">
+        <div class="m-portlet__body">
+          <div align="center" class="form-group m-form__group row">
+            <div align="center" class="col-lg-4 col-md-4 col-sm-12 hide">
+
+            </div>
+            <div align="center" class="col-lg-4 col-md-4 col-sm-12">
+              <a href="#">
+                <!--<img src="../../assets/demo/demo2/media/img/logo/Web_Application_Logo_new1.png" />-->
+                <img id="signup-img" style="width:50%" src="../../assets/demo/demo2/media/img/logo/Landing-Page-Logo.svg" />
+
+                <!--<img src="../../assets/demo/demo2/media/img/logo/WebApp_black.png" />-->
+              </a>
+            </div>
+            <div align="center" class="col-lg-4 col-md-4 col-sm-12 hide">
+
+            </div>
+          </div>
+          <div align="center" class="form-group m-form__group row">
+            <div align="center" class="col-lg-4 col-md-4 col-sm-12 hide">
+
+            </div>
+            <div align="center" class="col-lg-4 col-md-4 col-sm-12">
+              <h4>
+                Sign Up
+              </h4>
+            </div>
+            <div align="center" class="col-lg-4 col-md-4 col-sm-12 hide">
+
+            </div>
+          </div>
+          <!-- field section Company information for Customer-->
+          <div align="center" class="form-group m-form__group row">
+            <fieldset align="center" class="col-lg-12 col-md-12 col-sm-12">
+              <legend style="color: #ffffff;font-size: 14px;padding: 5px 14px 3px 14px;background: linear-gradient(#103f56, #094868, #00527c, #066f9e) !important;">Company Information</legend>
+
+              <div style="padding-left:20px; padding-right:20px; padding-top:20px; padding-bottom:20px;">
+                <!--<div class="form-group m-form__group row" *ngIf="errorMessage">
+                  <div class="col-md-1">
+                  </div>
+                  <div class="col-md-4">
+                    <span class="errorMessageValue">{{errorMessageValue}}</span>
+                  </div>
+                </div>-->
+                <div class="form-group m-form__group row">
+
+                  <div align="left" class="col-lg-6 col-md-10 col-sm-10" id="pad-top">
+                    <span style="color:red">
+                      *
+                      <input id="test1" class="form-control m-input"
+                             style="border-color: #bbbbbb;text-transform:uppercase;margin-left: 24px;margin-top: -26px;"
+                             type="text" [(ngModel)]="_signupRequest.customer.tradingName"
+                             name="TradeName" placeholder="Trading Name">
+                    </span>
+                    <span style="color:red;margin-left: 24px;" *ngIf="errorMessagetradingName != '' && errorMessagetradingName != null">{{errorMessagetradingName}}</span>
+                  </div>
+
+                  <div align="left" class="col-lg-6 col-md-10 col-sm-10" id="pad-top">
+                    <span style="color:red">
+                      *
+                      <input id="test2" class="form-control m-input"
+                             style="border-color: #bbbbbb;text-transform:uppercase;margin-left: 24px;margin-top: -26px;"
+                             type="text" [(ngModel)]="_signupRequest.customer.registrationName"
+                             name="RegName" placeholder="Registration Name">
+                    </span>
+                    <span style="color:red;margin-left: 24px;" *ngIf="errorMessageregistrationName != '' && errorMessageregistrationName != null">{{errorMessageregistrationName}}</span>
+                  </div>
+                </div>
+                <div class="form-group m-form__group row">
+                  <div align="left" class="col-lg-6 col-md-10 col-sm-10" id="pad-top">
+                    <span style="color:red">
+                      *
+                      <input id="test3" class="form-control m-input"
+                             style="border-color: #bbbbbb;text-transform:uppercase; margin-left: 24px;margin-top: -26px;"
+                             type="text" [(ngModel)]="_signupRequest.customer.registrationNumber"
+                             name="registrationNo" placeholder="Registration Number"
+                             (keypress)="onKey($event)" />
+                    </span>
+                    <span style="color:red;margin-left: 24px;" *ngIf="errorMessageregistrationNumber != '' && errorMessageregistrationNumber != null">{{errorMessageregistrationNumber}}</span>
+                  </div>
+                  <div align="left" class="col-lg-6 col-md-10 col-sm-10" id="pad-top">
+                    <span style="color:red">
+                      <input id="test4" class="form-control m-input"
+                             style="border-color: #bbbbbb;text-transform:uppercase; margin-left: 24px;margin-top: -8px;"
+                             type="text" [(ngModel)]="_signupRequest.customer.vatNumber"
+                             name="VATNumber" placeholder=" VAT number"
+                             (keypress)="onKey($event)">
+                    </span>
+
+                    <span style="color:red;margin-left: 24px;" *ngIf="errorMessagevatNumber != '' && errorMessagevatNumber != null">{{errorMessagevatNumber}}</span>
+
+                  </div>
+                </div>
+                <div class="form-group m-form__group row">
+                  <div align="left" class="col-lg-6 col-md-10 col-sm-10" id="pad-top">
+                    <span style="color:red">
+                      *
+                      <select id="test5" class="form-control m-input" id="pad-top1"
+                              style="border-color: #bbbbbb;text-transform:uppercase;padding:6px;margin-left: 24px;margin-top: -26px;"
+                              type="number" name="typeofBusiness"
+                              [(ngModel)]="_signupRequest.customer.typeOfBusiness">
+                        <option value="0" selected>--Select Business--</option>
+                        <option *ngFor="let type of typeOfBusiness"
+                                value="{{type.value}}">
+                          {{type.text}}
+                        </option>
+                      </select>
+                    </span>
+                    <span style="color:red;margin-left: 24px;" *ngIf="errorMessagetypeOfBusiness != '' && errorMessagetypeOfBusiness != null">{{errorMessagetypeOfBusiness}}</span>
+
+                  </div>
+                  <div align="left" class="col-lg-6 col-md-10 col-sm-10" id="pad-top">
+                    <span style="color:red">
+                      *
+                      <input id="test6" class="form-control m-input"
+                             style="border-color: #bbbbbb;text-transform:uppercase; margin-left: 24px;margin-top: -26px;"
+                             type="text" [(ngModel)]="_signupRequest.customer.telephoneNumber"
+                             name="telephoneNumber" placeholder="Telephone Number"
+                             maxlength="13">
+                    </span>
+                    <span style="color:red;margin-left: 24px;" *ngIf="errorMessagetelephoneNumber != '' && errorMessagetelephoneNumber != null">{{errorMessagetelephoneNumber}}</span>
+
+                  </div>
+
+                </div>
+                <div class="form-group m-form__group row">
+                  <div align="left" class="col-lg-6 col-md-10 col-sm-10" id="pad-top">
+                    <input class="form-control m-input"
+                           style="border-color: #bbbbbb;text-transform:uppercase; margin-left: 24px;margin-top: -7px;"
+                           type="text" [(ngModel)]="_signupRequest.customer.faxNumber"
+                           name="faxNumber" placeholder="Fax Number"
+                           (keypress)="onKey($event)"
+                           minlength="10" maxlength="10">
+
+                  </div>
+
+                  <div align="left" class="col-lg-6 col-md-10 col-sm-10" id="pad-top">
+                    <span style="color:red">
+                      *
+                      <input id="test7" class="form-control m-input"
+                             style="border-color: #bbbbbb;text-transform:uppercase; margin-left: 24px;margin-top: -26px;" type="text"
+                             [(ngModel)]="_signupRequest.customer.billingEmail"
+                             name="BillEmailid" placeholder="Billing Email Address">
+                    </span>
+                    <span style="color:red;margin-left: 24px;" *ngIf="errorMessagebillingEmail != '' && errorMessagebillingEmail != null">{{errorMessagebillingEmail}}</span>
+
+                  </div>
+                </div>
+                <div class="form-group m-form__group row">
+                  <div align="left" class="col-lg-6 col-md-10 col-sm-10" id="pad-top">
+                    <span style="color:red">
+                      *
+                      <input id="test8" class="form-control m-input"
+                             style="border-color: #bbbbbb;text-transform:uppercase; margin-left: 24px;margin-top: -26px;"
+                             type="text" [(ngModel)]="_signupRequest.customer.billingType"
+                             name="billingtype" placeholder="Billing Type">
+                    </span>
+                    <span style="color:red;margin-left: 24px;" *ngIf="errorMessagebillingType != '' && errorMessagebillingType != null">{{errorMessagebillingType}}</span>
+
+                  </div>
+                  <div align="left" class="col-lg-6 col-md-10 col-sm-10" id="pad-top">
+                    <span style="color:red">
+                      *
+                      <input id="test9" class="form-control m-input"
+                             style="border-color: #bbbbbb;text-transform:uppercase; margin-left: 24px;margin-top: -26px;"
+                             type="text" [(ngModel)]="_signupRequest.customer.branchLocation"
+                             name="branchLocation" placeholder="Branch Location">
+                    </span>
+                    <span style="color:red;margin-left: 24px;" *ngIf="errorMessagebranchLocation != '' && errorMessagebranchLocation != null">{{errorMessagebranchLocation}}</span>
+
+                  </div>
+                </div>
+                <div class="form-group m-form__group row">
+
+                  <div align="left" class="col-lg-6 col-md-10 col-sm-10" id="pad-top">
+                    <span style="color:red">
+                      *
+                      <input id="test11" class="form-control m-input"
+                             style="border-color: #bbbbbb;text-transform:uppercase; margin-left: 24px;margin-top: -26px;"
+                             type="text" [(ngModel)]="_signupRequest.customer.postalAddress"
+                             name="postalAddress" placeholder="Postal Address">
+                    </span>
+                    <span style="color:red;margin-left: 24px;" *ngIf="errorMessagepostalAddress != '' && errorMessagepostalAddress != null">{{errorMessagepostalAddress}}</span>
+
+
+
+                  </div>
+                  <div align="left" class="col-lg-6 col-md-10 col-sm-10" id="pad-top">
+                    <span style="color:red">
+                      *
+                      <input id="test12" class="form-control m-input"
+                             style="border-color: #bbbbbb;text-transform:uppercase; margin-left: 24px;margin-top: -26px;" type="text"
+                             [(ngModel)]="_signupRequest.customer.custOwnIDNumber"
+                             name="ownerIDNumber" placeholder="Customer Owner IDNumber">
+                    </span>
+                    <span style="color:red;margin-left: 24px;" *ngIf="errorMessagecustOwnIDNumber != '' && errorMessagecustOwnIDNumber != null">{{errorMessagecustOwnIDNumber}}</span>
+
+                  </div>
+
+                </div>
+                <div class="form-group m-form__group row">
+                  <!--<div align="left" class="col-lg-6 col-md-10 col-sm-10" id="pad-top">
+                    <span style="color:red">
+                      *
+                      <input class="form-control m-input"
+                             style="border-color: #bbbbbb !important;text-transform:uppercase;margin-left: 24px;margin-top: -26px;"
+                             type="text" [(ngModel)]="_signupRequest.customer.code"
+                             name="code" placeholder="Customer code"
+                             (keypress)="onKey($event)"
+                             minlength="10" maxlength="10">
+                    </span>
+                    <span style="color:red;margin-left: 24px;" *ngIf="errorMessagepostalAddress != '' && errorMessagepostalAddress != null">{{errorMessagepostalAddress}}</span>
+
+
+                  </div>-->
+
+
+                  <div align="left" class="col-lg-6 col-md-10 col-sm-10" id="pad-top">
+                    <span style="color:red">
+                      *
+                      <textarea id="test10" class="form-control m-input" id="pad-top2"
+                                style="border-color: #bbbbbb;text-transform:uppercase; color:#000000; height:80px;margin-left: 24px;margin-top: -26px;"
+                                [(ngModel)]="_signupRequest.customer.physicalAddress"
+                                name="physicalAddress"
+                                placeholder="Physical Address"></textarea>
+                    </span>
+                    <span style="color:red;margin-left: 24px;" *ngIf="errorMessagephysicalAddress != '' && errorMessagephysicalAddress != null">{{errorMessagephysicalAddress}}</span>
+
+                  </div>
+
+
+                </div>
+                <div class="form-group m-form__group row">
+                  <div align="left" class="col-lg-6 col-md-10 col-sm-10" id="pad-top">
+                    <div class="input-group">
+                      <div class="input-group-append">
+                        <label class="m-checkbox m-checkbox--single m-checkbox--state m-checkbox--state-primary">
+                          <input type="checkbox" name="turnover"
+                                 [(ngModel)]="_signupRequest.customer.turnover">
+                          <span></span>
+                        </label>
+                        <span>
+                          Turn Over > R 2 Million
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+
+
+                  <div align="left" class="col-lg-6 col-md-10 col-sm-10" id="pad-top">
+                    <span style="color:red">
+                      <input class="form-control m-input"
+                             style="border-color: #bbbbbb;text-transform:uppercase; margin-left: 24px;margin-top: -10px;" type="text"
+                             [(ngModel)]="_signupRequest.customer.webAddress"
+                             name="webAddress" placeholder="Web Address">
+                    </span>
+                  </div>
+                </div>
+
+                <div class="form-group m-form__group row">
+                  <div align="left" class="col-lg-6 col-md-10 col-sm-10" id="pad-top">
+
+
+                    <textarea class="form-control m-input" id="pad-top2"
+                              style="border-color: #bbbbbb;text-transform:uppercase; color:#000000; height:80px;margin-left: 24px;margin-top: -10px;"
+                              [(ngModel)]="_signupRequest.customer.businessDescription"
+                              name="businessDescription"
+                              placeholder="Business Activities/Description"></textarea>
+
+
+                  </div>
+                  <div align="left" class="col-lg-6 col-md-10 col-sm-10" id="pad-top">
+
+
+                    <textarea class="form-control m-input" id="pad-top2"
+                              style="border-color: #bbbbbb;text-transform:uppercase; color:#000000; height:80px;margin-left: 24px;margin-top: -10px;"
+                              [(ngModel)]="_signupRequest.customer.creditBureauInformation"
+                              name="creditBureauInformation"
+                              placeholder="Describe how Credit Bureau information will be used in terms of the Company/Business activities"></textarea>
+
+                  </div>
+                </div>
+                <div class="form-group m-form__group row">
+                  <div align="left" class="col-lg-12 col-md-12 col-sm-12" id="pad-top">
+                    <div class="input-group">
+                      <div class="input-group-append">
+                        <label class="m-checkbox m-checkbox--single m-checkbox--state m-checkbox--state-primary">
+                          <input type="checkbox" name="purposeA"
+                                 [(ngModel)]="purposeA">
+                          <span></span>
+                        </label>
+                        <span>
+                          An assessment of the debtor’s book of a business or the tracing of debtors
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                  <div align="left" class="col-lg-12 col-md-12 col-sm-12" id="pad-top">
+                    <div class="input-group">
+                      <div class="input-group-append">
+                        <label class="m-checkbox m-checkbox--single m-checkbox--state m-checkbox--state-primary">
+                          <input type="checkbox" name="purposeB"
+                                 [(ngModel)]="purposeB">
+                          <span></span>
+                        </label>
+                        <span>
+                          Obtaining consumer information to distribute unclaimed funds, including pension funds and insurance claims
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                  <div align="left" class="col-lg-12 col-md-12 col-sm-12" id="pad-top">
+                    <div class="input-group">
+                      <div class="input-group-append">
+                        <label class="m-checkbox m-checkbox--single m-checkbox--state m-checkbox--state-primary">
+                          <input type="checkbox" name="purposeC"
+                                 [(ngModel)]="purposeC">
+                          <span></span>
+                        </label>
+                        <span>
+                          Tracing a consumer for the purpose of validating the consumer’s personal details
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                  <div align="left" class="col-lg-12 col-md-12 col-sm-12" id="pad-top">
+                    <div class="input-group">
+                      <div class="input-group-append">
+                        <label class="m-checkbox m-checkbox--single m-checkbox--state m-checkbox--state-primary">
+                          <input type="checkbox" name="purposeD"
+                                 [(ngModel)]="purposeD">
+                          <span></span>
+                        </label>
+                        <span>
+                          Obtaining consumer information in order to generate leads for the purposes of marketing
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                  <div align="left" class="col-lg-12 col-md-12 col-sm-12" id="pad-top">
+                    <div class="input-group">
+                      <div class="input-group-append">
+                        <label class="m-checkbox m-checkbox--single m-checkbox--state m-checkbox--state-primary">
+                          <input type="checkbox" name="purposeE"
+                                 [(ngModel)]="purposeE">
+                          <span></span>
+                        </label>
+                        <span>
+                          Utilise consumer information for the purpose of profiling your company’s data
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </fieldset>
+          </div>
+          <!-- field section Company information for Customer-->
+          <!-- field section Account Department information for Customer-->
+          <div class="form-group m-form__group row">
+
+            <fieldset align="center" class="col-lg-12 col-md-12 col-sm-12">
+              <legend style="color: #ffffff;font-size: 14px;padding: 5px 14px 3px 14px;background: linear-gradient(#103f56, #094868, #00527c, #066f9e) !important;">Account Department Info</legend>
+
+              <div style="padding-left:20px; padding-right:20px; padding-top:20px;
+                                       padding-bottom:20px;">
+
+                <div class="form-group m-form__group row">
+
+                  <div align="left" class="col-lg-6 col-md-10 col-sm-10" id="pad-top">
+                    <span style="color:red">
+                      *
+                      <input id="test13" class="form-control m-input"
+                             style="border-color: #bbbbbb;text-transform:uppercase; margin-left: 24px;margin-top: -26px;"
+                             type="text" [(ngModel)]="_signupRequest.customer.accountDeptContactPerson"
+                             name="contactPerson" placeholder="Contact Person">
+                    </span>
+                    <span style="color:red;margin-left: 24px;" *ngIf="errorMessageaccountDeptContactPerson != '' && errorMessageaccountDeptContactPerson != null">{{errorMessageaccountDeptContactPerson}}</span>
+
+                  </div>
+
+                  <div align="left" class="col-lg-6 col-md-10 col-sm-10" id="pad-top">
+                    <span style="color:red">
+                      *
+                      <input id="test14" class="form-control m-input"
+                             style="border-color: #bbbbbb;text-transform:uppercase; margin-left: 24px;margin-top: -26px;"
+                             type="text" [(ngModel)]="_signupRequest.customer.accountDeptTelephoneNumber"
+                             name="accountDeptTelephoneNumber" placeholder="Telephone Number">
+                    </span>
+                    <span style="color:red;margin-left: 24px;" *ngIf="errorMessageaccountDeptTelephoneNumber != '' && errorMessageaccountDeptTelephoneNumber != null">{{errorMessageaccountDeptTelephoneNumber}}</span>
+
+                  </div>
+                </div>
+
+                <div class="form-group m-form__group row">
+                  <div align="left" class="col-lg-6 col-md-10 col-sm-10" id="pad-top">
+                    <span style="color:red">
+                      *
+                      <input id="test15" class="form-control m-input"
+                             style="border-color: #bbbbbb;text-transform:uppercase; margin-left: 24px;margin-top: -26px;"
+                             type="text" [(ngModel)]="_signupRequest.customer.accountDeptFaxNumber"
+                             name="accountDeptFaxNumber" placeholder="Fax Number">
+                    </span>
+
+                    <span style="color:red;margin-left: 24px;" *ngIf="errorMessageaccountDeptFaxNumber != '' && errorMessageaccountDeptFaxNumber != null">{{errorMessageaccountDeptFaxNumber}}</span>
+
+                  </div>
+                  <div align="left" class="col-lg-6 col-md-10 col-sm-10" id="pad-top">
+                    <span style="color:red">
+                      *
+                      <input id="test16" class="form-control m-input"
+                             style="border-color: #bbbbbb;text-transform:uppercase; margin-left: 24px;margin-top: -26px;"
+                             type="text" [(ngModel)]="_signupRequest.customer.accountDeptEmail"
+                             name="accountDeptEmail" placeholder="Email">
+                    </span>
+                    <span style="color:red;margin-left: 24px;" *ngIf="errorMessageaccountDeptEmail != '' && errorMessageaccountDeptEmail != null">{{errorMessageaccountDeptEmail}}</span>
+
+                  </div>
+                </div>
+
+              </div>
+            </fieldset>
+          </div>
+          <!-- field section Account information for Customer-->
+          <!-- field section Authentication Department information for Customer-->
+          <div class="form-group m-form__group row">
+
+            <fieldset align="center" class="col-lg-12 col-md-12 col-sm-12">
+              <legend style="color: #ffffff;font-size: 14px;padding: 5px 14px 3px 14px;background: linear-gradient(#103f56, #094868, #00527c, #066f9e) !important;">Authorised Signatory Info</legend>
+
+              <div style="padding-left:20px; padding-right:20px;
+                            padding-top:20px; padding-bottom:20px;">
+
+                <div class="form-group m-form__group row">
+                  <div align="left" class="col-lg-6 col-md-10 col-sm-10" id="pad-top">
+                    <span style="color:red">
+                      *
+                      <input id="test17" class="form-control m-input"
+                             style="border-color: #bbbbbb;text-transform:uppercase; margin-left: 24px;margin-top: -26px;"
+                             type="text" [(ngModel)]="_signupRequest.customer.authIDNumber"
+                             name="authIDNumber" placeholder="ID Number">
+                    </span>
+                    <span style="color:red;margin-left: 24px;" *ngIf="errorMessageauthIDNumber != '' && errorMessageauthIDNumber != null">{{errorMessageauthIDNumber}}</span>
+
+                  </div>
+
+                  <div align="left" class="col-lg-6 col-md-10 col-sm-10" id="pad-top">
+                    <span style="color:red">
+                      *
+                      <input id="test18" class="form-control m-input"
+                             style="border-color: #bbbbbb;text-transform:uppercase; margin-left: 24px;margin-top: -26px;"
+                             type="text" [(ngModel)]="_signupRequest.customer.authPosition"
+                             name="authPosition" placeholder="Position">
+                    </span>
+                    <span style="color:red;margin-left: 24px;" *ngIf="errorMessageauthPosition != '' && errorMessageauthPosition != null">{{errorMessageauthPosition}}</span>
+
+                  </div>
+                </div>
+
+                <div class="form-group m-form__group row">
+                  <div align="left" class="col-lg-6 col-md-10 col-sm-10" id="pad-top">
+                    <span style="color:red">
+                      *
+                      <input id="test19" class="form-control m-input"
+                             style="border-color: #bbbbbb;text-transform:uppercase; margin-left: 24px;margin-top: -26px;"
+                             type="text" [(ngModel)]="_signupRequest.customer.authFirstName"
+                             name="authFirstName" placeholder="First Name">
+                    </span>
+                    <span style="color:red;margin-left: 24px;" *ngIf="errorMessageauthFirstName != '' && errorMessageauthFirstName != null">{{errorMessageauthFirstName}}</span>
+
+                  </div>
+
+                  <div align="left" class="col-lg-6 col-md-10 col-sm-10" id="pad-top">
+                    <span style="color:red">
+                      *
+                      <input id="test20" class="form-control m-input"
+                             style="border-color: #bbbbbb;text-transform:uppercase; margin-left: 24px;margin-top: -26px;"
+                             type="text" [(ngModel)]="_signupRequest.customer.authSurName"
+                             name="authSurName" ng-disabled="expression"
+                             placeholder="SurName" minlength="13"
+                             maxlength="13" (keypress)="onKey($event)">
+                    </span>
+                    <span style="color:red;margin-left: 24px;" *ngIf="errorMessageauthSurName != '' && errorMessageauthSurName != null">{{errorMessageauthSurName}}</span>
+
+                  </div>
+                </div>
+
+                <div class="form-group m-form__group row">
+
+                  <div align="left" class="col-lg-6 col-md-10 col-sm-10" id="pad-top">
+                    <span style="color:red">
+                      *
+                      <input id="test21" class="form-control m-input"
+                             style="border-color: #bbbbbb;text-transform:uppercase; margin-left: 24px;margin-top: -26px;"
+                             type="text" [(ngModel)]="_signupRequest.customer.authEmail"
+                             name="authEmail" ng-disabled="expression"
+                             placeholder="E-Mail">
+                    </span>
+                    <span style="color:red;margin-left: 24px;" *ngIf="errorMessageauthEmail != '' && errorMessageauthEmail != null">{{errorMessageauthEmail}}</span>
+
+                  </div>
+                  <div align="left" class="col-lg-6 col-md-10 col-sm-10" id="pad-top">
+                    <span style="color:red">
+                      *
+                      <input id="test22" class="form-control m-input"
+                             style="border-color: #bbbbbb;text-transform:uppercase; margin-left: 24px;margin-top: -26px;"
+                             type="text" [(ngModel)]="_signupRequest.customer.authCellNumber"
+                             name="authCellNumber" placeholder="Cell Number">
+                    </span>
+                    <span style="color:red;margin-left: 24px;" *ngIf="authCellNumber != '' && authCellNumber != null">{{authCellNumber}}</span>
+
+                  </div>
+                </div>
+
+              </div>
+            </fieldset>
+          </div>
+          <!-- field section Authentication information for Customer-->
+          <!-- field section Company Admin Infrmation for Customer User-->
+          <div class="form-group m-form__group row">
+
+            <fieldset align="center" class="col-lg-12 col-md-12 col-sm-12">
+              <legend style="color: #ffffff;font-size: 14px;padding: 5px 14px 3px 14px;background: linear-gradient(#103f56, #094868, #00527c, #066f9e) !important;">Company Admin Information</legend>
+
+              <div style="padding-left:20px; padding-right:20px; padding-top:20px; padding-bottom:20px;">
+
+                <div class="form-group m-form__group row">
+                  <div align="left" class="col-lg-6 col-md-10 col-sm-10" id="pad-top">
+                    <span style="color:red">
+                      *
+                      <input id="test23" class="form-control m-input"
+                             style="border-color: #bbbbbb;text-transform:uppercase; margin-left: 24px;margin-top: -26px;"
+                             type="text" [(ngModel)]="_signupRequest.firstName"
+                             name="firstName" placeholder=" First Name">
+                    </span>
+                    <span style="color:red;margin-left: 24px;" *ngIf="firstName != '' && firstName != null">{{firstName}}</span>
+
+                  </div>
+
+                  <div align="left" class="col-lg-6 col-md-10 col-sm-10" id="pad-top">
+                    <span style="color:red">
+                      *
+                      <input id="test24" class="form-control m-input"
+                             style="border-color: #bbbbbb;text-transform:uppercase; margin-left: 24px;margin-top: -26px;"
+                             type="text" [(ngModel)]="_signupRequest.lastName"
+                             name="lastName" placeholder="Last Name">
+                    </span>
+                    <span style="color:red;margin-left: 24px;" *ngIf="lastName != '' && lastName != null">{{lastName}}</span>
+
+                  </div>
+                </div>
+
+                <div class="form-group m-form__group row">
+                  <div align="left" class="col-lg-6 col-md-10 col-sm-10" id="pad-top">
+                    <div id="test25">
+                      <span id="pad-top1" style="color:red">
+                        *
+                        <select class="form-control m-input"
+                                style="border-color: #bbbbbb;text-transform:uppercase; padding:6px;color:#000000; margin-left: 24px;margin-top: -26px;"
+                                type="number" placeholder="--Select--" name="title"
+                                [(ngModel)]="_signupRequest.title">
+                          <option value="0">--Select Title--</option>
+                          <option value="1">Ms.</option>
+                          <option value="2">Mr.</option>
+                          <option value="3">Mrs.</option>
+                        </select>
+                      </span>
+                      <span style="color:red;margin-left: 24px;" *ngIf="title != '' && title != null">{{title}}</span>
+                    </div>
+                  </div>
+                  <div align="left" class="col-lg-6 col-md-10 col-sm-10" id="pad-top">
+                    <span style="color:red">
+                      *
+                      <input id="test26" class="form-control m-input"
+                             style="border-color: #bbbbbb;text-transform:uppercase; margin-left: 24px;margin-top: -26px;"
+                             type="text"
+                             [(ngModel)]="_signupRequest.iDNumber" name="iDNumber"
+                             ng-disabled="expression" placeholder="ID Number"
+                             minlength="13" maxlength="13" (keypress)="onKey($event)">
+                    </span>
+                    <span style="color:red;margin-left: 24px;" *ngIf="iDNumber != '' && iDNumber != null">{{iDNumber}}</span>
+
+                  </div>
+                </div>
+
+                <div class="form-group m-form__group row">
+                  <div align="left" class="col-lg-6 col-md-10 col-sm-10" id="pad-top">
+                    <span style="color:red">
+                      *
+                      <input id="test27" class="form-control m-input"
+                             style="border-color: #bbbbbb;text-transform:uppercase; margin-left: 24px;margin-top: -26px;"
+                             type="text" [(ngModel)]="_signupRequest.emailid"
+                             name="emailid" placeholder="Email Address">
+                    </span>
+                    <span style="color:red;margin-left: 24px;" *ngIf="emailid != '' && emailid != null">{{emailid}}</span>
+
+                  </div>
+
+                  <div align="left" class="col-lg-6 col-md-10 col-sm-10" id="pad-top">
+                    <span style="color:red">
+                      *
+                      <input id="test28" class="form-control m-input"
+                             style="border-color: #bbbbbb;text-transform:uppercase; margin-left: 24px;margin-top: -26px;" type="text"
+                             [(ngModel)]="_signupRequest.billEmailadress"
+                             name="billEmailadress" placeholder="Billing Email">
+                    </span>
+                    <span style="color:red;margin-left: 24px;" *ngIf="billEmailadress != '' && billEmailadress != null">{{billEmailadress}}</span>
+
+                  </div>
+                </div>
+
+                <div class="form-group m-form__group row">
+                  <div align="left" class="col-lg-6 col-md-10 col-sm-10" id="pad-top">
+                    <span style="color:red">
+                      *
+                      <input id="test29" class="form-control m-input"
+                             style="border-color: #bbbbbb;text-transform:uppercase; margin-left: 24px;margin-top: -26px;"
+                             type="text" [(ngModel)]="_signupRequest.contactNumber"
+                             name="contactNumber" placeholder="Contact Number">
+                    </span>
+                    <span style="color:red;margin-left: 24px;" *ngIf="emailid != '' && emailid != null">{{contactNumber}}</span>
+
+                  </div>
+                </div>
+
+              </div>
+            </fieldset>
+          </div>
+          <!-- field Company Admin section end-->
+
+          <div class="col-lg-12 col-md-10 col-sm-10" id="pad-top">
+            <div class="row m-login__form-action">
+
+              <div class="col-lg-3 col-md-6 col-sm-6 hide"></div>
+              <div align="right" class="col-lg-3 col-md-6 col-sm-6">
+                <div class="m-login__form-action">
+                  <button class="btn btn-dark" style="width:100%;" (click)="savesignup()">Sign Up</button>
+                </div>
+              </div>
+
+              <div align="left" class="col-lg-3 col-md-6 col-sm-6">
+                <div class="m-login__form-action">
+                  <button class="btn btn-dark1" (click)="cancel()" style="width:100%;color:#ffffff;">Cancel</button>
+                </div>
+              </div>
+              <div class="col-lg-3 col-md-6 col-sm-6 hide"></div>
+
+            </div>
+          </div>
+
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<button data-toggle="modal" id="error" data-target="#errormsg" [hidden]="true"></button>
+
+<div id="errormsg" class="modal" tabindex="-1" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div style="background: linear-gradient(#103f56, #094868, #00527c, #066f9e) !important;" class="modal-header">
+        <h4 style="color:#ffffff" class="modal-title">IDAS says:</h4>
+      </div>
+      <div class="modal-body">{{message}}</div>
+      <div class="modal-footer">
+        <button  type="button" class="btn btn-accent" data-dismiss="modal">Ok</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+
+  .modal-footer {
+    justify-content: center !important;
+  }
+
+  select.form-control:not([size]):not([multiple]) {
+    height: 32px !important;
+  }
+  #cover {
+    background: url("http://www.aveva.com/Images/ajax-loader.gif") no-repeat scroll center center;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    top: 0px;
+    left: 0px;
+    z-index: 1;
+  }
+  FIELDSET {
+    margin: 8px;
+    border: 1px solid silver;
+    /*padding: 8px 150px;*/
+    border-radius: 4px;
+  }
+
+  LEGEND {
+    display: block;
+    width: 37%;
+    max-width: 100%;
+    padding: 0;
+    margin-left: 180px;
+    margin-bottom: .5rem;
+    font-size: 1.5rem;
+    line-height: inherit;
+    color: inherit;
+    white-space: normal;
+    padding: 5px 0px 5px 37px;
+  }
+
+  .m-form.m-form--fit .m-form__content, .m-form.m-form--fit .m-form__group, .m-form.m-form--fit .m-form__heading {
+    /*padding-right: 120px;*/
+  }
+
+  .btn-dark {
+    color: #fff;
+    background-color: #A11E21;
+    border-color: #343a40;
+    margin-left: 147px !important;
+    width: 174px !important;
+  }
+
+  .btn-dark1 {
+    color: #fff;
+    background-color: #343a40;
+    border-color: #343a40;
+    margin-left: 27px !important;
+    width: 174px !important;
+  }
+
+  input {
+    padding: 10px;
+    font-size: 1.0em;
+    border-color: #bbbbbb;
+    /*width: 325px;*/
+  }
+
+  select {
+    /*width: 325px;*/
+  }
+
+  textarea {
+    /*width: 325px;*/
+  }
+
+  .form-control m-input {
+    width: 325px;
+  }
+
+  input::placeholder {
+    color: #000000;
+  }
+
+  @media (max-width: 1200px) {
+    .btn-dark {
+      color: #fff;
+      background-color: #A11E21;
+      border-color: #343a40;
+      margin-left: 75px !important;
+      width: 174px;
+    }
+
+    .btn-dark1 {
+      color: #fff;
+      background-color: #343a40;
+      border-color: #343a40;
+      margin-left: 27px !important;
+      /*width: 174px;*/
+    }
+    #signup-img{
+      width:70% !important;
+    }
+  }
+
+  @media (max-width: 1024px) {
+    FIELDSET {
+      margin: 8px;
+      border: 1px solid silver;
+      /*padding: 8px 150px;*/
+      border-radius: 4px;
+    }
+
+    LEGEND {
+      display: block;
+      width: 49%;
+      max-width: 100%;
+      padding: 0;
+      margin-left: 180px;
+      margin-bottom: .5rem;
+      font-size: 1.5rem;
+      line-height: inherit;
+      color: inherit;
+      white-space: normal;
+      padding: 5px 0px 5px 37px;
+    }
+
+    .btn-dark {
+      color: #fff;
+      background-color: #A11E21;
+      border-color: #343a40;
+      margin-left: 61px !important;
+      width: 174px;
+    }
+
+    .btn-dark1 {
+      color: #fff;
+      background-color: #343a40;
+      border-color: #343a40;
+      margin-left: 27px !important;
+      /*width: 174px;*/
+    }
+
+    input {
+      padding: 10px;
+      font-size: 1.0em;
+      border-color: #bbbbbb;
+      width: 325px;
+    }
+
+    select {
+      width: 325px;
+    }
+
+    textarea {
+      width: 325px;
+    }
+
+    .form-control m-input {
+      width: 325px;
+    }
+
+    input::placeholder {
+      color: #000000;
+    }
+    #signup-img {
+      width: 80% !important;
+    }
+  }
+
+  @media (max-width: 992px) {
+    #pad-top {
+      margin-top: 20px;
+      margin-left: 4px;
+    }
+
+    input {
+      padding: 10px;
+      font-size: 1.0em;
+      border-color: #bbbbbb;
+      width: 500px !important;
+    }
+
+    .form-control m-input {
+      width: 500px;
+    }
+
+    select {
+      width: 500px;
+    }
+
+    textarea {
+      width: 500px;
+    }
+
+    .btn-dark {
+      color: #fff;
+      background-color: #A11E21;
+      border-color: #343a40;
+      margin-right: 292px !important;
+      margin-left: -133px !important;
+      width: 174px;
+    }
+
+    .btn-dark1 {
+      color: #fff;
+      background-color: #000000;
+      border-color: #343a40;
+      margin-left: 429px !important;
+      margin-top: -60px;
+      width: 174px;
+    }
+    #signup-img {
+      width: 75% !important;
+    }
+  }
+
+
+  @media (max-width: 768px) {
+    #pad-top {
+      margin-top: 20px;
+      margin-left: 4px;
+    }
+
+    input {
+      padding: 10px;
+      font-size: 1.0em;
+      border-color: #bbbbbb;
+      width: 500px !important;
+    }
+
+    .form-control m-input {
+      width: 500px;
+    }
+
+    select {
+      width: 500px;
+    }
+
+    textarea {
+      width: 500px;
+    }
+
+    .btn-dark {
+      color: #fff;
+      background-color: #A11E21;
+      border-color: #343a40;
+      margin-right: 292px !important;
+      margin-left: -133px !important;
+      width: 174px;
+    }
+
+    .btn-dark1 {
+      color: #fff;
+      background-color: #000000;
+      border-color: #343a40;
+      margin-left: 355px !important;
+      margin-top: -60px;
+      width: 174px;
+    }
+    #signup-img {
+      width: 30% !important;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .hide {
+      display: none;
+    }
+
+    #pad-top {
+      margin-top: 20px !important;
+      margin-left: -40px !important;
+    }
+
+    input {
+      padding: 10px;
+      font-size: 1.0em;
+      border-color: #bbbbbb;
+      width: 400px !important;
+    }
+
+    .form-control m-input {
+      width: 190px !important;
+    }
+
+    select {
+      width: 400px !important;
+    }
+
+    textarea {
+      width: 400px !important;
+    }
+
+    .btn-dark {
+      color: #fff;
+      background-color: #A11E21;
+      border-color: #343a40;
+      margin-right: -82px !important;
+      margin-left: -133px !important;
+      width: 120px !important;
+    }
+
+    .btn-dark1 {
+      color: #fff;
+      background-color: #343a40;
+      border-color: #343a40;
+      margin-left: 75px !important;
+      margin-top: 0px !important;
+      width: 120px !important;
+    }
+    #signup-img {
+      width: 40% !important;
+    }
+  }
+
+  @media (max-width: 580px) {
+    .hide {
+      display: none;
+    }
+
+    #pad-top {
+      margin-top: 20px !important;
+      margin-left: -40px !important;
+    }
+
+    input {
+      padding: 10px;
+      font-size: 1.0em;
+      border-color: #bbbbbb;
+      width: 330px !important;
+    }
+
+    .form-control m-input {
+      width: 190px !important;
+    }
+
+    select {
+      width: 330px !important;
+    }
+
+    textarea {
+      width: 330px !important;
+    }
+
+    .btn-dark {
+      color: #fff;
+      background-color: #A11E21;
+      border-color: #343a40;
+      margin-right: 190px !important;
+      margin-left: 33px !important;
+      width: 120px !important;
+    }
+
+    .btn-dark1 {
+      color: #fff;
+      background-color: #343a40;
+      border-color: #343a40;
+      margin-left: 271px !important;
+      margin-top: -60px !important;
+      width: 120px !important;
+    }
+    #signup-img {
+      width: 40% !important;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .hide {
+      display: none;
+    }
+
+    #pad-top {
+      margin-top: 20px !important;
+      margin-left: -40px !important;
+    }
+
+    input {
+      padding: 10px;
+      font-size: 1.0em;
+      border-color: #bbbbbb;
+      width: 250px !important;
+    }
+
+    .form-control m-input {
+      width: 190px !important;
+    }
+
+    select {
+      width: 250px !important;
+    }
+
+    textarea {
+      width: 250px !important;
+    }
+
+    .btn-dark {
+      color: #fff;
+      background-color: #A11E21;
+      border-color: #343a40;
+      margin-right: 178px !important;
+      margin-left: -98px !important;
+      width: 120px !important;
+    }
+
+    .btn-dark1 {
+      color: #fff;
+      background-color: #343a40;
+      border-color: #343a40;
+      margin-left: 184px !important;
+      margin-top: -60px !important;
+      width: 120px !important;
+    }
+    #signup-img {
+      width: 60% !important;
+    }
+  }
+
+  @media (max-width: 375px) {
+    .hide {
+      display: none;
+    }
+
+    #pad-top {
+      margin-top: 20px !important;
+      margin-left: -40px !important;
+    }
+
+    input {
+      padding: 10px;
+      font-size: 1.0em;
+      border-color: #bbbbbb;
+      width: 190px !important;
+    }
+
+    .form-control m-input {
+      width: 190px !important;
+    }
+
+    select {
+      width: 190px !important;
+    }
+
+    textarea {
+      width: 190px !important;
+    }
+
+    .btn-dark {
+      color: #fff;
+      background-color: #A11E21;
+      border-color: #343a40;
+      margin-right: 223px !important;
+      margin-left: 45px !important;
+      width: 120px !important;
+    }
+
+    .btn-dark1 {
+      color: #fff;
+      background-color: #343a40;
+      border-color: #343a40;
+      margin-left: 175px !important;
+      margin-top: -60px !important;
+      width: 120px !important;
+    }
+    #signup-img {
+      width: 65% !important;
+    }
+  }
+
+  @media (max-width: 320px) {
+
+    LEGEND {
+      display: block;
+      width: 37%;
+      max-width: 100%;
+      padding: 0;
+      margin-left: 180px;
+      margin-bottom: .5rem;
+      font-size: 1.5rem;
+      line-height: inherit;
+      color: inherit;
+      white-space: normal;
+      padding: 5px 82px 5px 10px !important;
+    }
+
+    .hide {
+      display: none;
+    }
+
+    #pad-top {
+      margin-top: 20px !important;
+      margin-left: -56px !important;
+    }
+
+    input {
+      padding: 10px;
+      font-size: 1.0em;
+      border-color: #bbbbbb;
+      width: 189px !important;
+    }
+
+    .form-control m-input {
+      width: 189px !important;
+    }
+
+    select {
+      width: 189px !important;
+    }
+
+    textarea {
+      width: 189px !important;
+    }
+
+    .btn-dark {
+      color: #fff;
+      background-color: #A11E21;
+      border-color: #343a40;
+      margin-left: 60px !important;
+      width: 120px !important;
+    }
+
+    .btn-dark1 {
+      color: #fff;
+      background-color: #343a40;
+      border-color: #343a40;
+      margin-left: 186px !important;
+      margin-top: -60px !important;
+      width: 120px !important;
+    }
+    #signup-img {
+      width: 65% !important;
+    }
+  }
+</style>

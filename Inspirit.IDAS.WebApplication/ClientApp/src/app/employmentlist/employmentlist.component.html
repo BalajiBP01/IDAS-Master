@@ -1,0 +1,32 @@
+<div class="m-portlet">
+    <form class="m-form m-form--label-align-right" style="padding:12px;background-color:#f2f3f8">
+      <div class="m-portlet__body" style="background-color:#ffffff;padding:12px;border:1px solid #000000">
+        <div class="m-section">
+          <div class="m-section__content">
+            <div class="table-responsive">
+              <table [dtOptions]="dtOptions" datatable class="table table-striped">
+                <thead>
+                  <tr>
+                    <th class="tablevalue">Commercial Name</th>
+                    <th class="tablevalue">Designation</th>
+                    <th class="tablevalue">Last updated Date</th>
+                    <th class="tablevalue">Created On Date</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let employmentlist of result">
+                    <td class="tablename">{{employmentlist.employer}}</td>
+                    <td class="tablename">{{employmentlist.occupation}}</td>
+                    <td class="tablename">{{employmentlist.date | date:'yyyy-MM-dd'}}</td>
+                    <td class="tablename">{{employmentlist.createdDate| date:'yyyy-MM-dd'}}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <!--end::Section-->
+      </div>
+      </form>
+      <!--end::Form-->
+  </div>

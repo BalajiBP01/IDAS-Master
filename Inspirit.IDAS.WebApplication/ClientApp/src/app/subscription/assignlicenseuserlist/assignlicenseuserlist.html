@@ -1,0 +1,52 @@
+<div class="modal-content">
+  <div  style="background: linear-gradient(#103f56, #094868, #00527c, #066f9e) !important;" class="modal-header" *ngIf="users">
+    <h5 style="color:#ffffff" class="modal-title">Users</h5>
+    <button type="button" class="close" data-dismiss="modal" (click)="close()" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body" *ngIf="users">
+    <div class="m-scrollable" data-scrollbar-shown="true" data-scrollable="true" data-height="200">
+      <form class="m-form m-form--label-align-right">
+        <div class="m-portlet__body">
+          <div class="table-responsive">
+            <table class="table table-hover table-bordered" [mfData]="users" #mfusers="mfDataTable" [mfRowsOnPage]="10">
+              <thead>
+                <tr>
+                  <th>User Name</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let user of mfusers.data">
+                  <td>
+                    <div class="input-group m-input-group">
+                      <label class="m-checkbox m-checkbox--single m-checkbox--state m-checkbox--state-primary">
+                        <input type="checkbox" name="{{user.customerUserId}}" [(ngModel)]="user.isActive" />
+                        <span></span>
+                      </label>
+                      <div class="input-group-prepend">
+                        <span> {{user.customerName}}</span>
+                      </div>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr style="text-align:right">
+                  <td colspan="1">
+                    <mfBootstrapPaginator></mfBootstrapPaginator>
+                  </td>
+                </tr>
+              </tfoot>
+            </table>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+  <div class="modal-header" *ngIf="users">
+    <button type="submit" style="background-color:#094868;color:#ffffff" (click)="save()" class="btn m-btn--md btn-dark">
+      Save
+    </button>
+  </div>
+</div>

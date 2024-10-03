@@ -1,0 +1,96 @@
+<div class="m-subheader" appunwraptag="">
+  <div class="d-flex align-items-center">
+    <div class="mr-auto">
+      <h3 class="m-subheader__title">Donot call Registry</h3>
+    </div>
+    <div *ngIf="userper.addAction" class="btn-group pull-right">
+      <a style="margin: 10px 5px;" class="btn btn-accent" (click)="uploadfile()">
+        Upload File
+        &nbsp;
+        <i class="fa fa-plus"></i>
+      </a>
+    </div>
+
+  </div>
+</div>
+
+
+<div class="m-content">
+  <div class="m-portlet  m-portlet--unair">
+    <div class="m-portlet__body  m-portlet__body--no-padding">
+      <div class="m-portlet__body">
+        <div class="m-portlet__body col-12">
+          <div class="form-group m-form__group row">
+            <label for="example-text-input" class="col-1 col-form-label"
+                   style="font-weight:bold">From Date</label>
+            <div class="col-4">
+              <input class="form-control m-input border-dark"
+                     name="fromDatestring" id="fromdate" type="date"
+                     value="{{fromDatestring}}">
+            </div>
+            <label for="example-text-input" class="col-1 col-form-label"
+                   style="font-weight:bold">To Date</label>
+            <div class="col-4">
+              <input class="form-control m-input border-dark"
+                     name="toDatestring" id="todate"
+                     type="date" value="{{toDatestring}}">
+            </div>
+
+
+            <div style="text-align:center; padding:0px 10px 20px 10px !important;">
+              <button style="text-transform: uppercase;
+    width: 100% !important;
+    height: 94% !important;
+    font-family: Avenir !important;
+    font-size: 14px;" type="button" class="btn btn-success" (click)="rerender()">
+                Submit
+              </button>
+            </div>
+          </div>
+          <div *ngIf="!isProcess" class="m-form__section m-form__section--first">
+            <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="table table-striped"> </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<button data-toggle="modal" id="nopermission" data-target="#per" [hidden]="true"></button>
+
+<div id="per" class="modal" tabindex="-1" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div style="background: linear-gradient(#103f56, #094868, #00527c, #066f9e)" class="modal-header">
+        <h4 style="color:#ffffff" class="modal-title">IDAS says:</h4>
+      </div>
+      <div class="modal-body">You don't have permission to access.</div>
+      <div class="modal-footer">
+        <button style="width:150px" (click)="dash()" type="button" class="btn btn-accent" data-dismiss="modal">Ok</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<button data-toggle="modal" id="errormsg" data-target="#error" [hidden]="true"></button>
+
+<div id="error" class="modal" tabindex="-1" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div style="background: linear-gradient(#103f56, #094868, #00527c, #066f9e)" class="modal-header">
+        <h4 style="color:#ffffff" class="modal-title">IDAS says:</h4>
+      </div>
+      <div class="modal-body">{{errormsg}}</div>
+      <div class="modal-footer">
+        <button style="width:150px" type="button" class="btn btn-accent" data-dismiss="modal">Ok</button>
+      </div>
+    </div>
+  </div>
+</div>
+<style>
+  .modal-footer {
+    justify-content: center !important;
+  }
+
+</style>
+

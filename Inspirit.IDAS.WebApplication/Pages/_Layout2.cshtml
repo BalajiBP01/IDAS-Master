@@ -1,0 +1,944 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    @*<title>Inspirit</title>*@
+    <!--meta tags -->
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui" />
+    <meta name="keywords" content="web design" />
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-145613525-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'UA-145613525-1');
+    </script>
+    <style>
+        /*This resolves the issue when iphone puts links on dates, etc.*/
+        .appleLinks {
+            color: inherit;
+            text-decoration: none;
+        }
+
+            .appleLinks a {
+                color: inherit;
+                text-decoration: none;
+            }
+    </style>
+    <!--//meta tags ends here-->
+    <!--booststrap-->
+    <link href="~/web/css/bootstrap.min.css" rel="stylesheet" type="text/css" media="all" />
+    <link rel="icon" type="image/x-icon" href="S---favicon.png">
+    <!--//booststrap end-->
+    <!-- font-awesome icons -->
+    <link href="~/web/css/font-awesome.css" rel="stylesheet" />
+    <!-- //font-awesome icons -->
+    <!--gallery-->
+    <link href="~/web/css/lightbox.css" rel="stylesheet" />
+
+    <!--//gallery-->
+    <!--stylesheets-->
+    <link href="~/web/css/style.css" rel="stylesheet" type='text/css' media="all" />
+
+    <!--//stylesheets-->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet">
+</head>
+<body class="container-fluid">
+    <div class="header-outs" id="header">
+    </div>
+    <div>
+        @RenderBody()
+    </div>
+    <!--//contact -->
+    <footer align="center" id="footer-block1" class="py-lg-5 py-md-4 py-4" style="background-color: #353535;">
+        <div class="container" id="footer-block">
+            <div class="row">
+
+
+
+                <div align="left" class="col-lg-6 col-md-12 col-sm-12 footer-bottom">
+
+                    <div class="footer-top mt-3">
+
+                        <img src="~/web/images/Landing Page Logo - White.svg" class="img-fluid" alt="" width="201" height="80" style="max-width:70% !important;"><br><br>
+
+                        <p>Developing solutions to Optimize your business processes to make them more effective and as a result make your business more profitable.</p>
+                        <p> <span class="fa fa-map-marker"></span>&nbsp;&nbsp;&nbsp;&nbsp;Brandfin House, 4 Holwood Crescent, La Lucia Ridge, Umhlanga, 4319</p>
+                        <p class="pt-2"><span class="fa fa-phone"></span>&nbsp;&nbsp;&nbsp;&nbsp;+27 31 584 7379</p>
+                        <p class="pt-2">
+                            <span class="fa fa-envelope"></span>&nbsp;&nbsp;&nbsp;&nbsp;<a href="mailto:info@inspirit.co.za">info@inspirit.co.za</a>
+
+                        </p>
+                    </div>
+                    <img src="~/web/images/Powered by logo -white 11-03.svg" class="img-fluid" alt="" width="280" height="100"><br><br>
+
+                </div>
+                <div align="right" class="col-lg-1 col-md-12 col-sm-12 footer-bottom-new">
+                </div>
+                <div align="right" class="col-lg-3 col-md-12 col-sm-12 footer-bottom-new">
+                    <div class="footer-top mt-3">
+                        @* <img src="~/web/images/Powered-by-Logo---White.png" class="img-fluid" alt="" width="240" height="100"><br><br>*@
+                        @*<img src="~/web/images/Powered by logo -white 11-03.svg" class="img-fluid" alt="" width="280" height="100"><br><br>*@
+                        <h6 class="pb-2"><a class="nav-link" class="nav-link" href="/Home">PRIVACY POLICY</a></h6>
+                        <h6 class="pb-2"><a hclass="nav-link" class="nav-link" data-toggle="modal" aria-pressed="false" data-target="#TermsandCondition">TERMS AND CONDITIONS</a></h6>
+                        <h6 class="pb-2"><a href="~/Inspirit_PAIA and POPIA manual_v1.1.pdf" class="nav-link" download>PAIA</a></h6>
+                        <h6 class="pb-2"><a href="~/IDAS Cookie Policy PDF.pdf" class="nav-link" download>DOWNLOAD COOKIE POLICY</a></h6>
+                    </div>
+                </div>
+
+
+                <div align="right" class="col-lg-2 col-md-12 col-sm-12 footer-bottom-new">
+                    <div class="footer-top mt-md-3 mt-3">
+                        <h6 class="pb-2"><a class="nav-link" href="/Home">HOME</a></h6>
+                        <h6 class="pb-2"><a href="/Products" class="nav-link">PRODUCTS</a></h6>
+                        <h6 class="pb-2"><a href="/Solutions" class="nav-link">SOLUTIONS</a></h6>
+                        <h6><a href="/AboutUs" class="nav-link">ABOUT US</a></h6>
+                        <h6><a href="@Url.Action("NewsBlog", "News")" class="nav-link">NEWS</a></h6>
+                        <h6><a href="/ContactUs" class="nav-link">CONTACT US</a></h6>
+                        <h6><a href="/Complaints" class="nav-link">COMPLAINTS</a></h6>
+                        <h6 class="pb-2"><a href="donotcallregistry" class="nav-link">DO NOT CALL</a></h6>
+                    </div>
+                </div>
+            </div>
+            <div>
+            </div>
+        </div>
+    </footer>
+
+    <div class="copy-bottom-txt text-center py-3">
+        <p style="color:#ffffff; font-size: 12px;">
+            2022 &copy; IDAS Product of Inspirit Data Analytics Services. All Rights Reserved.<br>
+            An authorized agent of Xpert Decision Systems (Pty) Ltd <br />
+            <a style="color:#ffffff; font-size: 12px; cursor:pointer;" data-toggle="modal"
+               aria-pressed="false" data-target="#TermsandCondition">Terms & Conditions</a>
+            | <a style="color:#ffffff; font-size: 12px; cursor:pointer;" data-toggle="modal"
+                 aria-pressed="false" data-target="#PrivacyPolicy">Privacy Policy</a>
+
+            | <a href="donotcallregistry" style="color:#ffffff; font-size: 12px;">Do Not Call</a>
+
+            @*| <a style="color:#ffffff; font-size: 12px; cursor:pointer;" data-toggle="modal"
+                 aria-pressed="false" data-target="#PAIA">PAIA</a>
+            |
+            <a href="~/Inspirit_PAIA and POPIA manual_v1.1.docx.pdf" download>Download the pdf PAIA</a>*@
+            
+        </p>
+
+
+
+        <div id="TermsandCondition" class="modal" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div style="background: linear-gradient(#103f56, #094868, #00527c, #066f9e) !important;" class="modal-header">
+                        <h4 style="color:#ffffff;margin:0 auto;text-transform:uppercase;font-size:16px" class="modal-title text-center">Terms and Conditions:</h4>
+                        <button type="button" class="close float-right" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body" style="text-align: justify;">
+                        <p>
+                            The following terms and conditions describe the terms on which Inspirit Data Analytics Services (Pty) Ltd (IDAS), an Authorised Agent of Xpert Decision Systems (Pty) Ltd (XDS), offers you use of website (www.inspiritdata.co.za), mobile application software and access to our services. All Products and Services offered by IDAS is Powered by XDS<br /><br />
+                            Important - read carefully. These terms are a legal agreement between you, the licensed user (either an individual or organization) (“you” or “your”) and Inspirit Data Analytics Services, for use of our services including our website, dashboard, mobile application, our associated printed and online documentation (collectively, the "services").  Only the licensee may accept these terms and use the services. The licensee is the individual or entity designated as such on the Data Services Agreement which details the services that were licensed from us. Do not use the services and exit now if you are not the licensee, or a person with authority to bind the licensee to these terms.  By accepting these terms or using the services you, as an individual and in your personal capacity, represent and warrant to us that you are either (i) the individual licensed to use the services, or (ii) a person duly authorized to act on behalf of the organization that is the licensee of the services, or (iii) a person that has been authorized by a licensee to use the services under the licensee’s license to use the services. If this is not the case, your use of the services is not authorized and you are personally liable and responsible for any damage incurred by IDAS.<br /><br />
+                            If you do not agree to these terms, do not install or use the services and exit now.<br /><br />
+                            By accessing this web site, you are agreeing to be bound by these web site Terms and Conditions of Use. The materials contained in this web site are protected by applicable copyright and trade mark laws.<br /><br />
+                            When you create an account with us, you guarantee that you are above the age of 18, and that the information you provide us is accurate, complete, and current at all times. Inaccurate, incomplete, or obsolete information may result in the immediate termination of your account on the Service.
+                            You are responsible for maintaining the confidentiality of your account and password, including but not limited to the restriction of access to your computer and/or account. You agree to accept responsibility for any and all activities or actions that occur under your account and/or password, whether your password is with our Service or a third-party service. You must notify us immediately upon becoming aware of any breach of security or unauthorized use of your account.<br /><br />
+                            By creating an Account on our service, you agree to subscribe to newsletters, marketing or promotional materials and other information we may send. However, you may opt out of receiving any, or all, of these communications from us by following the unsubscribe link or instructions provided in any email we send.<br /><br />
+                            In no event shall IDAS or its suppliers be liable for any damages (including, without limitation, damages for loss of profit, or due to business interruption,) arising out of the use or inability to use the materials on IDASs’ website, even if IDAS or an IDAS authorised representative has been notified orally or in writing of the possibility of such damage.<br /><br />
+                            You agree that You will use the Services in a manner consistent with any and all applicable laws and regulations. We reserve the right but are not obligated to investigate and terminate Your use or access to the Services if You have misused the Services or behaved in a way which could be regarded as inappropriate or whose conduct is unlawful or illegal. With respect to Your use of the Service, You agree that You will not: (a) Impersonate any person or entity; (b) "Stalk" or otherwise harass any person; (c) Express or imply that any statements You make are endorsed by IDAS, without Our specific prior written consent; (d) use any robot, spider, site search/retrieval application, or other manual or automatic device or process to retrieve, index, "data mine", or in any way reproduce or circumvent the navigational structure or presentation of the Service or its contents; (e) post, distribute or reproduce in any way any copyrighted material, trademarks, or other proprietary information without obtaining the prior consent of the owner of such proprietary rights and (f) remove any copyright, trademark or other proprietary rights notices contained in the applications or with respect to the Service.<br /><br />
+                            Our Service may contain links to third party web sites or services that are not owned or controlled by IDAS.  Our Service also permits Users to communicate with other users of the Service (“Other Users”).<br /><br />
+                            IDAS has no control over, and assumes no responsibility for the content, privacy policies, or practices of any third-party web sites or services or posted or shared by Other Users. We do not warrant the offerings or information of any of these entities/individuals or their websites.<br /><br />
+                            You acknowledge and agree that IDAS shall not be responsible or liable, directly or indirectly, for any damage or loss caused or alleged to be caused by or in connection with use of or reliance on any such content, goods or services available on or through any such third-party web sites or services or Other Users.<br /><br />
+                            We strongly advise you to read the terms and conditions and privacy policies of any third-party web sites or services that you visit, and to exercise due diligence and care when deciding whether or not to engage in a potential transaction with any Other User.<br /><br />
+                            The materials on IDAS’s web site are provided “as is”. IDAS makes no warranties, expressed or implied, and hereby disclaims and negates all other warranties, including without limitation, implied warranties. Further, IDAS does not warrant or make any representations concerning the accuracy, likely results, or reliability of the use of the materials on its Internet web site or otherwise relating to such materials or on any sites linked to this site.<br /><br />
+                            IDAS may revise these terms of use for its web site at any time without notice. By using this website, you are agreeing to be bound by the then current version of these Terms and Conditions of Use.<br /><br />
+                            Any claim relating to IDAS’s web site shall be governed by the laws of the State of South Africa without regard to its conflict of law provisions.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="PAIA" class="modal" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div style="background: linear-gradient(#103f56, #094868, #00527c, #066f9e) !important;" class="modal-header">
+                        <h4 style="color:#ffffff;margin:0 auto;text-transform:uppercase;font-size:16px" class="modal-title text-center">Terms and Conditions:</h4>
+                        <button type="button" class="close float-right" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body" style="text-align: justify;">
+                        <p>
+                            <pre>THE ACT
+
+                                    The Promotion of Access to Information Act, 2000 (“PAIA”) gives effect to section 32 of the Constitution, which provides that everyone has the right to access information held by the State, as well as information held by another person (or private body) when  such privately held information is required to exercise a right or to protect a right.
+
+                                    PAIA, provides that a person requesting information must be given access to any record of a private body, if that record is required for the exercise or the protection of a right. However, such request has to comply with the procedural requirements laid down by the Act.
+
+
+                                    COMPANY INFORMATION AND CONTACT DETAILS OF THE INFORMATION OFFICER
+
+                                    This Manual has been prepared in respect of the INSPIRIT Group of Companies, which includes related entities and / or wholly owned subsidiaries. The scope of this Manual will serve to provide a reference regarding the records held by Inspirit Group at its Registered Office and various operations.
+
+                                    Inspirit Group of companies include:
+                                    2.1 Inspirit Consulting 
+                                    Registration Number: K2016/062587/07
+                                    Inspirit Consulting (Pty) Ltd is an enterprise software solutions provider that specializes in business process re-engineering 
+                                    www.inspirit.co.za
+
+                                    2.2. Inspirit Data Analytics Services 
+                                    Registration Number: K2017/653373/07
+                                    Inspirit Data Analytics Services (Pty) Ltd is a privately held company that provides data management services in the form of data analytics.
+                                    www.inspiritdata.co.za
+
+                                    2.3 Inspirit Earth 
+                                    Registration Number: K2020/842481/07
+                                    Safety, Health, Environmental and Quality Consulting Services.
+
+
+                                    The manual may be amended from time to time and as soon as any amendments have been finalised the latest version of the manual will be made public.
+
+                                    Any requester is advised to contact our Information Officer(s) should he / she require any assistance
+                                    in respect of the utilisation of this manual and/or requesting of documents / information from Inspirit Group
+
+
+
+                                    CONTACT DETAILS
+
+                                    Company Group:	Inspirit Group
+
+                                    Information Officer:	Mischa Naidoo 
+                                    Deputy Information Officer:	Bradley Poliah
+
+
+                                    Postal address:	Brandfin House 
+                                    4 Holwood Crescent, La Lucia Ridge
+                                    Umhlanga
+                                    4051
+
+                                    Physical address:	Brandfin House 
+                                    4 Holwood Crescent, La Lucia Ridge
+                                    Umhlanga
+                                    4051
+
+                                    Tel:	+27 31 584 7379
+                                    E-mail:	informationofficer@inspirit.co.za
+                                    Website:	www.inspiritdata.co.za
+
+
+
+
+
+
+                                    AVAILABILITY OF GUIDES TO PAIA AND POPIA
+
+                                    Copies of PAIA and POPIA, the relevant regulations and guides to these acts, can be obtained from the South African Human Rights Commission (SAHRC).
+
+                                    The South African Human Rights Commission
+                                    Private Bag X2700
+                                    Houghton
+                                    2041
+
+                                    Telephone: +27 11 877 3600
+                                    Facsimile: +27 11 403 0625
+                                    Website: www.sahrc.org.za
+
+
+
+
+
+
+
+
+                                    APPLICABLE LEGISLATION
+
+                                    Where applicable to Inspirit Group’s operations, information is available in accordance with  the following legislation, including but not limited to:
+
+                                    Arbitration Act 42 of 1965
+                                    Basic Conditions of Employment Act 75 of 1997
+                                    Broad Based Black Economic Empowerment Act 53 of 2003
+                                    Companies Act 71 of 2008 (As amended)
+                                    Copyright Act 98 of 1978
+                                    Consumer Protection Act 68 of 2008
+                                    Electronic Communications and Transactions Act 25 of 2002
+                                    Employment Equity Act 55 of 1998
+                                    Financial Intelligence Centre Act 38 of 2001
+                                    Income Tax Act 95 of 1967
+                                    Insolvency Act 24 of 1936
+                                    Labour Relations Act 66 of 1995
+                                    Prevention of Organised Crime Act 121 of 1998
+                                    Promotion of Access of Information Act 2 of 2000
+                                    Trademarks Act 194 of 1993
+                                    Unemployment Insurance Act 30 of 1996
+                                    Value Added Tax Act 89 of 1991
+
+
+                                    ACCESS TO RECORDS HELD BY INSPIRIT GROUP
+
+                                    5.1 SUBJECTS AND CATEGORIES OF RECORDS HELD BY INSPIRIT GROUP
+
+                                    The inclusion of any subject or category of records should not be taken as an indication that records falling within those subjects and/or categories will  be made available under the Act. In particular, certain grounds of refusal as set out in the Act may be applicable to a request for such records.
+
+                                    Statutory Company Information
+                                    Memorandum of Incorporation
+                                    Certificate of Incorporation
+                                    Records of all subsidiary companies
+                                    The shares register of INSPIRIT GROUP.
+                                    Shareholders' agreements of INSPIRIT GROUP.
+                                    Register or list of directors of INSPIRIT GROUP.
+                                    Minute books and internal resolutions of INSPIRIT GROUP.
+                                    Power of attorney agreements and a list of persons authorised      
+                                    to bind INSPIRIT GROUP.
+
+                                    Financial and Tax Records of INSPIRIT GROUP
+                                    Accounting records, books and documents of INSPIRIT GROUP.
+                                    Interim and annual financial reports of INSPIRIT GROUP.
+                                    Details of auditors of INSPIRIT GROUP.
+                                    External auditors' reports in respect of audits conducted on INSPIRIT GROUP.
+                                    Tax returns of INSPIRIT GROUP.
+                                    PAYE records
+                                    Skills Development Levies records
+                                    Other documents and agreements relating to taxation.
+                                    Banking Details of INSPIRIT GROUP
+                                    Bank facilities and account details.
+                                    Bank statements.
+                                    Guarantees given by, or in respect of, INSPIRIT GROUP.
+
+                                    Human Resources / Employment Records
+                                    List of employees.
+                                    Contracts of employment with directors, officers and employees  of INSPIRIT GROUP.
+                                    Expenditure or reimbursement agreements with directors of  INSPIRIT GROUP.
+                                    Documents relating to employee benefits.
+                                    Compensation or redundancy payments.
+                                    Personnel files.
+                                    Employee code of conduct.
+                                    Employment equity plan of INSPIRIT GROUP.
+                                    Procedural agreements and policies of INSPIRIT GROUP.
+                                    Disciplinary	records	and	documentation	pertaining	to disciplinary proceedings.
+                                    CCMA records
+                                    Training manuals.
+                                    Other information relating to employees of INSPIRIT GROUP.
+                                    Confidentiality agreements
+
+                                    Intellectual Property
+                                    Trademarks, patents, copyrights, designs held by INSPIRIT GROUP.
+                                    Licences relating to intellectual property rights.
+                                    Other agreements relating to intellectual property rights.
+
+                                    Permits
+                                    Licences, material permits, consents, approvals, authorisations and certificates.
+                                    Applications for permits and licences.
+                                    Registrations and declarations of permits.
+
+                                    Insurance Records
+                                    Insurance policies taken out for the benefit of INSPIRIT GROUP and its employees.
+                                    Claims records
+
+                                    Immovable and Movable Property
+                                    Title deeds of land owned by INSPIRIT GROUP.
+                                    Agreements for the lease or sale of land and/or other immovable property by INSPIRIT GROUP.
+                                    Agreements for the lease or sale of movable property by INSPIRIT GROUP.
+                                    Mortgage bonds, liens, notarial bonds or security interests on property.
+                                    Other agreements for the purchase, ordinary sale, conditional sale, or hire of assets.
+
+                                    Information Technology
+                                    Computer software support and maintenance agreements.
+                                    Web site development, support and maintenance agreements.
+                                    Computer software licence agreements.
+                                    Agreements in respect of computer hardware used by INSPIRIT GROUP.
+                                    Agreements	with	Internet	Service	Providers,   and	other telecommunications entities.
+                                    Leased line agreements.
+                                    Other documentation pertaining to computer systems and computer programs held by INSPIRIT GROUP.
+                                    Individual contracts in respect of usage of cellular telephones.
+
+                                    Specific Agreements Relating to the Business Activities of INSPIRIT GROUP
+                                    Indemnity, confidentiality and non-disclosure agreements.
+                                    Regulatory agreements.
+                                    Agreements relating to transactions.
+                                    Presentations to clients.
+                                    Research information.
+
+                                    Policy Documents
+                                    Corporate governance.
+                                    Ethics policy.
+
+                                    Miscellaneous agreements of  INSPIRIT GROUP
+                                    Loans to/from third parties (including banks).
+                                    Suretyship agreements.
+                                    Agreements restricting the trading activities of INSPIRIT GROUP
+                                    Agency, management and distribution agreements.
+                                    Royalty agreements.
+                                    Agreements in terms of which INSPIRIT GROUP is a member of a joint venture, consortium, partnership, incorporated or unincorporated association, and shareholders' agreements of another entity which INSPIRIT GROUP is a party to.
+                                    Any other agreements.
+
+                                    Correspondence
+                                    Correspondence of INSPIRIT GROUP, including internal and external memoranda.
+
+                                    Information Relating to Legal proceedings
+                                    Records relating to legal proceedings involving INSPIRIT GROUP.
+                                    Records relating to arbitration matters involving INSPIRIT GROUP
+
+
+                                    Records pertaining to clients of INSPIRIT GROUP
+                                    Agreements with clients of INSPIRIT GROUP
+                                    Service Level Agreements
+                                    Agency Agreements.
+                                    Business strategies
+                                    Creative (artwork)
+                                    Signed Cost Estimates
+                                    Organograms
+                                    Contact lists
+                                    Brand/Corporate Identity documents
+                                    Contact/Status Reports
+                                    Marketing plans
+                                    Sales results
+                                    Dealer letters/sheets
+                                    Client briefs
+                                    Media schedules/chase lists
+                                    Client E-mails
+                                    Client’s supplier lists
+                                    Sponsorship plans
+                                    Image library
+                                    Lists of Purchase Order numbers
+                                    Legal clauses
+
+
+                                    THE REQUEST PROCEDURE AND FEES
+
+                                    The requester must use the prescribed form (Annexure A) to make the  request for access to a record. This must be made to the Information Officer of INSPIRIT GROUP. This request must be made to the address or electronic mail address of the Information Officer of INSPIRIT GROUP.
+
+                                    The requester must provide sufficient detail on the request form to enable the Information Officer to identify the record and the requester.  The requester should also indicate which form of access is required. The requester should also indicate if he or she wishes to be informed in any other manner and state the necessary particulars to be so informed.
+
+                                    The requester must identify the right that he or she is seeking to exercise or protect and provide an explanation as to why the requested record is required for the exercise or protection of that right.
+
+                                    If a request is made on behalf of a person, the requester must submit proof of the capacity in which the requester is making the request to the  satisfaction of the Information Officer.
+
+
+                                    AVAILABILITY OF THE MANUAL
+
+                                    The manual is available on the INSPIRIT GROUP website – www.inspiritdata.co.za 
+
+
+                                    PRESCRIBED FEES
+
+                                    The applicable fees are prescribed in terms of the Regulations promulgated under the Act. There are two types of fees payable:
+
+                                    Request fee: A non-refundable request fee of R50 (excluding VAT) is payable on submission of any request for access to any record. This does not apply if the request is for personal records of the person requesting – in this instance no fee is payable.
+
+                                    Access fee: An access fee is payable prior to being granted access to the records in the form required. These fees are prescribed in Part III of Annexure A as defined in Government gazette Notice No. 187, Regulation 11.
+
+
+                                    GROUNDS FOR REFUSAL TO ACCESS RECORDS
+
+                                    The Promotion of Access to Information Act provides several grounds on which a request for access to information must be refused. These grounds mainly concern instances where the privacy and interests of other individuals are protected, where such records are already otherwise publicly available, where public interests are not served, the mandatory protection of commercial information of a third party, and the mandatory protection of certain confidential information of a third party. A complete list of the grounds for refusal is available in Chapter 4 of the Act.
+
+
+
+                                    PROTECTION OF PERSONAL INFORMATION ACT (POPIA)
+
+                                    Purpose of processing:
+                                    Rendering service according to instructions given by clients
+                                    Provision of value-added services
+                                    Maintain our accounts and records
+                                    Support and manage our employees
+                                    Fraud prevention & detection
+                                    Market research and statistical analysis
+                                    Compliance with legal and regulatory requirements
+                                    Verifying identity
+
+                                    Categories of data subjects:
+                                    Shareholders
+                                    Directors
+                                    Employees
+                                    Consultants
+                                    Complainants & enquirers
+                                    Trustees
+                                    Employers and employees of other organisations
+                                    Subsidiary companies
+                                    External companies / contractors
+                                    Suppliers and service providers
+                                    Clients and their members / subscribers
+                                    Individuals who have indicated an interest in our products / services
+
+                                    Types / classes of information processed:
+                                    Personal details
+                                    Lifestyle and social circumstances
+                                    Business activities
+                                    Goods / services provided
+                                    Personal views / preferences
+                                    Family details
+                                    Education & employment details
+                                    Financial details
+
+                                    Types / classes of special information processed:
+                                    None
+
+                                    Who the information may be shared with:
+                                    We sometimes need to share the personal information we process with the individual   themselves and/or with other organisations. Where this is necessary, we are required to comply with all aspects of the Protection of Personal Information Act. What follows  is a description of the types of organisations we may need to share some of the personal information we process with for one or more reasons. Where necessary or required we share information with:
+
+                                    Employment and recruitment agencies
+                                    Credit reference agencies
+                                    Police / courts where necessary
+                                    Business associates
+                                    Persons making an enquiry / complaint
+                                    Suppliers and service providers
+                                    Debt collection and tracing agencies
+                                    Auditors
+                                    Security organisations
+
+
+                                    General
+                                    INSPIRIT GROUP has a comprehensive Data Management Framework in place in order to comply with POPIA and ensure that the best efforts are employed to ensure the protection of personal information. The Company employs up to date technology to ensure the confidentiality, integrity and availability of the Personal Information under  its care.
+
+
+                                    HOW LONG IS PERSONAL INFORMATION RETAINED?
+                                    INSPIRIT GROUP will keep customers’ personal information for as long as:
+                                    the law requires it to be kept;
+                                    a contract between the customer and the company exists;
+                                    the customer has consented to the company keeping it;
+                                    the company requires it for statistical or research purposes;
+                                    the company requires it for lawful business purposes.
+
+                                    TAKE NOTE: The company may keep customers’ personal information even if they no longer have a relationship with the company, if the law permits or requires.
+</pre>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        @*<div id="PrivacyPolicyOLD" class="modal" tabindex="-1" role="dialog">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <div style="background: linear-gradient(#103f56, #094868, #00527c, #066f9e) !important;" class="modal-header">
+                            <h4 style="color:#ffffff;margin:0 auto;text-transform:uppercase;font-size:16px" class="modal-title text-center">Privacy Policy:</h4>
+                            <button type="button" class="close float-right" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body" style="text-align: justify;">
+                            <p>
+                                <h2 style="font-size: 1rem;font-weight: bold;line-height: 1.5rem;">WEBSITE PRIVACY POLICY RELATING TO WWW.INSPIRITDATA.CO.ZA</h2>
+                                <br />
+                                <h3 style="font-size: 1rem;font-weight: bold;line-height: 1.5rem;">1.	INTRODUCTION</h3>
+
+                            <p>
+                                Inspirit Data Analytics Services (Pty) Limited, referred to as (IDAS), respects your privacy and is committed to protecting your personal information that you provide to us in compliance with the Protection of Personal Information Act and in line with acceptable industry standards.
+
+                                Note that IDAS reviews and updates this Privacy Policy from time to time without notification issued. Therefore it imperative that you review our policy from time to time so that you are aware of how IDAS collects and uses your personal information. By using our website, you consent to the collections and use of your personal information as described below.
+                            </p>
+                            <br />
+                            <h3 style="font-size: 1rem;font-weight: bold;line-height: 2rem;">2. COLLECTING YOUR PERSONAL INFORMATION</h3>
+                            <p>We will use your personal information for our legitimate business purposes or for reasons where we obtained your consent to use it or you required us to use it. Rights and control over your personal information resides with the user of IDAS, who can visit the IDAS website without providing us with any personal information. However, there are cases whereby we must have access to your personal information in order for us to grant you an access to our protected and secured sites. This information will include company registration data (your name, address, email address, phone number, title, etc.), information request data and response data (“User Information”). You will receive your confirmation email which includes our data services agreement containing the personal information that you have provided and captured by our application. At any point, you will be given instructions by our helpdesk on how to remove yourself from the list.</p>
+                            <br />
+                            <h3 style="font-size: 1rem;font-weight: bold;line-height: 2rem;">3. USE OF YOUR PERSONAL INFORMATION</h3>
+                            <p>
+                                We intend to use such information for purposes of supporting your relationship with IDAS and alerting you to new offerings as they become available. If you decide that we should not use your personal User Information to contact you, please let us know and we will not use that information for such purpose. However, please do not submit any User Information if you are less than 18 years of age.
+                                If we use your personal information for any reason, then IDAS will firstly notify you.
+                            </p>
+                            <br />
+                            <h3 style="font-size: 1rem;font-weight: bold;line-height: 2rem;">4. DISCLOSURE OF USER INFORMATION</h3>
+                            <ul style="font-size: 13px;font-weight: normal;line-height: 21px;">
+                                If we require to use your data, examples of ways we would potentially use your data includes:
+                                <br />
+                                <li><span style="font-size: 1.2rem;vertical-align: middle;">&bull;</span> Providing products, services or general information;</li>
+                                <br />
+                                <li><span style="font-size: 1.2rem;vertical-align: middle;">&bull;</span> Direct Mailing of our newsletters;</li>
+                                <br />
+                                <li><span style="font-size: 1.2rem;vertical-align: middle;">&bull;</span> Online Surveys;</li>
+                                <br />
+                                <li><span style="font-size: 1.2rem;vertical-align: middle;">&bull;</span> Collections of outstanding money;</li>
+                                <br />
+                                <li><span style="font-size: 1.2rem;vertical-align: middle;">&bull;</span> Complaints;</li>
+                                <br />
+                                <li><span style="font-size: 1.2rem;vertical-align: middle;">&bull;</span> Termination of agreement;</li>
+                                <br />
+                                <li><span style="font-size: 1.2rem;vertical-align: middle;">&bull;</span> Marketing within the permits of the law;</li>
+                                <br />
+                                <li><span style="font-size: 1.2rem;vertical-align: middle;">&bull;</span> Reasonable business requirement or business purposes;</li>
+                                <br />
+                                <li><span style="font-size: 1.2rem;vertical-align: middle;">&bull;</span> We respond to a court order or you violate our Terms of Use;</li>
+                                <br />
+                                <li>
+                                    We will process and share your personal information with third parties where<br />
+                                    <span style="font-size: 1.2rem;vertical-align: middle;">&bull;</span> you have agreed to it,<br />
+                                    <span style="font-size: 1.2rem;vertical-align: middle;">&bull;</span> we are permitted or required to do so by law,<br />
+                                    <span style="font-size: 1.2rem;vertical-align: middle;">&bull;</span> processing is necessary to protect the legitimate rights or interests of IDAS or a third party,<br />
+                                    <span style="font-size: 1.2rem;vertical-align: middle;">&bull;</span> processing is necessary to conclude a contract with you.
+                                </li>
+                            </ul>
+                            <br />
+                            <h3 style="font-size: 1rem;font-weight: bold;line-height: 2rem;">5. ACCURACY AND SECURITY</h3>
+                            <p>
+                                The accuracy and security of the User Information is important to IDAS. IDAS is concerned with the security of your User Information and is committed to taking reasonable steps to protect it from unauthorized access and use of that personal information. We have implemented appropriate physical, electronic and managerial policies and procedures to secure your personal User Information. We also continue to implement procedures to maintain accurate, complete and current User Information.
+                                In the event of a security breach, we will inform you by contacting you on the contact details we have available or by any other reasonably suitable method.
+                            </p>
+                            <br />
+                            <h3 style="font-size: 1rem;font-weight: bold;line-height: 2rem;">6. USERNAMES AND PASSWORDS</h3>
+                            <p>Access to certain content on our website may be allowed under a written agreement between you and IDAS and will require a username and password. In some cases, failure to provide personal information may prevent you from accessing IDAS’s website containing certain confidential information, products or services. Access and use of our protected and secured website(s), you agree to maintain the confidentiality of the username and password you selected to access our site/s and consent to our Terms of Use.</p>
+                            <br />
+                            <h3 style="font-size: 1rem;font-weight: bold;line-height: 2rem;">7. TERMS OF USE</h3>
+                            <p>Please also see our Terms and Conditions, which describes the restrictions, disclaimers, indemnification and limitation of liability governing the use of the entire IDAS website.</p>
+                            <br />
+                            <h3 style="font-size: 1rem;font-weight: bold;line-height: 2rem;">8. GENERAL</h3>
+                            <p>If you have questions regarding our Privacy Statement, please contact IDAS via our Contact Page.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>*@
+
+        <div id="PrivacyPolicy" class="modal" tabindex="-1" role="dialog" onload="window.print()">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div style="background: linear-gradient(#103f56, #094868, #00527c, #066f9e) !important;" class="modal-header">
+                        <h4 style="color:#ffffff;margin:0 auto;text-transform:uppercase;font-size:16px" class="modal-title text-center">Privacy Policy:</h4>
+                
+                    </div>
+                    <div class="modal-body" style="text-align: justify;">
+                        <p>
+                            <h2 style="font-size: 1rem;font-weight: bold;line-height: 1.5rem;">WEBSITE PRIVACY POLICY RELATING TO WWW.INSPIRITDATA.CO.ZA</h2>
+                            <br />
+                            <h3 style="font-size: 1rem;font-weight: bold;line-height: 1.5rem;">1.	INTRODUCTION </h3>
+
+                        <p>
+                            
+                            Inspirit Data Analytics Services (Pty) Ltd (‘IDAS”), Registration Number: 2017/653373/07, whose registered office is
+                            situated at: Brandfin House, 4 Holwood Crescent, La Lucia Ridge, Umhlanga, Kwazulu Natal, 4051.
+                            IDAS is an authorized agent of Xpert Decision Systems (Pty) Ltd (“XDS”) and has been appointed as the sole agent of XDS products in the KwaZulu Natal Region, with the authority to market XDS’s and collaborative products nationally.
+                            IDAS is a data business providing solutions and services to a variety of entities in tracing and data management arenas with a focus on development and implementation of various data related products. XDS provides IDAS with specific data categories, hosted and managed by XDS, which IDAS products and services will leverage. IDAS products and services are ‘Powered by XDS’.
+                            XDS is a registered Credit Bureau in terms of the National Credit Act, No 34 of 2005 (“NCA”), with the National Credit Regulator (“NCR”) registration number; NCRCB05, an Associate member of the South African Credit and Risk Reporting Association (“SACRRA”) and a Full member of the Credit Bureau Association (“CBA”).
+
+                            XDS as an EOH Company is obligated to comply with the EOH Governance requirements which includes alignment to and or adherence to group Privacy Policies amongst other policies.
+
+                        </p>
+                        <br />
+
+                        <br />
+                        <h3 style="font-size: 1rem;font-weight: bold;line-height: 1.5rem;">2.	Privacy Commitment</h3>
+
+                        <p>
+                            IDAS is committed to ensuring that your personal information is processed in accordance with applicable Data Processing Legislation. IDAS will take all reasonable measures, through the implementation of appropriate policies, procedures, technology and controls to ensure that your personal information is appropriately secured and protected and processed only for lawful purposes.
+                        </p>
+                        <br />
+                        <br />
+                        <h3 style="font-size: 1rem;font-weight: bold;line-height: 2rem;">3. USE OF YOUR PERSONAL INFORMATION</h3>
+                        <p>
+                            3.1 In some instances, when engaging directly with you, IDAS acts as a Responsible Party in terms the Protection of Personal Information Act (“POPIA”) or a Data Controller in terms of the General Data Protection Regulations (“GDPR”). In all other instances IDAS may be regarded as a Data Processor or Operator. IDAS collects your personal information when you register, with IDAS for any service or product provided by IDAS. This information may be updated to your personal information as held by IDAS.
+                            <br /> - The NCA also authorizes a credit bureau to receive consumer credit information from the following sources
+                            <br /> - An organ of State, a court or judicial officer
+                            <br /> - Any person who supplies goods, services or utilities to consumers, whether for cash or credit
+                            <br /> - A person providing long terms and short terms insurance
+                            <br /> - Entities involved in fraud investigation
+                            <br /> - Educational Institutions
+                            <br /> - Debt Collectors to whom book debt was ceded or sold by a credit provider
+                            <br /> - Other registered credit bureau
+                            <br /> - The NCR or any source authorized by the NCR
+                            <br /> - A consumer for the consumer to correct or challenge information held by a credit bureau
+
+                            XDS may also receive the following information about you from yourself or an entity that you may have provided consent to, or an entity that is lawful authorized to access your information or who may lawfully share your information with XDS.
+
+                            Individual
+                            <br /> - Identity or Passport number
+                            <br /> - Name details
+                            <br /> - Contact information
+                            <br /> - Other lawful information that you may have consented to
+
+                            Juristic
+                            <br /> - Registration Number
+                            <br /> - Name details
+                            <br /> - Contact information
+                            <br /> - Financial Information
+                            <br /> - Trade References
+                            <br /> - Number of Employees
+                            <br /> - Personal details of Directors
+                            <br /> - Other lawful information that the Juristic has consented to
+
+                        </p>
+                        <p>
+                            3.3 IDAS may make use of cookies, which may be placed on your computer when you both visit and or register on any IDAS website or product site. A cookie is a small piece of information sent by a web server to a web browser, which enables the server to collect information back from the browser.
+
+                        </p>
+                        <p>
+                            3.4.1 IDAS cookies may be used for the following for the following purposes:
+                            <br /> - To enable certain features and functions on websites, e.g. remembering user-id, favourite channel selections, browsing and other service preferences;
+                            <br /> - To build up a profile of how users experience the website;
+                            <br /> - To improve the efficiency of IDAS’s website;
+                            <br /> - To administer services to users and advertisers; and
+                            <br /> - To establish usage statistics.
+
+                        </p>
+                        <p>
+                            3.4.2 Most internet browsers provide users with the option of turning off the processing of cookies (please see the “help” section of the browser), but this may result in the loss of functionality, restrict use of the website and/or delay or affect the way in which it operates.
+
+                        </p>
+                        <p>
+                            3.4.3 Advertisements on the IDAS website may be provided by third party advertisers and their agencies. These may generate cookies to track how many people have seen a particular advertisement (or use the services of third parties to do this), and to track how many people have seen it more than once. IDAS does
+                            not control these third parties and their cookie policies and therefore is not responsible for the Personal Information policies (including Personal Information protection and cookies), content or security of any third party websites linked to the Website.
+
+
+                        </p>
+                        <p>
+                            3.4 IDAS may also collects information that your browser sends whenever you visit IDAS websites. This information may include information such as your computer's Internet Protocol ("IP") address, browser type, browser version, and the pages of the IDAS website that you visit, the time and date of your visit, the time spent on those pages and other statistics.
+
+                        </p>
+
+                        <p>
+
+
+                        </p>
+                        <br />
+                        <h3 style="font-size: 1rem;font-weight: bold;line-height: 2rem;">4. Information Use and disclosure</h3>
+                        <p>
+                            <br /> 4.1.1  Use and Disclosure as per NCA
+                            <br /> - The NCA provides the purposes for which IDAS may release consumer credit information. In addition to the NCA, IDAS will adhere to processing obligations embodied in POPIA and GDPR. In terms of the NCA, a credit bureau may release consumer credit information for the following purposes: -
+                            <br /> - an investigation into fraud, corruption or theft, provided that the South African Police Service or any other statutory enforcement agency conducts such an investigation;
+                            <br /> - fraud detection and fraud prevention services;
+                            <br /> - considering a candidate for employment in a position that requires honesty in dealing with cash or finances;
+                            <br /> - an assessment of the debtor’s book of a business for the purposes of (i) the sale of the business or debtors book of that business; or (ii) any other transaction that is dependent upon determining the value of the business or debtors book of that business;
+                            <br /> - setting a limit of in respect of the supply of goods, services or utilities;
+                            <br /> - assessing an application for insurance;
+                            <br /> - verifying educational qualifications and employment;
+                            <br /> - obtaining consumer information to distribute unclaimed funds, including pension funds and insurance claims;
+                            <br /> - tracing a consumer by a credit provider in respect of a credit agreement entered into between the consumer and the credit provider;
+                            <br /> - developing a credit scoring system by a credit provider or credit bureau;
+                            <br /> - an affordability assessment in respect of a consumer, as required by Section 81 of the Act;
+                            <br /> - a credit assessment in respect of a consumer, as required by section 81 (2) of the Act;
+                            <br /> - investigating an application for debt review made by a consumer
+                            <br /> - a contemplated or permitted purpose as may be envisaged by the NCA
+                            <br /> 4.1.2 IDAS may use the information you provide to maintain contact with you in terms of
+                            <br /> - Any queries that you may have lodged with IDAS
+                            <br /> - Keeping you informed about new developments on or any changes to the services you may have access.
+                        </p>
+                        <p>
+                            4.1.3 IDAS may process your information as may be allowed in terms of POPIA.
+                        </p>
+                        <p>
+                            4.1.4 IDAS may process your personal information for the provision of marketing services when requested to do so by third parties to whom you have provided consent to.
+                        </p>
+                        <p>
+                            4.2 IDAS may use cookies to identify you when you access a IDAS website and to build up a demographic profile of its users.
+                        </p>
+                        <p>4.2 IDAS may use cookies to identify you when you access a IDAS website and to build up a demographic profile of its users.</p>
+                        <br />
+                        <p>
+                            4.3 IDAS may use your Personal Information
+                            </br>4.3.1 to contact you with newsletters, marketing or promotional materials and other information or
+                            </br>4.3.2 to conduct market research and surveys to enable IDAS to understand and determine customer location, preferences and demographics in order to develop special offers and marketing programmes, and to improve our service delivery and customer experience;
+                            </br>4.3.3 to provide additional products, services and benefits to users, which include promotions, loyalty and reward programmes from IDAS;
+                            </br>4.3.4 to match Personal Information with other data collected for other purposes and from other sources (including third parties) in connection with the provision, marketing or offering of products and services;
+                            </br>4.3.5 To administer contests, competitions and marketing campaigns, and personalize user experience;
+                            </br>4.3.6 To communicate advertisements involving details of IDAS’s products and services, special offers and rewards, either to general customers, or to communicate advertisements which IDAS has identified as being of interest to specific users (this includes but is not limited to upselling, cross selling and telemarketing);
+
+                        </p>
+                        <p>
+                            4.4 In relation to particular products and services or user interactions, IDAS may also specifically notify users of other purposes for which personal information is collected, used, or disclosed.
+                            </br>4.5 Users have a choice to withdraw consent for receiving marketing or promotional materials/communication from IDAS. Users may contact IDAS Information Officer: informationofficer@inspirit.co.za to request the withdrawal
+                            </br>4.6 Once IDAS receives confirmation that a user wishes to withdraw consent for marketing or promotional materials/communication, it may take up to 30 (thirty) working days for the withdrawal to be effected. Therefore, users may continue to receive marketing or promotional materials/communication during that period of time. In may be noted that even upon withdrawal of consent for the receipt of marketing or promotional materials, IDAS may still contact users for other purposes in relation to the products and services accessed by users or subscriptions to IDAS.
+
+                        </p>
+                        <br />
+                        <h3 style="font-size: 1rem;font-weight: bold;line-height: 2rem;">5. Cross Border transfer</h3>
+                        <p>
+                            5.1 IDAS may transfer your personal information to another country for storage and processing provided that the country has equivalent or better data protection laws in order to adequately protect your personal information.
+                            </br>5.2 IDAS shall transfer your personal information on a processing request originating from a IDAS Client located outside of the Republic of South Africa, should you have consented to such processing or if shall processing is in accordance with Data Processing legislation.
+
+                        </p>
+                        <br />
+                        <h3 style="font-size: 1rem;font-weight: bold;line-height: 2rem;">6. Information Retention</h3>
+                        <p>
+                            6.1 IDAS will retain your personal information in accordance with any retention legislation relating to such personal information.
+                            </br>6.2  In the absence of any legislation governing a particular type of personal information, IDAS shall retain such information for a period of 20 (twenty) years unless (i) you have consented to a longer retention period or (ii) you request the deletion of such personal information, provided that there is no lawful reason for which such personal information must be retained by IDAS.
+                            </br>6.3  After 20 years your personal information shall be de-identified and archived for audit and investigation purposes.
+                            </br>6.4 You may request the deletion of your personal information as per (6.5)((ii) by calling IDAS on 031 584 7379 or emailing informationofficer@inspirit.co.za and using the subject : Request deletion.
+                            </br>6.5 You will be required to provide proof of identity as may be determined by IDAS and to follow IDAS procedures related to your request.
+                        </p>
+                        <br />
+                        <h3 style="font-size: 1rem;font-weight: bold;line-height: 2rem;">7. Security</h3>
+                        <p>
+                            </br> 7.1 The security of your Personal Information is important to IDAS.
+                            </br> 7.2 XDS Information Security Policies guides the processing of personal information and ensures that IDAS, with XDS protects your personal information.
+                            </br> 7.3 The personal information that IDAS collects and processes shall be secured by appropriate technical and organizational measures against accidental loss, destruction or damage, and against unauthorized or unlawful processing.
+                            </br> 7.4 IDAS shall regularly evaluate and test the effectiveness of such measures to ensure that they are adequate and effective.
+                            </br> 7.5 IDAS is a responsibility for ensuring the security of personal information processed throughout the performance of its duties.
+                        </p>
+                        <br />
+                        <h3 style="font-size: 1rem;font-weight: bold;line-height: 2rem;">8. GENERAL</h3>
+                        <p>
+                            8.1 IDAS may update or change this Privacy Notice as often as required in order to adequately reflect the processing of personal information by IDAS.
+                            </br> 8.2 You should check this Privacy Notice periodically to access the most recent Privacy Notice
+                        </p>
+                        <h3 style="font-size: 1rem;font-weight: bold;line-height: 2rem;">9. Contact Us</h3>
+                        <p>If	you	have	any	questions	about	this	Privacy	Notice,	please	contact	IDAS	Information	Officer: informationofficer@inspirit.co.za</p>
+                        </br></br></br></br>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--//footer -->
+    <!--model-->
+    <!--//model-->
+    <!--js working-->
+    <script src="~/web/js/jquery-2.2.3.min.js"></script>
+    <!--//js working-->
+    <!-- gallery -->
+    <script src="~/web/js/lightbox-plus-jquery.min.js"></script>
+    <!-- //gallery -->
+    <!--responsiveslides banner-->
+    <script src="~/web/js/responsiveslides.min.js"></script>
+    <script>
+        addEventListener("load", function () {
+            setTimeout(hideURLbar, 0);
+        }, false);
+
+        function hideURLbar() {
+            window.scrollTo(0, 1);
+        }
+    </script>
+    <script>
+        // You can also use "$(window).load(function() {"
+        $(function () {
+            // Slideshow 4
+            $("#slider4").responsiveSlides({
+                auto: true,
+                pager: true,
+                nav: false,
+                speed: 3900,
+                namespace: "callbacks",
+                before: function () {
+                    $('.events').append("<li>before event fired.</li>");
+                },
+                after: function () {
+                    $('.events').append("<li>after event fired.</li>");
+                }
+            });
+
+        });
+    </script>
+    <!--// responsiveslides banner-->
+    <!-- service Tabs -->
+    <script>
+        $(function () {
+            var $tabButtonItem = $('#tab-button li'),
+                $tabSelect = $('#tab-select'),
+                $tabContents = $('.tab-contents'),
+                activeClass = 'is-active';
+
+            $tabButtonItem.first().addClass(activeClass);
+            $tabContents.not(':first').hide();
+
+            $tabButtonItem.find('a').on('click', function (e) {
+                var target = $(this).attr('href');
+
+                $tabButtonItem.removeClass(activeClass);
+                $(this).parent().addClass(activeClass);
+                $tabSelect.val(target);
+                $tabContents.hide();
+                $(target).show();
+                e.preventDefault();
+            });
+
+            $tabSelect.on('change', function () {
+                var target = $(this).val(),
+                    targetSelectNum = $(this).prop('selectedIndex');
+
+                $tabButtonItem.removeClass(activeClass);
+                $tabButtonItem.eq(targetSelectNum).addClass(activeClass);
+                $tabContents.hide();
+                $(target).show();
+            });
+        });
+    </script>
+    <!--//service Tabs -->
+    <!--gallery-->
+    <script>
+        $(document).ready(function () {
+
+            $(".filter-button").click(function () {
+                var value = $(this).attr('data-filter');
+
+                if (value == "all") {
+                    //$('.filter').removeClass('hidden');
+                    $('.filter').show('1000');
+                }
+                else {
+
+                    $(".filter").not('.' + value).hide('3000');
+                    $('.filter').filter('.' + value).show('3000');
+
+                }
+            });
+
+            if ($(".filter-button").removeClass("active")) {
+                $(this).removeClass("active");
+            }
+            $(this).addClass("active");
+
+        });
+    </script>
+
+    <!--// gallery-->
+    <script src="~/web/js/move-top.js"></script>
+    <script src="~/web/js/easing.js"></script>
+    <script>
+        jQuery(document).ready(function ($) {
+            $(".scroll").click(function (event) {
+
+                event.preventDefault();
+                $('html,body').animate({
+                    scrollTop: $(this.hash).offset().top
+                }, 900);
+            });
+        });
+    </script>
+    <!-- start-smoth-scrolling -->
+    <!-- here stars scrolling icon -->
+    <script>
+        $(document).ready(function () {
+
+            var defaults = {
+                containerID: 'toTop', // fading element id
+                containerHoverID: 'toTopHover', // fading element hover id
+                scrollSpeed: 1200,
+                easingType: 'linear'
+            };
+
+
+            $().UItoTop({
+                easingType: 'easeOutQuart'
+            });
+
+        });
+    </script>
+    <!-- //here ends scrolling icon -->
+    <!--bootstrap working-->
+    <script src="~/web/js/bootstrap.min.js"></script>
+    <!-- //bootstrap working-->
+    <script type="text/javascript">_linkedin_partner_id = "2023562"; window._linkedin_data_partner_ids = window._linkedin_data_partner_ids || []; window._linkedin_data_partner_ids.push(_linkedin_partner_id);</script>
+    <script type="text/javascript">(function () { var s = document.getElementsByTagName("script")[0]; var b = document.createElement("script"); b.type = "text/javascript"; b.async = true; b.src = "https://snap.licdn.com/li.lms-analytics/insight.min.js"; s.parentNode.insertBefore(b, s); })();</script> <noscript> <img height="1" width="1" style="display:none;" alt="" src="https://px.ads.linkedin.com/collect/?pid=2023562&fmt=gif" /> </noscript>
+    <script>
+        function printContent(el) {
+            var restorepage = $('body').html();
+            var printcontent = $('#' + el).clone();
+            $('body').empty().html(printcontent);
+            window.print();
+            $('body').html(restorepage);
+        }
+    </script>
+</body>
+</html>
+<style>
+    .modal-dialog {
+        position: relative;
+        width: auto;
+        margin-top: 178px !important;
+        pointer-events: none;
+    }
+
+    .modal-header .close {
+        padding: 0px !important;
+        margin: 0px !important;
+    }
+</style>

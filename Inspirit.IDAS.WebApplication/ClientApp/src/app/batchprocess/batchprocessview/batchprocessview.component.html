@@ -1,0 +1,657 @@
+<style>
+  .h5, h5 {
+    font-size: 1.2rem !important;
+    margin-top: 10px !important;
+  }
+
+  .m-widget16 .m-widget16__stats .m-widget16__visual {
+    margin-left: -115px;
+    display: flex !important;
+    width: 44% !important;
+  }
+
+  .m-widget16 .m-widget16__stats .m-widget16__legends {
+    display: block;
+    width: 73%;
+    margin-top: -160px;
+    margin-left: 120px;
+  }
+
+  .modal-footer {
+    justify-content: center !important;
+  }
+
+  .signal {
+    margin-left: 85px;
+    border: 4px solid #f3f3f3;
+    border-radius: 50%;
+    border-top: 4px solid #3498db;
+    width: 25px;
+    height: 25px;
+    -webkit-animation: spin 2s linear infinite;
+    animation: spin 2s linear infinite;
+  }
+
+  
+
+    .m-widget16 .m-widget16__stats .m-widget16__legends .m-widget16__legend {
+      margin-bottom: 0rem;
+      margin-left: 12rem;
+      text-align: center;
+    }
+
+      .m-widget16 .m-widget16__stats .m-widget16__legends .m-widget16__legend .m-widget16__legend-bullet {
+        width: 0.95rem;
+        height: 0.95rem;
+        display: inline-block;
+        border-radius: 0rem;
+        margin-bottom: 0rem;
+        margin-right: 0rem;
+      }
+
+  .m-widget16 .m-widget16__stats {
+    display: block;
+    vertical-align: top;
+    margin-top: 2rem;
+    width: 100%;
+  }
+
+  #yLabelAgegroup {
+    transform: rotate(-90deg) translateX(80%);
+    transform-origin: left center;
+    margin-left: -129px;
+  }
+
+    #yLabelAgegroup::after {
+      margin-left: 10px;
+    }
+
+  #yLabelIncomebrackets {
+    transform: rotate(-90deg) translateX(138%);
+    transform-origin: left center;
+    margin-left: -303px;
+  }
+
+  #yLabelIncomebrackets1 {
+    transform: rotate(-90deg) translateX(161%) !important;
+    transform-origin: left center;
+    margin-left: -301px;
+    margin-top: 46px;
+  }
+
+    #yLabelIncomebrackets::after {
+      margin-left: 10px;
+    }
+
+  #yLabelTotalRecords {
+    transform: rotate(-90deg) translateX(142%);
+    transform-origin: left center;
+    margin-left: -210px;
+  }
+
+    #yLabelTotalRecords::after {
+      margin-left: 10px;
+    }
+
+  @-webkit-keyframes spin {
+    0% {
+      -webkit-transform: rotate(0deg);
+    }
+
+    100% {
+      -webkit-transform: rotate(360deg);
+    }
+  }
+
+  @keyframes spin {
+    0% {
+      transform: rotate(0deg);
+    }
+
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+
+
+
+
+  .backdrop {
+    background-color: rgba(0,0,0,0.6);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+  }
+
+
+</style>
+
+
+<div id="pdf" class="m-grid__item m-grid__item--fluid m-grid m-grid--ver-desktop m-grid--desktop m-body">
+  <div class="m-grid__item m-grid__item--fluid m-wrapper">
+    <ngx-loading [show]="loading"></ngx-loading>
+    <div class="m-subheader ">
+      <div class="d-flex align-items-center">
+        <div class="mr-auto">
+          <h3 class="m-subheader__title ">
+            <button style="padding:0px;font-size:14px!important; text-transform:uppercase; width:48px !important; color: #016fa2 !important;font-weight: 600 !important;font-family: Avenir !important;" class="btn btn-link" (click)="batchsearch()">Batch Tracing</button>
+            <i style="margin-left:70px" class="fa fa-angle-right"></i>
+            Search Results
+          </h3>
+        </div>
+      </div>
+    </div>
+    <div class="m-content">
+      <div class="m-portlet">
+        <div class="m-portlet__body">
+          <div class="form-group m-form__group row">
+
+          </div>
+          <div class="form-group m-form__group row">
+            <div class="col-8">
+              <div class="input-group m-input-group">
+                <h5 style="font-weight:bold">Total Count :</h5>
+                <div class="col-1"></div>
+                <h5>{{totalRecords}}</h5>
+                <div class="col-1"></div>
+                <h5 style="font-weight:bold">Processed :</h5>
+                <div class="col-1"></div>
+                <h5 style="color:#0710B1">{{foundRecords}}</h5>
+                <div class="col-1"></div>
+                <h5 style="font-weight:bold">Not Processed :</h5>
+                <div class="col-1"></div>
+                <h5 style="color:#FF1E00">{{notfoundRecords}}</h5>
+              </div>
+            </div>
+            <div class="col-2">
+              <button type="submit" [disabled]="isVisible" data-toggle="modal" data-target="#myModal" class="btn btn-dark pull-right" style="background-color:#a11e20 !important;padding: 0px 5px;"
+                      (click)="invoice()">
+                Raise Invoice
+              </button>
+            </div>
+            <div class="col-2">
+              <button type="submit" [disabled]="isVisible" data-toggle="modal" data-target="#myModal" class="btn btn-dark pull-right" style="background-color:#a11e20 !important;padding: 0px 5px;"
+                      (click)="cancelbatch()">
+                Cancel Batch
+              </button>
+            </div>
+          </div>
+          <div class="form-group m-form__group row">
+
+          </div>
+          <div class="form-group m-form__group row" *ngIf="isProcess">
+            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-xs-12">
+              <div class="m-portlet m-portlet--bordered-semi m-portlet--half-height m-portlet--fit" style="min-height: 310px;border: 1px solid #064a6d;">
+                <br />
+                <h4 align="center" style="font-weight:bold">Profile Gender</h4>
+                <div align="center" class="m-widget16">
+                  <div align="center" class="m-widget16__stats">
+                    <div class="row">
+                      <div align="center" class="m-widget16__visual">
+                        <div mk-morris-js style="height: 180px"
+                             [options]="chartDonutOptions"
+                             [data]="batchTracingServices.morrisGenders"
+                             type="Donut">
+                        </div>
+                      </div>
+
+                      <div class="m-widget16__legends">
+                        <div class="row">
+                          <div class="m-widget16__legend">
+                            <span class="m-widget16__legend-bullet" style="background-color:#0710B1;"></span>
+                            <span class="m-widget16__legend-text">Male</span><br />
+                          </div>
+                          <div class="m-widget16__legend">
+                            <span class="m-widget16__legend-bullet" style="background-color:#FF80FF;"></span>
+                            <span class="m-widget16__legend-text">Female</span>
+                          </div>
+                        </div>
+                      </div>
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-xs-12">
+              <div class="m-portlet m-portlet--bordered-semi dark m-portlet--half-height m-portlet--fit" style="min-height: 310px;border: 1px solid #064a6d;">
+                <br />
+                <h4 align="center" style="font-weight:bold">Marital Status Distribution</h4>
+                <div class="m-widget16">
+                  <div class="m-widget16__stats">
+                    <div class="row">
+                      <div class="m-widget16__visual">
+                        <div mk-morris-js style="height: 180px"
+                             [options]="chartDonutOptions"
+                             [data]="batchTracingServices.morrisMaritalStaus"
+                             type="Donut">
+                        </div>
+                      </div>
+
+                      <div class="m-widget16__legends">
+                        <div class="row">
+                          <div class="m-widget16__legend">
+                            <span class="m-widget16__legend-bullet" style="background-color:#94DE00;"></span>
+                            <span class="m-widget16__legend-text">Single</span><br />
+                          </div>
+                          <div class="m-widget16__legend">
+                            <span class="m-widget16__legend-bullet" style="background-color:#FF1E00;"></span>
+                            <span class="m-widget16__legend-text">Married</span>
+                          </div>
+                          <div class="m-widget16__legend">
+                            <span class="m-widget16__legend-bullet" style="background-color:#36A3F7;"></span>
+                            <span class="m-widget16__legend-text">Unknown</span><br />
+                          </div>
+                          <div class="m-widget16__legend">
+                            <span class="m-widget16__legend-bullet" style="background-color:#00767C;"></span>
+                            <span class="m-widget16__legend-text">Divorced</span>
+                          </div>
+                        </div>
+                      </div>
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-xs-12">
+              <div class="m-portlet m-portlet--bordered-semi dark m-portlet--half-height m-portlet--fit" style="min-height: 310px;border: 1px solid #064a6d;">
+                <br />
+                <h4 align="center" style="font-weight:bold">Risk Categories</h4>
+                <div class="m-widget16">
+                  <div class="m-widget16__stats">
+                    <div class="row">
+                      <div class="m-widget16__visual">
+                        <div mk-morris-js style="height: 180px"
+                             [options]="chartDonutOptions"
+                             [data]="batchTracingServices.morrisRiskCategories"
+                             type="Donut">
+                        </div>
+                      </div>
+
+                      <div class="m-widget16__legends">
+                        <div class="row">
+                          <div class="m-widget16__legend">
+                            <span class="m-widget16__legend-bullet" style="background-color:#41DB00;"></span>
+                            <span class="m-widget16__legend-text">Low Risk</span><br />
+                          </div>
+                          <div class="m-widget16__legend">
+                            <span class="m-widget16__legend-bullet" style="background-color:#FF1800;"></span>
+                            <span class="m-widget16__legend-text">Medium Risk</span>
+                          </div>
+                          <div class="m-widget16__legend">
+                            <span class="m-widget16__legend-bullet" style="background-color:#36A3F7;"></span>
+                            <span class="m-widget16__legend-text">Unknown</span><br />
+                          </div>
+                          <div class="m-widget16__legend">
+                            <span class="m-widget16__legend-bullet" style="background-color:#05390B;"></span>
+                            <span class="m-widget16__legend-text" style="vertical-align: top;">Extremely <br />Low Risk</span>
+                          </div>
+                          <div class="m-widget16__legend">
+                            <span class="m-widget16__legend-bullet" style="background-color:#5E0591;"></span>
+                            <span class="m-widget16__legend-text">High Risk</span>
+                          </div>
+                          <div class="m-widget16__legend">
+                            <span class="m-widget16__legend-bullet" style="background-color:#CF0018;"></span>
+                            <span class="m-widget16__legend-text" style="vertical-align: top;">Should Not <br />be Contacted</span>
+                          </div>
+                        </div>
+                      </div>
+
+                    </div>
+                 
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="form-group m-form__group row" *ngIf="isProcess">
+            <div class="col-2">
+            </div>
+            <div class="col-4">
+              <div class="m-portlet m-portlet--bordered-semi dark m-portlet--half-height m-portlet--fit" style="min-height: 336px;border: 1px solid #064a6d;">
+                <br />
+                <h4 align="center" style="font-weight:bold">Alloy Breakdown</h4>
+                <div class="m-widget16">
+                  <div class="m-widget16__stats">
+                    <div class="row">
+                      <div class="m-widget16__visual">
+                        <div mk-morris-js style="height: 180px"
+                             [options]="chartDonutOptions"
+                             [data]="batchTracingServices.morrisAlloyBreakDowns"
+                             type="Donut">
+                        </div>
+                      </div>
+
+                      <div class="m-widget16__legends">
+                        <div class="row">
+                          <div class="m-widget16__legend">
+                            <span class="m-widget16__legend-bullet" style="background-color:#E6B800;"></span>
+                            <span class="m-widget16__legend-text">Fair</span><br />
+                          </div>
+                          <div class="m-widget16__legend">
+                            <span class="m-widget16__legend-bullet" style="background-color:#FF751A;"></span>
+                            <span class="m-widget16__legend-text">Average</span>
+                          </div>
+                          <div class="m-widget16__legend">
+                            <span class="m-widget16__legend-bullet" style="background-color:#6B6B47;"></span>
+                            <span class="m-widget16__legend-text">Poor</span><br />
+                          </div>
+                          <div class="m-widget16__legend">
+                            <span class="m-widget16__legend-bullet" style="background-color:#FF1A1A;"></span>
+                            <span class="m-widget16__legend-text">No Contact</span>
+                          </div>
+                        </div>
+                      </div>
+
+                    </div>
+                   
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-4">
+              <div class="m-portlet m-portlet--bordered-semi dark m-portlet--half-height m-portlet--fit" style="min-height: 336px;border: 1px solid #064a6d;">
+                <br />
+                <h4 align="center" style="font-weight:bold">Age Group Distribution</h4>
+                <br />
+                <canvas id="canvas-align" style="max-width: 372px;
+    height: 137px;
+    margin-left: 20px;
+    display: block;
+    width: 245px !important;" baseChart
+                        [datasets]="barChartDataAgeGroup"
+                        [labels]="barChartLabelsAgeGroup"
+                        [legend]="barChartLegend"
+                        [colors]="colors"
+                        [chartType]="horizontalBarType"></canvas>
+                <div class="form-group m-form__group row">
+
+                </div>
+                <div class="form-group m-form__group row">
+                  <div class="col-4">
+
+                  </div>
+                  <div class="col-6">
+                    <div class="input-group m-input-group">
+                      <div class="input-group-prepend">
+                        <span style="font-weight:bold">X-AXIS:</span>
+                      </div>
+                      &nbsp;&nbsp;
+                      <span>Count of male&female</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group m-form__group row">
+                  <div class="col-4">
+
+                  </div>
+                  <div class="col-6">
+                    <div class="input-group m-input-group">
+                      <div id="yLabelAgegroup" class="input-group-prepend">
+                        <span style="font-weight:bold">Y-AXIS:</span>&nbsp;&nbsp;
+                        <span>Age Groups</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-2">
+            </div>
+          </div>
+          <div class="form-group m-form__group row" *ngIf="isProcess">
+            <div class="col-12">
+
+              <div class="m-portlet m-portlet--bordered-semi dark m-portlet--half-height m-portlet--fit" style="min-height: 480px;border: 1px solid #064a6d;">
+                <br />
+                <h4 align="center" style="font-weight:bold">Population: Age Structure</h4>
+                <dx-chart id="chart"
+                          [dataSource]="batchTracingServices.locationDistributorAgeGroups">
+                  <dxi-series valueField="male18_34"
+                              name="Male: 18-34"
+                              stack="male">
+                  </dxi-series>
+                  <dxi-series valueField="male35_40"
+                              name="Male: 35-40"
+                              stack="male">
+                  </dxi-series>
+                  <dxi-series valueField="male41_60"
+                              name="Male: 41-60"
+                              stack="male">
+                  </dxi-series>
+                  <dxi-series valueField="maleabove61"
+                              name="Male: >61"
+                              stack="male">
+                  </dxi-series>
+
+                  <dxi-series valueField="female18_34"
+                              name="Female: 18-34"
+                              stack="female">
+                  </dxi-series>
+                  <dxi-series valueField="female35_40"
+                              name="Female: 35-40"
+                              stack="female">
+                  </dxi-series>
+                  <dxi-series valueField="female41_60"
+                              name="Female: 41-60"
+                              stack="female">
+                  </dxi-series>
+                  <dxi-series valueField="femaleabove61"
+                              name="Female: >61"
+                              stack="female">
+                  </dxi-series>
+                  <dxo-common-series-settings argumentField="state"
+                                              type="fullStackedBar">
+                  </dxo-common-series-settings>
+                  <dxo-legend verticalAlignment="bottom"
+                              horizontalAlignment="center">
+                  </dxo-legend>
+                  <dxo-export [enabled]="false"></dxo-export>
+                  <dxo-tooltip [enabled]="true"
+                               [customizeTooltip]="customizeTooltip">
+                  </dxo-tooltip>
+                </dx-chart>
+              </div>
+            </div>
+          </div>
+          <div class="form-group m-form__group row" *ngIf="isProcess">
+            <div class="col-7">
+              <div class="m-portlet m-portlet--bordered-semi dark m-portlet--half-height m-portlet--fit" style="min-height: 480px;height: 480px !important; border: 1px solid #064a6d;">
+                <br />
+                <h4 align="center" style="font-weight:bold">Income Bracket</h4>
+                <br />
+                <canvas id="canvas-align1" style="max-width:703px;margin-left: 20px;" baseChart
+                        [datasets]="barChartDataIncome"
+                        [labels]="barChartLabelsIncome"
+                        [legend]="barChartLegend"
+                        [colors]="colors"
+                        [chartType]="horizontalBarType"></canvas>
+                <div class="form-group m-form__group row">
+
+                </div>
+                <div class="form-group m-form__group row">
+                  <div class="col-5">
+
+                  </div>
+                  <div class="col-6">
+                    <div class="input-group m-input-group">
+                      <div class="input-group-prepend">
+                        <span style="font-weight:bold">X-AXIS:</span>
+                      </div>
+                      &nbsp;&nbsp;
+                      <span>Count of male&female</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group m-form__group row">
+                  <div class="col-5">
+
+                  </div>
+                  <div class="col-6">
+                    <div class="input-group m-input-group">
+                      <div id="yLabelIncomebrackets1" class="input-group-prepend">
+                        <span style="font-weight:bold">Y-AXIS:</span>&nbsp;&nbsp;
+                        <span>Income Brackets</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-5">
+              <div class="m-portlet m-portlet--bordered-semi dark m-portlet--half-height m-portlet--fit" style="min-height: 480px; height: 480px !important;border: 1px solid #064a6d;">
+                <br />
+                <h4 align="center" style="font-weight:bold">Total Records Available</h4>
+                <br />
+                <dx-chart id="chart" style="margin-left: 20px;"
+                          [dataSource]="batchTracingServices.totalRecordsAvailables"
+                          palette="bright">
+                  <dxi-series valueField="maritalindicator" name="Marital Indicator"></dxi-series>
+                  <dxi-series valueField="deceasedindicator" name="Deceased Indicator"></dxi-series>
+                  <dxi-series valueField="emailaddress" name="Email Address"></dxi-series>
+                  <dxi-series valueField="deedsindicator" name="Deeds Indicator"></dxi-series>
+                  <dxi-series valueField="directorshipindicator" name="Directorship Indicator"></dxi-series>
+                  <dxi-series valueField="adverseindicator" name="Adverse Indicator"></dxi-series>
+                  <dxo-common-series-settings argumentField="recordsvalue"
+                                              type="bar"
+                                              [barPadding]="0.5">
+                  </dxo-common-series-settings>
+                  <dxo-legend verticalAlignment="bottom"
+                              horizontalAlignment="center">
+                  </dxo-legend>
+                  <dxo-export [enabled]="false"></dxo-export>
+                  <dxo-tooltip [enabled]="true"
+                               location="edge"
+                               [customizeTooltip]="customizeTooltipForTotalRecords">
+                  </dxo-tooltip>
+                </dx-chart>
+                <div class="form-group m-form__group row">
+
+                </div>
+                <div class="form-group m-form__group row">
+                  <div class="col-5">
+
+                  </div>
+                  <div class="col-6">
+                    <div class="input-group m-input-group">
+                      <div id="yLabelTotalRecords" class="input-group-prepend">
+                        <span style="font-weight:bold">Y-AXIS:</span>&nbsp;&nbsp;
+                        <span>Count of records</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="backdrop" [ngStyle]="{'display':display}"></div>
+<div class="modal" tabindex="-1" style="top:200px" role="dialog" [ngStyle]="{'display':display}">
+  <div class="modal-dialog" style="width:300px">
+    <div class="modal-content">
+      <div class="modal-header" style="background: linear-gradient(#103f56, #094868, #00527c, #066f9e) !important;">
+        <h5 class="modal-title" style="color:#ffffff">Batch Generation</h5>
+        <button type="button" class="close" *ngIf="isProcess" (click)="close()"
+                aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="m-portlet__body">
+          <div class="table-responsive">
+            <table class="table table-hover table-bordered">
+              <tbody>
+                <tr>
+                  <td>
+                    <div class="input-group m-input-group">
+                      <label class="m-checkbox m-checkbox--single m-checkbox--state m-checkbox--state-primary">
+                        <input type="checkbox" name="excelvalidation" disabled [(ngModel)]="batchTracingServices.excelValidation" />
+                        <span></span>
+                      </label>
+                      <div class="input-group-prepend">
+                        <span>
+                          File Validation
+                        </span>
+                        <div class="signal" *ngIf="!batchTracingServices.excelValidation"></div>
+                      </div>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <div class="input-group m-input-group">
+                      <label class="m-checkbox m-checkbox--single m-checkbox--state m-checkbox--state-primary">
+                        <input type="checkbox" name="fetchingData" disabled [(ngModel)]="batchTracingServices.fetchingData" />
+                        <span></span>
+                      </label>
+                      <div class="input-group-prepend">
+                        <span>Fetching Data</span>
+                        <div class="signal" style="margin-left:90px;" *ngIf="!batchTracingServices.fetchingData"></div>
+                      </div>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <div class="input-group m-input-group">
+                      <label class="m-checkbox m-checkbox--single m-checkbox--state m-checkbox--state-primary">
+                        <input type="checkbox" name="preparingCharts" disabled [(ngModel)]="batchTracingServices.preparingChart" />
+                        <span></span>
+                      </label>
+                      <div class="input-group-prepend">
+                        <span>Preparing Batch</span>
+                        <div class="signal"     style="margin-left: 80px;" *ngIf="!batchTracingServices.preparingChart"></div>
+                      </div>
+                    </div>
+                  </td>
+
+                </tr>
+              </tbody>
+            </table>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="myModal" class="modal" tabindex="-1" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div style="background: linear-gradient(#103f56, #094868, #00527c, #066f9e) !important;" class="modal-header">
+        <h4 style="color:#ffffff" class="modal-title">IDAS says:</h4>
+      </div>
+      <div class="modal-body">{{warningMesage}}</div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-accent" data-dismiss="modal" (click)="Submit()">Ok</button>
+        <button type="button" class="btn btn-accent" data-dismiss="modal">Cancel</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<button data-toggle="modal" id="errormsg" data-target="#error" [hidden]="true"></button>
+
+
+<div id="error" class="modal" tabindex="-1" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div style="background: linear-gradient(#103f56, #094868, #00527c, #066f9e) !important;" class="modal-header">
+        <h4 style="color:#ffffff" class="modal-title">IDAS says:</h4>
+      </div>
+      <div class="modal-body">Please contact IDAS Admin for error info.</div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-accent" data-dismiss="modal">OK</button>
+      </div>
+    </div>
+  </div>
+</div>

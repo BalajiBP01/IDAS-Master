@@ -1,0 +1,1 @@
+{"CompanyRegNumber":null,"CompanyName":"INALA SALES","GlobalSearch":null,"CommercialStatusCode":null,"BusinessStartDate":"0001-01-01T00:00:00","Search":null,"CommercialAddress":null,"CommercialTelephone":null,"start":0,"length":10,"sort":[{"fieldName":"companyname.forsort","descending":false}]}

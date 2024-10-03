@@ -1,0 +1,51 @@
+<div class="m-grid__item m-grid__item--fluid m-grid m-grid--ver-desktop m-grid--desktop m-body">
+  <div class="m-grid__item m-grid__item--fluid m-wrapper">
+
+    <div class="m-subheader ">
+      <div class="d-flex align-items-center">
+        <div class="mr-auto">
+          <h3 class="m-subheader__title ">
+            Invoices
+          </h3>
+        </div>
+      </div>
+    </div>
+
+    <div *ngIf="loading==true" id="cover"> </div>
+
+    <div class="m-content">
+      <div class="row">
+        <div class="col-xl-12">
+          <div class="m-portlet">
+            <div class="m-portlet__body">
+              <div class="m-section">
+                <div class="m-section__content">
+                  <div class="table-responsive">
+                  
+                    <table datatable [dtOptions]="dtOptions" class="table table-striped"> </table>
+
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+
+<button (click)="load()" id="load" style="display:none"></button>
+<style>
+  #cover {
+    background: url("http://www.aveva.com/Images/ajax-loader.gif") no-repeat scroll center center;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    top: 0px;
+    left: 0px;
+    z-index:1;
+  }
+</style>

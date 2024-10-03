@@ -1,0 +1,83 @@
+<div>
+  <!--<button style="padding:0px;font-size:14px!important; width:78px !important; color: #016fa2 !important;text-transform:uppercase; font-weight: 600 !important;font-family: Avenir !important;" class="btn btn-link" (click)="list()">Tracing</button>-->
+ 
+
+  <div class="m-portlet">
+    <form class="m-form m-form--label-align-right" style="padding:12px;background-color:#f2f3f8">
+      <div class="m-portlet__body" style="background-color:#ffffff;padding:12px;border:1px solid #000000">
+        <div class="m-section">
+          <div class="m-section__content">
+            <div class="table-responsive">
+              <table datatable [dtOptions]="dtOptions" class="table table-striped">
+                <thead>
+                  <tr>
+                    <th class="tablevalue">Type</th>
+                    <th class="tablevalue" style="min-width:300px">Address</th>
+                    <th class="tablevalue">Last Updated Date</th>
+                    <th class="tablevalue">Created On Date</th>
+                    <th class="tablevalue">Province</th>
+                    <th class="tablevalue">Info</th>
+                  </tr>
+                </thead>
+                <tbody style="overflow-y: hidden;">
+                  <tr *ngFor="let address of result">
+                    <td *ngIf="address.addressTypeInd == 'Residential'" data-title="Residential Address" style="text-align:center"><div style="display:none">{{address.addressTypeInd}}</div><img id="customerButton" style="width:30px" src="../../assets/demo/demo2/media/img/Icons/Home-Address.png" /></td>
+                    <td *ngIf="address.addressTypeInd == 'Postal'" data-title="Postal Address" style="text-align:center"><div style="display:none">{{address.addressTypeInd}}</div><img id="customerButton" style="width:30px" src="../../assets/demo/demo2/media/img/Icons/Postal-Address.png" /></td>
+                    <td *ngIf="address.addressTypeInd == 'Business'" data-title="Business Address" style="text-align:center"><div style="display:none">{{address.addressTypeInd}}</div><img id="customerButton" style="width:30px" src="../../assets/demo/demo2/media/img/Icons/Work-Address.png" /></td>
+                    <td *ngIf="address.addressTypeInd == null" data-title="UnKnown">{{null}}</td>
+                    
+                    <td class="fulladdress" 
+                    *ngIf="IsRestrictedCustomer == 0 && IsRestrictedCustomerUser == 0"><button type="button" class="btn btn-link" style="padding:0px;word-break: break-all;white-space: normal;min-width:300px" (click)="showModal(address.fullAddress)">{{address.fullAddress}}</button></td>
+                    <td class="fulladdress" 
+                    *ngIf="IsRestrictedCustomer == 1 || IsRestrictedCustomerUser == 1">{{address.fullAddress}}</td>
+
+                    <td type="date">{{ address.lastUpdatedDate |date:'yyyy-MM-dd'}}</td>
+                    <td type="date">{{ address.createdOnDate | date:'yyyy-MM-dd'}}</td>
+                    <td>{{address.province}}</td>
+
+                    <td style="text-align:center"><img (click)="addressmodel(address.id)" id="infoImage" style="width:30px" src="../../assets/demo/demo2/media/img/Icons/Information.png" /></td>
+
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <!--end::Section-->
+      </div>
+      <!--end::Form-->
+    </form>
+    <!--end::Portlet-->
+  </div>
+</div>
+    <style>
+      .fa {
+        font-size: 1.2rem !important;
+      }
+      [data-title]:hover:after {
+        opacity: 1;
+        transition: all 0.1s ease 0.5s;
+        visibility: visible;
+      }
+
+      [data-title]:after {
+        font-family: Avenir !important;
+        content: attr(data-title);
+        background-color: #ffffff !important;
+        color: #094868 !important;
+        font-size: 12px !important;
+        position: absolute;
+        padding: 2px 4px 2px 4px;
+        margin-left: 15px !important;
+        margin-top: 15px !important;
+        white-space: nowrap;
+        opacity: 0;
+        border: 1px solid #111111;
+        z-index: 99999;
+        visibility: hidden;
+      }
+
+      [data-title] {
+        position: relative;
+      }
+    </style>

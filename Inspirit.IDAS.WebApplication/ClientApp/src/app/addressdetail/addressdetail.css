@@ -1,0 +1,50 @@
+/*FOR CARD PURPOSE START*/
+.container-login100 {
+  width: 100%;
+  min-height: 100vh;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  padding: 15px;
+  background-color: gainsboro;
+  /*background: url(../../../../wwwroot/assets/images/banner_login.jpg);*/
+}
+
+.wrap-login100 {
+  width: 1290px;
+  background: #fff;
+  /*padding: 35px;*/
+  overflow: hidden;
+  box-shadow: 0 3px 20px 0px rgba(0, 0, 0, 0.1);
+  -moz-box-shadow: 0 3px 20px 0px rgba(0, 0, 0, 0.1);
+  -webkit-box-shadow: 0 3px 20px 0px rgba(0, 0, 0, 0.1);
+  -o-box-shadow: 0 3px 20px 0px rgba(0, 0, 0, 0.1);
+  -ms-box-shadow: 0 3px 20px 0px rgba(0, 0, 0, 0.1);
+}
+
+.spantitle {
+  padding: 14px;
+  color: lightseagreen;
+  font-weight: bold;
+}
+
+.spanbold {
+  padding: 10px;
+  color: black;
+  font-weight: bold;
+}
+
+.login100-form-title {
+  display: block;
+  font-family: 'Roboto', sans-serif;
+  font-size: 30px;
+  font-weight: bold;
+  line-height: 1.2;
+  text-align: center;
+}
+/*FOR CARD PURPOSE END*/

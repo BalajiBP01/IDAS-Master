@@ -1,0 +1,77 @@
+<div class="m-grid__item m-grid__item--fluid m-grid m-grid--ver-desktop m-grid--desktop m-body">
+  <div class="m-grid__item m-grid__item--fluid m-wrapper">
+    <div class="m-subheader ">
+      <div class="d-flex align-items-center">
+        <div class="mr-auto">
+          <h3 class="m-subheader__title ">
+            Leads Generation
+          </h3>
+        </div>
+        <div class="btn-group pull-right m-form__actions">
+          <button style="margin: 10px 24px;" class="btn btn-accent" (click)="newtrace()">New Lead Generation</button>
+        </div>
+      </div>
+    </div>
+    <div class="m-content">
+      <div class="row">
+        <div class="col-xl-12">
+          <div class="m-content">
+            <div class="row">
+              <div class="col-xl-12">
+                <div class="m-portlet">
+                  <div class="m-portlet__body">
+                    <form class="m-form m-form--fit m-form--label-align-right">
+                      <div class="m-portlet__body col-12">
+                        <div class="m-form__section m-form__section--first">
+                          <div class="table-responsive">
+                            <table datatable [dtTrigger]="dtTrigger" [dtOptions]="dtOptions" class="table table-striped"></table>
+                          </div>
+                        </div>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div id="myModal" class="modal" tabindex="-1" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div style="background: linear-gradient(#103f56, #094868, #00527c, #066f9e) !important;" class="modal-header">
+        <h4 style="color:#ffffff" class="modal-title">IDAS says:</h4>
+      </div>
+      <div class="modal-body">{{warningMesage}}</div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-accent" data-dismiss="modal" (click)="Submit(LeadId)">Ok</button>
+        <button type="button" class="btn btn-accent" data-dismiss="modal">Cancel</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<button id="openPopUp1" [hidden]="true" data-toggle="modal" data-target="#myModalErrorMessage1"></button>
+<div id="myModalErrorMessage1" class="modal" tabindex="-1" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div style="background: linear-gradient(#103f56, #094868, #00527c, #066f9e) !important;" class="modal-header">
+        <h4 style="color:#ffffff" class="modal-title">IDAS says:</h4>
+      </div>
+      <div class="modal-body">{{warningMesage}}</div>
+      <div class="modal-footer text-center">
+        <button type="button" class="btn btn-accent" data-dismiss="modal">Ok</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<style>
+  .modal-footer {
+    justify-content: center !important;
+  }
+</style>

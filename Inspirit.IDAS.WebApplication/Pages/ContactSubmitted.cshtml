@@ -1,0 +1,343 @@
+﻿@page
+@{
+    Layout = "_Layout2";
+}
+<head>
+    <title>Data Cleaning | Credit Bureau Solutions | IDAS, South Africa</title>
+    <meta name="description" content="Inspirit Data Analytics Services gives you access to multiple credit bureau services, from data cleaning to criminal checks and more.">
+
+</head>
+<style>
+    #rowshiftleft {
+        margin-left: 33px;
+    }
+
+    .img-fluid1 {
+        width: 100%;
+        max-width: 65%;
+        height: auto;
+    }
+
+    .gap {
+        background-color: #ffffff;
+        padding: 0px 0px;
+    }
+
+    .gap1 {
+        background-color: #ffffff;
+        padding: 30px 0px 30px 0px;
+    }
+
+    .gap2 {
+        background-color: #ffffff;
+        padding: 10px 0px 10px 0px;
+    }
+
+    .navbar-brand {
+        display: inline-block;
+        padding-top: .3125rem;
+        padding-bottom: .3125rem;
+        margin-right: 0rem;
+        margin-left: 0rem;
+        font-size: 1.25rem;
+        line-height: inherit;
+        white-space: nowrap;
+    }
+
+    .table-txt-grid h4 {
+        padding-top: 5px !important;
+        padding-bottom: 5px !important;
+        font-size: 17px;
+    }
+
+    label {
+        position: relative;
+        width: 300px;
+        height: 375px;
+        z-index: 2;
+        perspective: 1000px;
+        -webkit-perspective: 1000px;
+        cursor: pointer;
+    }
+
+    .card {
+        width: 100%;
+        height: 100%;
+        transform: rotateX(0deg);
+        -webkit-transform: rotateX(0deg);
+        transform-style: preserve-3d;
+        -webkit-transform-style: preserve-3d;
+        transition: all 1.0s linear;
+        border: none !important;
+        border-radius: 0rem !important;
+        position: absolute;
+        background-color: transparent !important;
+    }
+
+        .card div {
+            width: 100%;
+            height: 100%;
+            transform-style: preserve-3d;
+            -webkit-transform-style: preserve-3d;
+            -webkit-backface-visibility: hidden !important;
+            backface-visibility: hidden !important;
+            -moz-backface-visibility: hidden !important;
+        }
+
+        .card .back {
+            transform: rotateX(180deg);
+            -webkit-transition: all 1.0s linear;
+            transition: all 1.0s linear;
+            transform-style: preserve-3d;
+            display: block;
+            box-sizing: border-box;
+            text-align: center;
+            position: absolute;
+            -webkit-transform: rotateX(180deg);
+            -webkit-transform-style: preserve-3d;
+            -webkit-backface-visibility: visible !important;
+            backface-visibility: visible !important;
+            -moz-backface-visibility: visible !important;
+            margin-bottom: 0px !important;
+        }
+
+
+
+    label:checked .cardClick {
+        -webkit-transform: rotateX(180deg);
+        transform: rotateX(180deg);
+    }
+
+    label:hover .card {
+        -webkit-transform: rotateX(180deg);
+        transform: rotateX(180deg);
+    }
+
+    input {
+        display: none;
+    }
+</style>
+
+<div align="center" class="header_block container-fluid">
+    <div align="center" class="header-w3layouts" data-role="header" data-position="fixed">
+        <div align="center" class="container">
+            <!--navigation section -->
+            <nav align="center" class="navbar navbar-expand-lg navbar-light">
+                <div class="hedder-up ">
+
+                    <a class="navbar-brand" href="">
+                        @*<img src="~/web/images/IDAS-Authorised-Agent-Website-Logo.png" />*@
+                        <img src="~/web/images/IDAS Authorised Logo 11-03.svg" width="320" height="140" />
+                    </a>
+                </div>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link" href="Home">Home <span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="Products" class="nav-link">Products</a>
+                        </li>
+                        <li class="nav-item active">
+                            <a href="Solutions" class="nav-link">Solutions</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="AboutUs" class="nav-link">About Us</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="@Url.Action(" NewsBlog", "News" )" class="nav-link">News</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="Complaints" class="nav-link">Complaints</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="ContactUs" class="nav-link">Contact Us</a>
+                        </li>
+                        <li><a class="btn btn-block click-me2" style="background-color: #0F3E55;color: #ffffff;" href="login">SIGN IN</a></li>&nbsp;&nbsp;
+                        <li><a class="btn btn-block click-me2" style="background-color: #0F3E55;color: #ffffff;" href="usersignup">REGISTER</a></li>
+                    </ul>
+                </div>
+            </nav>
+            <div class="clearfix"> </div>
+        </div>
+    </div>
+</div>
+<!-- //banner -->
+
+
+<div class="slider text-center">
+    <div class="callbacks_container">
+        <ul class="rslides" id="slider4">
+            <li style="height:320px;">
+                <div class="slider-img six-img" style="height: 381px; display:none;" id="imgLoadAll">
+                    <div class="container-fluid" id="layer">
+                        <div class="slider-info" align="center" style="padding-top: 146px;">
+                            <h3 class="heading text-uppercase" align="center" style="color: #ffffff;
+    text-align: center;
+    font-weight: bold;
+    border-bottom: 2px solid #ffffff;
+    border-top: 2px solid #ffffff;
+    width: 179px;
+    margin-bottom: -37px;
+    ">
+                                Thank You for contacting us.
+                            </h3>
+                        </div>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+
+    <div class="clearfix"></div>
+</div>
+
+<button data-toggle="modal" id="freetrail" data-target="#freetrailpopup" style="display:none" [hidden]="true"></button>
+
+<div id="freetrailpopup" class="modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div style="background: linear-gradient(#103f56, #094868, #00527c, #066f9e) !important;" class="modal-header">
+                <h4 style="color:#ffffff" class="modal-title">IDAS says:</h4>
+            </div>@{
+            var @x = TempData["valuecontactus"];
+            }
+            <div class="modal-body">@x</div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-accent" data-dismiss="modal">Ok</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="gap"></div>
+<p>You will be redirected in 5 seconds</p>
+<script>
+    var timer = setTimeout(function () {
+        window.location = '/Home'
+    }, 5000);
+</script>
+
+<div class="gap"></div>
+<script src="~/web/js/jquery-2.2.3.min.js"></script>
+<script type="text/javascript">
+    $(window).on("load", function () {
+        if ('@(TempData["valuecontactus"])' != null && '@(TempData["valuecontactus"])' != "") {
+            document.getElementById('freetrail').click();
+        }
+    })
+
+</script>
+
+<script src="~/web/js/jquery-2.2.3.min.js"></script>
+<script type="text/javascript">
+    $(window).on("load", function () {
+        $('#imgLoadAll').show();
+    })
+
+    $(document).ready(function () {
+
+        var isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+        if (!isMobile) {
+
+            $('#cardIdLink').click(function () {
+                $("#cardIdLink").attr('card', 'cardClick');
+            })
+
+            $('#cardId').click(function () {
+                $("#cardId").attr('card', 'cardClick');
+            })
+
+            $('#cardIdLink1').click(function () {
+                $("#cardIdLink1").attr('card', 'cardClick');
+            })
+
+            $('#cardId1').click(function () {
+                $("#cardId1").attr('card', 'cardClick');
+            })
+
+            $('#cardIdLink2').click(function () {
+                $("#cardIdLink2").attr('card', 'cardClick');
+            })
+
+            $('#cardId2').click(function () {
+                $("#cardId2").attr('card', 'cardClick');
+            })
+
+            $('#cardIdLink3').click(function () {
+                $("#cardIdLink3").attr('card', 'cardClick');
+            })
+
+            $('#cardId3').click(function () {
+                $("#cardId3").attr('card', 'cardClick');
+            })
+
+            $('#cardIdLink4').click(function () {
+                $("#cardIdLink4").attr('card', 'cardClick');
+            })
+
+            $('#cardId4').click(function () {
+                $("#cardId4").attr('card', 'cardClick');
+            })
+
+            $('#cardIdLink5').click(function () {
+                $("#cardIdLink5").attr('card', 'cardClick');
+            })
+
+            $('#cardId5').click(function () {
+                $("#cardId5").attr('card', 'cardClick');
+            })
+
+            $('#cardIdLink6').click(function () {
+                $("#cardIdLink6").attr('card', 'cardClick');
+            })
+
+            $('#cardId6').click(function () {
+                $("#cardId6").attr('card', 'cardClick');
+            })
+
+            $('#cardIdLink7').click(function () {
+                $("#cardIdLink7").attr('card', 'cardClick');
+            })
+
+            $('#cardId7').click(function () {
+                $("#cardId7").attr('card', 'cardClick');
+            })
+
+            $('#cardIdLink8').click(function () {
+                $("#cardIdLink8").attr('card', 'cardClick');
+            })
+
+            $('#cardId8').click(function () {
+                $("#cardId8").attr('card', 'cardClick');
+            })
+
+            $('#cardIdLink9').click(function () {
+                $("#cardIdLink9").attr('card', 'cardClick');
+            })
+
+            $('#cardId9').click(function () {
+                $("#cardId9").attr('card', 'cardClick');
+            })
+
+            $('#cardIdLink10').click(function () {
+                $("#cardIdLink10").attr('card', 'cardClick');
+            })
+
+            $('#cardId10').click(function () {
+                $("#cardId10").attr('card', 'cardClick');
+            })
+
+            $('#cardIdLink11').click(function () {
+                $("#cardIdLink11").attr('card', 'cardClick');
+            })
+
+            $('#cardId11').click(function () {
+                $("#cardId11").attr('card', 'cardClick');
+            })
+        }
+    })
+</script>
